@@ -1,0 +1,8 @@
+{
+  "name": "servidor-ia-quechua",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": { "start": "node servidor.mjs" },
+  "dependencies": { "@anthropic-ai/sdk": "latest", "zod": "^4.0.0" }
+}

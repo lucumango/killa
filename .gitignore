@@ -1,0 +1,7 @@
+servidor-ia/node_modules/
+servidor-ia/.env
+escritorio/node_modules/
+escritorio/juego/
+escritorio/salida/
+*.zip
+.DS_Store

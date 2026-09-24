@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Killa</title>
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<div id="marco">
+  <div id="juego">
+
+    <!-- Pantalla de dedicatoria -->
+    <section id="pantalla-dedicatoria" class="pantalla">
+      <div class="dedicatoria"></div>
+      <p class="pista parpadea">presiona cualquier tecla</p>
+    </section>
+
+    <!-- Menú principal -->
+    <section id="pantalla-menu" class="pantalla" hidden>
+      <h1 id="titulo-juego"></h1>
+      <p id="subtitulo-juego"></p>
+      <ul id="menu-opciones" class="menu">
+        <li data-accion="continuar">Continuar partida</li>
+        <li data-accion="nueva">Empezar partida</li>
+        <li data-accion="instrucciones">Instrucciones</li>
+        <li data-accion="creditos">Créditos</li>
+        <li data-accion="agradecimientos">Agradecimientos</li>
+      </ul>
+      <p class="pista">↑ ↓ para moverte · Enter para elegir</p>
+    </section>
+
+    <!-- Pantalla de texto (instrucciones / créditos / agradecimientos) -->
+    <section id="pantalla-texto" class="pantalla" hidden>
+      <h2 id="texto-titulo"></h2>
+      <div id="texto-cuerpo"></div>
+      <p class="pista">Esc o Enter para volver</p>
+    </section>
+
+    <!-- Escena de novela (cámara fija) -->
+    <section id="pantalla-escena" class="pantalla" hidden>
+      <div id="fondo" class="capa"></div>
+      <div id="cuadro" class="capa" hidden></div>
+    </section>
+
+    <!-- Exploración (vista desde arriba) -->
+    <section id="pantalla-explorar" class="pantalla" hidden>
+      <canvas id="lienzo" width="960" height="600"></canvas>
+      <div id="explorar-nombre" class="explorar-nombre"></div>
+      <div id="explorar-pista" class="explorar-pista" hidden></div>
+    </section>
+
+    <!-- Capa de diálogo (se usa tanto en escenas como sobre el mapa de exploración) -->
+    <div id="busto" class="busto" hidden><span class="busto-etiqueta"></span></div>
+    <div id="caja-dialogo" class="caja" hidden>
+      <div id="nombre-hablante" class="nombre"></div>
+      <div id="texto-dialogo" class="texto"></div>
+      <div id="flecha-continuar" class="flecha">▼</div>
+    </div>
+    <ul id="opciones" class="opciones" hidden></ul>
+    <div id="tarjeta" class="tarjeta" hidden></div>
+
+    <!-- Celular (overlay) -->
+    <section id="celular" class="celular" hidden>
+      <div class="celular-cuerpo">
+        <div class="celular-barra">
+          <button data-tab="palabras" class="activo">Palabras</button>
+          <button data-tab="chats">Chats</button>
+          <span class="celular-cerrar" title="Esc">✕</span>
+        </div>
+        <div id="celular-palabras" class="celular-panel"></div>
+        <div id="celular-chats" class="celular-panel" hidden>
+          <div id="chat-lista" class="chat-lista"></div>
+          <div id="chat-ventana" class="chat-ventana" hidden>
+            <div class="chat-cabecera"><span id="chat-volver">‹</span><span id="chat-nombre"></span></div>
+            <div id="chat-mensajes" class="chat-mensajes"></div>
+            <form id="chat-form" class="chat-form">
+              <input id="chat-input" type="text" autocomplete="off" placeholder="Escribe un mensaje…" maxlength="300">
+              <button type="submit">➤</button>
+            </form>
+          </div>
+        </div>
+        <div class="celular-pie">Esc para cerrar</div>
+      </div>
+    </section>
+
+    <div id="avisos"></div>
+  </div>
+</div>
+
+<!-- ===== DATOS (edita estos) ===== -->
+<script>const GUION = { archivos: {}, registrar(nombre, texto) { GUION.archivos[nombre] = texto; } };</script>
+<script src="js/datos/config.js"></script>
+<script src="js/datos/personajes.js"></script>
+<script src="js/datos/palabras.js"></script>
+<script src="js/datos/mapas.js"></script>
+<script src="js/datos/ia.js"></script>
+<script src="js/datos/guion/cap01.js"></script>
+<script src="js/datos/guion/cap02.js"></script>
+
+<!-- ===== MOTOR (no hace falta tocar) ===== -->
+<script src="js/motor/util.js"></script>
+<script src="js/motor/audio.js"></script>
+<script src="js/motor/guardado.js"></script>
+<script src="js/motor/guion.js"></script>
+<script src="js/motor/dialogo.js"></script>
+<script src="js/motor/exploracion.js"></script>
+<script src="js/motor/chat.js"></script>
+<script src="js/motor/celular.js"></script>
+<script src="js/motor/menu.js"></script>
+<script src="js/motor/main.js"></script>
+</body>
+</html>

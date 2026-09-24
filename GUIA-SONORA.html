@@ -1,0 +1,485 @@
+<title>El sonido de Killa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,600;1,400;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --ground: #EDEFEA;      /* piedra de Huamanga */
+  --surface: #F7F8F4;
+  --ink: #1B2030;
+  --muted: #586070;
+  --rule: #D2D6CE;
+  --puka: #A3243A;        /* esmalte rojo, cochinilla */
+  --anil: #3A5A8C;        /* la pared azul añil */
+  --hatch: #9AA1AB;
+  --display: "Alegreya", Georgia, "Times New Roman", serif;
+  --body: "Alegreya Sans", "Gill Sans", "Trebuchet MS", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #10131A; --surface: #171B24; --ink: #E3E6ED; --muted: #99A1AF;
+    --rule: #2B3140; --puka: #E36F82; --anil: #8BA8D9; --hatch: #5B6373;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #10131A; --surface: #171B24; --ink: #E3E6ED; --muted: #99A1AF;
+  --rule: #2B3140; --puka: #E36F82; --anil: #8BA8D9; --hatch: #5B6373;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--ground); color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--body);
+  padding-inline: clamp(16px, 4vw, 48px);
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 68rem; margin: 0 auto; padding-block: clamp(2.5rem, 6vw, 4.5rem) 4rem; }
+.prose { max-width: 40rem; }
+a { color: var(--puka); text-underline-offset: .18em; }
+a:focus-visible { outline: 2px solid var(--puka); outline-offset: 2px; border-radius: 2px; }
+p { margin: 0 0 1rem; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.2rem; }
+li { margin-bottom: .35rem; }
+
+/* ---------- Cabecera ---------- */
+.kicker { font: 500 .72rem/1.3 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2.6rem, 6.5vw, 4.2rem); line-height: 1.02; letter-spacing: -.01em; margin: .6rem 0 .9rem; text-wrap: balance; }
+h1 em { font-style: italic; font-weight: 500; color: var(--puka); }
+.entrada { font: 400 .85rem/1.5 var(--mono); color: var(--muted); margin: 0 0 1.4rem; }
+.entrada b { font-weight: 500; color: var(--ink); }
+.entrada i { font-family: var(--display); font-size: 1.05rem; }
+.lede { font-size: 1.2rem; line-height: 1.55; max-width: 38rem; text-wrap: pretty; }
+.vistazo { display: flex; flex-wrap: wrap; gap: 1.25rem 2.5rem; margin: 2rem 0 0; padding: 1.1rem 0 0; border-top: 1.5px solid var(--ink); }
+.vistazo div { display: flex; flex-direction: column; gap: .15rem; }
+.vistazo dt { font: 500 .68rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.vistazo dd { margin: 0; font-family: var(--display); font-weight: 600; font-size: 1.55rem; line-height: 1.1; font-variant-numeric: tabular-nums lining-nums; }
+.vistazo dd small { font-family: var(--body); font-weight: 400; font-size: .85rem; color: var(--muted); }
+.indice { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin: 1.6rem 0 0; padding: 0; list-style: none; font: 400 .8rem/1.4 var(--mono); }
+.indice li { margin: 0; }
+
+/* ---------- Secciones ---------- */
+section { margin-top: 3.5rem; padding-top: 2.2rem; border-top: 1px solid var(--rule); }
+h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.6rem, 3.2vw, 2rem); line-height: 1.15; margin: .35rem 0 .9rem; text-wrap: balance; }
+h3 { font-family: var(--body); font-weight: 700; font-size: 1.05rem; line-height: 1.3; margin: 0 0 .35rem; }
+code, .archivo { font-family: var(--mono); font-size: .82em; background: var(--surface); border: 1px solid var(--rule); padding: .08em .35em; border-radius: 4px; white-space: nowrap; }
+.qu { font-family: var(--display); font-style: italic; font-size: 1.04em; }
+.cita { margin: 1.5rem 0; padding: 0 0 0 1.5rem; max-width: 36rem; }
+.cita p { font-family: var(--display); font-style: italic; font-size: 1.3rem; line-height: 1.45; margin: 0 0 .35rem; }
+.cita cite { font: normal 400 .72rem/1.3 var(--mono); color: var(--muted); letter-spacing: .04em; }
+
+.principios { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 1.8rem 3rem; margin-top: 1.6rem; }
+.principios p { margin: 0; }
+.nota { color: var(--muted); font-size: .95rem; }
+
+/* ---------- Tablas ---------- */
+.tabla { overflow-x: auto; margin: 1.4rem 0 1rem; border-top: 1.5px solid var(--ink); }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; line-height: 1.45; }
+.ancha table { min-width: 60rem; }
+.media table { min-width: 42rem; }
+th { text-align: left; font: 500 .68rem/1.25 var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); padding: .7rem .75rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: bottom; }
+td { padding: .8rem .75rem; vertical-align: top; border-bottom: 1px solid var(--rule); }
+th:first-child, td:first-child { padding-left: 0; }
+td.id { font: 500 .88rem/1.45 var(--mono); color: var(--puka); white-space: nowrap; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+td .archivo { font-size: .78rem; }
+tr.silencio td { background-image: repeating-linear-gradient(135deg, color-mix(in srgb, var(--hatch) 28%, transparent) 0 1px, transparent 1px 9px); }
+tr.silencio td.id { color: var(--muted); }
+.pill { display: inline-block; font: 500 .64rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: .32rem .5rem; border-radius: 999px; white-space: nowrap; }
+.pill.guion { background: var(--ink); color: var(--ground); }
+.pill.prop { border: 1px solid var(--anil); color: var(--anil); }
+.pill.mundo { border: 1px solid var(--anil); color: var(--anil); }
+.acento { font-family: var(--display); font-style: italic; font-size: 1.08rem; white-space: nowrap; }
+.acento b { font-style: normal; font-weight: 600; font-size: .92em; color: var(--puka); letter-spacing: .02em; }
+
+/* ---------- Mapa sonoro ---------- */
+.mapa { margin: 1.6rem 0 .6rem; }
+.leyenda { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; margin: 0 0 1rem; font-size: .9rem; }
+.leyenda span { display: inline-flex; align-items: center; gap: .5rem; }
+.muestra { width: 1.6rem; height: .7rem; border-radius: 2px; display: inline-block; }
+.fila, .eje { display: grid; grid-template-columns: 17rem 1fr; gap: 1.25rem; align-items: center; }
+.fila { padding-block: .5rem; border-bottom: 1px solid var(--rule); }
+.lab { font-size: .92rem; line-height: 1.3; }
+.lab b { font: 500 .8rem/1 var(--mono); color: var(--puka); margin-right: .45rem; }
+.lab .dur { display: block; font: 400 .74rem/1.4 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; margin-top: .1rem; }
+.pista { position: relative; height: 16px; background-image: repeating-linear-gradient(to right, var(--rule) 0 1px, transparent 1px calc(100% * 10 / 55)); }
+.barra { position: absolute; top: 0; bottom: 0; border-radius: 2px; min-width: 4px; }
+.ariel { background: var(--puka); }
+.mundo-b { background: var(--anil); }
+.calla { background: repeating-linear-gradient(135deg, var(--hatch) 0 1.5px, transparent 1.5px 5px); box-shadow: inset 0 0 0 1px var(--hatch); }
+.ticks { position: relative; height: 1.4rem; font: 400 .7rem/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.ticks span { position: absolute; top: .45rem; transform: translateX(-50%); }
+.ticks span:first-child { transform: none; }
+.pendientes { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 1rem; margin-top: 1.8rem; }
+.pendiente { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 1.1rem 1.25rem 1rem; }
+.pendiente .kicker { color: var(--puka); }
+.pendiente h3 { font-family: var(--display); font-weight: 600; font-size: 1.25rem; margin: .35rem 0 .45rem; }
+.pendiente p { font-size: .98rem; margin-bottom: .6rem; }
+.pendiente p:last-child { margin-bottom: 0; }
+
+/* ---------- Especificaciones ---------- */
+.specs { display: grid; grid-template-columns: 12rem 1fr; gap: 0; margin: 1.4rem 0 0; border-top: 1.5px solid var(--ink); max-width: 52rem; }
+.specs dt, .specs dd { padding: .8rem 0; border-bottom: 1px solid var(--rule); margin: 0; }
+.specs dt { font: 500 .72rem/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-right: 1rem; padding-top: .95rem; }
+
+.pasos { counter-reset: paso; list-style: none; padding: 0; max-width: 42rem; }
+.pasos li { counter-increment: paso; display: grid; grid-template-columns: 2rem 1fr; gap: .5rem; margin-bottom: .9rem; }
+.pasos li::before { content: counter(paso); font: 500 .8rem/1.9 var(--mono); color: var(--puka); }
+pre { font: 400 .82rem/1.55 var(--mono); background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: .75rem 1rem; overflow-x: auto; margin: .5rem 0 0; }
+td pre { margin: 0; padding: .35rem .6rem; white-space: pre; }
+
+.check { list-style: none; padding: 0; max-width: 42rem; }
+.check li { display: grid; grid-template-columns: 1.6rem 1fr; }
+.check li::before { content: ""; width: .85rem; height: .85rem; border: 1.5px solid var(--ink); border-radius: 2px; margin-top: .38rem; }
+
+footer { margin-top: 4rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); font: 400 .75rem/1.6 var(--mono); color: var(--muted); }
+
+@media (max-width: 640px) {
+  .fila, .eje { grid-template-columns: 1fr; gap: .4rem; }
+  .eje .lab { display: none; }
+  .specs { grid-template-columns: 1fr; }
+  .specs dt { border-bottom: 0; padding-bottom: 0; }
+}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="kicker">Killa · documento para música y sonido</div>
+  <h1>El sonido de <em>Killa</em></h1>
+  <p class="entrada"><b>killa</b> &nbsp;<i>s.</i>&nbsp; 1. mes. &nbsp;2. luna. &nbsp;— el nombre del juego</p>
+  <p class="lede">Esta guía es para quien componga la música y diseñe los efectos. Resume de qué va el juego, qué tiene que sentirse en cada escena, qué archivos hacen falta y cómo escucharlos dentro del juego. Todo sale del guion actual, capítulos 1 y 2.</p>
+  <dl class="vistazo">
+    <div><dt>Pistas en el guion</dt><dd>5</dd></div>
+    <div><dt>Tramos sin música</dt><dd>2 <small>≈ 20 min</small></dd></div>
+    <div><dt>Efectos en el guion</dt><dd>3</dd></div>
+    <div><dt>Palabras por grabar</dt><dd>53</dd></div>
+    <div><dt>Capítulos 1 y 2</dt><dd>≈ 55 <small>min + exploración</small></dd></div>
+  </dl>
+  <ul class="indice" aria-label="Secciones">
+    <li><a href="#juego">El juego</a></li>
+    <li><a href="#idea">La idea sonora</a></li>
+    <li><a href="#temas">Temas</a></li>
+    <li><a href="#mapa">Mapa sonoro</a></li>
+    <li><a href="#cues">Hoja de cues</a></li>
+    <li><a href="#efectos">Efectos</a></li>
+    <li><a href="#voces">Voces</a></li>
+    <li><a href="#specs">Especificaciones</a></li>
+    <li><a href="#probar">Probar en el juego</a></li>
+    <li><a href="#orden">Por dónde empezar</a></li>
+  </ul>
+</header>
+
+<section id="juego">
+  <div class="kicker">Contexto</div>
+  <h2>El juego</h2>
+  <div class="prose">
+    <p><strong>Killa</strong> es una novela visual 2D en la línea de <em>Undertale</em>, <em>OFF</em> y <em>Doki Doki Literature Club</em>. Ariel tiene 18 años, es de Lima y acompaña a su mamá a Ayacucho por un trámite de terreno. Lleva en el celular una lista de palabras en quechua que casi no sabe pronunciar.</p>
+    <p>Se pierde, encuentra a un loro llamado Puku y a dos hermanos, Flor y Amaru, que le enseñan quechua entre burlas y cariño. Al final de la tarde descubre que la familia conoce a su mamá, que ella es de ahí y que él también, un poco.</p>
+    <p>El tono es comedia tierna con fondo de nostalgia. Nadie es cruel. La tensión viene de la vergüenza de hablar mal un idioma que debería ser tuyo.</p>
+    <p class="nota">Lo que importa para el sonido: el texto aparece letra por letra con un bip por personaje, la cámara es fija, hay tramos de exploración vista desde arriba, y el celular muestra palabras que se pueden escuchar y chats con mensajes.</p>
+  </div>
+</section>
+
+<section id="idea">
+  <div class="kicker">Dirección</div>
+  <h2>La idea sonora</h2>
+  <blockquote class="cita">
+    <p>Como si en Lima hablara con el cuerpo un poco encogido y recién ahora lo estirara.</p>
+    <cite>cap01.js · la mamá, en el carro</cite>
+  </blockquote>
+  <div class="principios">
+    <div>
+      <h3>Lima suena encogida, Ayacucho suena abierta</h3>
+      <p>Lo que viene de Lima es sintético, comprimido, cercano: el celular, el grupo de los amigos, el Ariel del inicio. Ayacucho tiene aire, cuerdas acústicas, reverberación de patio y de calle empedrada. El guion describe la luz como si alguien le hubiera subido el contraste al mundo; el sonido puede hacer lo mismo.</p>
+    </div>
+    <div>
+      <h3>La banda sonora también aprende quechua</h3>
+      <p>Empieza con timbres de Lima y en cada escena donde Ariel aprende palabras gana un instrumento andino. La carretera casi no los tiene. La caminata con los hermanos ya trae charango. El patio es huayno completo. Cuando llegue la ruta de cada hermano, su instrumento toma el tema principal.</p>
+    </div>
+    <div>
+      <h3>La música del mundo y la música de Ariel</h3>
+      <p>Hay música que existe dentro de la escena: la radio de don Aurelio, la tele chiquita de don Hilario, el parlante bluetooth del patio que se corta. Esa sale de un aparato, con su filtro y su volumen. La otra acompaña lo que siente Ariel. Separarlas hace que el patio suene a fiesta real y no a banda sonora.</p>
+    </div>
+    <div>
+      <h3>El silencio es una decisión</h3>
+      <p>El guion corta la música cuando Ariel se pierde (<span class="qu">"La radio ya no se escucha. La plaza tampoco."</span>) y cuando entra a la ferretería. Esos cortes funcionan. Lo que falta decidir es qué suena después, porque son tramos largos. Está explicado en el mapa sonoro.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2.4rem">Referencias</h3>
+  <div class="prose">
+    <ul>
+      <li><strong>Juegos.</strong> <em>Undertale</em> de Toby Fox, por los temas que reaparecen transformados. <em>OFF</em> de Alias Conrad Coldwood, por los ambientes secos y raros. <em>Doki Doki Literature Club</em> de Dan Salvato, por el tema alegre que puede torcerse. <em>Omori</em> y <em>The Coffin of Andy and Leyley</em>, por loops cortos con mucho carácter.</li>
+      <li><strong>Música de Ayacucho.</strong> Huayno ayacuchano de arpa y violín, carnaval ayacuchano, la guitarra ayacuchana de Raúl García Zárate y Manuelcha Prado, el charango de Jaime Guardia.</li>
+    </ul>
+    <p class="nota">Cuidado con el material de referencia. Lo ideal es trabajar con músicos de Ayacucho o que conozcan bien el estilo, y darles crédito. Una melodía tradicional se puede arreglar; el arreglo o la grabación de otra persona, no. Muchas canciones ayacuchanas guardan la memoria del conflicto armado interno: úsalas solo si la historia lo pide.</p>
+  </div>
+
+  <h3 style="margin-top:2rem">Paleta de instrumentos</h3>
+  <div class="tabla media">
+    <table>
+      <thead><tr><th>Instrumento</th><th>Dónde</th><th>Por qué</th></tr></thead>
+      <tbody>
+        <tr><td>Sinte suave, chiptune apagado</td><td>Menú, carretera, celular, amigos de Lima</td><td>El mundo de Ariel antes de llegar. Se va retirando.</td></tr>
+        <tr><td>Arpa andina</td><td>Patio, tema de Rosa, tema Killa</td><td>Es el instrumento del huayno que suena en la casa.</td></tr>
+        <tr><td>Violín</td><td>Patio, momentos de nostalgia</td><td>Pareja natural del arpa en el huayno ayacuchano.</td></tr>
+        <tr><td>Guitarra ayacuchana</td><td>Ariel más adelante, Rosa, la noche</td><td>Íntima, de fraseo lento. Es la que "aprende" el tema de Ariel.</td></tr>
+        <tr><td>Charango y tinya</td><td>Flor, caminata</td><td>Brillo, rasgueo rápido y pulso de carnaval: habla mucho y camina rápido.</td></tr>
+        <tr><td>Guitarra grave y zumbido eléctrico</td><td>Amaru</td><td>Pocas notas, graves. El zumbido viene de su mundo de cautines, cables y parlantes.</td></tr>
+        <tr><td>Quena</td><td>Tema Killa, finales de capítulo</td><td>Aire y altura: la luna.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="temas">
+  <div class="kicker">Leitmotivs</div>
+  <h2>Temas de personajes</h2>
+  <div class="prose">
+    <p>En quechua el acento cae casi siempre en la penúltima sílaba. Eso da una semilla rítmica para cada tema: la sílaba fuerte cae en el tiempo fuerte. Las palabras son las que el juego le enseña al jugador, así que el oído las reconoce.</p>
+  </div>
+  <div class="tabla ancha">
+    <table>
+      <thead><tr><th>Tema</th><th>Carácter</th><th>Sonido</th><th>Semilla rítmica</th><th>De dónde sale</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Killa</strong><br><span class="nota">tema principal</span></td><td>Lento, abierto, la vuelta a casa</td><td>Quena y arpa</td><td><span class="acento"><b>KI</b>·lla</span></td><td>Mes y luna son la misma palabra. A Ariel le parece bonito "de una manera que no sabe explicar".</td></tr>
+        <tr><td><strong>Ariel</strong></td><td>Tímido, una pregunta sin resolver</td><td>Sinte suave que pasa a guitarra</td><td><span class="acento">a·lli·<b>LLAN</b>·chu</span></td><td>Flor: "tienes que decirlo como pregunta, no como disculpa". La frase termina subiendo.</td></tr>
+        <tr><td><strong>Flor</strong><br><span class="nota">Miski, dulce</span></td><td>Carnaval, rápido, sin pausas</td><td>Charango, tinya, palmas</td><td><span class="acento"><b>MIS</b>·ki</span></td><td>"Yo soy la dulce y él es la serpiente."</td></tr>
+        <tr><td><strong>Amaru</strong><br><span class="nota">serpiente de río</span></td><td>Grave, seco, una sonrisa escondida</td><td>Guitarra grave, bajo, zumbido de parlante</td><td><span class="acento">a·<b>MA</b>·ru</span></td><td>Se ríe muy poco y "suena medio oxidado". Guarda la versión alegre para la pizza con piña.</td></tr>
+        <tr><td><strong>Rosa</strong><br><span class="nota">la mamá</span></td><td>Huayno lento, la que se fue</td><td>Arpa y violín</td><td><span class="acento">ri·may·ku·<b>LLAY</b>·ki</span></td><td>El saludo formal es la primera palabra de la lista que ella le dejó.</td></tr>
+        <tr><td><strong>Puku</strong></td><td>Dos notas y nada más</td><td>Silbido, quena corta o voz</td><td><span class="acento">¡<b>LO</b>·ro!</span></td><td>Es lo único que dice, once veces. El chiste es que nunca cambia.</td></tr>
+        <tr><td><strong>Lima</strong><br><span class="nota">los causas, el celular</span></td><td>Comprimido, rápido, gris</td><td>Chiptune, notificaciones</td><td><span class="acento"><b>CAU</b>·sa</span></td><td>Renzo escribe "causa" cuatro veces seguidas.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="mapa">
+  <div class="kicker">Duración real</div>
+  <h2>Mapa sonoro de los capítulos 1 y 2</h2>
+  <div class="prose">
+    <p>Cada barra es un tramo del guion con la misma pista, en el orden en que se juega. La duración está calculada con la velocidad de texto del juego siguiendo las distintas ramas de decisiones. La exploración de la plaza y del patio suma el tiempo que el jugador quiera.</p>
+  </div>
+  <div class="mapa" role="img" aria-label="Línea de tiempo de unos 52 minutos: carretera 3 min, plaza 2 min, silencio 14 a 16 min, caminata 8 a 10 min, silencio 5 a 7 min, huayno lejano 30 s, huayno del patio 16 a 17 min.">
+    <div class="leyenda">
+      <span><i class="muestra ariel"></i>Música de Ariel</span>
+      <span><i class="muestra mundo-b"></i>Música del mundo (sale de un aparato)</span>
+      <span><i class="muestra calla"></i>Sin música</span>
+    </div>
+    <div class="fila"><div class="lab"><b>1M1</b>Carretera<span class="dur">≈ 3 min</span></div><div class="pista"><div class="barra ariel" style="left:0%;width:5.27%"></div></div></div>
+    <div class="fila"><div class="lab"><b>1M2</b>Plaza<span class="dur">≈ 2 min + exploración</span></div><div class="pista"><div class="barra ariel" style="left:5.27%;width:3.27%"></div></div></div>
+    <div class="fila"><div class="lab"><b>off</b>Perderse, Puku, los hermanos<span class="dur">14–16 min</span></div><div class="pista"><div class="barra calla" style="left:8.55%;width:29.27%"></div></div></div>
+    <div class="fila"><div class="lab"><b>1M3</b>Caminata a la ferretería<span class="dur">8–10 min</span></div><div class="pista"><div class="barra ariel" style="left:37.82%;width:16.91%"></div></div></div>
+    <div class="fila"><div class="lab"><b>off</b>Ferretería, don Hilario<span class="dur">5–7 min</span></div><div class="pista"><div class="barra calla" style="left:54.73%;width:9.45%"></div></div></div>
+    <div class="fila"><div class="lab"><b>2M1</b>Huayno desde la calle<span class="dur">≈ 30 s</span></div><div class="pista"><div class="barra mundo-b" style="left:64.18%;width:.73%"></div></div></div>
+    <div class="fila"><div class="lab"><b>2M2</b>Huayno en el patio<span class="dur">16–17 min + exploración</span></div><div class="pista"><div class="barra mundo-b" style="left:64.91%;width:30.36%"></div></div></div>
+    <div class="eje"><div class="lab"></div><div class="ticks"><span style="left:0%">0</span><span style="left:18.18%">10</span><span style="left:36.36%">20</span><span style="left:54.55%">30</span><span style="left:72.73%">40</span><span style="left:90.91%">50 min</span></div></div>
+  </div>
+
+  <div class="pendientes">
+    <div class="pendiente">
+      <div class="kicker">Por decidir</div>
+      <h3>Un cuarto de hora sin música en la escena más importante</h3>
+      <p>Desde que Ariel se pierde hasta que salen a la ferretería pasan unos 15 minutos: el loro, el primer "Allinllachu", Flor y Amaru, la clase de pronunciación. El silencio del inicio es correcto; sostenido tanto tiempo se vuelve vacío.</p>
+      <p>Propuesta: un ambiente de calle debajo (viento, un perro lejos, ropa tendida) y una frase musical breve cuando Ariel grita su primer ¡Allilanchu! fuerte, mal dicho pero con derecho. El tema de los hermanos puede entrar recién en la caminata.</p>
+    </div>
+    <div class="pendiente">
+      <div class="kicker">Por decidir</div>
+      <h3>Un solo huayno repetido durante 16 minutos</h3>
+      <p>El capítulo 2 entero usa la misma pista del parlante: la comida, el maní, la llegada de "Rosita", el grupo de WhatsApp y la exploración del patio. Un loop de tres minutos ahí se escucha cinco veces.</p>
+      <p>Propuesta: tres huaynos distintos, como una lista de reproducción real, y el guion los cambia en los momentos fuertes. Mover esos cambios en el guion toma minutos.</p>
+    </div>
+  </div>
+</section>
+
+<section id="cues">
+  <div class="kicker">Qué componer</div>
+  <h2>Hoja de cues</h2>
+  <div class="prose">
+    <p>Los códigos siguen la convención de las hojas de cue de cine: <code>1M3</code> es capítulo 1, música 3. El archivo tiene que llamarse exactamente como en la columna <em>Archivo</em> para que el juego lo encuentre. Las filas marcadas como propuesta todavía no están en el guion.</p>
+  </div>
+  <div class="tabla ancha">
+    <table>
+      <thead><tr><th>Cue</th><th>Archivo</th><th>Escena</th><th>Qué se siente</th><th>Sonido</th><th>Tempo</th><th>Loop</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td class="id">0M1</td><td><span class="archivo">menu.mp3</span></td><td>Menú principal</td><td>Calma antes de empezar</td><td>Tema Killa desnudo: quena y arpa, o solo guitarra</td><td class="num">60–72</td><td class="num">1–2 min</td><td><span class="pill prop">Propuesta</span></td></tr>
+        <tr><td class="id">1M1</td><td><span class="archivo">carretera.mp3</span></td><td>El carro sube a Ayacucho; la mamá habla quechua con el conductor</td><td>Mareo, y un olor que el cuerpo reconoce</td><td>Sinte de Lima que se desafina un poco con las curvas; muy al fondo, una guitarra lejana. El motor va en el ambiente, no en la música</td><td class="num">70–85</td><td class="num">1–2 min</td><td><span class="pill guion">En el guion</span></td></tr>
+        <tr><td class="id">1M2</td><td><span class="archivo">plaza.mp3</span></td><td>Bajan en la plaza; exploración libre</td><td>Sol blanquísimo y frío al mismo tiempo, curiosidad</td><td>Primeros instrumentos andinos sueltos, poca percusión, mucho aire. Sin final marcado: el jugador decide cuánto se queda</td><td class="num">90–100</td><td class="num">1:30–2:30</td><td><span class="pill guion">En el guion</span></td></tr>
+        <tr class="silencio"><td class="id">off</td><td>—</td><td>Ariel se pierde, encuentra a Puku y a los hermanos</td><td>Vacío, luego vergüenza, luego ternura</td><td>Silencio. Ver la decisión pendiente en el mapa sonoro</td><td>—</td><td>—</td><td><span class="pill guion">En el guion</span></td></tr>
+        <tr><td class="id">1A1</td><td><span class="archivo">amb_calle.mp3</span></td><td>Debajo del silencio de la calle</td><td>Una calle donde no hay nadie</td><td>Viento, perro lejos, algo de ropa tendida. Nada melódico</td><td>—</td><td class="num">≈ 1 min</td><td><span class="pill prop">Propuesta</span></td></tr>
+        <tr><td class="id">1S1</td><td><span class="archivo">allillanchu.wav</span></td><td>Ariel dice ¡Allilanchu! fuerte, "como si tuviera derecho"</td><td>Un logro chiquito</td><td>Frase de 3 a 5 segundos con el motivo de Ariel resuelto hacia arriba</td><td>—</td><td>No</td><td><span class="pill prop">Propuesta</span></td></tr>
+        <tr><td class="id">1M3</td><td><span class="archivo">caminata.mp3</span></td><td>Camino a la ferretería aprendiendo números, colores y hayk'ataq</td><td>Juego, complicidad nueva</td><td>Tema de Flor en charango y tinya. El tema de Amaru asoma en el bajo. Variaciones internas para aguantar 10 minutos</td><td class="num">110–125</td><td class="num">2–3 min</td><td><span class="pill guion">En el guion</span></td></tr>
+        <tr class="silencio"><td class="id">off</td><td>—</td><td>Ferretería El Progreso, don Hilario</td><td>Tensión cómica</td><td>Solo la tele chiquita de don Hilario, que es diegética</td><td>—</td><td>—</td><td><span class="pill guion">En el guion</span></td></tr>
+        <tr><td class="id">1A2</td><td><span class="archivo">amb_tele.mp3</span></td><td>La tele de don Hilario</td><td>Un señor que no tiene ningún apuro</td><td>Programa ininteligible por un parlante chiquito, en una repisa alta</td><td>—</td><td class="num">≈ 1 min</td><td><span class="pill prop">Propuesta</span></td></tr>
+        <tr><td class="id">2M1</td><td><span class="archivo">huayno_lejos.mp3</span></td><td>Desde media cuadra se escucha la casa</td><td>Calidez vista desde afuera</td><td>El mismo huayno de 2M2 filtrado: sin graves, reverb de calle, voces y carcajadas encima</td><td class="num">= 2M2</td><td class="num">30–45 s</td><td><span class="pill guion">En el guion</span></td></tr>
+        <tr><td class="id">2M2</td><td><span class="archivo">huayno_patio.mp3</span></td><td>El patio: comida, familia, Rosita, el grupo, exploración</td><td>Fiesta real, de la que Ariel está un poco afuera</td><td>Huayno ayacuchano con arpa y violín, saliendo de un parlante bluetooth grande: medios marcados, algo de saturación. Ideal: tres temas distintos</td><td class="num">huayno</td><td class="num">3–4 min c/u</td><td><span class="pill guion">En el guion</span></td></tr>
+        <tr><td class="id">2M3</td><td><span class="archivo">noche_notas.mp3</span></td><td>Ariel vuelve del kiosko repasando sus notas</td><td>"Ya no suenan tan extranjeras"</td><td>Tema de Ariel por primera vez en guitarra ayacuchana, sin sinte</td><td class="num">70–80</td><td class="num">1–2 min</td><td><span class="pill prop">Propuesta</span></td></tr>
+        <tr><td class="id">2M4</td><td><span class="archivo">elegir_ruta.mp3</span></td><td>Elegir entre la ruta de Flor y la de Amaru</td><td>Expectativa</td><td>Los temas de Flor y Amaru a la vez, sin resolver</td><td>—</td><td class="num">30–60 s</td><td><span class="pill prop">Propuesta</span></td></tr>
+        <tr><td class="id">3M·</td><td>por definir</td><td>Ruta Flor: grabar un video, termina en la azotea. Ruta Amaru: los parlantes fallan, termina fuera de la fiesta</td><td>Por escribir</td><td>Cada ruta desarrolla el tema de su hermano</td><td>—</td><td>—</td><td><span class="pill prop">Futuro</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="efectos">
+  <div class="kicker">Diseño sonoro</div>
+  <h2>Efectos</h2>
+
+  <h3 style="margin-top:1.4rem">Los que ya pide el guion</h3>
+  <div class="tabla media">
+    <table>
+      <thead><tr><th>Archivo</th><th>Cuándo suena</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td><span class="archivo">camara.wav</span></td><td>Foto a Puku, que "se pone de perfil"; foto a la bolsa de la ferretería</td><td>Obturador de celular, corto</td></tr>
+        <tr><td><span class="archivo">vibrar.wav</span></td><td>Llegan los WhatsApp de la mamá, dos veces</td><td>Vibración sobre tela del bolsillo y sobre mesa</td></tr>
+        <tr><td><span class="archivo">yape.wav</span></td><td>"¡Yapeaste!" en el celular viejísimo de don Hilario, con la pantalla rajada</td><td>Haz uno original que recuerde a una app de pagos, chillón y saliendo de un parlante malo. No copies el sonido real: es de una marca</td></tr>
+        <tr><td><span class="archivo">mensaje.wav</span></td><td>Cada mensaje de chat que llega</td><td>Opcional. Se activa en la configuración del juego</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:2rem">Interfaz</h3>
+  <div class="prose"><p class="nota">Estos no están conectados todavía. Cuando existan los archivos, se enganchan en el código en pocos minutos.</p></div>
+  <div class="tabla media">
+    <table>
+      <thead><tr><th>Archivo</th><th>Momento</th><th>Idea</th></tr></thead>
+      <tbody>
+        <tr><td><span class="archivo">menu_mover.wav</span> <span class="archivo">menu_elegir.wav</span></td><td>Moverse y elegir en el menú y en las opciones de diálogo</td><td>Muy cortos. Pueden venir del sinte de Lima</td></tr>
+        <tr><td><span class="archivo">palabra_nueva.wav</span></td><td>Aparece "📱 Nueva palabra"</td><td>La recompensa principal del juego. Dos o tres notas con el timbre de la quena</td></tr>
+        <tr><td><span class="archivo">guardar.wav</span></td><td>Punto de guardado ✦</td><td>Brillo suave, que no interrumpa la escena</td></tr>
+        <tr><td><span class="archivo">celular_abrir.wav</span> <span class="archivo">celular_cerrar.wav</span></td><td>Tecla C</td><td>Desbloqueo de pantalla</td></tr>
+        <tr><td><span class="archivo">mensaje_enviar.wav</span> <span class="archivo">visto.wav</span></td><td>Ariel manda un mensaje; lo dejan en visto</td><td>El visto puede ser casi nada: un clic seco y un silencio</td></tr>
+        <tr><td><span class="archivo">tarjeta.wav</span></td><td>"Capítulo 1 · La carretera", "CONTINUARÁ"</td><td>Una nota grave o el tema Killa en dos segundos</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:2rem">Ambientes y chistes sonoros</h3>
+  <div class="prose">
+    <ul>
+      <li><strong>El parlante que se corta.</strong> Es un chiste que atraviesa el capítulo 2 y termina en "¡Es el cable!". Un corte de 0,3 a 1 segundo en la pista del patio, o un efecto <code>parlante_corte.wav</code> que la silencie un instante.</li>
+      <li><strong>Puku.</strong> "¡Loro!" suena once veces. Voz humana imitando a un loro o grabación procesada, siempre la misma toma. Una versión "más bajito, casi confidencial" para el patio.</li>
+      <li><strong>La radio de don Aurelio.</strong> Huayno por radio AM a lo lejos, justo antes de que Ariel se pierda. "La prende a las once y la apaga a las once y media."</li>
+      <li><strong>El carro.</strong> Motor que cambia de tono al llegar, curvas, la ventana que baja dos dedos y deja entrar el viento.</li>
+      <li><strong>La plaza.</strong> Niños corriendo, la bocinita del carrito de helados, una pileta de chorro flaco.</li>
+      <li><strong>Objetos.</strong> Pasos en empedrado, la bolsa negra de la ferretería, la calculadora vieja, el cucharón que cae en el plato "de todas maneras".</li>
+      <li><strong>Voces de fondo en quechua.</strong> La tía y la mamá hablando rápido y riéndose. Grabar con hablantes reales; nada de quechua inventado.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="voces">
+  <div class="kicker">Tipo Undertale</div>
+  <h2>Voces al hablar</h2>
+  <div class="prose">
+    <p>Mientras el texto aparece, cada dos letras suena un bip. Hoy lo genera el juego con un oscilador, con estos valores. Con la velocidad normal, Flor hace unos 18 bips por segundo, así que el sonido tiene que aguantar esa repetición sin cansar.</p>
+  </div>
+  <div class="tabla media">
+    <table>
+      <thead><tr><th>Personaje</th><th>Tono</th><th>Onda</th><th>ms por letra</th><th>Idea para la voz grabada</th></tr></thead>
+      <tbody>
+        <tr><td>Ariel</td><td class="num">320 Hz</td><td>cuadrada</td><td class="num">28</td><td>Neutro, un poco apagado</td></tr>
+        <tr><td>Flor</td><td class="num">520 Hz</td><td>cuadrada</td><td class="num">28</td><td>Brillante, con ataque rápido</td></tr>
+        <tr><td>Amaru</td><td class="num">190 Hz</td><td>triangular</td><td class="num">34</td><td>Grave y suave; habla más lento</td></tr>
+        <tr><td>Mamá</td><td class="num">380 Hz</td><td>senoidal</td><td class="num">28</td><td>Redondo, cálido</td></tr>
+        <tr><td>Puku</td><td class="num">900 Hz</td><td>sierra</td><td class="num">18</td><td>Chillido corto</td></tr>
+        <tr><td>Don Hilario</td><td class="num">150 Hz</td><td>triangular</td><td class="num">40</td><td>Grave, lentísimo</td></tr>
+        <tr><td>Tía</td><td class="num">420 Hz</td><td>senoidal</td><td class="num">28</td><td>Parecida a la mamá de Flor, más fuerte</td></tr>
+        <tr><td>Sra. Rufina</td><td class="num">400 Hz</td><td>senoidal</td><td class="num">28</td><td>Cálida</td></tr>
+        <tr><td>Celular</td><td class="num">700 Hz</td><td>senoidal</td><td class="num">12</td><td>Tic de teclado</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p>Si prefieres voces grabadas: WAV mono de 30 a 70 ms, ataque inmediato sin silencio al inicio, misma sonoridad entre personajes. Hoy el juego acepta un archivo por personaje y lo repite igual. Si mandas de 3 a 5 variantes por personaje, se programa que elija una al azar.</p>
+  </div>
+
+  <h3 style="margin-top:2rem">Las palabras en quechua</h3>
+  <div class="prose">
+    <p>El celular tiene 53 palabras y frases que se escuchan al tocarlas, desde <span class="qu">arí</span> hasta <span class="qu">chunka pusaqniyuq watayuqmi kani</span>. No es trabajo de composición, pero conviene coordinarlo con la misma persona que graba.</p>
+    <ul>
+      <li>Hablantes de quechua ayacuchano, en la misma sala y con el mismo micrófono.</li>
+      <li>WAV mono, 48 kHz, con 0,3 s de aire antes y después, pico a −3 dBFS.</li>
+      <li>Un archivo por palabra, nombrado con su <code>id</code> del archivo <code>js/datos/palabras.js</code>, por ejemplo <code>sulpayki.mp3</code>.</li>
+      <li>Permiso por escrito de quien presta su voz.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="specs">
+  <div class="kicker">Técnico</div>
+  <h2>Especificaciones de entrega</h2>
+  <dl class="specs">
+    <dt>Maestros</dt><dd>WAV 48 kHz, 24 bit. Estéreo para música, mono para efectos. Guárdalos aparte; no van dentro del juego.</dd>
+    <dt>Para el juego</dt><dd>Música en MP3 a 192 kbps, idealmente menos de 5 MB por pista para que cargue rápido en la web. Efectos en WAV 44,1 kHz, 16 bit, mono.</dd>
+    <dt>Nombres</dt><dd>Minúsculas, sin tildes ni espacios, exactamente como la hoja de cues. Música en <code>assets/audio/musica/</code>, efectos en <code>assets/audio/sfx/</code>.</dd>
+    <dt>Volumen</dt><dd>Música cerca de −16 LUFS integrados con pico real a −1 dBTP. Efectos con pico a −3 dBFS. El juego ya reproduce la música al 60 % y los efectos al 80 %: mezcla pensando en eso.</dd>
+    <dt>Loops</dt><dd>El juego repite el archivo entero. Corta el loop exacto a la muestra y lleva la cola de reverberación al inicio. El MP3 puede agregar un microsilencio en el punto de repetición; si se nota, se cambia el reproductor por uno sin cortes.</dd>
+    <dt>Transiciones</dt><dd>Hoy los cambios de pista son en seco. Cada pista tiene que poder entrar en frío y cortarse en cualquier compás. Los fundidos cruzados se pueden programar si hacen falta.</dd>
+    <dt>Intro + loop</dt><dd>Todavía no se soporta. Si una pista necesita introducción, entrégala en dos archivos separados.</dd>
+    <dt>Primer sonido</dt><dd>El navegador no deja sonar nada hasta que el jugador toca una tecla. Por eso la dedicatoria del inicio es muda.</dd>
+  </dl>
+</section>
+
+<section id="probar">
+  <div class="kicker">Escuchar en contexto</div>
+  <h2>Probar tus pistas en el juego</h2>
+  <ol class="pasos">
+    <li><div>Copia el archivo en su carpeta con el nombre de la hoja de cues.</div></li>
+    <li><div>Levanta el juego y abre <code>http://localhost:8765</code>.
+      <pre>cd ~/quechua-novela
+python3 -m http.server 8765</pre></div></li>
+    <li><div>Pasa la dedicatoria y elige <strong>Empezar partida</strong>.</div></li>
+    <li><div>Abre la consola del navegador (en Chrome, <code>Cmd + Opción + J</code>), pega la línea de la escena que quieres oír y vuelve a presionar Enter en el juego.</div></li>
+    <li><div>Si reemplazas un archivo, recarga con <code>Cmd + Shift + R</code> para que el navegador no use la versión vieja.</div></li>
+  </ol>
+  <div class="tabla media">
+    <table>
+      <thead><tr><th>Para escuchar</th><th>Pega en la consola</th></tr></thead>
+      <tbody>
+        <tr><td><span class="archivo">carretera.mp3</span></td><td><pre>Motor.cargarCapitulo('cap01'); Motor.pc = 0</pre></td></tr>
+        <tr><td><span class="archivo">plaza.mp3</span></td><td><pre>Motor.cargarCapitulo('cap01'); Motor.saltar('plaza_llegada')</pre></td></tr>
+        <tr><td>El silencio de la calle</td><td><pre>Motor.cargarCapitulo('cap01'); Motor.saltar('perderse')</pre></td></tr>
+        <tr><td><span class="archivo">caminata.mp3</span></td><td><pre>Motor.cargarCapitulo('cap01'); Motor.saltar('camino_ferreteria')</pre></td></tr>
+        <tr><td>La ferretería</td><td><pre>Motor.cargarCapitulo('cap01'); Motor.saltar('ferreteria')</pre></td></tr>
+        <tr><td><span class="archivo">huayno_lejos.mp3</span> y <span class="archivo">huayno_patio.mp3</span></td><td><pre>Motor.cargarCapitulo('cap02'); Motor.pc = 0</pre></td></tr>
+        <tr><td>Cualquier pista, sin saltar</td><td><pre>Audio_.reproducirMusica('plaza.mp3')</pre></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose"><p class="nota">Las pistas nuevas que propongas se ubican en el guion con una línea <code>@musica nombre.mp3</code>. Los capítulos están en <code>js/datos/guion/</code>; indica en qué frase debería entrar cada una.</p></div>
+</section>
+
+<section id="orden">
+  <div class="kicker">Plan</div>
+  <h2>Por dónde empezar</h2>
+  <ol class="pasos">
+    <li><div><strong>Boceto del tema Killa</strong>, 30 segundos en piano o guitarra. De ahí salen los demás.</div></li>
+    <li><div><strong>1M3, la caminata con el tema de Flor.</strong> Es el tramo con música más largo del capítulo 1 y el que más define el tono.</div></li>
+    <li><div><strong>Decidir los silencios:</strong> el ambiente de calle y la frase del primer ¡Allilanchu!.</div></li>
+    <li><div><strong>El patio:</strong> tres huaynos para el parlante y la versión lejana 2M1.</div></li>
+    <li><div><strong>1M1 y 1M2</strong>, carretera y plaza.</div></li>
+    <li><div><strong>Voces tipo bip y efectos de interfaz</strong>, empezando por la palabra nueva.</div></li>
+    <li><div><strong>2M3 y el menú.</strong></div></li>
+  </ol>
+
+  <h3 style="margin-top:2.2rem">Qué devolver</h3>
+  <ul class="check">
+    <li><div>Archivos con el nombre exacto de la hoja de cues, más los WAV maestros aparte.</div></li>
+    <li><div>Una línea por pista: tempo, tonalidad y dónde está el punto de loop.</div></li>
+    <li><div>Para cada cue nueva que propongas: la escena y la frase del guion donde debería empezar.</div></li>
+    <li><div>Cómo quieres aparecer en los créditos y si quieres publicar la banda sonora aparte.</div></li>
+  </ul>
+
+  <h3 style="margin-top:2.2rem">Derechos</h3>
+  <div class="prose">
+    <p>Antes de empezar, acuerden por escrito quién es dueño de la música, si se puede publicar la banda sonora en plataformas y cómo se acredita. Sin samples ni loops de terceros sin licencia. Esto no reemplaza asesoría legal; un contrato simple evita problemas después.</p>
+  </div>
+</section>
+
+<footer>
+  Hecho a partir de js/datos/guion/cap01.js y cap02.js · Killa · septiembre 2026
+</footer>
+
+</div>

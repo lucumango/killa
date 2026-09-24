@@ -1,0 +1,20 @@
+{
+  "name": "quechua-novela-escritorio",
+  "private": true,
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "empaquetar": "electron-builder --mac --win --linux"
+  },
+  "build": {
+    "appId": "com.tunombre.quechuanovela",
+    "productName": "Quechua para limeños",
+    "files": ["main.js", "juego/**/*"],
+    "directories": { "output": "salida" },
+    "mac": { "target": "dmg" },
+    "win": { "target": "portable" },
+    "linux": { "target": "AppImage" }
+  },
+  "devDependencies": { "electron": "^33.0.0", "electron-builder": "^25.0.0" }
+}

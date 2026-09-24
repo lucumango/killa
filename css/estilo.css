@@ -1,0 +1,115 @@
+/* =====================================================================
+   ESTILO GENERAL
+   Cambia colores, fuentes y tamaños acá. El juego "vive" en una caja
+   de 960x600 que se escala para caber en la ventana.
+   ===================================================================== */
+:root {
+  --ancho: 960px;
+  --alto: 600px;
+  --fuente: "Courier New", Courier, monospace; /* cámbiala por tu fuente pixel */
+  --color-fondo: #0b0b10;
+  --color-caja: #000;
+  --color-borde: #fff;
+  --color-texto: #fff;
+  --color-pista: #999;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var(--color-texto); font-family: var(--fuente); overflow: hidden; }
+#marco { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+#juego { position: relative; width: var(--ancho); height: var(--alto); overflow: hidden; background: #000; transform-origin: center center; }
+#juego.pixel, #juego.pixel canvas { image-rendering: pixelated; } /* se activa con CONFIG.estiloPixel */
+.pantalla { position: absolute; inset: 0; }
+[hidden] { display: none !important; }
+.pista { color: var(--color-pista); font-size: 14px; text-align: center; }
+.parpadea { animation: parpadeo 1.2s infinite; }
+@keyframes parpadeo { 50% { opacity: 0.2; } }
+
+/* ---------- Dedicatoria ---------- */
+#pantalla-dedicatoria { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; padding: 60px; text-align: center; }
+.dedicatoria { font-size: 22px; line-height: 1.7; white-space: pre-line; max-width: 700px; }
+
+/* ---------- Menú ---------- */
+#pantalla-menu { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+#titulo-juego { font-size: 48px; margin: 0; letter-spacing: 2px; }
+#subtitulo-juego { margin: 0 0 30px; color: var(--color-pista); }
+.menu { list-style: none; padding: 0; margin: 0; font-size: 24px; }
+.menu li { padding: 6px 30px; cursor: pointer; opacity: 0.6; }
+.menu li.seleccionado { opacity: 1; }
+.menu li.seleccionado::before { content: "❤ "; color: #e33; }
+.menu li.deshabilitado { opacity: 0.25; }
+
+/* ---------- Pantalla de texto ---------- */
+#pantalla-texto { padding: 50px 80px; overflow: auto; }
+#texto-cuerpo { white-space: pre-line; line-height: 1.7; font-size: 18px; }
+
+/* ---------- Escena ---------- */
+.capa { position: absolute; inset: 0; background-size: cover; background-position: center; display: flex; align-items: flex-start; justify-content: flex-end; padding: 10px; font-size: 14px; color: rgba(255,255,255,.5); }
+#cuadro { z-index: 2; }
+.tarjeta { position: absolute; inset: 0; z-index: 5; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 34px; text-align: center; white-space: pre-line; line-height: 1.6; }
+
+/* Busto del personaje: aparece a la izquierda, sobre la caja de diálogo. */
+.busto { position: absolute; left: 30px; bottom: 170px; width: 220px; height: 260px; z-index: 3;
+  background-size: contain; background-repeat: no-repeat; background-position: bottom center;
+  display: flex; align-items: flex-end; justify-content: center; }
+.busto-etiqueta { font-size: 13px; color: rgba(255,255,255,.7); padding: 4px; }
+
+/* Caja de diálogo estilo Undertale */
+.caja { position: absolute; left: 30px; right: 30px; bottom: 20px; height: 150px; z-index: 4;
+  background: var(--color-caja); border: 4px solid var(--color-borde); padding: 16px 24px; font-size: 22px; line-height: 1.4; }
+.caja .nombre { position: absolute; top: -18px; left: 16px; background: var(--color-caja); padding: 0 10px; font-size: 16px; font-weight: bold; }
+.caja .texto { white-space: pre-wrap; }
+.caja .flecha { position: absolute; right: 18px; bottom: 8px; font-size: 16px; animation: parpadeo 0.8s infinite; }
+.caja.narracion { font-style: italic; }
+.caja.narracion .nombre { display: none; }
+
+/* Opciones */
+.opciones { position: absolute; left: 270px; right: 30px; bottom: 190px; z-index: 6; list-style: none; margin: 0; padding: 12px; background: rgba(0,0,0,.9); border: 4px solid var(--color-borde); font-size: 20px; }
+.opciones li { padding: 6px 12px; cursor: pointer; opacity: .6; }
+.opciones li.seleccionado { opacity: 1; }
+.opciones li.seleccionado::before { content: "❤ "; color: #e33; }
+
+/* ---------- Exploración ---------- */
+#lienzo { display: block; width: 100%; height: 100%; background: #111; }
+.explorar-nombre { position: absolute; top: 12px; left: 16px; font-size: 14px; color: rgba(255,255,255,.7); }
+.explorar-pista { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,.8); border: 2px solid #fff; padding: 4px 12px; font-size: 15px; }
+
+/* ---------- Celular ---------- */
+.celular { position: absolute; inset: 0; z-index: 20; background: rgba(0,0,0,.55); display: flex; align-items: center; justify-content: center; }
+.celular-cuerpo { width: 380px; height: 560px; background: #111; border: 6px solid #ddd; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; font-family: var(--fuente); }
+.celular-barra { display: flex; align-items: center; background: #222; }
+.celular-barra button { flex: 1; background: none; border: 0; color: #888; padding: 12px; font-family: inherit; font-size: 15px; cursor: pointer; }
+.celular-barra button.activo { color: #fff; border-bottom: 2px solid #fff; }
+.celular-cerrar { padding: 0 14px; cursor: pointer; color: #aaa; }
+.celular-pie { text-align: center; color: #555; font-size: 11px; padding: 4px; background: #222; }
+.celular-panel { flex: 1; overflow: auto; padding: 10px; font-size: 15px; }
+.palabra-categoria { color: #8fd; margin: 12px 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+.palabra { display: flex; justify-content: space-between; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; }
+.palabra:hover, .palabra.activa { background: #2a2a35; }
+.palabra .qu { font-weight: bold; }
+.palabra .es { color: #bbb; text-align: right; }
+.palabra .nota { display: block; color: #fc8; font-size: 12px; }
+.palabra .sin-audio { color: #555; font-size: 12px; }
+.chat-lista .contacto { padding: 12px 10px; border-bottom: 1px solid #222; cursor: pointer; display: flex; justify-content: space-between; }
+.chat-lista .contacto:hover { background: #1c1c26; }
+.chat-lista .contacto .sinleer { background: #2b2; color: #000; border-radius: 10px; padding: 0 7px; font-size: 12px; }
+.chat-ventana { display: flex; flex-direction: column; height: 100%; }
+.chat-cabecera { background: #1f2a24; padding: 10px; font-weight: bold; display: flex; gap: 10px; }
+#chat-volver { cursor: pointer; }
+.chat-mensajes { flex: 1; overflow: auto; padding: 10px; display: flex; flex-direction: column; gap: 6px; background: #0d1410; }
+.msg { max-width: 80%; padding: 7px 10px; border-radius: 10px; font-size: 14px; line-height: 1.35; white-space: pre-wrap; word-break: break-word; }
+.msg.yo { align-self: flex-end; background: #0f5c3a; }
+.msg.otro { align-self: flex-start; background: #2a2a2a; }
+.msg .quien { display: block; font-size: 11px; color: #9c9; margin-bottom: 2px; }
+.msg .estado { display: block; text-align: right; font-size: 10px; color: #7cf; }
+.msg.escribiendo { color: #888; font-style: italic; }
+.chat-form { display: flex; border-top: 1px solid #222; }
+.chat-form input { flex: 1; background: #1a1a1a; border: 0; color: #fff; padding: 10px; font-family: inherit; font-size: 14px; }
+.chat-form button { background: #0f5c3a; border: 0; color: #fff; padding: 0 14px; cursor: pointer; }
+
+/* ---------- Avisos (toasts) ---------- */
+#avisos { position: absolute; top: 14px; right: 14px; z-index: 30; display: flex; flex-direction: column; gap: 6px; }
+.aviso { background: #000; border: 2px solid #fff; padding: 6px 12px; font-size: 14px; animation: aparecer .3s; }
+@keyframes aparecer { from { transform: translateX(40px); opacity: 0; } }
+
+/* ---------- Bloques de color (placeholders de arte) ---------- */
+.placeholder { display: flex; align-items: center; justify-content: center; text-align: center; color: rgba(255,255,255,.75); font-size: 14px; text-shadow: 0 1px 2px #000; }
