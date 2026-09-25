@@ -29,7 +29,8 @@ Regla del encuadre del busto (220 × 260): la cabeza en el tercio superior, homb
 ## ARIEL (jugador) — `ariel`
 
 - 18 años, limeño, hijo único, sabático, postulando a EE. UU. Palabras: **observador, nervioso, con humor callado**.
-- Rasgos fijos: casaca (la que "los hace pensar que es gringo"), celular en la mano, botella de agua del kiosko en varias escenas, cara redonda "de Ayacucho" con corte y ropa de Lima. Color de acento del juego: `#f2d16b`.
+- Rasgos fijos: casaca (la que "los hace pensar que es gringo"), celular en la mano, botella de agua del kiosko en varias escenas, cara redonda "de Ayacucho" con corte y ropa de Lima.
+- Color: **la luna**. Casaca amarilla `#e9cf86` (paleta en `arte/paleta/`). En el diálogo su nombre va en `#f2d16b`.
 - Base: postura recta pero rígida, como quien no sabe dónde poner las manos. Ojos grandes: es el que mira.
 - Tics: juntar los dedos índice (tu idea, va en `nervioso`), inclinarse hacia adelante cuando quiere saber algo, mano en el pecho cuando se asusta.
 - NO hace: gestos grandes. Sus emociones son chicas; la cámara está en su cabeza.
@@ -50,7 +51,15 @@ Regla del encuadre del busto (220 × 260): la cabeza en el tercio superior, homb
 ## FLOR — `flor` (Flor Miski María Quispe Ccori)
 
 - 19, ayacuchana, entra a la PUCP en marzo. Palabras: **expansiva, maestra, chismosa con cariño**.
-- Rasgos fijos: casaca rosada con el **cierre a medio subir** (siempre a la misma altura), pelo negrísimo, misma forma de cara que Amaru, "sonríe con toda la cara". Acento `#ff8fb1`.
+- Color: **la tarde**. Coral apagado `#ef9c86`, no rosa (rosa y azul con Amaru se leía cursi). Su momento es la azotea al atardecer. En el diálogo su nombre va en `#ffa58c`.
+- Rasgos fijos (5, no más: se redibujan en cada busto):
+  1. **Cola alta**, pelo negrísimo. Se mueve: en `risa` y `sorpresa` puede inclinarse o saltar sin redibujar la cabeza.
+  2. **Casaca deportiva coral con franjas a los costados** (franjas color `crema`), con el **cierre a medio subir** (siempre a la misma altura).
+  3. **Mangas largas y un poco grandes**: esconde las manos en `flor_rojo` y se seca la cara con la manga en la azotea.
+  4. **Bolsa de tela** con las cosas para grabar el video (celular, el "trípode que es una barra de plástico"), con **una flor bordada**. Es su accesorio de flor: chiquito, no una flor en el pelo.
+  5. Misma forma de cara que Amaru; "sonríe con toda la cara".
+- Abajo: **jeans y botines** (hace frío; de noche, dos grados). Solo se ven en el sprite y en los cuadros; los bustos se cortan en la cintura, así que no le gastes tiempo.
+- Nada de trenzas por ahora: el arco de Flor es su miedo a que en Lima le digan "chola", y las trenzas cargan ese estereotipo antes de que ella hable. Si aparecen, que sea a propósito (la abuelita, un recuerdo).
 - Base: el cuerpo nunca está derecho: cadera a un lado, cabeza ladeada. Ocupa espacio.
 - Tics: agarrarte del brazo, dedo índice pedagógico, taparse la boca con las dos manos.
 - NO hace: quedarse quieta ni mirar al piso (eso es de Amaru; solo lo hace en `molesto` a propósito, copiándolo).
@@ -73,7 +82,15 @@ Regla del encuadre del busto (220 × 260): la cabeza en el tercio superior, homb
 ## AMARU — `amaru` (Jorge Amaru Jesús Quispe Ccori)
 
 - 17 (18 en noviembre), academia, va a postular a electrónica aunque diga que no. Palabras: **seco, preciso, tímido que se pone rojo**.
-- Rasgos fijos: polera negra, **manos en los bolsillos** (es su rasgo número uno: en la mayoría de bustos las manos no se ven), pelo negrísimo, orejas visibles (para ponerlas rojas). Acento `#7fb3ff`.
+- Color: **la noche**. Gris carbón `#636878`: contrasta con el coral de Flor en vez de hacer pareja rosa/azul. Su ruta es el parque y las estrellas. En el diálogo su nombre va en `#aab3c6`.
+- Rasgos fijos (5):
+  1. **Polera gris carbón con capucha y bolsillo canguro**, **manos en el bolsillo** (su rasgo número uno: en la mayoría de bustos las manos no se ven, que es lo más caro de dibujar).
+  2. **El multímetro amarillo** (el aparato con que mide si un cable tiene corriente) asomando del bolsillo: "se cuelga el multímetro al bolsillo". Es el único punto de color vivo en su ropa, y usa el amarillo de Ariel.
+  3. **Una curita en un dedo**: quien suelda se quema las yemas con el cautín. Se ve cuando saca la mano (`seria`, `rojo`, `facepalm`). En la nariz o la mejilla se leería como "el chico peleador", y Amaru no pelea.
+  4. Pelo negrísimo, un poco desordenado; **orejas visibles** (para ponerlas rojas).
+  5. Misma forma de cara que Flor, con las cejas más rectas y la boca más chica.
+- Abajo: **buzo (jogger) y zapatillas gastadas** tipo Converse. No jean rasgado: Amaru no piensa en su ropa, y el buzo es para agacharse con el cable. Solo se ve en el sprite y en los cuadros.
+- Sin guantes. Si te gustan, solo como detalle de noche en el parque, por el frío.
 - Base: hombros un poco encogidos, mirando al piso, boca recta. Se comunica con la cabeza y las cejas, no con los brazos.
 - Tics: pasarse la mano por la nuca, ponerse rojo hasta las orejas, resoplar por la nariz.
 - NO hace: sonreír con toda la boca (su sonrisa es "media, en una esquina, detrás de tres puertas"). No abre los brazos.
@@ -89,6 +106,7 @@ Regla del encuadre del busto (220 × 260): la cabeza en el tercio superior, homb
 | `amaru_sorpresa` | cabeza levantada rápido, cejas arriba, boca entreabierta, manos saliendo de los bolsillos |
 | extra `amaru_facepalm` | **las dos manos por la cara** (tu idea; "se pasa las dos manos por la cara y las deja ahí un momento") |
 | extra `amaru_espaldas` | de espaldas, sin entrar a la casa: solo nuca y hombros, orejas rojas asomando |
+| extra `amaru_estano` | igual que `neutral` pero con **una mancha negra en la mejilla** y el pelo parado de un lado ("es humo de estaño"): el patio de la ruta de Flor |
 | extra `amaru_risa` | echado para atrás, risa "oxidada" con la boca abierta: la única vez que se ríe fuerte (la pizza con piña). Guárdala para ese momento |
 
 ## Secundarios (un busto base y una o dos variaciones)

@@ -9,8 +9,8 @@
 // =====================================================================
 const PERSONAJES = {
   ariel:    { nombre: 'Ariel',        color: '#f2d16b', tono: 320, onda: 'square' },
-  flor:     { nombre: 'Flor',         color: '#ff8fb1', tono: 520, onda: 'square' },
-  amaru:    { nombre: 'Amaru',        color: '#7fb3ff', tono: 190, onda: 'triangle', velocidad: 34 },
+  flor:     { nombre: 'Flor',         color: '#ffa58c', tono: 520, onda: 'square' },
+  amaru:    { nombre: 'Amaru',        color: '#aab3c6', tono: 190, onda: 'triangle', velocidad: 34 },
   mama:     { nombre: 'Mamá',         color: '#c9a2ff', tono: 380, onda: 'sine' },
   puku:     { nombre: 'Puku',         color: '#5ad65a', tono: 900, onda: 'sawtooth', velocidad: 18 },
   hilario:  { nombre: 'Don Hilario',  color: '#b0a080', tono: 150, onda: 'triangle', velocidad: 40 },
