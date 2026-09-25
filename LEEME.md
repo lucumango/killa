@@ -177,7 +177,7 @@ Ejemplo de exploración: el guion hace `@explorar plaza`. En `mapas.js`, el kios
 ## 5. Personajes (`js/datos/personajes.js`)
 
 ```js
-flor: { nombre: 'Flor', color: '#ff8fb1', tono: 520, onda: 'square' },
+flor: { nombre: 'Flor', color: '#ffa58c', tono: 520, onda: 'square' },
 ```
 
 - `tono`: frecuencia del "beep" al hablar (más alto = más agudo). `onda`: `square`, `triangle`, `sine`, `sawtooth`.

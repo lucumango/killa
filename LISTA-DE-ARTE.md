@@ -24,7 +24,7 @@ Reglas que sirven en los dos casos:
 
 - **PNG con fondo transparente** para bustos y sprites. Fondos y cuadros pueden ser PNG o JPG.
 - **Dibuja al doble (2×) y exporta al tamaño final** si es línea: 440 × 520 para un busto, 1920 × 1200 para un fondo. Si es pixel, dibuja al tamaño exacto y NO reescales con suavizado.
-- Paleta chica y compartida entre personajes (8–16 colores) para que Flor, Amaru y Ariel parezcan del mismo mundo. Colores base que ya usa el juego para las etiquetas (cámbialos en `personajes.js` si quieres): Ariel `#f2d16b`, Flor `#ff8fb1`, Amaru `#7fb3ff`, Mamá `#c9a2ff`, Puku `#5ad65a`.
+- Paleta chica y compartida entre personajes para que Flor, Amaru y Ariel parezcan del mismo mundo: está en `arte/paleta/` (muestras en PNG, `killa.swatches` para Procreate, `killa.gpl` para Krita, GIMP y Aseprite). Flor es la tarde (coral `#ef9c86`), Amaru la noche (gris carbón `#636878`), Ariel la luna (amarillo `#e9cf86`). Los nombres en el diálogo usan versiones más claras para leerse sobre la caja negra: Ariel `#f2d16b`, Flor `#ffa58c`, Amaru `#aab3c6`, Mamá `#c9a2ff`, Puku `#5ad65a`.
 - Recuerda el momento de cada escena: **sol blanquísimo + frío**, luz de contraste alto, sombras duras. Eso puede ser tu marca visual de Ayacucho frente a Lima gris.
 
 ---
