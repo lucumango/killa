@@ -86,7 +86,7 @@ Regla del encuadre del busto (220 × 260): la cabeza en el tercio superior, homb
 - Rasgos fijos (5):
   1. **Polera gris carbón con capucha y bolsillo canguro**, **manos en el bolsillo** (su rasgo número uno: en la mayoría de bustos las manos no se ven, que es lo más caro de dibujar).
   2. **El multímetro amarillo** (el aparato con que mide si un cable tiene corriente) asomando del bolsillo: "se cuelga el multímetro al bolsillo". Es el único punto de color vivo en su ropa, y usa el amarillo de Ariel.
-  3. **Una curita en un dedo**: quien suelda se quema las yemas con el cautín. Se ve cuando saca la mano (`seria`, `rojo`, `facepalm`). En la nariz o la mejilla se leería como "el chico peleador", y Amaru no pelea.
+  3. **Una curita en la mejilla**, de un experimento fallido (le saltó algo arreglando un aparato), no de una pelea. Va en la mejilla más cercana a la cámara (en el busto en 3/4 mirando a la derecha, la que queda al lado izquierdo de la imagen), sobre el pómulo, chiquita, color `crema` (nunca puka), y **siempre en el mismo sitio** en todas las emociones. Que no tape el rubor de `amaru_rojo`: el rojo va debajo y alrededor.
   4. Pelo negrísimo, un poco desordenado; **orejas visibles** (para ponerlas rojas).
   5. Misma forma de cara que Flor, con las cejas más rectas y la boca más chica.
 - Abajo: **buzo (jogger) y zapatillas gastadas** tipo Converse. No jean rasgado: Amaru no piensa en su ropa, y el buzo es para agacharse con el cable. Solo se ve en el sprite y en los cuadros.
@@ -106,7 +106,7 @@ Regla del encuadre del busto (220 × 260): la cabeza en el tercio superior, homb
 | `amaru_sorpresa` | cabeza levantada rápido, cejas arriba, boca entreabierta, manos saliendo de los bolsillos |
 | extra `amaru_facepalm` | **las dos manos por la cara** (tu idea; "se pasa las dos manos por la cara y las deja ahí un momento") |
 | extra `amaru_espaldas` | de espaldas, sin entrar a la casa: solo nuca y hombros, orejas rojas asomando |
-| extra `amaru_estano` | igual que `neutral` pero con **una mancha negra en la mejilla** y el pelo parado de un lado ("es humo de estaño"): el patio de la ruta de Flor |
+| extra `amaru_estano` | igual que `neutral` pero con **una mancha negra en la otra mejilla** (no la de la curita) y el pelo parado de un lado ("es humo de estaño"): el patio de la ruta de Flor |
 | extra `amaru_risa` | echado para atrás, risa "oxidada" con la boca abierta: la única vez que se ríe fuerte (la pizza con piña). Guárdala para ese momento |
 
 ## Secundarios (un busto base y una o dos variaciones)
