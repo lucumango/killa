@@ -23,7 +23,7 @@ Si eliges **pixel para todo**, deja `estiloPixel: true` en `config.js` (bordes d
 Reglas que sirven en los dos casos:
 
 - **PNG con fondo transparente** para bustos y sprites. Fondos y cuadros pueden ser PNG o JPG.
-- **Dibuja al doble (2×) y exporta al tamaño final** si es línea: 440 × 520 para un busto, 1920 × 1200 para un fondo. Si es pixel, dibuja al tamaño exacto y NO reescales con suavizado.
+- **Bustos y fondos (dibujo): exporta al doble (2×)**: 440 × 520 para un busto, 1920 × 1200 para un fondo. El juego los achica solo y en pantalla completa se ven nítidos. Dibuja aún más grande si quieres (880 × 1040) y exporta a 440 × 520. **Sprites (pixel): tamaño exacto** y sin reescalar con suavizado. Ya está configurado así: `estiloPixel: false` en `config.js` suaviza bustos y fondos, y el mapa siempre va en pixel.
 - Paleta chica y compartida entre personajes para que Flor, Amaru y Ariel parezcan del mismo mundo: está en `arte/paleta/` (muestras en PNG, `killa.swatches` para Procreate, `killa.gpl` para Krita, GIMP y Aseprite). Flor es la tarde (coral `#ef9c86`), Amaru la noche (gris carbón `#636878`), Ariel la luna (amarillo `#e9cf86`). Los nombres en el diálogo usan versiones más claras para leerse sobre la caja negra: Ariel `#f2d16b`, Flor `#ffa58c`, Amaru `#aab3c6`, Mamá `#c9a2ff`, Puku `#5ad65a`.
 - Recuerda el momento de cada escena: **sol blanquísimo + frío**, luz de contraste alto, sombras duras. Eso puede ser tu marca visual de Ayacucho frente a Lima gris.
 
@@ -31,7 +31,7 @@ Reglas que sirven en los dos casos:
 
 ## 1. Bustos (`assets/img/bustos/personaje_emocion.png`)
 
-**Tamaño: 220 × 260 px** (ancho × alto), fondo transparente. Se apoya en la esquina inferior izquierda, encima de la caja de diálogo, y se recorta al alto: dibuja de la cintura/pecho para arriba con la cabeza en el tercio superior. Deja ~10 px de aire arriba.
+**Tamaño en pantalla: 220 × 260 px** (ancho × alto); **exporta el PNG a 440 × 520** (el doble, misma proporción), fondo transparente. Se apoya en la esquina inferior izquierda, encima de la caja de diálogo, y se recorta al alto: dibuja de la cintura/pecho para arriba con la cabeza en el tercio superior. Deja ~10 px de aire arriba.
 
 Truco para no morir: dibuja **primero el `neutral` de cada personaje**. Si falta una emoción, el juego usa el neutral automáticamente. Luego vas agregando emociones por orden de frecuencia.
 

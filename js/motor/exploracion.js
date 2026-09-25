@@ -4,7 +4,7 @@
 // salvo que exista el sprite indicado.
 // =====================================================================
 const Exploracion = {
-  lienzo: U.$('#lienzo'), ctx: U.$('#lienzo').getContext('2d'),
+  lienzo: U.$('#lienzo'), ctx: (() => { const c = U.$('#lienzo').getContext('2d'); c.imageSmoothingEnabled = false; return c; })(),
   mapa: null, nombre: null, jugador: null, teclas: {}, activo: false, resolver: null,
   sprites: {}, ocupado: false,
 

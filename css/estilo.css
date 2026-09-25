@@ -17,7 +17,8 @@
 html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var(--color-texto); font-family: var(--fuente); overflow: hidden; }
 #marco { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
 #juego { position: relative; width: var(--ancho); height: var(--alto); overflow: hidden; background: #000; transform-origin: center center; }
-#juego.pixel, #juego.pixel canvas { image-rendering: pixelated; } /* se activa con CONFIG.estiloPixel */
+#juego.pixel { image-rendering: pixelated; } /* se activa con CONFIG.estiloPixel */
+#juego canvas { image-rendering: pixelated; } /* el mapa de exploración (sprites en pixel) siempre con bordes duros */
 .pantalla { position: absolute; inset: 0; }
 [hidden] { display: none !important; }
 .pista { color: var(--color-pista); font-size: 14px; text-align: center; }
