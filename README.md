@@ -1,6 +1,6 @@
 # Killa
 
-Novela visual 2D en español, sobre Ariel Cosimo, un adolescente limeño que pasa
+Novela visual 2D en español, sobre Ariel, un adolescente limeño que pasa
 un verano en Ayacucho y aprende quechua sin querer. Hecha con HTML, CSS y
 JavaScript puro: no hay framework, no hay build, no hay que instalar nada.
 
@@ -92,14 +92,6 @@ Crea `juego-web.zip` para itch.io (proyecto de tipo HTML, viewport 960 x 600).
 En `escritorio/` está lo necesario para hacer la versión descargable con
 Electron.
 
-## Documentación
-
-Los manuales largos no viven en el repo, están en `~/Downloads/killa-docs/`:
-
-- `LEEME.md` — el manual del motor y de todos los comandos del guion.
-- `LISTA-DE-ARTE.md` — qué dibujos y audios faltan, con nombre y tamaño.
-- `FICHAS-DE-PERSONAJE.md` — quién es cada personaje.
-- `GUIA-SONORA.html` — referencias de música y sonido.
 
 ## Controles
 
