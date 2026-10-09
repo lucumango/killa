@@ -15,7 +15,7 @@ Es el sonido más cálido que has escuchado en mucho tiempo.
 @musica huayno_patio.mp3
 Y entonces entras al patio, y pasa algo.
 tia (feliz): ¡Ah, buenas tardes!
-senora (feliz): Buenas, buenas. Pasa, hijito, pasa.
+senora (feliz): Buenas, buenas. Pasa nomás, pasa.
 Todos, absolutamente todos, cambian al español. En automático. Sin pensarlo. Como quien se para cuando entra alguien a la sala.
 No lo hacen con mala intención, al contrario, es una cortesía, es hacerte sentir cómodo, pero sientes clarísimo que la puerta se cerró un poquito, y que del otro lado sigue pasando la fiesta de verdad.
 Flor lo nota. Te mira de reojo. No dice nada.
@@ -135,7 +135,7 @@ amaru (molesto): Ah, ya. Ya. Perfecto.
 flor (risa): ¡Es lo que le digo hace años!
 amaru (molesto): Lo conoces hace dos horas.
 flor (feliz): ¡Y ya se dio cuenta! ¡Eso dice algo!
-amaru (molesto): Dice que se puso de tu lado porque estás sentada a su costado.
+amaru (molesto): Dice que se puso de tu lado porque te sentaste a su costado.
 flor (burla): Dice que tengo razón.
 senora (curioso): ¿Qué pasa?
 flor (risa): ¡Que Amaru no come el maní otra vez!
@@ -242,7 +242,7 @@ flor (rojo): No voy a salir en la tele, tía.
 tia (feliz): Va a salir en la tele.
 flor (rojo): Voy a estar detrás de la tele.
 tia (feliz): Igual sale.
-tia (curioso): ¿Y tú qué vas a postular, hijito?
+tia (curioso): ¿Y tú qué vas a postular?
 amaru (neutral): Todavía no sé.
 flor (feliz): Electrónica.
 amaru (seria): Todavía no sé.

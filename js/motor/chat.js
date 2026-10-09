@@ -15,7 +15,7 @@ const Chat = {
     Chat.historial[contacto].push(m);
     if (de !== 'yo') {
       Chat.sinLeer[contacto] = (Chat.sinLeer[contacto] || 0) + 1;
-      if (!(Celular.abierto && Celular.chatActual === contacto)) { U.aviso(`💬 ${CONTACTOS[contacto]?.nombre || contacto}: ${texto.slice(0, 40)}`); if (CONFIG.sfxMensaje) Audio_.sfx(CONFIG.sfxMensaje); }
+      if (!(Celular.abierto && Celular.chatActual === contacto)) { U.aviso(`CEL · ${CONTACTOS[contacto]?.nombre || contacto}: ${texto.slice(0, 40)}`); if (CONFIG.sfxMensaje) Audio_.sfx(CONFIG.sfxMensaje); }
     }
     if (Celular.abierto && Celular.chatActual === contacto) Celular.pintarMensajes();
     return m;

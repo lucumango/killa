@@ -13,7 +13,7 @@ const Motor = {
   vars: {},         // variables del guion (@var)
   palabras: [],     // ids de palabras aprendidas
   chats: {},        // historial por contacto (lo maneja Chat)
-  estadoEscena: { fondo: null, cuadro: null, musica: null },
+  estadoEscena: { fondo: null, cuadro: null, musica: null, animacion: null },
   pilaLlamadas: [],
   corriendo: false,
   enExploracion: null, // nombre del mapa si estamos explorando
@@ -55,26 +55,31 @@ const Motor = {
     return {
       capitulo: Motor.capitulo, pc: Motor.pc, vars: Motor.vars, palabras: Motor.palabras,
       chats: Chat.historial, escena: Motor.estadoEscena, exploracion: Motor.enExploracion,
+      yape: Yape.estado(),
     };
   },
   restaurar(est) {
     Motor.cargarCapitulo(est.capitulo);
     Motor.pc = est.pc; Motor.vars = est.vars || {}; Motor.palabras = est.palabras || [];
     Chat.historial = est.chats || Chat.historialInicial();
-    Motor.estadoEscena = est.escena || { fondo: null, cuadro: null, musica: null };
+    Motor.estadoEscena = est.escena || { fondo: null, cuadro: null, musica: null, animacion: null };
     Motor.enExploracion = est.exploracion || null;
+    Yape.restaurar(est.yape);
   },
   nuevaPartida() {
-    Motor.vars = {}; Motor.palabras = []; Chat.historial = Chat.historialInicial();
-    Motor.estadoEscena = { fondo: null, cuadro: null, musica: null }; Motor.enExploracion = null;
+    Motor.vars = {}; Motor.palabras = []; Chat.historial = Chat.historialInicial(); Yape.reiniciar();
+    Motor.estadoEscena = { fondo: null, cuadro: null, musica: null, animacion: null }; Motor.enExploracion = null;
     Motor.cargarCapitulo(CONFIG.primerCapitulo); Motor.pc = 0;
   },
 
   aprender(ids) {
+    let nuevas = 0;
     ids.forEach((id) => {
       if (!PALABRAS.find((p) => p.id === id)) { console.warn('Palabra no definida en palabras.js:', id); return; }
-      if (!Motor.palabras.includes(id)) { Motor.palabras.push(id); U.aviso('📱 Nueva palabra: ' + id); }
+      if (!Motor.palabras.includes(id)) { Motor.palabras.push(id); U.aviso('CEL · Nueva palabra: ' + id); nuevas++; }
     });
+    // un solo sonido aunque entren varias palabras de golpe
+    if (nuevas && CONFIG.sfxPalabraNueva) Audio_.sfx(CONFIG.sfxPalabraNueva);
   },
 
   evaluar(expr) { // "nombre == valor" / "nombre != valor" / "nombre" (existe y no vacío)
@@ -103,7 +108,7 @@ const Motor = {
       while (Motor.corriendo && Motor.pc < Motor.lineas.length) {
         const L = Motor.lineas[Motor.pc];
         try { await Motor.ejecutar(L); }
-        catch (e) { console.error(`Error en línea ${L.num} del guion (${L.tipo} ${L.cmd || ''}):`, e); U.aviso('⚠ Error en guion, línea ' + L.num); Motor.pc++; }
+        catch (e) { console.error(`Error en línea ${L.num} del guion (${L.tipo} ${L.cmd || ''}):`, e); U.aviso('Error en guion, línea ' + L.num); Motor.pc++; }
       }
       if (Motor.corriendo) await Motor.terminar();
     } finally { Motor.corriendo = false; }
@@ -136,12 +141,14 @@ const Motor = {
       case 'fondo':      Motor.estadoEscena.fondo = arg === 'off' ? null : arg; Motor.estadoEscena.cuadro = null; await Dialogo.aplicarEscena(Motor.estadoEscena); break;
       case 'cuadro':     Motor.estadoEscena.cuadro = arg === 'off' ? null : arg; await Dialogo.aplicarEscena(Motor.estadoEscena); break;
       case 'musica':     Motor.estadoEscena.musica = arg === 'off' ? null : arg; Audio_.reproducirMusica(Motor.estadoEscena.musica); break;
+      case 'animacion':  Motor.estadoEscena.animacion = (arg === 'off' || arg === 'ninguna') ? null : arg; await Animacion.iniciar(Motor.estadoEscena.animacion); break;
       case 'sfx':        Audio_.sfx(arg); break;
       case 'busto':      if (arg === 'off') Dialogo.ocultarBusto(); else await Dialogo.mostrarBusto(a[0], a[1] || 'neutral'); break;
       case 'limpiar':    Dialogo.limpiar(); break;
       case 'esperar':    await U.espera(Number(arg) || 500); break;
       case 'tarjeta':    await Dialogo.tarjeta(arg.replace(/\s*\|\s*/g, '\n')); break;
       case 'aprender':   Motor.aprender(a); break;
+      case 'yape':       Yape.comando(arg); break;
       case 'var': {      const m = arg.match(/^(\S+)\s*(\+=|-=|=)\s*(.*)$/); if (!m) throw new Error('@var mal escrito');
                          const val = isNaN(m[3]) ? m[3].trim() : Number(m[3]);
                          if (m[2] === '=') Motor.vars[m[1]] = val; else if (m[2] === '+=') Motor.vars[m[1]] = (Number(Motor.vars[m[1]]) || 0) + val; else Motor.vars[m[1]] = (Number(Motor.vars[m[1]]) || 0) - val;

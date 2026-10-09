@@ -20,7 +20,7 @@ En el celular puedes ver las palabras en quechua que vas aprendiendo
 (toca una para escucharla) y chatear con la gente que conozcas.
 Si escribes en quechua y no se entiende... te pueden dejar en visto.
 
-El juego se guarda solo en los puntos de guardado (✦).`,
+El juego se guarda solo en los puntos de guardado.`,
 
   creditos: `Guion e ilustraciones: (tu nombre)
 Código: hecho con cariño en HTML/JS
@@ -40,13 +40,24 @@ A quien lea esto.`,
   // ---------- Audio ----------
   musicaMenu: null,        // ej: 'menu.mp3' (en assets/audio/musica/). null = sin música
   sfxMensaje: null,        // ej: 'mensaje.wav' (en assets/audio/sfx/) cuando llega un chat
+  sfxPalabraNueva: 'wand.mp3', // al aprender una palabra. Si entran varias de golpe, suena UNA sola vez. null = sin sonido
   audioAlPasarMouse: true, // en la lista de palabras: true = suena al pasar el mouse; false = solo al hacer clic
 
   // ---------- Arte ----------
   estiloPixel: true,       // true = las imágenes se escalan con bordes duros (pixel art). false = suavizado (dibujo a línea)
 
+  // ---------- Yape (la app de plata del celular) ----------
+  yape: {
+    titular: 'Ariel Cosimo Villanueva',  // el nombre que sale en la tarjeta
+    saldoInicial: 0,          // con cuánta plata empieza
+    moneda: 'S/',
+    sfx: null,                // ej: 'yape.mp3' cuando entra plata. null = sin sonido
+    sfxPago: null,            // ej: 'yape_pago.mp3' al pagar. null = usa el de arriba
+  },
+
   // ---------- Exploración ----------
   colorJugador: '#f2d16b',
+  verChoques: false,       // true = pinta de rojo las casillas por donde no se puede caminar (para calzar el dibujo con la grilla)
 
   // ---------- Teclas ----------
   teclas: {

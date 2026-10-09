@@ -2,11 +2,15 @@
 // EXPLORACIÓN (vista desde arriba). Mapas en js/datos/mapas.js.
 // El jugador es un rectángulo; los objetos y personajes también,
 // salvo que exista el sprite indicado.
+// Caminata: con `spriteJugador` (quieto) + `spriteCaminar` (un paso) el motor
+// arma el ciclo quieto -> paso -> quieto -> paso volteado al revés.
+// Cada objeto con el que interactúas deja la variable `visto_<id>` en 1, así que
+// los @si del guion y los `apareceCuando` / `requiere` de los mapas pueden usarla.
 // =====================================================================
 const Exploracion = {
   lienzo: U.$('#lienzo'), ctx: U.$('#lienzo').getContext('2d'),
   mapa: null, nombre: null, jugador: null, teclas: {}, activo: false, resolver: null,
-  sprites: {}, ocupado: false,
+  sprites: {}, ocupado: false, fase: 0, andando: false, _t: 0, _cerca: null,
 
   correr(nombreMapa) {
     const M = MAPAS[nombreMapa];
@@ -19,8 +23,11 @@ const Exploracion = {
     Pantallas.mostrar('explorar');
     U.$('#explorar-nombre').textContent = (M.nombre || nombreMapa) + '   ·   flechas/WASD mover · ' + CONFIG.teclas.interactuar[0].toUpperCase() + ' interactuar · ' + CONFIG.teclas.celular[0].toUpperCase() + ' celular';
     if (M.musica) { Motor.estadoEscena.musica = M.musica; Audio_.reproducirMusica(M.musica); }
-    (M.objetos || []).concat(M.personajes || []).forEach((o) => { if (o.sprite) U.imagenExiste(o.sprite).then((ok) => { if (ok) { const im = new Image(); im.src = o.sprite; Exploracion.sprites[o.sprite] = im; } }); });
-    if (M.spriteJugador) U.imagenExiste(M.spriteJugador).then((ok) => { if (ok) { const im = new Image(); im.src = M.spriteJugador; Exploracion.sprites[M.spriteJugador] = im; } });
+    Exploracion.todos().forEach((o) => { o._ido = false; o._dx = 0; o._dy = 0; o._sprite = null; Exploracion.cargarSprite(o.sprite); Exploracion.cargarSprite(o.huir && o.huir.sprite); });
+    Exploracion.anunciados = new Set(Exploracion.todos().filter(Exploracion.yaAparecio).map((o) => o.id));
+    [M.spriteJugador, M.spriteCaminar, M.imagen].forEach(Exploracion.cargarSprite);
+    Exploracion.fase = 0; Exploracion.andando = false; Exploracion._t = 0; Exploracion._cerca = null;
+    Exploracion.ctx.imageSmoothingEnabled = true; // el arte es a línea, no pixel art
     Exploracion.activo = true;
     window.addEventListener('keydown', Exploracion.onDown);
     window.addEventListener('keyup', Exploracion.onUp);
@@ -57,7 +64,11 @@ const Exploracion = {
     }
     return false;
   },
-  todosObjetos() { const M = Exploracion.mapa; return (M.objetos || []).concat(M.personajes || []); },
+  todos() { const M = Exploracion.mapa; return (M.objetos || []).concat(M.personajes || []); },
+  // visibles: los que ya aparecieron y todavía no se fueron
+  todosObjetos() { return Exploracion.todos().filter((o) => !o._ido && Exploracion.yaAparecio(o)); },
+  yaAparecio(o) { return !o.apareceCuando || o.apareceCuando.every((id) => Motor.vars['visto_' + id]); },
+  cargarSprite(ruta) { if (ruta && !Exploracion.sprites[ruta]) U.imagenExiste(ruta).then((ok) => { if (ok) { const im = new Image(); im.src = ruta; Exploracion.sprites[ruta] = im; } }); },
   objetoCerca() {
     const j = Exploracion.jugador, t = Exploracion.tam;
     const cx = j.x + j.w / 2, cy = j.y + j.h / 2;
@@ -74,11 +85,35 @@ const Exploracion = {
   async interactuar() {
     const o = Exploracion.objetoCerca();
     if (!o) return;
+    if (!Exploracion.cumpleRequisito(o)) return;
     if (o.ir) { Exploracion.terminar(o.ir); return; }
     Exploracion.ocupado = true; Exploracion.teclas = {};
-    const destino = await Motor.subGuion(o.accion);
+    if (o.huir) await Exploracion.huir(o);              // el gato se va corriendo antes de hablar
+    Motor.vars['visto_' + o.id] = 1;                     // queda registrado para los @si y los apareceCuando
+    const destino = o.accion ? await Motor.subGuion(o.accion) : null;
     Exploracion.ocupado = false;
     if (destino) Exploracion.terminar(destino);
+  },
+  // `requiere: 'gato'` = no se puede usar hasta haber interactuado con ese otro objeto
+  cumpleRequisito(o) {
+    if (!o.requiere || Motor.vars['visto_' + o.requiere]) return true;
+    const t = performance.now();
+    if (o.avisoBloqueado && (!o._avisado || t - o._avisado > 4000)) { o._avisado = t; U.aviso(o.avisoBloqueado); }
+    return false;
+  },
+  // Animación de huida: cambia de sprite y se desliza hasta salir del cuadro.
+  huir(o) {
+    const h = o.huir, ms = h.ms || 900;
+    o._sprite = h.sprite || o.sprite;
+    const t0 = performance.now();
+    return new Promise((res) => {
+      const paso = () => {
+        const k = Math.min(1, (performance.now() - t0) / ms);
+        o._dx = (h.dx || 0) * k; o._dy = (h.dy || 0) * k;
+        if (k < 1) requestAnimationFrame(paso); else { o._ido = true; res(); }
+      };
+      requestAnimationFrame(paso);
+    });
   },
   bucle() {
     if (!Exploracion.activo) return;
@@ -91,15 +126,37 @@ const Exploracion = {
       if (k.ArrowDown || k.s || k.S) { dy += v; j.dir = 'abajo'; }
       if (dx && !Exploracion.solidoEn(j.x + dx, j.y, j.w, j.h)) j.x += dx;
       if (dy && !Exploracion.solidoEn(j.x, j.y + dy, j.w, j.h)) j.y += dy;
+      Exploracion.andando = !!(dx || dy);
       // salidas automáticas (objetos con `pisar: true`)
       for (const o of Exploracion.todosObjetos()) {
         if (!o.pisar || !o.ir) continue;
         const t = Exploracion.tam, ox = o.x * t, oy = o.y * t, ow = (o.ancho || 1) * t, oh = (o.alto || 1) * t;
-        if (j.x < ox + ow && j.x + j.w > ox && j.y < oy + oh && j.y + j.h > oy) { Exploracion.terminar(o.ir); return; }
+        if (j.x < ox + ow && j.x + j.w > ox && j.y < oy + oh && j.y + j.h > oy) {
+          if (!Exploracion.cumpleRequisito(o)) continue;
+          Exploracion.terminar(o.ir); return;
+        }
       }
       const cerca = Exploracion.objetoCerca();
+      // sonido al acercarse (el maullido del gato): una vez por acercada
+      if (cerca !== Exploracion._cerca) {
+        Exploracion._cerca = cerca;
+        if (cerca && cerca.sfxCerca) Audio_.sfx(cerca.sfxCerca);
+      }
       const pista = U.$('#explorar-pista');
       if (cerca) { pista.hidden = false; pista.textContent = `[${CONFIG.teclas.interactuar[0].toUpperCase()}] ${cerca.etiqueta || cerca.id}`; } else pista.hidden = true;
+    }
+    else Exploracion.andando = false;
+    // reloj de la caminata: avanza solo mientras se mueve
+    const ahora = performance.now();
+    const dt = Exploracion._t ? Math.min((ahora - Exploracion._t) / 1000, 0.1) : 0;
+    Exploracion._t = ahora;
+    if (Exploracion.andando) Exploracion.fase += dt * (Exploracion.mapa.pasosPorSegundo || 6);
+    else Exploracion.fase = 0;
+    // algo que aparece recién ahora (el gato, cuando ya viste toda la plaza)
+    for (const o of Exploracion.todosObjetos()) {
+      if (Exploracion.anunciados.has(o.id)) continue;
+      Exploracion.anunciados.add(o.id);
+      if (o.aviso) U.aviso(o.aviso);
     }
     Exploracion.dibujar();
     requestAnimationFrame(Exploracion.bucle);
@@ -113,19 +170,55 @@ const Exploracion = {
     const camY = Math.max(0, Math.min(j.y + j.h / 2 - H / 2, mapH - H));
     c.fillStyle = '#000'; c.fillRect(0, 0, W, H);
     c.save(); c.translate(-camX, -camY);
-    M.filas.forEach((fila, y) => { for (let x = 0; x < fila.length; x++) {
+    // el piso: tu dibujo si hay `imagen` en el mapa; si no, los bloques de color
+    const fondo = M.imagen && Exploracion.sprites[M.imagen];
+    if (fondo) c.drawImage(fondo, 0, 0, mapW, mapH);
+    else M.filas.forEach((fila, y) => { for (let x = 0; x < fila.length; x++) {
       const ley = M.leyenda[fila[x]] || {}; c.fillStyle = ley.color || '#333'; c.fillRect(x * t, y * t, t, t);
     } });
-    for (const o of Exploracion.todosObjetos()) {
-      const ox = o.x * t, oy = o.y * t, ow = (o.ancho || 1) * t, oh = (o.alto || 1) * t;
-      const im = o.sprite && Exploracion.sprites[o.sprite];
-      if (im) c.drawImage(im, ox, oy, ow, oh);
-      else { c.fillStyle = o.color || U.colorDe(o.id); c.fillRect(ox + 2, oy + 2, ow - 4, oh - 4); }
-      if (o.etiqueta) { c.fillStyle = '#fff'; c.font = '11px monospace'; c.textAlign = 'center'; c.fillText(o.etiqueta, ox + ow / 2, oy - 4); }
+    // con CONFIG.verChoques: true se pinta encima dónde no se puede caminar
+    if (CONFIG.verChoques) {
+      c.fillStyle = 'rgba(255,0,0,.28)';
+      M.filas.forEach((fila, y) => { for (let x = 0; x < fila.length; x++) {
+        const ley = M.leyenda[fila[x]]; if (ley && ley.solido) c.fillRect(x * t, y * t, t, t);
+      } });
     }
-    const imj = M.spriteJugador && Exploracion.sprites[M.spriteJugador];
-    if (imj) c.drawImage(imj, j.x, j.y, j.w, j.h);
-    else { c.fillStyle = CONFIG.colorJugador; c.fillRect(j.x, j.y, j.w, j.h); c.fillStyle = '#fff'; c.font = '11px monospace'; c.textAlign = 'center'; c.fillText('yo', j.x + j.w / 2, j.y - 4); }
+    for (const o of Exploracion.todosObjetos()) {
+      const ox = o.x * t + (o._dx || 0), oy = o.y * t + (o._dy || 0), ow = (o.ancho || 1) * t, oh = (o.alto || 1) * t;
+      const ruta = o._sprite || o.sprite;
+      const im = ruta && Exploracion.sprites[ruta];
+      // los sprites guardan su proporción y se apoyan en el borde de abajo de su casilla
+      if (im) { const alto = ow * (im.naturalHeight / im.naturalWidth || 1); c.drawImage(im, ox, oy + oh - alto, ow, alto); }
+      // con mapa dibujado solo se pintan los bloques de los objetos `provisional` (los que aún no están dibujados)
+      else if (!fondo || o.provisional || CONFIG.verChoques) {
+        c.save();
+        if (fondo && !o.provisional) c.globalAlpha = 0.35;   // en modo verChoques, translúcido para ver el dibujo
+        c.fillStyle = o.color || U.colorDe(o.id); c.fillRect(ox + 2, oy + 2, ow - 4, oh - 4);
+        c.restore();
+      }
+      if (o.etiqueta && (!fondo || o.provisional || CONFIG.verChoques)) { c.fillStyle = '#fff'; c.font = '11px monospace'; c.textAlign = 'center'; c.fillText(o.etiqueta, ox + ow / 2, oy - 4); }
+    }
+    Exploracion.dibujarJugador(c, M, t, j);
     c.restore();
+  },
+
+  // El jugador: quieto usa `spriteJugador`; andando alterna con `spriteCaminar`
+  // y su versión volteada, para que parezca que cambia de pie.
+  dibujarJugador(c, M, t, j) {
+    const quieto = M.spriteJugador && Exploracion.sprites[M.spriteJugador];
+    const paso = M.spriteCaminar && Exploracion.sprites[M.spriteCaminar];
+    if (!quieto) { // sin sprite: bloque de color, como antes
+      c.fillStyle = CONFIG.colorJugador; c.fillRect(j.x, j.y, j.w, j.h);
+      c.fillStyle = '#fff'; c.font = '11px monospace'; c.textAlign = 'center'; c.fillText('yo', j.x + j.w / 2, j.y - 4);
+      return;
+    }
+    const ciclo = paso ? [[quieto, false], [paso, false], [quieto, false], [paso, true]] : [[quieto, false]];
+    const [im, volteado] = ciclo[Math.floor(Exploracion.fase) % ciclo.length];
+    const alto = (M.altoJugador || 1.9) * t;              // alto del dibujo en casillas
+    const ancho = alto * (im.naturalWidth / im.naturalHeight || 1);
+    const x = j.x + j.w / 2 - ancho / 2;                  // centrado en la casilla
+    const y = j.y + j.h - alto;                           // los pies, en el borde de abajo
+    if (!volteado) { c.drawImage(im, x, y, ancho, alto); return; }
+    c.save(); c.translate(x + ancho, y); c.scale(-1, 1); c.drawImage(im, 0, 0, ancho, alto); c.restore();
   },
 };

@@ -12,13 +12,24 @@
 GUION.registrar('cap01', String.raw`
 
 @tarjeta Capítulo 1 | La carretera
-@fondo carro_interior
+@fondo off
+@animacion carro
 @musica carretera.mp3
+@limpiar
+@esperar 7000
 
+# --- el carro solo, sin nada encima (sube o baja el 7000 de arriba: son milisegundos) ---
 La carretera sube en curvas que parecen dibujadas por alguien con rencor. Cada vez que el carro se ladea, algo dentro de ti se ladea medio segundo después, y ese medio segundo es el problema.
+@limpiar
+@esperar 1500
 Adelante, tu mamá y el conductor van en quechua desde hace como veinte minutos. No entiendes nada, pero entiendes el ritmo: ella dice algo largo, él responde con dos sílabas, los dos se ríen.
 Hay una manera de reírse que tu mamá solo tiene acá, en el carro, saliendo de Lima. Más suelta. Como si en Lima hablara con el cuerpo un poco encogido y recién ahora lo estirara.
+@limpiar
+@esperar 1500
 Escuchas "Ayacucho" en medio de la frase, y después algo con "terreno", y después otra vez puro quechua.
+
+# --- recién acá entramos al carro y aparece la ilustración ---
+@cuadro ariel_ventana
 En tu celular tienes las notas abiertas:
 @aprender rimaykullayki allinllachu allinmi imataq_sutiyki sutiymi sulpayki
 celular: rimaykullayki — buenos días / saludo formal
@@ -28,12 +39,19 @@ celular: imataq sutiyki? — ¿cómo te llamas?
 celular: ñuqapa sutiymi Ariel — me llamo Ariel
 celular: sulpayki — gracias
 Las repites mentalmente. Ri-may-ku-llay-ki. Suena a algo que se enrolla. Intentas moverlo con los labios sin sonido, porque si tu mamá te escucha va a girar la cabeza y va a poner esa cara.
+
+# --- el mareo ---
+@sfx nausea.mp3
+@cuadro ariel_nausea
 Una curva más cerrada. El estómago te sube hasta el pecho.
-mama (seria): Baja la luna un poco, hijo. Estás verde. Respira por la nariz.
-ariel (neutral): Estoy bien.
+
+# --- vuelve el carro y hablan con bustos ---
+@cuadro off
+mama (seria): Baja la luna un poco, wawa. Estás verde. Respira por la nariz.
+ariel (nausea): Estoy bien.
 mama (seria): Estás verde.
 Le dice algo al conductor en quechua. El hombre se ríe otra vez y afloja un poco la velocidad.
-Bajas la ventana dos dedos. Entra un aire frío, seco, con olor a eucalipto y a tierra removida, un olor que no conoces pero que tu cuerpo parece reconocer de algún lado, de esas dos veces que viniste cuando eras chiquito y no recuerdas casi nada. Solo un patio. Un perro amarillo. Nada más.
+Bajas la ventana dos dedos. Entra un aire frío, seco, con olor a eucalipto y a tierra removida, un olor que no conoces pero que tu cuerpo parece reconocer de algún lado, de esas dos veces que viniste cuando eras peque y no recuerdas casi nada. Solo un patio. Un perro amarillo. Nada más.
 Afuera, los cerros son enormes y pelados y bonitos de una manera que no sabes explicar todavía.
 Cierras los ojos y vuelves a la lista. Allinllachu. Allinllachu. Te imaginas diciéndoselo a alguien más tarde, a alguna tía, a algún primo lejano que no vas a reconocer. Te imaginas la cara que pondrían.
 Al rato el motor cambia de tono. Empiezan a aparecer casas, un grifo, un letrero pintado a mano, gente caminando por la berma. El conductor dice algo y tu mamá te toca la rodilla por encima del asiento.
@@ -41,26 +59,51 @@ mama (feliz): Ya estamos entrando. Un ratito nomás.
 ariel (neutral): Ya, mamá.
 Apoyas la frente contra el vidrio y cierras los ojos. El vidrio está frío y vibra un poquito con el motor, y por alguna razón eso ayuda más que cualquier otra cosa.
 Las voces de adelante se vuelven un murmullo con forma, sin palabras: la de tu mamá subiendo al final de las frases, la del conductor bajando siempre.
-En algún momento te quedas medio dormido. No del todo. Lo suficiente para que el estómago te suelte.
+En algún momento el sueño te gana a medias. No del todo. Lo suficiente para que el estómago te suelte.
 @fondo ciudad_entrada
 Cuando abres los ojos ya están entrando de verdad. Casas de dos pisos con las varillas de fierro saliendo del techo, esperando un tercer piso que quizás nunca llegue. Un mototaxi rojo que se les cruza sin mirar.
 Mujeres con sombrero de ala ancha y falda ancha caminando por el borde de la pista con una naturalidad que no tiene nada que ver con el turismo. Un letrero: Se vende chicha de jora. Otro: Jr. 28 de Julio.
 Y la luz. Es otra luz. Como si alguien le hubiera subido el contraste al mundo.
 mama (feliz): Ariel. Mira esa iglesia. Ahí me bautizaron.
+@sfx wand.mp3
+@cuadro iglesia
 Miras. Es de piedra rosada, enorme, con dos torres.
 
 # ---------------------------------------------------------------
 == plaza_llegada
+@animacion off
+@cuadro off
 @fondo plaza
 @musica plaza.mp3
 El carro los deja cerca de la plaza. Bajas y las piernas te tiemblan como si el piso todavía se moviera, pero el aire de acá afuera te arregla en diez segundos: seco, delgado, con un frío que no es el frío pegajoso de Lima.
 Respiras hondo y hasta te da un poco de risa lo bien que se siente.
 Tu mamá ya está sacando papeles del bolso, contándolos con el pulgar. Modo trámite.
 mama (seria): Voy a la notaría. Es acá nomás, en la esquina, pero puede demorar. ¿Te vienes o te quedas?
-mama (burla): Si te quedas, no te pierdas, ah. Y no te vayas a comprar cualquier cosa en la calle que te va a caer mal.
 Sientes el celular en el bolsillo con las palabras adentro. Allinllachu. Rimaykullayki. La plaza está ahí, llena de gente y de palmeras chiquitas y de un sonido general que quieres escuchar mejor.
+* Me quedo acá -> plaza_quedarse
+* Voy contigo -> plaza_acompanar
+
+== plaza_quedarse
 ariel (neutral): Voy a dar una vuelta, ma.
+mama (burla): Ya. No te pierdas, ah. Y no te vayas a comprar cualquier cosa en la calle que te va a caer mal.
 mama (seria): Media hora. Y contesta el celular.
+@ir plaza_lonche
+
+== plaza_acompanar
+ariel (nervioso): Quiero ir contigo.
+Te mira con una ceja levantada, todavía agarrando su cartera contra el pecho.
+mama (seria): ¿A dónde vas a ir tú? No conoces por acá, Ariel. Te vas a perder en dos cuadras.
+ariel (neutral): No me voy a perder. Quiero acompañarte.
+Suelta una risa corta, de esas que le salen del pecho, sacudiendo la cabeza.
+mama (burla): Te conozco. A la media hora te vas a aburrir, vas a estar mirando el reloj y quejándote de que te duelen los pies con esas zapatillas delgadas que te has traído de Lima.
+mama (seria): Anda siéntate por la plaza nomás. Media hora. Y contesta el celular.
+@ir plaza_lonche
+
+== plaza_lonche
+Saca el celular de la cartera con una agilidad que no le ves en la casa. Sus dedos van directo a la pantalla, y dos segundos después el tuyo vibra en el bolsillo.
+@yape +15 Rosa Quispe
+mama (burla): Cómprate un lonche por ahí. Un pan con queso, un mate caliente para que se te asiente la barriga.
+Cierra la puerta del carro de un golpe seco. La ves cruzar la pista afirmando los pasos sobre la tierra, saludando con la cabeza a una señora que vende panes en una canasta.
 La plaza es un cuadrado perfecto con un montón de cosas adentro. Camina, mira, y cuando quieras irte, baja por la abertura de los portales.
 @guardar
 @explorar plaza
@@ -71,6 +114,7 @@ Entras al kiosko. Huele a cartón y a caramelo. Hay revistas colgadas con pinzas
 La señora te mira desde atrás del mostrador con cara de no tener ningún apuro.
 @si agua == 1 -> plaza_kiosko_ya
 Compras una botella de agua porque te da vergüenza salir sin comprar nada.
+@yape -2 Kiosko de la plaza
 @var agua = 1
 @volver
 == plaza_kiosko_ya
@@ -79,6 +123,11 @@ Ya tienes tu agua. La señora sigue sin apuro.
 
 == plaza_iglesia
 Piedra rosada, enorme, dos torres. Ahí bautizaron a tu mamá. Intentas imaginarla bebé y no puedes.
+@volver
+
+== plaza_monumento
+El monumento del centro: un soldado a caballo sobre un bloque de piedra con placas, rodeado de una reja baja y de dos arbolitos podados en bola.
+No sabes quién es. Hay un nombre en la placa que no alcanzas a leer desde acá.
 @volver
 
 == plaza_pileta
@@ -101,6 +150,32 @@ Un heladero empuja su carrito tocando la bocinita. Te acuerdas de lo que dijo tu
 
 == plaza_perro
 Un perro flaco color caramelo, echado panza arriba en la mitad de la vereda, absolutamente entregado. La gente simplemente lo rodea.
+@si perro_rascado == 1 -> plaza_perro_otravez
+¿Le rascas la pancita?
+* Sí -> plaza_perro_si
+* Mejor no -> plaza_perro_no
+
+== plaza_perro_si
+@sfx bark.mp3
+Te agachas y le rascas la panza. El perro estira una pata hacia el cielo y suelta un ladrido corto, que no es de susto ni de queja: es más bien un comentario.
+No se levanta. No tiene la menor intención de levantarse.
+@var perro_rascado = 1
+@volver
+
+== plaza_perro_no
+Te quedas mirándolo un rato. Él te mira a ti, de cabeza, sin moverse ni un milímetro.
+Sigues de largo con la leve sensación de haber dejado algo pendiente.
+@volver
+
+== plaza_perro_otravez
+Sigue ahí, en la misma posición exacta, como si el rato que pasó no hubiera existido.
+@volver
+
+== plaza_gato
+Un gato blanco y flaco está sentado al borde de la vereda, mirándote con esa seriedad que tienen los gatos cuando no van a hacer absolutamente nada.
+Das un paso. El gato se levanta, estira las patas de adelante y se va caminando rápido, sin correr, como si tuviera un asunto pendiente del que recién se acuerda.
+Lo sigues con la vista hasta que dobla por la abertura de los portales y desaparece en la bajada.
+Te quedas mirando esa calle.
 @volver
 
 == plaza_notaria
@@ -127,7 +202,7 @@ Hay una carretilla vacía apoyada contra una pared. Hay una maceta con geranios 
 Sacas el celular. Una raya de señal, que va y viene. El mapa gira sobre sí mismo tratando de decidir dónde estás y termina poniéndote un puntito azul gordo que abarca como cuatro cuadras.
 Excelente.
 Guardas el celular. Bueno. La plaza es hacia... ¿arriba? Fue todo bajada, ¿no? ¿O fue subida?
-Y ahí, mientras estás parado tratando de reconstruir tus últimos veinte minutos, escuchas algo raro. Muy cerca. Una voz chillona, aguda, que dice, clarísimo:
+Y ahí, mientras sigues ahí de pie tratando de reconstruir tus últimos veinte minutos, escuchas algo raro. Muy cerca. Una voz chillona, aguda, que dice, clarísimo:
 voz: ¡Loro! ¡Loro! ¡Ah! ¡Loro!
 Volteas.
 
@@ -159,7 +234,7 @@ puku: ¡Loro!
 Los dos se voltean a mirarse y se dicen algo en quechua, rápido, con la naturalidad de quien lleva toda la vida haciéndolo. No agarras nada, salvo una palabra que sale flotando entre las otras como un pescado muerto en un río:
 amaru (neutral): ...gringo...
 La chica le responde más largo, más rápido, y le da un empujoncito en el brazo. Él pone los ojos en blanco.
-Y a ti se te suben los nervios al cuello. ¿Será por los ojos? ¿Por cómo estás parado? ¿Por la casaca? No eres turista, tu mamá nació a como quince cuadras de acá, pero eso ahorita no está escrito en tu cara.
+Y a ti se te suben los nervios al cuello. ¿Será por los ojos? ¿Por la manera de pararte? ¿Por la casaca? No eres turista, tu mamá nació a como quince cuadras de acá, pero eso ahorita no está escrito en tu cara.
 Entonces abres la boca. Y sale, en un hilito de voz:
 ariel (nervioso): ...Allinllachu...
 Silencio.
@@ -255,7 +330,7 @@ flor (feliz): ¡Una lista! Ay, qué tierno.
 == resp_vivo
 @var presentacion = vivo
 ariel (nervioso): Yo... sí vivo acá.
-Sale antes de que lo pienses bien. Y en el instante en que sale, te das cuenta de que tienes un problema, porque estás parado en medio de una calle que no reconoces, con una botella de agua del kiosko en la mano y cara de haber llegado desde otro planeta.
+Sale antes de que lo pienses bien. Y en el instante en que sale, te das cuenta de que tienes un problema, porque estás de pie en medio de una calle que no reconoces, con una botella de agua del kiosko en la mano y cara de haber llegado desde otro planeta.
 flor (sorpresa): ¿Acá? ¿Acá acá?
 Señala el suelo. Literalmente el suelo, la calle donde están.
 ariel (nervioso): En Ayacucho.
@@ -408,7 +483,7 @@ flor (seria): Ya. De nuevo. Pero fuerte. Como si tuvieras derecho.
 Espera. Puku espera. Amaru mira a otro lado pero no se ha movido ni un centímetro.
 ariel (feliz): ¡Allilanchu...!
 Te sale así, con la ele donde va la ele doble, pero fuerte, con la barbilla arriba y una sonrisa chiquita que no puedes controlar.
-Y ya que estás lanzado, te arriesgas con algo que viste en la lista y no repasaste bien:
+Y ya que agarraste vuelo, te arriesgas con algo que viste en la lista y no repasaste bien:
 ariel (feliz): Allin... punchay.
 flor (sorpresa): ¡AY! ¡Dijo allin p'unchay!
 amaru (neutral): Está mal.
@@ -471,7 +546,7 @@ Cuatro. En veinte minutos. Y ningún mensaje antes de la primera, porque tu mam�
 @mensaje mama | Ariel
 @mensaje mama | Ariel contesta
 @mensaje mama | Ariel
-@mensaje mama | voy a demorar hijita se cayo el sistema
+@mensaje mama | voy a demorar wawa se cayo el sistema
 @mensaje mama | ya te yapee para que comas algo NO CALLEJERO
 @mensaje mama | y aprovecha compra las cosas para marcar el terreno
 @mensaje mama | cuerda estacas cinta y pintura
@@ -966,7 +1041,7 @@ Le tomas foto a la bolsa y se la mandas a tu mamá.
 @mensaje mama | yo | ya compré 📷
 @mensaje mama | yo | no habían estacas, dicen que se compran en la maderera
 Los tres puntitos aparecen y desaparecen como cuatro veces.
-@mensaje mama | ya hijita gracias
+@mensaje mama | ya wawa gracias
 @mensaje mama | sigo acá esto va para largo
 @mensaje mama | el sistema no vuelve
 @mensaje mama | ANDA A COMER algo caliente
