@@ -1,51 +1,39 @@
 # Killa
 
-Novela visual 2D en español, sobre Ariel, un adolescente limeño que pasa
-un verano en Ayacucho y aprende quechua sin querer. Hecha con HTML, CSS y
-JavaScript puro: no hay framework, no hay build, no hay que instalar nada.
+Novela visual 2D en español sobre Ariel, un adolescente limeño que pasa un verano en Ayacucho y aprende quechua.
 
-El guion es texto plano. Se escribe en `js/datos/guion/cap01.js` y el motor lo
-interpreta en vivo, así que para cambiar una línea de diálogo basta abrir el
-archivo con cualquier editor y recargar el navegador.
+Desarrollada con **HTML, CSS y JavaScript puro**, sin frameworks ni instalaciones adicionales.
 
-## Probarlo
+## Ejecutar
 
 ```bash
 python3 servidor.py
 ```
+Abrir http://localhost:8765.
 
-Y abrir <http://localhost:8765>. Es un `http.server` normal, pero con el caché
-desactivado; si aun así el navegador se queda con la versión vieja, recargar con
-Cmd+Shift+R.
-
-Para revisar el guion sin abrir el navegador:
-
+Para validar el guion:
 ```bash
 node validar.js
 ```
 
-Avisa de etiquetas que no existen, palabras que no están en `palabras.js`,
-personajes mal escritos y comandos desconocidos.
+## Estructura
 
-## Qué se edita
-
-| Archivo | Qué hay dentro |
+| Archivo | Contenido |
 | --- | --- |
-| `js/datos/guion/cap01.js`, `cap02.js` | el guion: diálogos, decisiones, saltos |
-| `js/datos/config.js` | título, dedicatoria, créditos, teclas, velocidad del texto, Yape, IA |
-| `js/datos/personajes.js` | personajes (nombre, color, voz) y contactos del chat |
-| `js/datos/palabras.js` | las palabras en quechua y sus audios |
-| `js/datos/mapas.js` | los mapas de exploración, sus choques y sus objetos |
-| `js/datos/ia.js` | el prompt de la IA y las respuestas del modo sin internet |
+| `js/datos/guion/` | Diálogos, decisiones y eventos |
+| `js/datos/config.js` | Configuración general |
+| `js/datos/personajes.js` | Personajes y contactos |
+| `js/datos/palabras.js` | Vocabulario quechua y audios |
+| `js/datos/mapas.js` | Mapas y exploración |
+| `js/datos/ia.js` | Chats e IA |
+| `js/motor/` | Motor del juego |
+| `assets/` | Imágenes y audio |
 
-`js/motor/` es el código del juego y no hace falta tocarlo. `assets/` guarda
-imágenes y audio; mientras una imagen no exista, el juego dibuja un bloque de
-color con el nombre del archivo que espera, así que se ve de inmediato qué falta
-y dónde va.
+## Guion
 
-## Cómo se escribe el guion
+Se edita directamente en `js/datos/guion/`, usando una sintaxis sencilla:
 
-```
+```text
 flor (feliz): Allillanmi. ¿Y tú?
 Ariel no entiende nada, pero asiente.
 
@@ -57,30 +45,25 @@ Ariel no entiende nada, pero asiente.
 @volver
 ```
 
-El nombre antes de los dos puntos es el personaje; entre paréntesis va la
-emoción (el busto). Una línea sin nombre la dice el narrador. `== etiqueta`
-marca un destino, `*` es una opción y `@` es un comando: `@fondo`, `@cuadro`,
-`@musica`, `@sfx`, `@aprender`, `@var`, `@si`, `@ir`, `@mensaje`, `@yape`,
-`@explorar`, `@guardar`. La lista completa, con ejemplos de cada uno, está en
-`LEEME.md`.
+Incluye diálogos, decisiones, variables y comandos para controlar escenas. Documentación completa en `LEEME.md`.
 
-## Exploración
+## Funcionalidades
 
-Algunas escenas son de cámara libre: se camina con las flechas y se interactúa
-con E. El mapa puede ser un dibujo (`imagen:` en `mapas.js`) y en ese caso la
-grilla de letras solo define por dónde no se puede pasar; con
-`verChoques: true` en `config.js` esas casillas se pintan de rojo para calzar el
-dibujo con la grilla.
+- **Exploración:** movimiento libre e interacción con objetos.
+- **Celular:** vocabulario quechua con audio, chats y Yape.
+- **IA:** respuestas locales o mediante un servidor externo.
+- **Guardado:** progreso del jugador.
 
-## Celular
+## Controles
 
-Se abre con C. Tiene tres pestañas: las palabras aprendidas (con audio), los
-chats y Yape, que lleva el saldo y los movimientos. El saldo vive en la variable
-`yape` del guion, así que se puede condicionar con `@si yape >= 2.50 -> comprar`.
-
-Los chats pueden responder de dos maneras: con reglas locales (lo que está
-activo) o con un modelo, levantando el servidor de `servidor-ia/`. Ese servidor
-guarda la clave del API fuera del juego y no se sube al repo.
+| Tecla | Acción |
+| --- | --- |
+| Enter / Espacio / Z | Avanzar diálogo |
+| X / Ctrl | Completar texto |
+| Flechas / WASD | Moverse |
+| E | Interactuar |
+| C | Abrir/cerrar celular |
+| Esc | Volver o cerrar |
 
 ## Publicar
 
@@ -88,18 +71,4 @@ guarda la clave del API fuera del juego y no se sube al repo.
 ./empaquetar-web.sh
 ```
 
-Crea `juego-web.zip` para itch.io (proyecto de tipo HTML, viewport 960 x 600).
-En `escritorio/` está lo necesario para hacer la versión descargable con
-Electron.
-
-
-## Controles
-
-| Tecla | Qué hace |
-| --- | --- |
-| Enter / Espacio / Z | avanzar el texto, o saltar la animación |
-| X / Ctrl | completar la línea de golpe |
-| Flechas o WASD | moverse al explorar |
-| E | interactuar |
-| C | abrir y cerrar el celular |
-| Esc | cerrar el celular, volver |
+Genera `juego-web.zip` para **itch.io** (HTML, 960 × 600). La versión de escritorio con Electron se encuentra en `escritorio/`.
