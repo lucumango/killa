@@ -526,7 +526,7 @@ Amaru mira a otro lado pero no se ha movido ni un centímetro.
 
 ¿Qué haces?
 * Bajito   → Bajito
-* Fuerte   → Allillanchu!
+* Fuerte   → Allinllachu!
 
 ############################################################
 # Bajito
@@ -536,28 +536,28 @@ Amaru mira a otro lado pero no se ha movido ni un centímetro.
 —¡Fantasma! —grita Flor.
 —Otra vez —dice Amaru, sin mirarte. Pero lo dice.
 
-* Continuar   → Allillanchu!
+* Continuar   → Allinllachu!
 
 ############################################################
-# Allillanchu!
+# Allinllachu!
 ############################################################
 
-—¡Allilanchu...!
+—¡Allinlachu...!
 Te sale así, con la ele donde va la ele doble, pero fuerte, con la barbilla arriba y una sonrisa chiquita que no puedes controlar.
 Y ya que estás lanzado, te arriesgas con algo que viste en la lista y no repasaste bien:
-—Allin... punchay.
+—Allin... punchaw.
 Flor abre los ojos.
-—¡AY! —Se tapa la boca con las dos manos—. ¡Dijo allin p'unchay!
+—¡AY! —Se tapa la boca con las dos manos—. ¡Dijo allin punchaw!
 —Está mal —dice Amaru automáticamente.
 —¡Está bonito!
 —Está las dos cosas —dice él, y esta vez sí se le escapa media sonrisa, un ratito, antes de esconderla.
-—A ver. —Flor se acerca, muy en modo maestra ahora, y te toca el brazo para que la mires—. Primero: alli-lla-nchu, no allilanchu. Doble ele. Como en... —piensa— como en "llave", pero más larga. La lengua acá arriba.
-—Allillanchu.
+—A ver. —Flor se acerca, muy en modo maestra ahora, y te toca el brazo para que la mires—. Primero: allin-lla-chu, no allinlachu. Doble ele. Como en... —piensa— como en "llave", pero más larga. La lengua acá arriba.
+—Allinllachu.
 —¡Mejor! Segundo: lo dijiste fuerte. Eso ya. Eso estuvo perfecto. —Y lo dice en serio, con un pulgar arriba—. Sonabas como persona y no como fantasma.
 —¿Y lo otro?
-—Allin p'unchay sí existe —dice Amaru, hablando desde su sitio, sin acercarse—. Es "buen día". Se usa. Pero es más... —hace un gesto con la mano, buscando la palabra— de radio.
+—Allin punchaw sí existe —dice Amaru, hablando desde su sitio, sin acercarse—. Es "buen día". Se usa. Pero es más... —hace un gesto con la mano, buscando la palabra— de radio.
 —¿De radio?
-—De radio. De locutor. De cartel. —Se encoge de hombros—. Nadie te saluda así en la calle. Acá dices allillanchu nomás. O rimaykullayki si es alguien mayor y quieres quedar bien.
+—De radio. De locutor. De cartel. —Se encoge de hombros—. Nadie te saluda así en la calle. Acá dices allinllachu nomás. O rimaykullayki si es alguien mayor y quieres quedar bien.
 —O buenos días —dice Flor—. Que también decimos, ah. Todo el rato. No es que andemos hablando quechua puro como en el museo.
 —Yo pensé que sí —admites.
 Los dos se ríen. Flor abiertamente. Amaru por la nariz.
@@ -640,10 +640,10 @@ Flor no insiste con lo de antes. Lo deja pasar, pero se le queda un pedacito de 
 —Bien. Eso te salió bien de una. —Levanta una ceja—. Sospechoso.
 —Estaba en mi lista.
 —¿Tienes lista? —Y ahí sí se le prende la cara otra vez—. ¡A ver! ¡Muéstrame!
-—Espera —dice Amaru, y por primera vez da un paso hacia ustedes en vez de hacia atrás—. También se dice añay. O diospagarasunki.
+—Espera —dice Amaru, y por primera vez da un paso hacia ustedes en vez de hacia atrás—. También se dice añay. O diuspaqarasunki.
 —Ese es larguísimo —dice Flor.
 —Pero es el que dice la abuela.
-—Porque la abuela tiene ochenta años. —Se voltea hacia ti—. Tú di sulpayki. Si le dices diospagarasunki a alguien de nuestra edad se van a voltear a mirarte.
+—Porque la abuela tiene ochenta años. —Se voltea hacia ti—. Tú di sulpayki. Si le dices diuspaqarasunki a alguien de nuestra edad se van a voltear a mirarte.
 —Es del español igual —dice Amaru—. "Dios se lo pague". Se metió y se quedó.
 —Ay, ya empezó con la historia.
 —Es verdad.
@@ -712,9 +712,9 @@ Doblan donde está la pared azul. Sale un pasaje con reja verde, exactamente com
 —No empieces con el cerro —dice Amaru.
 —Ya no digo nada.
 Pasan al lado de una señora sentada en la vereda con un balde de habas. Flor la saluda con un movimiento de cabeza y la señora contesta con otro.
-—Y para comprar —sigue Flor—. Lo más importante: hayk'ataq? ¿Cuánto es?
-—Hayk'ataq.
-—O completo: hayk'ataq kanki? pero nadie dice completo. Hayk'ataq nomás, señalando. 
+—Y para comprar —sigue Flor—. Lo más importante: haykataq? ¿Cuánto es?
+—Haykataq.
+—O completo: haykataq kanki? pero nadie dice completo. Haykataq nomás, señalando. 
 —¿Y "por favor"?
 Flor abre la boca. La cierra. Mira a Amaru.
 —A ver[SI le dijo "profesor" a Amaru: , profesor]. Ese explícalo tú que yo lo explico mal.
@@ -727,8 +727,8 @@ Amaru se saca una mano del bolsillo.
 —Sulpayki —repites, practicando.
 —Ese ya lo tienes —dice Flor—. Ese ya es tuyo.
 Salen del pasaje. De pronto hay más gente, más ruido, un mototaxi que pasa demasiado cerca, olor a pan.
-—Ah, y dos cosas más —dice Flor, levantando dos dedos—. Si alguien te habla en quechua y no cachas nada: manam hamut'anichu. No entiendo.
-—Manam... hamut'anichu.
+—Ah, y dos cosas más —dice Flor, levantando dos dedos—. Si alguien te habla en quechua y no cachas nada: manam hamutanichu. No entiendo.
+—Manam... hamutanichu.
 —O más fácil: manam yachanichu. No sé.
 —¿Y si entiendo un poquito? —preguntas.
 —As-asllata rimani. Hablo un poquito. —Y sonríe de costado—. Que en tu caso es mentira, pero mentira bonita.
@@ -875,8 +875,8 @@ Flor se ríe y no lo contradice, lo cual significa que él tiene razón.
 —Tengo dieciocho en noviembre.
 —Eso es lo que estoy diciendo.
 Flor se voltea hacia ti otra vez y le cambia la cara, porque acaba de ver una oportunidad pedagógica.
-—Ah, espera. Espera. Esto lo tienes que saber. —Se para de frente—. Hayk'a watayuqtaq kanki? ¿Cuántos años tienes?
-—Hayk'a... watayuqtaq kanki.
+—Ah, espera. Espera. Esto lo tienes que saber. —Se para de frente—. Hayka watayuqtaq kanki? ¿Cuántos años tienes?
+—Hayka... watayuqtaq kanki.
 —Wata es año —dice Amaru—. Ahí está la palabra. Watayuq es "el que tiene años".
 —Ah, ya. —Eso te acomoda algo en la cabeza—. ¿Y cómo contesto?
 —Chunka pusaqniyuq watayuqmi kani —dice Flor, muy rápido, con toda la intención de que no lo agarres.
@@ -970,12 +970,12 @@ Flor vuelve a modo maestra, contando con los dedos.
 —Y en el calendario del municipio.
 —Nadie lee el calendario del municipio.
 Amaru la ignora y te los dice a ti, contando con los dedos:
-—Septiembre es Qhapaq Sitwa Killa. Octubre es Uma Raymi Killa. Noviembre es Aya Marq'ay Killa. —Pausa—. Killa es mes. También es luna. 
+—Septiembre es Qhapaq Sitwa Killa. Octubre es Uma Raymi Killa. Noviembre es Aya Marqay Killa. —Pausa—. Killa es mes. También es luna. 
 —¿Mes y luna es la misma palabra?
 —Sí.
 Te quedas con eso un segundo. Te parece bonito de una manera que no sabes explicar.
 —¿Y qué significan?
-—Uma Raymi es como... fiesta de la cabeza, más o menos. Y Aya Marq'ay es cargar a los muertos. Por eso cae en noviembre. —Se encoge de hombros—. Día de los difuntos.
+—Uma Raymi es como... fiesta de la cabeza, más o menos. Y Aya Marqay es cargar a los muertos. Por eso cae en noviembre. —Se encoge de hombros—. Día de los difuntos.
 —Ah.
 —Y en ese mes —dice Flor, dulcemente— cumple años alguien.
 
@@ -1017,12 +1017,12 @@ Flor se voltea hacia ti, ignorando todo lo anterior.
 Flor levanta un dedo y baja la voz, conspirativa, aunque están en plena calle.
 —Ya. Uno chiquito nomás. Uno de prueba.
 Amaru mira al cielo.
-—Upa —dice Flor—. Es como "tonto", "sonso". Pero suave. Se lo dices a tu hermano y no pasa nada.
+—Upacha —dice Flor—. Es como "tontito". Upa solito es "sonso" nomás; con el -cha ya es cariñoso. Se lo dices a tu hermano y no pasa nada.
 —Sí pasa —dice Amaru.
 —No pasa nada.
 —Cuando me lo dices sí pasa.
 —Porque tú eres sensible.
-—Upa —pruebas tú.
+—Upacha —pruebas tú.
 Los dos voltean.
 Flor se lleva la mano al pecho, herida de muerte.
 —¿A mí?
@@ -1042,8 +1042,8 @@ Y desde adentro de la ferretería, sin levantar la vista del televisor chiquito,
 Casi sueltas la botella de agua. Los tres entran de golpe, uno detrás del otro, como si los hubieran arreado.
 Adentro huele a fierro y a aserrín. El señor de la chompa de rombos sigue en su banquito, mirando el televisor chiquito puesto en una repisa alta.
 Flor te da un codazo suave.
-—Ya. Allillanchu. Fuerte.
-—Ah ya... —Te compones. Enderezas la espalda. Y lo sueltas—: Allilanchu.
+—Ya. Allinllachu. Fuerte.
+—Ah ya... —Te compones. Enderezas la espalda. Y lo sueltas—: Allinlachu.
 El señor Hilario despega los ojos del televisor por primera vez.
 Te mira. Te mira despacio, de arriba a abajo, con la cara de alguien que ha visto pasar mucha gente por esa puerta y que acaba de encontrar una categoría nueva.
 —Allillanmi —contesta al fin—. ¿Y tú de dónde saliste?
@@ -1094,11 +1094,11 @@ Amaru mira el piso, pero se le ve media sonrisa.
 —Falta la brocha —dice—. Si vas a pintar necesitas brocha.
 —¡Cierto! Don Hilario, una brocha chiquita también.
 Y ahí, mientras el señor va juntando las cosas sobre el mostrador —el rollo de rafia azul, el tarro de esmalte, una brocha de dos pulgadas—, tú te acuerdas de la palabra más importante de todas.
-Hayk'ataq.
+Haykataq.
 
 ¿La usas?
 
-* Hayk'ataq?   → Q
+* Haykataq?   → Q
 * ¿Cuánto es?   → E
 
 ############################################################
@@ -1107,10 +1107,10 @@ Hayk'ataq.
 
 Respiras. Miras las cosas apiladas sobre el mostrador: el rollo de rafia azul, el tarro de esmalte rojo, la brocha.
 Y lo dices.
-—Hayk'ataq?
+—Haykataq?
 El señor Hilario se detiene con la mano todavía sobre el tarro.
 Levanta la cabeza. Y esta vez sí te mira de verdad, no como antes. Como quien reconsidera algo.
-—Hayk'ataq —repite, medio para sí mismo. Y suelta una risita corta por la nariz—. Ya pues.
+—Haykataq —repite, medio para sí mismo. Y suelta una risita corta por la nariz—. Ya pues.
 Saca una calculadora vieja de debajo del mostrador, de esas grandes con los números medio borrados, y empieza a apretar teclas con el índice, despacio.
 Flor te agarra del brazo y te lo aprieta, fuerte, sin voltear a mirarte. No dice nada. Solo te aprieta el brazo.
 Amaru, del otro lado, está mirando la calculadora con una concentración muy exagerada para ser real.
@@ -1127,7 +1127,7 @@ Y ahí te das cuenta de que aprendiste a preguntar el precio, pero no aprendiste
 —¿Cuánto es? —preguntas.
 Flor te clava el codo en las costillas. Amaru cierra los ojos, como quien ve un penal fallado.
 —Veintidós con cincuenta —dice el señor, que no se ha enterado de nada.
-—¡Hayk'ataq! —te susurra Flor, desesperada—. ¡Era tu momento!
+—¡Haykataq! —te susurra Flor, desesperada—. ¡Era tu momento!
 —Me olvidé.
 —Estaba en la lista —dice Amaru, bajito.
 —Ya, ya. —Y, por compensar—: Sulpayki.
@@ -1266,9 +1266,9 @@ Silencio de un segundo. Y después la señora se ríe, y se ríe la tía desde a
 —Arí.
 A la señora se le ilumina la cara, y te suelta una frase entera en quechua, rapidísima, cálida, con una pregunta al final.
 Te quedas congelado con el tenedor en el aire.
-—...Manam hamut'anichu.
+—...Manam hamutanichu.
 Silencio de un segundo. Y después la señora se ríe, y se ríe la tía desde adentro, y Flor se dobla sobre la mesa.
-—¡Arí y después manam hamut'anichu! ¡En cinco segundos!
+—¡Arí y después manam hamutanichu! ¡En cinco segundos!
 —Es que habló muy rápido.
 —Te preguntó si querías más ají —dice Amaru—. Nada más.
 
@@ -1281,7 +1281,7 @@ Silencio de un segundo. Y después la señora se ríe, y se ríe la tía desde a
 —No, nada.
 —¡Mentira! —Flor golpea la mesa con la palma—. ¡Mamá, está mintiendo!
 
-[SI usó hayk'ataq: —Le dijo hayk'ataq a don Hilario —informa Amaru— Bien dicho.][SI NO: —Le dijo arí a don Hilario —informa Amaru—. Bien dicho.]
+[SI usó haykataq: —Le dijo haykataq a don Hilario —informa Amaru— Bien dicho.][SI NO: —Le dijo arí a don Hilario —informa Amaru—. Bien dicho.]
 —Ah, entonces sí sabe —dice la señora—. Pisillata sabe.
 Y se ríe, y se ríe la tía desde adentro, y tú no sabes dónde meterte.
 
@@ -1406,8 +1406,8 @@ Desde la cocina, la mamá grita:
 Y aparece un cucharón sobre tu plato de todas maneras.
 Aparece también un vaso. Amarillo neón. Inca Kola.
 —¿Y esto? —preguntas.
-—Upyay —dice Flor—. Beber. Y mikhuy es comer.
-—Upyay. Mikhuy.
+—Upyay —dice Flor—. Beber. Y mikuy es comer.
+—Upyay. Mikuy.
 —Y si te gusta algo: munani. Quiero, me gusta. —Te apunta con el tenedor—. Puca picantita munani.
 —Puca picantita munani.
 —¡Ay! ¡Con el diminutivo y todo!
@@ -1464,9 +1464,9 @@ La mamá se acerca a la mesa y le pone la mano en la cabeza a Amaru, despeinánd
 —No era sopa.
 —Era sopa.
 —Era un guiso.
-—Upa —dice la mamá, cariñosamente, y le da una palmadita en la mejilla antes de volver a la cocina.
+—Upacha —dice la mamá, cariñosamente, y le da una palmadita en la mejilla antes de volver a la cocina.
 Y ahí Flor voltea hacia ti con los ojos gigantes.
-—¿ESCUCHASTE? ¡Le dijo upa! ¡Mi mamá! ¡No fui yo!
+—¿ESCUCHASTE? ¡Le dijo upacha! ¡Mi mamá! ¡No fui yo!
 —Escuché —dices.
 —¡Es palabra de mamá! ¡Es oficial!
 —No es oficial nada.
@@ -1578,16 +1578,16 @@ Hablan de familia un rato. Tú les cuentas que eres hijo único, que son tú y t
 Entre plato y plato, Flor cumple su promesa. En voz baja, mirando hacia la cocina cada dos palabras.
 —Ya. Los cariñosos.
 —Ay, no —dice Amaru.
-—Qhilli. Sucio, mugroso. Como decirle "piojoso".
-—Qhilli.
+—Qachakuchi. Sucio, mugroso, como chanchito. Kuchi es chancho.
+—Qachakuchi.
 —Se lo dices a tu amigo cuando llega con la ropa sucia. No a un señor en la calle.
 —Anotado.
-—Phiña. Renegón. Molestoso. —Y señala a su hermano con el pulgar sin voltear—. Ese es él.
-—No soy phiña.
-—Eres el phiña más grande de Ayacucho.
+—Piñapsu. Renegón. Molestoso. —Y señala a su hermano con el pulgar sin voltear—. Ese es él.
+—No soy piñapsu.
+—Eres el piñapsu más grande de Ayacucho.
 —Estoy comiendo tranquilo.
 —Estás comiendo tranquilo y renegando.
-—Qhilli phiña —pruebas tú, juntando los dos.
+—Qachakuchi piñapsu —pruebas tú, juntando los dos.
 Flor se queda muda dos segundos y después grita.
 —¡NO! ¡No los juntes! ¡Eso ya es fuerte!
 —¡Me dijiste que eran cariñosos!
@@ -1873,15 +1873,15 @@ Ya está. Poner todo en el mostrador.   → Pago Nati
 Pones todo sobre el mostrador. Doña Nati deja el tejido, mueve las cosas con un dedo mientras cuenta[SI NO (lleva más de una cosa):  —que es una sola cosa, pero igual la cuenta—].
 
 ¿Cómo preguntas?
-* ¿Hayk'ataq?   → Pago hayk'ataq
+* ¿Haykataq?   → Pago haykataq
 * ¿Cuánto es?   → Pago cuánto
 
 ############################################################
-# Pago hayk'ataq
+# Pago haykataq
 ############################################################
 
 Y ahí lo dices, con la boca un poquito seca:
-—¿Hayk'ataq?
+—¿Haykataq?
 Ella levanta la vista. No se sorprende como el señor Hilario. Solo hace un ruidito con la garganta, aprobatorio, como quien reconoce a alguien que hizo la tarea.
 
 * Continuar.   → Cuenta Nati
@@ -1891,8 +1891,8 @@ Ella levanta la vista. No se sorprende como el señor Hilario. Solo hace un ruid
 ############################################################
 
 —¿Cuánto es?
-—Hayk'ataq, se dice —te corrige, sin levantar la vista—. Ya estás acá. Pregunta bien.
-—...¿Hayk'ataq?
+—Haykataq, se dice —te corrige, sin levantar la vista—. Ya estás acá. Pregunta bien.
+—...¿Haykataq?
 —Ahí está.
 
 * Continuar.   → Cuenta Nati
@@ -1907,8 +1907,8 @@ Ella levanta la vista. No se sorprende como el señor Hilario. Solo hace un ruid
 [SI compró linterna: 
 —¿Y para qué quieres linterna? —dice, alcanzándola—. Todavía hay sol.
 —Por si acaso.
-—Mmm. —La pone sobre el mostrador—. K'anchay, le decimos. Bueno, k'anchay es la luz. La linterna es la linterna. —Se encoge de hombros—. Ya nadie le dice de otra forma.
-—K'anchay —repites.
+—Mmm. —La pone sobre el mostrador—. Kanchay, le decimos. Bueno, kanchay es la luz. La linterna es la linterna. —Se encoge de hombros—. Ya nadie le dice de otra forma.
+—Kanchay —repites.
 —Eso. Luz, brillo, alumbrar. Todo junto. —Y agrega, sin darle importancia—: A las siete ya está oscuro acá. Bien oscuro. No como en Lima que hay poste en cada esquina.
 ][SI compró frugele: 
 —El rojo siempre —dice, viendo cuál sacaste del frasco.
@@ -1973,8 +1973,8 @@ Le yapeas. Suena el sonidito. [SI compró ringpop: Ella mete lo que falta en la 
 —Sulpayki —dices.
 Sales del kiosko con la cara ardiendo y un anillo de caramelo en una bolsa transparente que se ve desde la calle.][SI NO: Ella mete todo en una bolsa de plástico transparente y te la empuja.
 —Sulpayki —dices.
-—Imamanta, wawqiy. —Y vuelve al tejido.
-Sales sin saber qué significa wawqiy. Lo anotas para preguntar después.]
+—Imamanta, turiy. —Y vuelve al tejido.
+Sales sin saber qué significa turiy. Lo anotas para preguntar después.]
 
 * Continuar.   → Notas
 
@@ -1987,30 +1987,30 @@ Abres las notas. La lista de la mañana se ve patética ahora. Empiezas a agrega
 QUECHUA — ayacucho
 
 saludos
-allillanchu — hola / ¿estás bien? (DOBLE ELE. decir fuerte)
-allinmi / allillam — estoy bien
+allinllachu — hola / ¿estás bien? (DOBLE ELE. decir fuerte)
+allinmi / allinllam — estoy bien
 rimaykullayki — saludo formal, para mayores
-allin p'unchay — buen día (de radio, de locutor, no de calle)
+allin punchaw — buen día (de radio, de locutor, no de calle)
 
 presentarse
-ñuqapa sutiymi Ariel — me llamo Ariel
-[SI le dijo "profesor" a Amaru: sutiyqa Arielmi — SOLO si te preguntaron primero (flor tenía razón)
+ñuqapa sutiymi Ariel — me llamo Ariel (con énfasis)
+[SI le dijo "profesor" a Amaru: sutiyqa Arielmi — también vale, es la simple (flor tenía razón)
 imataq sutiyki? — ¿cómo te llamas?
 ]maymantataq kanki? — ¿de dónde eres?
 limamantam kani — soy de Lima
-[SI pregunta = "edades": hayk'a watayuqtaq kanki? — ¿cuántos años tienes?
+[SI pregunta = "edades": hayka watayuqtaq kanki? — ¿cuántos años tienes?
 chunka pusaqniyuq watayuqmi kani — tengo 18
 ]
 cortesía
 sulpayki — gracias
 añay — gracias (otra forma)
-diospagarasunki — gracias (de abuelita)
+diuspaqarasunki — gracias (de abuelita)
 imamanta — de nada
 ama hina kaspa — por favor (formal, favor grande)
 arí — sí
 
 no entiendo
-manam hamut'anichu — no entiendo
+manam hamutanichu — no entiendo
 manam yachanichu — no sé
 as-asllata rimani — hablo poquito
 pisillata — más o menos
@@ -2028,13 +2028,13 @@ yuraq — blanco
 yana — negro
 
 comprar
-hayk'ataq? — ¿cuánto es?[SI usó hayk'ataq:  funcionó!!]
+haykataq? — ¿cuánto es?[SI usó haykataq:  funcionó!!]
 munani — quiero / me gusta
 manam munanichu — no quiero / no me gusta
 yapita — pedir un poquito más[SI pidió yapita:  FUNCIONA]
 
 comida
-mikhuy — comer
+mikuy — comer (sin h. con h es de cusco)
 upyay — beber
 miski / miskin — dulce, rico (= flor)
 
@@ -2043,21 +2043,21 @@ killa — mes Y luna (bonito)
 wata — año
 amaru — serpiente grande, de los ríos
 yaya — "ay no" / roche / flojera
-upa — tonto (cariñoso)
-qhilli — sucio, piojoso (cariñoso)
-phiña — renegón (cariñoso)
-NO JUNTAR LOS TRES
+upacha — tontito (cariñoso)
+qachakuchi — sucio, como chanchito (cariñoso)
+piñapsu — renegón (cariñoso)
+NO JUNTARLOS
 
 escuchado en la calle (preguntar)
 waska — ¿¿¿de acá sale??? preguntarle a amaru
 wawa — ¿niña? ¿bebé?
 kusa — ¿"bien"? la profe lo decía feliz
 chuqllu — ¿choclo? (había un cartel)
-[SI compró linterna: k'anchay — luz (doña nati)
-][SI NO (compró ringpop): wawqiy — ??? me lo dijo doña nati. preguntar
+[SI compró linterna: kanchay — luz (doña nati)
+][SI NO (compró ringpop): turiy — ??? me lo dijo doña nati. preguntar
 ]
 Los repasas en voz baja, moviendo los labios, caminando de vuelta con la bolsa del kiosko.
-Allillanchu. Sulpayki. Imamanta. Hayk'ataq. Pisillata.
+Allinllachu. Sulpayki. Imamanta. Haykataq. Pisillata.
 [SI pregunta = "edades": Chunka pusaqniyuq watayuqmi kani.][SI NO: Iskay waranqa iskay chunka suqtayuq.]
 Ya no suenan tan extranjeras.
 
@@ -2071,19 +2071,19 @@ Antes de volver a entrar, puedes escribirle al grupo. En el quechua que creas qu
 Bueno. Si no se entiende, ya sabes lo que pasa con los mensajes que nadie entiende.
 
 EL GRUPOOOOOO 🦜
-• allillanchu   → Msg allillanchu
+• allinllachu   → Msg allinllachu
 • sulpayki x el almuerzo 🙏   → Msg sulpayki
 • compré pilas AA. para el futuro   → Msg pilas
 • ñuqapa sutiymi Ariel   → Msg sutiymi
 • munani 🥺   → Msg munani
-• allin punchay hermanos quispe...   → Msg punchay
-• qhilli phiña upa   → Msg insultos
+• allin punchaw hermanos quispe...   → Msg punchaw
+• qachakuchi piñapsu upacha   → Msg insultos
 [SI le dijo "profesor" a Amaru: • imataq sutiyki?   → Msg imataq
-]• hayk'ataq?   → Msg haykataq
+]• haykataq?   → Msg haykataq
 [SI compró ringpop: • amor 🥺💍   → Msg amor
 ]
 Amaru (privado)
-• oe qhilli, sal   → Msg qhilli
+• oe sal. mikhuy?   → Msg mikhuy
 
 Flor (privado)
 • miski 🥺   → Msg miski
@@ -2091,15 +2091,15 @@ Flor (privado)
 • No mandar nada   → Vuelta
 
 ############################################################
-# Msg allillanchu
+# Msg allinllachu
 ############################################################
 
 EL GRUPOOOOOO 🦜
-Tú: allillanchu
-Flor: allillanmi 😌
+Tú: allinllachu
+Flor: allinllam 😌
 Flor: OYE ESCRIBE MAS
 Flor: no me dejes asi
-Amaru: allillanmi.
+Amaru: allinllam.
 (punto final. es todo lo que vas a recibir)
 
 * Guardar el celular y entrar   → Vuelta
@@ -2133,15 +2133,15 @@ Amaru: pero gracias
 * Guardar el celular y entrar   → Vuelta
 
 ############################################################
-# Msg qhilli
+# Msg mikhuy
 ############################################################
 
 Amaru
-Tú: oe qhilli, sal
-Amaru: qilli.
+Tú: oe sal. mikhuy?
+Amaru: mikuy.
 Amaru: sin h.
 Amaru: eso es cusqueño.
-Amaru: y no soy sucio, acabo de bañarme
+Amaru: y ya comí. tres platos. me viste
 (tres minutos después)
 Amaru: igual salgo
 
@@ -2193,11 +2193,11 @@ Amaru: ¿qué quieres?
 * Guardar el celular y entrar   → Vuelta
 
 ############################################################
-# Msg punchay
+# Msg punchaw
 ############################################################
 
 EL GRUPOOOOOO 🦜
-Tú: allin punchay hermanos quispe. ñuqa kani ariel. mikhuni miski. sulpayki tukuy
+Tú: allin punchaw hermanos quispe. ñuqa kani ariel. mikuni miski. sulpayki tukuy
 (entregado. leído.)
 (nada)
 
@@ -2208,7 +2208,7 @@ Tú: allin punchay hermanos quispe. ñuqa kani ariel. mikhuni miski. sulpayki tu
 ############################################################
 
 EL GRUPOOOOOO 🦜
-Tú: qhilli phiña upa
+Tú: qachakuchi piñapsu upacha
 (leído por los dos)
 (silencio absoluto)
 
@@ -2231,7 +2231,7 @@ Flor: comiste en mi casa
 ############################################################
 
 EL GRUPOOOOOO 🦜
-Tú: hayk'ataq?
+Tú: haykataq?
 Amaru: ¿cuánto es qué
 Flor: ¿cuánto es qué?????
 Flor: ariel
@@ -2267,7 +2267,7 @@ Mamá: PORTATE BIEN ayuda en algo no estés sentado nomas
 Guardas el celular. [SI mensajeEnviado = "amor": Empujas la puerta del patio.
 Los dos están mirando el techo y nadie dice nada durante ocho segundos enteros.
 —...Volviste —dice Flor, al fin.
-—No se perdió —dice Amaru, al techo.][SI NO, SI mensajeEnviado = "punchay": Empujas la puerta del patio.
+—No se perdió —dice Amaru, al techo.][SI NO, SI mensajeEnviado = "punchaw": Empujas la puerta del patio.
 Cuando entras, Flor está con el celular en la mano y cara de dolor.
 —Ay, Ariel.
 —¿Qué le pasó? —dice Amaru.
@@ -2285,7 +2285,7 @@ Y ahí ves que la casa cambió en los veinte minutos que no estuviste. La mesa e
 —¿Qué pasó?
 —Dos cosas. —Levanta dos dedos—. Cosa uno: mi tía cumple años y hay fiesta acá el sábado, y mi papá dijo "Amaru, los parlantes", como siempre, y uno de los parlantes está haciendo un ruido.
 —No está haciendo un ruido —dice Amaru, agachado al lado del cable—. Está haciendo el ruido. Es distinto.
-—Está haciendo un ruido —repite Flor—. Y él tiene que arreglarlo hoy porque mañana mi papá va a preguntar y si no está listo va a ser un tema.
+—Está haciendo un ruido —repite Flor—. Y él tiene que arreglarlo hoy, porque mi papá llega a las siete y va a preguntar, y si no está listo va a ser un tema.
 —No va a ser un tema.
 —Va a ser un tema.
 Amaru se queda callado, lo cual confirma que va a ser un tema.
@@ -2405,16 +2405,23 @@ Amaru saca el celular, mira la hora, y lo vuelve a guardar.
 —Cinco y veinte.
 —¿Cómo se dice?
 Levanta las cejas. No esperaba la pregunta.
-—Ima uraña? ¿Qué hora es ya?
-—Ima uraña.
-—Y contestas... —piensa—. Mira, la verdad nadie dice las horas en quechua acá. Nadie. Todos dicen "cinco y veinte". —Hace un gesto—. Pero si quieres: pichqa ura. Cinco horas.
+—Imay urañataq? ¿Qué hora es ya?
+—Imay urañataq.
+—Y contestas... —piensa—. Pichqa ura. Cinco horas. Aunque acá casi todos dicen "cinco y veinte" en castellano nomás.
 —Pichqa ura.
 —Y ura viene del español. Hora. —Se encoge de hombros—. Se metió hace siglos y se quedó.
-—Como diospagarasunki.
+—Como diuspaqarasunki.
 Amaru voltea la cabeza hacia ti.
-—...Sí. Igual que diospagarasunki. —Pausa—. Te acordaste.
+—...Sí. Igual que diuspaqarasunki. —Pausa—. Te acordaste.
 —Me acordé.
 No dice nada más, pero se le queda algo en la cara.
+—¿Y antes del español? ¿Cómo preguntaban?
+—Hay otra. Haykañataq kay intiwatana? —Lo dice despacio—. Intiwatana es el reloj de sol. Literal es "donde se amarra el sol".
+Te quedas callado.
+—¿Se amarra el sol?
+—Eso dice la palabra. Mi abuelita la usaba. Yo no, suena a museo.
+—A mí me encanta.
+—Ya sé. Tienes cara de que te encanta.
 —Lo que sí se usa —dice después de un rato— es tutamanta y chisi. Temprano y tarde.
 —Tutamanta. Chisi.
 —Tuta es noche. Tutamanta es "desde la noche", o sea temprano, de madrugada.
@@ -2651,12 +2658,12 @@ Bajan la calle. La música se va quedando atrás, primero fuerte, después como 
 Y ahí te das cuenta de que no hay postes. O sea, hay, pero cada tres cuadras, y la mitad no prende. La oscuridad no es como la de Lima, que es naranja y sucia. Esta es oscuridad de verdad.
 [SI compró linterna: —Prende la linterna.
 La prendes. El cono de luz blanca cae sobre el empedrado y de golpe todo lo demás desaparece.
-—K'anchay —dices.
+—Kanchay —dices.
 Amaru voltea.
 —¿Quién te enseñó eso?
 —Tu madrina.
 —...Claro.][SI NO: Amaru prende su linterna. El cono de luz blanca cae sobre el empedrado y de golpe todo lo demás desaparece.
-—K'anchay —dice, sin que le preguntes.
+—Kanchay —dice, sin que le preguntes.
 —¿Qué?
 —Luz. —Mueve el cono de un lado a otro—. Ya que estás aprendiendo.]
 Caminan sin rumbo obvio, o con un rumbo que él conoce y no explica. Pasan una tienda cerrada, un muro con un afiche político de hace tres elecciones, un perro que los mira desde un techo.
@@ -2737,13 +2744,13 @@ Miras. Y sí: dentro de la banda blanca hay zonas oscuras, siluetas sin estrella
 —¿Las manchas?
 —Las manchas. —Se estira más el brazo—. Allá afuera hacen constelaciones uniendo puntos de luz. Acá se miran los huecos. Lo que no tiene estrellas.
 Te quedas mirando eso un rato largo, moviendo la cabeza, tratando de que las formas aparezcan.
-—Esa de ahí es la llama —dice él—. Grande. Esos dos puntos brillantes son los ojos. Y ahí abajo hay una cría.
+—Esa de ahí es la llama —dice él—. Llama wawayuq, la llama con su cría. Grande. Esos dos puntos brillantes son los ojos. Y ahí abajo está la cría.
 —...Ya la vi.
 —¿En serio?
 —Ya la vi. —Y se te escapa una risa—. No la puedo dejar de ver ahora.
 —Ajá. Pasa eso.
 —¿Y las otras?
-—Hay un zorro. Un sapo. Una serpiente. —Pausa—. Machaqway.
+—Hay un zorro, atuq. Un sapo, hampatu. Y una serpiente. —Pausa—. Machaqway.
 —¿Esa cuál es?
 —No sé, nunca la encuentro —admite—. Mi abuelita sí. Ella se sentaba y decía "ahí está", y yo decía "sí, sí, ahí está", y no veía nada.
 —Yo hago eso.
@@ -2842,10 +2849,10 @@ Amaru voltea.
 —No sonó a cumplido.
 —Estoy aprendiendo la diferencia —dices—. Todavía me sale mal.
 Y ahí Amaru se ríe. De verdad. Esa risa oxidada que casi no usa, que sale corta y fuerte y se le corta sola.
-—Upa —dice.
+—Upacha —dice.
 —¿Eso es cariñoso?
 —Muy cariñoso.
-—Ya. —Te acomodas en el respaldo—. Upa tú también.
+—Ya. —Te acomodas en el respaldo—. Upacha tú también.
 —Ese estuvo mal usado.
 —No me importa.
 —Está mal usado, Ariel.
@@ -2885,7 +2892,7 @@ Otro silencio.
 —¿Cómo se dice cielo? —preguntas.
 —Hanaq pacha. —Pausa—. Bueno, eso es más como "el mundo de arriba". Hanaq es arriba.
 —¿Y hay un mundo de abajo?
-—Hay tres. —Se acomoda—. Este de acá es kay pacha. Este mundo. El de arriba es hanaq pacha y hay uno adentro, abajo, ukhu pacha.
+—Hay tres. —Se acomoda—. Este de acá es kay pacha. Este mundo. El de arriba es hanaq pacha y hay uno adentro, abajo, uku pacha.
 —¿Y qué hay en cada uno?
 —Uf. —Se ríe bajito—. No sé. O sea, sé lo que dicen, pero yo no soy... —busca la palabra— no soy el que sabe eso. Mi abuelita sabía. Yo me quedé con los pedazos.
 —Igual sabes más que yo.
@@ -2910,7 +2917,7 @@ En algún momento sacas el celular para ver la hora y la pantalla te ciega y los
 —¡Perdón, perdón!
 —Ahora tengo que esperar como cinco minutos otra vez.
 —Perdón.
-—Upa.
+—Upacha.
 —Ya sé.
 Y lo guardas, y esperas a que los ojos se te vuelvan a acostumbrar, y de a pocas las estrellas van volviendo a aparecer una por una, como si alguien las estuviera prendiendo desde muy lejos.
 
@@ -3688,11 +3695,11 @@ Y en un momento, entre toma y toma, dices:
 Flor baja el mate.
 —A ver, para. Esto te lo tengo que enseñar porque te va a servir.
 —¿Qué cosa?
-—Hay una escala. —Levanta la mano y va marcando escalones en el aire—. Nivel uno: describir. Puka kashan — está rojo. Eso no es nada, es un dato. Puedes decírselo a una pared.
+—Hay una escala. —Levanta la mano y va marcando escalones en el aire—. Nivel uno: describir. Puka kachkan — está rojo. Eso no es nada, es un dato. Puedes decírselo a una pared.
 —Ya.
-—Nivel dos: cumplido. Sumaq kashan — está bonito. Eso ya es una opinión. Se lo dices a una cosa, a una comida, a un mate. Y también a una persona, y no pasa nada.
+—Nivel dos: cumplido. Sumaq kachkan — está bonito. Eso ya es una opinión. Se lo dices a una cosa, a una comida, a un mate. Y también a una persona, y no pasa nada.
 —Ya.
-—Nivel tres: piropo. —Baja la voz—. Sumaqmi kanki. Eres bonito. Ahí ya cambiaste el sujeto. Ya no es la cosa, es la persona.
+—Nivel tres: piropo. —Baja la voz—. Kuyayllapaqmi kanki. Eres lindo. Eres para quererte, algo así. Ahí ya cambiaste el sujeto. Ya no es la cosa, es la persona.
 —...Ya.
 —Y nivel cuatro —dice, muy seria—: demasiado intenso.
 —¿Cuál es el cuatro?
@@ -3723,10 +3730,10 @@ Los dos se quedan callados.
 —Tú lo giraste bien.
 —Los dos lo hicimos bien —decide, y lo dice como sentencia final.
 
-* Continuar.   → Qilli
+* Continuar.   → Qachakuchi
 
 ############################################################
-# Qilli
+# Qachakuchi
 ############################################################
 
 En la toma dieciocho a ella se le cae el mate.
@@ -3743,13 +3750,11 @@ Flor lo levanta, lo revisa, no tiene nada, y se lo abraza al pecho con los ojos 
 —¡NO! —Se le va la voz—. ¡A Amaru menos! ¡Me lo va a sacar en cara hasta que me muera!
 —Entonces págame.
 Flor entrecierra los ojos.
-—Ay, qilli —dice—. Ya saliste con eso.
-—¿Qué?
-—Qilli. Sucio, mugroso. —Sonríe de costado—. Pero como te lo estoy diciendo yo, es cariñoso. Es como decirte "ay, malo".
-—Qilli —repites.
-—Sin h. Ojo. Con h es de Cusco.
-—¿Y acá no?
-—Acá no. Acá es qilli, piña, mikuy. Sin toda esa cosa de la garganta. —Se encoge de hombros—. Cada valle tiene lo suyo.
+—Ay, qachakuchi —dice—. Ya saliste con eso.
+—Ese me lo enseñaste tú.
+—Y mira qué bien lo uso. —Sonríe de costado—. Así se dice. Con cariño. Es como decirte "ay, malo".
+—Oye, ¿y por qué en internet sale todo con h? Mikhuy, p'unchay...
+—Porque eso es de Cusco. Acá es sin h. Mikuy, punchaw, hamutani. Sin toda esa cosa de la garganta. —Se encoge de hombros—. Cada valle tiene lo suyo.
 Guarda el celular. Mira la luz, que ya está anaranjada de verdad.
 —Ya. Tengo el video.
 —¿Ya está?
@@ -3826,7 +3831,7 @@ Flor se tapa la cara con las dos manos.
 —No pasa nada.
 —Sí pasa. —Se destapa—. Y lo peor es que Amaru dijo que no. Dijo "no le veo cara de gringo". Y yo insistí. Yo dije "mírale los ojos".
 —Ya.
-—Y después me dijiste allillanchu y me quise morir.
+—Y después me dijiste allinllachu y me quise morir.
 Te ríes.
 —No te rías, me quise morir de verdad.
 —Está bien.

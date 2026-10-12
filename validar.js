@@ -10,18 +10,28 @@ const cmds = new Set(['fondo','cuadro','musica','sfx','busto','limpiar','esperar
 let errores = 0;
 const err = (m) => { errores++; console.log('✗', m); };
 const todasEtiquetas = {};
+// Revisa que una condición tenga paréntesis balanceados y operadores conocidos.
+function revisarCondicion(c, n) {
+  let p = 0; for (const ch of c) { if (ch === '(') p++; if (ch === ')') p--; if (p < 0) break; }
+  if (p !== 0) err(`${n} paréntesis desbalanceados en la condición: ${c}`);
+  if (/[^=!<>]=[^=]|(?<!&)&(?!&)|(?<!\|)\|(?!\|)/.test(' ' + c + ' ')) err(`${n} operador raro en la condición (usa ==, !=, &&, ||): ${c}`);
+}
 for (const [cap, texto] of Object.entries(GUION.archivos)) {
   const etiquetas = new Set(), refs = [];
   texto.split('\n').forEach((raw, i) => {
-    const l = raw.trim(); const n = `${cap}:${i + 1}`;
+    let l = raw.trim(); const n = `${cap}:${i + 1}`;
     if (!l || l.startsWith('#')) return;
+    const mc = l.match(/^\[si\s+(.+?)\]\s+(.*)$/i);   // [si condición] al inicio de la línea
+    if (mc) { revisarCondicion(mc[1], n); l = mc[2]; }
+    else if (l.startsWith('[')) err(`${n} condición mal escrita (debe ser "[si ...] texto")`);
     if (l.startsWith('==')) { etiquetas.add(l.slice(2).trim()); return; }
-    if (l.startsWith('*')) { const m = l.match(/->\s*([\wáéíóúñ_]+)/); if (!m) err(`${n} opción sin -> etiqueta`); else refs.push([m[1], n]); return; }
+    if (l.startsWith('*')) { const m = l.match(/->\s*([\wáéíóúñ_]+)/); if (!m) err(`${n} opción sin -> etiqueta`); else refs.push([m[1], n]);
+      const ms = l.match(/\[si\s+(.+)\]\s*$/); if (ms) revisarCondicion(ms[1], n); return; }
     if (l.startsWith('@')) {
       const [c, ...a] = l.slice(1).split(/\s+/);
       if (!cmds.has(c.toLowerCase())) err(`${n} comando desconocido @${c}`);
       if (['ir','llamar'].includes(c)) refs.push([a[0], n]);
-      if (c === 'si') { const m = l.match(/->\s*(\S+)$/); if (m) refs.push([m[1], n]); }
+      if (c === 'si') { const m = l.match(/^@si\s+(.*?)\s*->\s*(\S+)$/); if (m) { refs.push([m[2], n]); revisarCondicion(m[1], n); } else err(`${n} @si mal escrito`); }
       if (c === 'aprender') a.forEach((id) => { if (!PALABRAS.find((p) => p.id === id)) err(`${n} palabra no definida: ${id}`); });
       if (c === 'explorar' && !MAPAS[a[0]]) err(`${n} mapa no definido: ${a[0]}`);
       if (c === 'capitulo' && !GUION.archivos[a[0]]) err(`${n} capítulo no definido: ${a[0]}`);

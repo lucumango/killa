@@ -114,10 +114,13 @@ Regla del encuadre del busto (220 × 260): la cabeza en el tercio superior, homb
 | Personaje | id | Ficha corta | Poses |
 |---|---|---|---|
 | Mamá (Rosa) | `mama` | Ayacuchana en Lima. Bolso, papeles contados con el pulgar, "modo trámite". Ariel tiene su cara: diséñalos juntos. Acento `#c9a2ff` | `seria`: papeles en la mano, mirando de reojo por encima del asiento. `feliz`: ojos brillantes mirando la iglesia. `burla`: "no te pierdas, ah", ya de espaldas girando la cabeza |
-| Sra. Rufina | `senora` | Mamá de Flor y Amaru: "la misma cara de los dos, más el tiempo". Mandil, secándose las manos | `feliz`: secándose las manos, sonrisa. `neutral`: asomada desde la cocina. `sorpresa`: las dos manos extendidas (te toma la cara). `curioso`, `molesto`, `risa`: variaciones de cara |
-| Tía | `tia` | Hermana de Rufina, más ancha, tenedor u olla en la mano siempre | `feliz` base con tenedor. `sorpresa`: parada, olla en alto ("¡ROSITA!"). `curioso`, `seria`: cara |
+| Sra. María | `senora` | Mamá de Flor y Amaru: "la misma cara de los dos, más el tiempo". Mandil, secándose las manos | `feliz`: secándose las manos, sonrisa. `neutral`: asomada desde la cocina. `sorpresa`: las dos manos extendidas (te toma la cara). `curioso`, `molesto`, `risa`: variaciones de cara |
+| Tía (Rufina) | `tia` | Hermana de María, más ancha, tenedor u olla en la mano siempre | `feliz` base con tenedor. `sorpresa`: parada, olla en alto ("¡ROSITA!"). `curioso`, `seria`: cara |
 | Don Hilario | `hilario` | Mayor, chompa de rombos, banquito, tele chiquita, calculadora vieja | `neutral`: perfil mirando la tele, sin mirarte. `feliz`: levanta la cabeza con risita por la nariz, calculadora en la mano |
 | Puku | `puku` | Loro verde manzana, alas más oscuras, rayitas amarillas junto a la cara, ojo redondo amarillo | `neutral`: cabeza ladeada mirándote con un ojo. extra `perfil`: se pone de perfil para la foto |
+| Doña Nati | `nati` | La del kiosko y madrina de Amaru: "la red de inteligencia de la calle". Lentes en la punta de la nariz, agujas de tejer, chompa. Mira por encima de los lentes | `neutral`: tejiendo, mirando por encima de los lentes. `seria`: el Ring Pop a la altura de los ojos ("¿y esto para quién es?"). `feliz`: sonrisa con todos los dientes. `curioso`: ceja arriba |
+| Tío | `tio` | Hermano del papá. Polo y sandalias con medias, "el uniforme del hombre que ya llegó a su casa". Un parlante bajo el brazo | `feliz`: abriendo la puerta, "¡ah, sobrino!". `neutral`: con el parlante |
+| Yuli | `yuli` | La prima de 8 años. Cruel con la crueldad limpia de los ocho años | `curioso`: examinándote como a un producto. `risa`: "¡HABLA FEO!". `seria`: brazos cruzados |
 
 ## Cómo usar las poses "extra"
 

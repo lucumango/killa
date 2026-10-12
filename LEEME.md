@@ -12,7 +12,7 @@ quechua-novela/
 │   ├── palabras.js         ← la lista de palabras en quechua (y sus audios)
 │   ├── mapas.js            ← los mapas de exploración (vista desde arriba)
 │   ├── ia.js               ← el prompt de la IA y las respuestas del modo sin internet
-│   └── guion/cap01.js, cap02.js  ← EL GUION
+│   └── guion/              ← EL GUION: cap01.js, cap02.js, cap03.js, ruta_amaru.js, ruta_flor.js, final.js
 ├── js/motor/               ← el código del juego (no hace falta tocarlo)
 ├── assets/img/fondos/      ← fondos de escena (cámara fija):  nombre.png
 ├── assets/img/cuadros/     ← ilustraciones grandes (el loro, etc.):  nombre.png
@@ -120,7 +120,16 @@ ariel (nervioso): ...Allinllachu...
 @var puntos += 1
 @si presentacion == viaje -> etiqueta        ← salta si se cumple
 @si uso_haykataq != 1 -> sin_descuento
+@si c_linterna == 1 && c_frugele == 1 -> tema_frugele   ← && (y), || (o), ! (no) y paréntesis
+@var plata -= 2.5                ← también con decimales
+
+[si c_linterna == 1] amaru (neutral): Prende la linterna.   ← esta línea solo corre si se cumple
+[si pregunta != vivido] @aprender pisi                       ← sirve igual para comandos
+
+Te quedan S/ {plata:2}.          ← {variable} muestra su valor; {variable:2} con dos decimales
 ```
+
+Si una variable nunca se guardó, `nombre == 1` es falso y `nombre != 1` es verdadero.
 
 ### Escena (cámara fija)
 
