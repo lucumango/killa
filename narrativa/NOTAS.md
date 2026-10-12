@@ -2,53 +2,73 @@
 
 Notas para ti sobre `Killa.html`. No aparecen en la historia.
 
+## Cambios por la revisión de Abner
+
+Ya aplicados en Twine (`Killa.html`, `Killa.txt`) y en el juego (capítulos 1 y 2, escenas 3 y 4, el celular y las pautas de la IA):
+
+- **Ortografía chanka:** sin *h* de Cusco ni apóstrofos. *Allin punchaw*, *haykataq*, *hayka watayuqtaq kanki*, *mikuy*, *manam hamutanichu*, *Aya Marqay*, *kanchay*, *uku pacha*.
+- **Tres vocales:** *diuspaqarasunki*.
+- **El saludo es *allinllachu*.** El error de Ariel ahora es *allinlachu* (con una sola ele), y el chiste de "doble ele" sigue igual. Las respuestas son *allinllam* o *allinmi*.
+- **Los cariñosos:** *upacha* (tontito; *upa* solo es "sonso"), *qachakuchi* (sucio, como chanchito) y *piñapsu* (renegón). Abner confirma que *qachakuchi piñapsu* juntos ya es fuerte, así que el chiste de Flor queda.
+- **La broma de la h:** antes Ariel le escribía "oe qhilli, sal" a Amaru. Ahora le escribe "oe sal. mikhuy?" (la forma de su lista de internet) y Amaru contesta "mikuy. sin h. eso es cusqueño." En *Qachakuchi* (antes *Qilli*), Flor le dice "ay, qachakuchi" y le explica que acá es "mikuy, punchaw, hamutani" y que con h es de Cusco.
+- **Doña Nati** se despide con *Imamanta, turiy*: una mujer no le dice *wawqiy* a un hombre.
+- **La escala de cumplidos** (*Kaypi*): *puka kachkan* (dato), *sumaq kachkan* (cumplido), ***kuyayllapaqmi kanki*** (piropo, en vez de *sumaqmi kanki*) y *sunquy / sunqullay* (íntimo).
+- **La hora** (*Amaru 1*): *Imay urañataq?* Amaru ya no dice que "nadie" dice la hora en quechua, sino que casi todos la dicen en castellano. Además le enseña ***intiwatana***, "donde se amarra el sol", el reloj de sol. Es nuevo y viene de la respuesta de Abner.
+- **Las constelaciones** (*Mayu*): *llama wawayuq* (la llama con su cría), *atuq* (zorro), *hampatu* (sapo) y *machaqway* (serpiente).
+- **Presentarse:** Abner dice que *sutiyqa Arielmi* y *ñuqapa sutiymi Ariel* valen las dos; la segunda es con énfasis. La discusión de la escena 1 se queda, porque Flor termina demostrando que las dos sirven. En las notas del celular dice "también vale, es la simple".
+- **El papá:** ahora en todas partes "llega a las siete" (*Vuelta*, *Amaru 1*, *Flor 1*).
+- Pasajes renombrados: *Allinllachu!*, *Pago haykataq*, *Msg allinllachu*, *Msg mikhuy*, *Msg punchaw*, *Qachakuchi*.
+
+## Para preguntarle a Abner
+
+Lo que no quedó claro en su respuesta, o no se le preguntó:
+
+- **yaya.** Lo usan Amaru y Flor como "ay no, qué roche". Abner habló de *yaya* como sufijo de respeto (*apu yaya*). ¿Qué exclamación diría un chico de 18 por vergüenza? ¿*Atatay*?
+- **"puka kasq".** Puse *puka kachkan*, en paralelo con su *sumaq kachkan*. Confirmar.
+- **"muruchaqnin"**, de su respuesta de la hora (*pichqa uran iskay chunka muruchaqninñam*). ¿Cómo se dice "son las cinco y veinte"? Por ahora Amaru solo dice *pichqa ura*.
+- **millay**: ¿es tan fuerte como "asqueroso"?
+- **upacha mal usado** (*Echados*): Amaru dice que "Upacha tú también" está mal usado. Para el chiste no hace falta que sea verdad, pero mejor saber.
+- Palabras que no se le preguntaron: *qullur* (¿*quyllur*?), *isqun* (9), *achka* (muchos), *kusa*, *waska*, *chisi*, *tutamanta*, *hapiy*, *ama kuyuychu*, *qaway*, *haku*, *suyay*, *pisi*, *kaypi / chaypi*, *hanaq / uray*, *hanaqman / uraman*, *kanchay*, *turiy*, *imallanchik / haykallanchik* (la ronda de la calle).
+
 ## Por decidir
 
-- **El papá.** En *Vuelta*, Flor dice que el papá va a preguntar por los parlantes "mañana". En *Amaru 1*, la mamá grita "¡TU PAPÁ LLEGA A LAS SIETE!". En *Flor 1*, Amaru también dice que llega a las siete. Elegir uno.
-- **"Hijita".** La mamá se lo dice a Ariel en los WhatsApp, en *Vuelta a casa* (ruta de Amaru), en *La llamada* y en *El patio* (ruta de Flor). ¿Es intencional o va "hijito"?
-- **wawqiy.** Lo dice doña Nati en *Cierre Nati*. Normalmente es "hermano" dicho por un hombre; en boca de una señora suena raro. Además, Ariel lo anota "para preguntar después" y nadie se lo explica todavía.
+- **"Hijita".** La mamá se lo dice a Ariel en *Vuelta a casa* (ruta de Amaru), en *La llamada* y en *El patio* (ruta de Flor). ¿Es intencional o va "hijito"? En el juego quedó como en Twine.
 - **El mes del examen.** En *Confesión*, Flor dice que fue a Lima "en agosto" para el examen. Confirmar (en la escena 2 dice que empieza clases en marzo).
-- **qhilli / qilli.** En la escena 2 (*Tarde*, *Comida*) Flor enseña "qhilli", "phiña" y "mikhuy", y así están en las notas del celular. En *Qilli* (ruta de Flor) dice que acá es "qilli, piña, mikuy" y que con h es de Cusco. Si se cambia la escena 2 a la versión sin h, el "es como la pizza con piña" del maní se vuelve un chiste doble. El mensaje de Amaru "qilli. sin h. eso es cusqueño" funciona igual en los dos casos.
 - **"No le veo cara de gringo".** En *Confesión*, Flor cita a Amaru diciéndolo en quechua. Revisar que no choque con la Ruta C de la escena 1.
 - **Los parlantes.** En la ruta de Flor siguen sin arreglar ("el otro cable"); en la de Amaru quedan arreglados con el parlante del tío. Son dos cánones según la ruta.
-- **El nombre del grupo.** En el final (*El carro*) usé "EL GRUPOOOOOO 🦜", como en la escena 2. El doc de la escena 4 decía "quechua para limeños 🦜".
+- **El nombre del grupo.** En Twine es "EL GRUPOOOOOO 🦜"; en el juego, el contacto se llama "quechua para limeños 🦜". Elegir uno.
 - **Objetos del kiosko sin uso todavía:** cinta, plumón, pañuelos, cable, gaseosa, galletas, chocolate, mandarinas (para Puku) y libretita (buen gancho para un epílogo, Ariel anotando las palabras).
-- **Líneas según el orden de las rutas.** La segunda ruta puede tener líneas extra con `(if: $rutasJugadas contains "amaru")[...]` o `"flor"`, por ejemplo Flor sabiendo que Ariel ya subió al parque feo con su hermano. No escribí ninguna.
+- **Líneas según el orden de las rutas.** La segunda ruta puede tener líneas extra según cuál se jugó primero, por ejemplo Flor sabiendo que Ariel ya subió al parque feo con su hermano. No escribí ninguna.
 
 ## Astronomía
 
 - **El planeta** (*Mayu*). En septiembre de 2026, a las 7–8 p. m. desde Ayacucho, Júpiter no se ve: sale de madrugada. El que se ve es Saturno, cerca de su oposición. Revisar en Stellarium. Si se cambia a Saturno, el dato del "escudo" también tiene que cambiar.
 - **La luna.** En la ruta de Amaru "hoy no hay luna" (*Echados*); en la de Flor aparece una uña de luna finita que sigue al sol (*Killa*). Cuadran si es una luna de uno o dos días, que se pone temprano. Si fijas la fecha de la historia, que caiga justo después de luna nueva.
-- **La llama (Yacana).** Sus ojos son Alfa y Beta Centauri, que en septiembre al anochecer están bajos al suroeste. Se puede decir que la llama "se está yendo".
+- **La llama (llama wawayuq).** Sus ojos son Alfa y Beta Centauri, que en septiembre al anochecer están bajos al suroeste. Se puede decir que la llama "se está yendo".
 - **El escudo de Júpiter.** Es una idea discutida; el texto ya la presenta como "hay gente que dice", que está bien.
-
-## Quechua para revisar con Victoria
-
-- k'anchay → ¿kanchay en chanka?
-- qullur → ¿quyllur?
-- ukhu pacha → ¿uku pacha?
-- hayk'ataq: quedó escrito así en todas las escenas.
-- Puka kashan / sumaq kashan (*Kaypi*): "-sha-" es cusqueño; en chanka sería "pukam kachkan", "sumaqmi kachkan".
-- Sumaqmi kanki, sunquy, sunqullay y la escala de intensidad.
-- millay, kaypi, chaypi, hanaq, uray, hanaqman, uraman.
-- qilli, piña, mikuy como formas chankas.
-- ima uraña, pichqa ura, tutamanta, chisi, hapiy, ama kuyuychu, qaway, haku, suyay, pisi, tupananchikkama.
-- Machaqway y las constelaciones oscuras (Mayu, la llama y su cría, zorro, sapo).
-- isqun (9) y achka (muchos), del conteo de doña Nati en *Cuenta Nati*.
 
 ## Mensajes al grupo (pasaje *Mensajes*)
 
 Por riesgo; en la historia no se marca cuál es cuál.
 
-- Se entienden: allillanchu, sulpayki, pilas, qhilli (a Amaru).
+- Se entienden: allinllachu, sulpayki, pilas, mikhuy (a Amaru).
 - Riesgosos: miski (a Flor), sutiymi, munani.
-- No se entienden: punchay, insultos, imataq, hayk'ataq.
+- No se entienden: punchaw, insultos, imataq, haykataq.
 - El que no deberías mandar: amor (solo si compró el Ring Pop).
 - Guardados para después: "ya volví, estoy afuera. suyay" (suyay se enseña con el cautín, en la ruta de Amaru) y "sumaq killa hoy no?" (sumaq se enseña recién en la ruta de Flor).
+- En el juego hay una opción más: escribir lo que quieras al grupo, y contestan con la IA.
 
 ## Pendiente
 
 - Ilustraciones: "Los tres" (con el rótulo "La noche siguiente") y "El carro" (la pantalla tiene tres versiones: foto negra, video del mate o el grupo).
+
+## El juego
+
+Las escenas 3 y 4 ya están en el juego: `js/datos/guion/cap03.js` (kiosko, mensajes, vuelta y elección), `ruta_amaru.js`, `ruta_flor.js` y `final.js`. Diferencias con Twine:
+
+- El kiosko está dividido en dos estantes ("para comer" y "las otras cosas"), y cada producto muestra su descripción antes de comprarlo.
+- En los menús del parque y de la azotea no aparecen las descripciones en cursiva debajo de cada opción; solo la frase.
+- Las palabras nuevas se guardan en el celular a medida que se enseñan.
 
 ## Cómo probar una ruta sin jugar todo
 
@@ -60,16 +80,19 @@ En Twine, en el pasaje *Amaru 1* o *Flor 1*, usa "Test from here". Para tener el
 
 ## Variables nuevas
 
-| Variable | Qué guarda |
-|---|---|
-| `$plata` | Soles que le quedan a Ariel en el kiosko (empieza en 30; reemplaza a `$dinero`) |
-| `$compras` | Lo que compró en el kiosko: "pilas", "linterna", "frugele", "ringpop", etc. |
-| `$mensajeEnviado` | El mensaje que mandó al grupo ("" si ninguno) |
-| `$ruta` | "amaru" o "flor" |
-| `$temas`, `$temasUsados` | Cuántos y cuáles temas usó en el parque |
-| `$dioRingPop`, `$pidioFoto`, `$durmioEnHombro` | Momentos de la ruta de Amaru |
-| `$fondoElegido` | "mesa", "patio" o "ventana" |
-| `$temaAzotea` | El tema elegido en la azotea |
-| `$rutasJugadas` | Rutas terminadas, para ofrecer la otra |
+| Twine | Juego | Qué guarda |
+|---|---|---|
+| `$plata` | `plata` | Soles que le quedan a Ariel en el kiosko (empieza en 30) |
+| `$compras` | `c_pilas`, `c_linterna`, `c_ringpop`… y `n_compras` | Lo que compró en el kiosko |
+| `$mensajeEnviado` | `mensaje_enviado` | El mensaje que mandó (vacío si no mandó nada) |
+| `$ruta` | `ruta` | "amaru" o "flor" |
+| `$temas`, `$temasUsados` | `temas`, `tema_nombre`, `tema_irte`… | Cuántos y cuáles temas usó en el parque |
+| `$dioRingPop`, `$pidioFoto`, `$durmioEnHombro` | `dio_ringpop`, `pidio_foto`, `durmio` | Momentos de la ruta de Amaru |
+| `$fondoElegido` | `fondo_elegido` | "mesa", "patio" o "ventana" |
+| `$temaAzotea` | `tema_azotea` | El tema elegido en la azotea |
+| `$rutasJugadas` | `jugo_flor`, `jugo_amaru` | Rutas terminadas, para ofrecer la otra |
+| `$confesoBeca` | `amaru_sabe_becas` | Si Ariel contó lo de las becas en la escena 1 |
+| `$bromeoProfesor` | `amaru_broma` | Si le dijo "profesor" a Amaru |
+| `$rutaInicial` "B" | `presentacion == perdi` | Si en la escena 1 dijo que se perdió |
 
 Cambios en variables que ya existían: la que se usa es `$confesoBeca` (sin *s*); borré `$confesoBecas`, que nunca se activaba. `$respuestaMama` nunca se asignaba; en su lugar se revisa si el jugador pasó por el pasaje *Pisillata*.

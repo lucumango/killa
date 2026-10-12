@@ -98,15 +98,15 @@ flor (molesto): ¡Está comiendo, mamá!
 Y aparece un cucharón sobre tu plato de todas maneras.
 Aparece también un vaso. Amarillo neón. Inca Kola.
 ariel (curioso): ¿Y esto?
-flor (feliz): Upyay. Beber. Y mikhuy es comer.
-ariel (neutral): Upyay. Mikhuy.
+flor (feliz): Upyay. Beber. Y mikuy es comer.
+ariel (neutral): Upyay. Mikuy.
 flor (feliz): Y si te gusta algo: munani. Quiero, me gusta. Puca picantita munani.
 ariel (feliz): Puca picantita munani.
 flor (risa): ¡Ay! ¡Con el diminutivo y todo!
 ariel (curioso): ¿Y si no me gusta?
 flor (feliz): Manam munanichu. Pero eso no lo digas acá porque mi mamá te escucha.
 ariel (neutral): Anotado.
-@aprender upyay mikhuy munani manam_munanichu
+@aprender upyay mikuy munani manam_munanichu
 Amaru, que ha estado callado, dice de pronto, mirando su plato:
 amaru (neutral): Ñuqaqa manam maníta munanichu.
 Silencio. Flor deja el tenedor.
@@ -154,9 +154,9 @@ senora (feliz): Desde chiquito. Desde chiquito con eso. Le sacaba el maní de la
 amaru (seria): No era sopa.
 senora (feliz): Era sopa.
 amaru (seria): Era un guiso.
-senora (feliz): Upa.
+senora (feliz): Upacha.
 Se lo dice cariñosamente, y le da una palmadita en la mejilla antes de volver a la cocina.
-flor (sorpresa): ¿ESCUCHASTE? ¡Le dijo upa! ¡Mi mamá! ¡No fui yo!
+flor (sorpresa): ¿ESCUCHASTE? ¡Le dijo upacha! ¡Mi mamá! ¡No fui yo!
 ariel (feliz): Escuché.
 flor (risa): ¡Es palabra de mamá! ¡Es oficial!
 amaru (molesto): No es oficial nada.
@@ -266,17 +266,17 @@ flor (burla): Ay, ustedes dos.
 Entre plato y plato, Flor cumple su promesa. En voz baja, mirando hacia la cocina cada dos palabras.
 flor (feliz): Ya. Los cariñosos.
 amaru (molesto): Ay, no.
-flor (feliz): Qhilli. Sucio, mugroso. Como decirle "piojoso".
-ariel (neutral): Qhilli.
+flor (feliz): Qachakuchi. Sucio, mugroso, como chanchito. Kuchi es chancho.
+ariel (neutral): Qachakuchi.
 flor (seria): Se lo dices a tu amigo cuando llega con la ropa sucia. No a un señor en la calle.
 ariel (neutral): Anotado.
-flor (burla): Phiña. Renegón. Molestoso. Ese es él.
+flor (burla): Piñapsu. Renegón. Molestoso. Ese es él.
 Señala a su hermano con el pulgar sin voltear.
-amaru (molesto): No soy phiña.
-flor (burla): Eres el phiña más grande de Ayacucho.
+amaru (molesto): No soy piñapsu.
+flor (burla): Eres el piñapsu más grande de Ayacucho.
 amaru (molesto): Estoy comiendo tranquilo.
 flor (burla): Estás comiendo tranquilo y renegando.
-ariel (burla): Qhilli phiña.
+ariel (burla): Qachakuchi piñapsu.
 Flor se queda muda dos segundos y después grita.
 flor (sorpresa): ¡NO! ¡No los juntes! ¡Eso ya es fuerte!
 ariel (nervioso): ¡Me dijiste que eran cariñosos!
@@ -288,7 +288,7 @@ flor (seria): No va a pasar afuera. No va a pasar afuera, ¿no?
 ariel (nervioso): No va a pasar afuera.
 amaru (neutral): Va a pasar afuera.
 Lo dice con la certeza de un profeta.
-@aprender qhilli phina
+@aprender qachakuchi pinapsu
 
 # ===============================================================
 == whatsapp_mama_2
@@ -439,80 +439,6 @@ ariel (molesto): No me voy a perder.
 
 # ===============================================================
 == kiosko_barrio
-@fondo kiosko_barrio
-No te pierdes. Casi.
-El kiosko de esta zona es distinto al de la plaza: más chiquito, medio metido en la sala de una casa, con una ventanita enrejada y una señora que teje sentada adentro. Hay de todo.
-Galletas surtidas. Chocolates: Sublime, Princesa, Doña Pepa. Chizitos, Cuates, papitas. Inca Kola, Coca Cola, chicha embotellada. Un frasco grande con caramelos de limón. Pilas AA. Recargas de celular. Un cajón de mandarinas. Un estante con cuadernos, lapiceros, plumones y una libretita chiquita de tapa dura.
-¿Qué compras?
-
-* Mandarinas para llevar de vuelta -> compra_mandarinas
-* Un chocolate para cada uno -> compra_chocolate
-* Pilas (Flor dijo que las necesitaba) -> compra_pilas
-* La libretita, para anotar el quechua a mano -> compra_libreta
-
-== compra_mandarinas
-@var compra = mandarinas
-Un kilo de mandarinas. La señora las pesa sin dejar de tejer, no sabes cómo.
-@ir notas
-== compra_chocolate
-@var compra = chocolate
-Tres Sublimes. Uno para cada uno. Piensas que Amaru va a decir que no quiere y se lo va a comer igual.
-@ir notas
-== compra_pilas
-@var compra = pilas
-Un blíster de pilas AA. Te ríes solo imaginando la cara de Flor.
-@ir notas
-== compra_libreta
-@var compra = libreta
-La libretita de tapa dura. Y un lapicero, porque no tienes.
-@ir notas
-
-# ===============================================================
-== notas
-@fondo calle_casa_noche
-Abres las notas. La lista de la mañana se ve patética ahora. Empiezas a agregar todo lo del día, tratando de escribir los sonidos como te salen.
-@aprender allillanchu allinmi rimaykullayki allin_punchay sutiymi sutiyqa imataq_sutiyki maymantataq limamantam hayka_wata chunka_pusaq sulpayki anay diospagarasunki imamanta ama_hina ari manam_hamutanichu manam_yachanichu asasllata pisillata huk iskay kimsa tawa pichqa suqta qanchis pusaq chunka pachak waranqa sesentaysiete anio2026 puka yuraq yana haykataq munani manam_munanichu mikhuy upyay miski killa wata amaru yaya upa qhilli phina
-@celular
-Los repasas en voz baja, moviendo los labios, caminando de vuelta con la bolsa del kiosko.
-Allillanchu. Sulpayki. Imamanta. Hayk'ataq. Pisillata.
-Chunka pusaqniyuq watayuqmi kani.
-Ya no suenan tan extranjeras.
-Antes de volver a entrar, puedes escribirle a uno de los dos. Escríbelo tú, en el quechua que creas que sabes. Si se entiende, te contestan. Si no se entiende...
-Bueno. Si no se entiende, ya sabes lo que pasa con los mensajes que nadie entiende.
-
-* Escribirle a Flor -> msg_flor
-* Escribirle a Amaru -> msg_amaru
-* Escribir al grupo -> msg_grupo
-* No escribir nada -> elegir_ruta
-
-== msg_flor
-@chat flor escribir
-@ir elegir_ruta
-== msg_amaru
-@chat amaru escribir
-@ir elegir_ruta
-== msg_grupo
-@chat grupo escribir
-@ir elegir_ruta
-
-# ===============================================================
-== elegir_ruta
-@fondo casa_calle
-Vuelves con la bolsa. Desde la puerta se escuchan dos cosas al mismo tiempo: Flor gritando algo sobre "la luz" y "el fondo", y el parlante cortándose otra vez.
-¿Con quién te vas?
-
-* 🌸 FLOR — tiene que grabar un video y necesita a alguien con ojo. -> ruta_flor
-* 🐍 AMARU — le pidieron dejar listos los parlantes. Algo va a fallar. -> ruta_amaru
-
-== ruta_flor
-@var ruta = flor
-@guardar
-@tarjeta CONTINUARÁ | (ruta Flor: la azotea)
-@fin
-
-== ruta_amaru
-@var ruta = amaru
-@guardar
-@tarjeta CONTINUARÁ | (ruta Amaru: fuera de la fiesta)
-@fin
+# La salida del patio sigue en cap03 (kiosko, mensajes, vuelta y elección de ruta).
+@capitulo cap03
 `);
