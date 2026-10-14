@@ -223,7 +223,7 @@ La escena del loro y la ferretería van **sin música** a propósito (`@musica o
 | `beep_flor.wav`, `beep_amaru.wav`… (opcional) | el beep al hablar. Hoy se genera solo por código con un tono distinto por personaje; si grabas uno, ponlo en `personajes.js` → `beep:` |
 
 ### Palabras (`assets/audio/palabras/id.mp3`)
-Una grabación corta por palabra, 84 en total (todas menos *Acuchimay*). Los nombres de archivo exactos son el `id` de cada entrada en `js/datos/palabras.js` (ej. `sulpayki.mp3`, `allinllachu.mp3`, `chunka_pusaq.mp3`, `sesentaysiete.mp3`). Idealmente grabadas por un hablante de quechua ayacuchano; graba en un solo archivo largo y córtalo después.
+Una grabación corta por palabra, 87 en total (todas menos *Acuchimay*). Los nombres de archivo exactos son el `id` de cada entrada en `js/datos/palabras.js` (ej. `sulpayki.mp3`, `allinllachu.mp3`, `chunka_pusaq.mp3`, `sesentaysiete.mp3`). Idealmente grabadas por un hablante de quechua ayacuchano; graba en un solo archivo largo y córtalo después.
 
 ---
 

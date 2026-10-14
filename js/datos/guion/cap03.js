@@ -53,6 +53,8 @@ En la esquina, tres señores están sentados en unos cajones de cerveza al lado 
 compadre: ...ay compadre, ya estás waska pues...
 compadre: ¡No estoy waska!
 compadre: ¡Estás waska!
+compadre: ¡Sinkaña kachkanki, compadre!
+Y se ríen los tres, con más ganas todavía.
 Te sigues de largo, y a los diez pasos te frenas.
 Waska.
 Tú has dicho esa palabra toda tu vida. En Lima. En fiestas. "Estaba waska." Nunca en tu vida se te ocurrió preguntarte de dónde salía.
@@ -63,7 +65,7 @@ chica: ¡Wawa! ¡Wawa, camina!
 La chica no voltea. La niña no camina. La niña está viendo una hormiga.
 chica: ¡Wawa!
 Y en un pasaje lateral hay una profesora joven con un chaleco de institución y como ocho niños de cinco años haciendo una ronda. Ella aplaude con ritmo y ellos gritan las respuestas.
-profe: ¡Imallanchik!
+profe: ¡Imayllanchik!
 ninos: ¡ASÁ!
 profe: ¡Haykallanchik!
 ninos: ¡ASÁ!
@@ -311,12 +313,12 @@ Y te dice el total.
 @si c_linterna != 1 -> cuenta_frugele
 nati (curioso): ¿Y para qué quieres linterna? Todavía hay sol.
 ariel (nervioso): Por si acaso.
-nati (neutral): Mmm. Kanchay, le decimos. Bueno, kanchay es la luz. La linterna es la linterna. Ya nadie le dice de otra forma.
-ariel (curioso): Kanchay.
-nati (neutral): Eso. Luz, brillo, alumbrar. Todo junto.
+nati (neutral): Mmm. Akchi, le decimos a la luz. Y alumbrar es kanchay. La linterna sí es la linterna, ya nadie le dice de otra forma.
+ariel (curioso): Akchi. Kanchay.
+nati (neutral): Eso. La luz y lo que hace la luz.
 Y agrega, sin darle importancia:
 nati (neutral): A las siete ya está oscuro acá. Bien oscuro. No como en Lima que hay poste en cada esquina.
-@aprender kanchay
+@aprender akchi
 
 == cuenta_frugele
 @si c_frugele != 1 -> cuenta_mandarinas
@@ -327,9 +329,9 @@ nati (feliz): Mi nieto igual. Solo el rojo. Los otros se quedan ahí meses.
 Levanta el frasco y lo sacude.
 nati (neutral): Mira, puros verdes. Nadie quiere el verde.
 ariel (neutral): Nadie quiere el verde.
-nati (neutral): Puka nomás. Todos quieren puka.
+nati (neutral): Lliwmi puka miskita munanku. Todos quieren el rojo.
 Y tú, sin pensarlo, contestas:
-ariel (feliz): Arí. Puka munani.
+ariel (feliz): Arí. Pukatam munani.
 Doña Nati suelta una risa corta.
 nati (feliz): Ay. Ya aprendiste lo importante.
 
@@ -407,7 +409,7 @@ Sales del kiosko con la cara ardiendo y un anillo de caramelo en una bolsa trans
 @fondo calle_kiosko
 Abres las notas. La lista de la mañana se ve patética ahora. Empiezas a agregar todo lo del día, tratando de escribir los sonidos como te salen.
 Y al final, una sección nueva: escuchado en la calle. Para preguntar.
-@aprender yapita waska wawa kusa chuqllu
+@aprender yapita waska sinka wawa kusa chuqllu
 @celular
 Los repasas en voz baja, moviendo los labios, caminando de vuelta con la bolsa del kiosko.
 Allinllachu. Sulpayki. Imamanta. Haykataq. Pisillata.

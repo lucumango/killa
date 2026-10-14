@@ -100,8 +100,12 @@ ariel (curioso): ¿Cómo se dice?
 Levanta las cejas. No esperaba la pregunta.
 amaru (neutral): Imay urañataq? ¿Qué hora es ya?
 ariel (neutral): Imay urañataq.
-amaru (neutral): Y contestas... pichqa ura. Cinco horas. Aunque acá casi todos dicen "cinco y veinte" en castellano nomás.
-ariel (neutral): Pichqa ura.
+amaru (neutral): Y contestas... pichqa uram iskay chunka muruchaqnin. Cinco horas, veinte minutos. Aunque acá casi todos dicen "cinco y veinte" en castellano nomás.
+ariel (curioso): ¿Muruchaqnin?
+amaru (neutral): Los pedacitos de la hora. Los minutos. Y si quieres decir que es de tarde: kay pacha chisinkuypi.
+ariel (neutral): Pichqa uram iskay chunka muruchaqnin... kay pacha chisinkuypi.
+amaru (feliz): Muy bien. Nadie lo dice así de largo, pero muy bien.
+@aprender muruchaqnin
 amaru (neutral): Y ura viene del español. Hora. Se metió hace siglos y se quedó.
 ariel (feliz): Como diuspaqarasunki.
 Amaru voltea la cabeza hacia ti.
@@ -295,7 +299,7 @@ amaru (neutral): No es gringo.
 yuli (seria): Tiene ojos raros.
 amaru (neutral): Son normales.
 yuli (seria): Son raros.
-tio (neutral): Ama, Yuli.
+tio (neutral): Ama Yuli.
 Lo dice desde adentro, sin mucha convicción.
 La niña se acerca dos pasos más y sigue examinándote como quien evalúa un producto.
 yuli (curioso): ¿Sabes hablar?
@@ -337,7 +341,7 @@ ariel (burla): Te pusiste rojo.
 amaru (rojo): Me da roche mi tío. Es distinto.
 Caminan. La calle baja. Amaru se cambia el parlante de brazo.
 ariel (curioso): ¿Te ayudo?
-amaru (neutral): Manam. Está bien.
+amaru (neutral): Manaraqmi. Está bien.
 ariel (neutral): Se ve pesado.
 amaru (neutral): Es pesado. Pero está bien.
 ariel (neutral): Eso no tiene sentido.
@@ -381,7 +385,7 @@ Y ahí te das cuenta de que no hay postes. O sea, hay, pero cada tres cuadras, y
 @si c_linterna != 1 -> fuga_sin_linterna
 amaru (neutral): Prende la linterna.
 La prendes. El cono de luz blanca cae sobre el empedrado y de golpe todo lo demás desaparece.
-ariel (feliz): Kanchay.
+ariel (feliz): Akchi.
 Amaru voltea.
 amaru (sorpresa): ¿Quién te enseñó eso?
 ariel (feliz): Tu madrina.
@@ -390,12 +394,12 @@ amaru (neutral): ...Claro.
 
 == fuga_sin_linterna
 Amaru prende su linterna. El cono de luz blanca cae sobre el empedrado y de golpe todo lo demás desaparece.
-amaru (neutral): Kanchay.
+amaru (neutral): Akchi.
 Lo dice sin que le preguntes.
 ariel (curioso): ¿Qué?
 amaru (neutral): Luz. Ya que estás aprendiendo.
 Mueve el cono de un lado a otro.
-@aprender kanchay
+@aprender akchi
 
 == fuga_subida
 Caminan sin rumbo obvio, o con un rumbo que él conoce y no explica. Pasan una tienda cerrada, un muro con un afiche político de hace tres elecciones, un perro que los mira desde un techo.
@@ -453,7 +457,7 @@ ariel (sorpresa): Nunca la había visto.
 amaru (sorpresa): ¿Nunca?
 ariel (neutral): En Lima no se ve nada. Se ven como... cuatro estrellas. Cinco. Yo pensaba que las fotos eran exageradas.
 Te sientas en el respaldo de la banca, al lado suyo. Amaru mastica su pan.
-amaru (neutral): Acá le decimos Mayu. Río.
+amaru (neutral): Mi abuelita le decía Mayu. Río.
 Y tú te quedas mirando esa banda que cruza el cielo entero, y sí. Es un río. Es obviamente un río. No entiendes cómo alguien pudo mirar eso y pensar otra cosa.
 ariel (sorpresa): Ah.
 amaru (neutral): ¿Qué?
@@ -511,7 +515,7 @@ ariel (neutral): Hay gente que dice que si Júpiter no estuviera ahí, acá abaj
 Amaru no dice nada.
 ariel (neutral): O sea que estamos acá por un planeta que nunca vamos a tocar.
 Y se quedan los dos mirando ese punto quieto.
-amaru (neutral): Yaya.
+amaru (neutral): Atataw.
 Lo dice al fin, muy bajito.
 ariel (curioso): ¿Eso es bueno o malo?
 amaru (rojo): Es bueno. Es que no sé qué decir.
@@ -597,9 +601,12 @@ ariel (curioso): ¿Eso es cariñoso?
 amaru (feliz): Muy cariñoso.
 ariel (burla): Ya. Upacha tú también.
 amaru (seria): Ese estuvo mal usado.
-ariel (burla): No me importa.
-amaru (seria): Está mal usado, Ariel.
-ariel (burla): No me importa.
+ariel (curioso): ¿Por qué?
+amaru (seria): Porque no se dice "tú también". Se dice qam hina. Como tú.
+ariel (burla): Upacha, qam hina.
+amaru (neutral): ...
+amaru (feliz): Ese sí.
+@aprender qam_hina
 Y se quedan los dos ahí, con el río de estrellas encima, riéndose de nada en un parque feo, mientras muy abajo suena la fiesta de alguien más.
 En algún momento, ninguno de los dos decide, simplemente pasa, se bajan del respaldo y se echan en el cemento.
 Está helado. Se siente el frío subiendo por la espalda a través de la casaca, y ninguno se mueve, porque desde acá se ve el cielo entero sin tener que doblar el cuello.
@@ -617,12 +624,12 @@ amaru (neutral): A mí me pasa siempre acá.
 ariel (curioso): ¿En serio?
 amaru (neutral): Siempre. Por eso vengo. En mi cuarto no me pasa.
 Se quedan callados un rato largo. Se escucha el viento. Un perro ladra tres cuadras abajo y otro le contesta.
-amaru (neutral): Qullur.
+amaru (neutral): Quyllur.
 ariel (curioso): ¿Qué?
-amaru (neutral): Estrella. Qullur. Ya que estás aprendiendo.
+amaru (neutral): Estrella. Quyllur. Ya que estás aprendiendo.
 Levanta un poco la mano y la deja caer.
-ariel (neutral): Qullur.
-@aprender qullur
+ariel (neutral): Quyllur.
+@aprender quyllur
 amaru (neutral): Y killa es la luna.
 ariel (feliz): Eso ya lo sé.
 amaru (neutral): ¿Sí?
@@ -635,7 +642,7 @@ ariel (feliz): O sea que hoy tuvimos suerte.
 amaru (neutral): Hoy tuvimos suerte.
 Otro silencio.
 ariel (curioso): ¿Cómo se dice cielo?
-amaru (neutral): Hanaq pacha. Bueno, eso es más como "el mundo de arriba". Hanaq es arriba.
+amaru (neutral): Hanaq pacha. Bueno, eso es más como "el mundo de arriba". Hanaq es lo de arriba.
 ariel (curioso): ¿Y hay un mundo de abajo?
 amaru (neutral): Hay tres. Este de acá es kay pacha. Este mundo. El de arriba es hanaq pacha, y hay uno adentro, abajo, uku pacha.
 ariel (curioso): ¿Y qué hay en cada uno?
@@ -715,7 +722,7 @@ amaru (rojo): ...Sí.
 ariel (neutral): Y a ti te gusta mirar arriba.
 Amaru no contesta.
 Y ahí, aunque está oscuro y no le ves la cara, sabes exactamente qué cara tiene. La conoces desde la tarde. La que pone cuando alguien dice algo que él ya había pensado pero nunca había escuchado de vuelta.
-amaru (rojo): Yaya.
+amaru (rojo): Atataw.
 Lo dice al fin, muy bajito.
 ariel (curioso): ¿Eso es bueno o malo?
 amaru (rojo): Ya te dije que es bueno.
@@ -1081,7 +1088,7 @@ ariel (neutral): Si algún día decides que quieres mirar cosas y no arreglarlas
 amaru (neutral): ¿Por qué?
 ariel (feliz): Porque yo voy a estar en algún lado mirando cosas, y me vendría bien alguien que sepa por qué funcionan.
 Silencio. Y después, muy bajito, casi para él:
-amaru (rojo): Yaya.
+amaru (rojo): Atataw.
 ariel (curioso): ¿Bueno o malo?
 amaru (rojo): Bueno.
 ariel (neutral): Nunca sé, Amaru.

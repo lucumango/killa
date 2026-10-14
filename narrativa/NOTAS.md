@@ -19,16 +19,29 @@ Ya aplicados en Twine (`Killa.html`, `Killa.txt`) y en el juego (capítulos 1 y 
 - **El papá:** ahora en todas partes "llega a las siete" (*Vuelta*, *Amaru 1*, *Flor 1*).
 - Pasajes renombrados: *Allinllachu!*, *Pago haykataq*, *Msg allinllachu*, *Msg mikhuy*, *Msg punchaw*, *Qachakuchi*.
 
-## Para preguntarle a Abner
+## Segunda revisión de Abner
 
-Lo que no quedó claro en su respuesta, o no se le preguntó:
+Ya aplicada en Twine y en el juego:
 
-- **yaya.** Lo usan Amaru y Flor como "ay no, qué roche". Abner habló de *yaya* como sufijo de respeto (*apu yaya*). ¿Qué exclamación diría un chico de 18 por vergüenza? ¿*Atatay*?
-- **"puka kasq".** Puse *puka kachkan*, en paralelo con su *sumaq kachkan*. Confirmar.
-- **"muruchaqnin"**, de su respuesta de la hora (*pichqa uran iskay chunka muruchaqninñam*). ¿Cómo se dice "son las cinco y veinte"? Por ahora Amaru solo dice *pichqa ura*.
-- **millay**: ¿es tan fuerte como "asqueroso"?
-- **upacha mal usado** (*Echados*): Amaru dice que "Upacha tú también" está mal usado. Para el chiste no hace falta que sea verdad, pero mejor saber.
-- Palabras que no se le preguntaron: *qullur* (¿*quyllur*?), *isqun* (9), *achka* (muchos), *kusa*, *waska*, *chisi*, *tutamanta*, *hapiy*, *ama kuyuychu*, *qaway*, *haku*, *suyay*, *pisi*, *kaypi / chaypi*, *hanaq / uray*, *hanaqman / uraman*, *kanchay*, *turiy*, *imallanchik / haykallanchik* (la ronda de la calle).
+- **¡Atataw!** reemplaza a *yaya* como exclamación de roche o vergüenza (Flor la enseña en el capítulo 2 y Amaru la dice en su ruta). Otras que dio: *pinqakuy*, *pinqakuypaqmi* (qué vergüenza), *millakuypaqmi* (qué asco).
+- **La hora:** *pichqa uram iskay chunka muruchaqnin* (5:20; *muruchaqnin* son los minutos). De mañana *pacha achikyay*, de tarde *pacha chisinkuy*: "son las 5:20 de la tarde" es *… kay pacha chisinkuypi*. Amaru se lo enseña a Ariel.
+- **Upacha devuelto:** se devuelve con *qam hina* ("como tú"). Ahora Amaru corrige "upacha tú también" y Ariel lo dice bien: "Upacha, qam hina."
+- **millakuypaqmi** es lo horrible, asqueroso: Flor lo enseña como el nivel máximo.
+- **quyllur** (estrella), **imayllanchik** (la ronda existe), **Ama Yuli** (sin coma), **manaraqmi** ("todavía no", cuando Ariel ofrece ayuda).
+- **akchi** es luz; *kanchay* es alumbrar. Doña Nati enseña las dos y Ariel dice *akchi* al prender la linterna.
+- **kaypi / chaypi / wakpi** (acá / ahí / allá) y **hanay / uray**, **hanayman / urayman**. *Hanaq pacha* se queda.
+- **Arí, pukatam munani** y **Lliwmi puka miskita munanku** (todos quieren el rojo), en el kiosko.
+- **sinka** es borracho: *sinkaña kachkanki* (ya estás borracho). Los señores de la calle ahora también lo dicen; *waska* se queda como la palabra que Ariel conoce de Lima.
+- **Mayu:** Abner dice que la Vía Láctea es *tiqsi muyu*. Mientras se confirma, Amaru ya no dice "acá le decimos Mayu", sino "mi abuelita le decía Mayu". (El Mayu como Vía Láctea está documentado en Cusco, en los trabajos de Gary Urton.)
+
+Confirmó tal cual: *achka*, *kusa* (también *allin*), *chuqllu*, *suyay*, *pisi*, *tuta / tutamanta*, *chisi*, *hapiy*, *ama kuyuychu*, *qaway*, *haku*, *sunqullay*, los tres *pacha*, *isqun*, *puka kachkan*.
+
+## Para preguntarle a Abner (van en la lista de grabación)
+
+- **Mayu / tiqsi muyu**: ¿alguien en Ayacucho le dice Mayu a la Vía Láctea? En los diccionarios *tiqsimuyu* suele ser "el mundo".
+- **Wawa purin**: para la orden "¡camina!", ¿sería *¡Wawa, puriy!*? Por ahora la chica dice "¡Wawa, camina!", mezclando.
+- **Isqun imachakuna**: cómo se cuenta con los otros números, para que doña Nati cuente todo en quechua.
+- **Liwmi / lliwmi**.
 
 ## Por decidir
 

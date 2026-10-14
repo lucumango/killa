@@ -169,7 +169,7 @@ La "q" se te va por otro lado. La "ll" te sale a la limeña, blandita. Suena com
 La chica se lleva las dos manos a la boca. Y se ríe. Pero no es una risa de burla, es una risa que le sale de golpe, con los hombros y todo.
 flor (risa): ¡Ayyy! ¡Habla! ¡Chiqaqchu! ¿Sabes quechua?
 El chico, en cambio, ha hecho una mueca. Una mueca muy específica. Como si hubiera pisado algo blando. Se pasa la mano por la nuca y mira hacia otro lado.
-amaru (molesto): Yaya.
+amaru (molesto): Atataw.
 No queda claro si te lo dice a ti o a su hermana o al universo.
 flor (feliz): ¡No le hagas caso! Está así siempre. Yo soy Flor Miski María Quispe Ccori. Dime Miski, o Flor, cualquiera. Él es...
 amaru (seria): Amaru.
