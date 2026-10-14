@@ -129,8 +129,8 @@ const MAPAS = {
       { id: 'salida', x: 10, y: 14, ancho: 4, alto: 1, color: '#222', etiqueta: '↓ al kiosko', pisar: true, ir: 'kiosko_barrio' },
     ],
     personajes: [
-      { id: 'flor', x: 8, y: 7, color: '#ff8fb1', etiqueta: 'Flor', sprite: 'assets/img/sprites/flor.png', accion: 'casa_flor' },
-      { id: 'amaru', x: 18, y: 9, color: '#7fb3ff', etiqueta: 'Amaru', sprite: 'assets/img/sprites/amaru.png', accion: 'casa_amaru' },
+      { id: 'flor', x: 8, y: 7, color: '#ef9c86', etiqueta: 'Flor', sprite: 'assets/img/sprites/flor.png', accion: 'casa_flor' },
+      { id: 'amaru', x: 18, y: 9, color: '#636878', etiqueta: 'Amaru', sprite: 'assets/img/sprites/amaru.png', accion: 'casa_amaru' },
     ],
   },
 };

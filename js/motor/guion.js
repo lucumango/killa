@@ -26,26 +26,31 @@ const Motor = {
     Motor.lineas = []; Motor.etiquetas = {};
     const reHablante = /^([a-záéíóúñ_]+)\s*(?:\(([a-záéíóúñ_]+)\))?:\s?(.*)$/i;
     crudo.split('\n').forEach((raw, n) => {
-      const l = raw.trim();
+      let l = raw.trim();
       if (!l || l.startsWith('#')) return;
       const num = n + 1;
+      // [si condición] al inicio: la línea solo corre si se cumple.
+      let cond = null;
+      const mc = l.match(/^\[si\s+(.+?)\]\s+(.*)$/i);
+      if (mc) { cond = mc[1]; l = mc[2]; }
+      const empujar = (obj) => { if (cond) obj.cond = cond; Motor.lineas.push(obj); };
       if (l.startsWith('==')) { Motor.etiquetas[l.slice(2).trim()] = Motor.lineas.length; return; }
       if (l.startsWith('*')) {
         const m = l.slice(1).match(/^(.*?)\s*->\s*([\wáéíóúñ_]+)\s*(?:\[si\s+(.+)\])?$/i);
         if (!m) { console.warn(`Opción mal escrita (línea ${num}): ${l}`); return; }
-        Motor.lineas.push({ tipo: 'opcion', texto: m[1].trim(), ir: m[2], si: m[3] || null, num });
+        empujar({ tipo: 'opcion', texto: m[1].trim(), ir: m[2], si: m[3] || null, num });
         return;
       }
       if (l.startsWith('@')) {
         const [cmd, ...resto] = l.slice(1).split(/\s+/);
-        Motor.lineas.push({ tipo: 'cmd', cmd: cmd.toLowerCase(), args: resto, arg: resto.join(' '), num });
+        empujar({ tipo: 'cmd', cmd: cmd.toLowerCase(), args: resto, arg: resto.join(' '), num });
         return;
       }
       const m = l.match(reHablante);
       if (m && (PERSONAJES[m[1].toLowerCase()] || m[1].toLowerCase() === 'narrador')) {
-        Motor.lineas.push({ tipo: 'dialogo', quien: m[1].toLowerCase(), emocion: (m[2] || '').toLowerCase(), texto: m[3], num });
+        empujar({ tipo: 'dialogo', quien: m[1].toLowerCase(), emocion: (m[2] || '').toLowerCase(), texto: m[3], num });
       } else {
-        Motor.lineas.push({ tipo: 'dialogo', quien: 'narrador', emocion: '', texto: l, num });
+        empujar({ tipo: 'dialogo', quien: 'narrador', emocion: '', texto: l, num });
       }
     });
   },
@@ -82,15 +87,43 @@ const Motor = {
     if (nuevas && CONFIG.sfxPalabraNueva) Audio_.sfx(CONFIG.sfxPalabraNueva);
   },
 
-  evaluar(expr) { // "nombre == valor" / "nombre != valor" / "nombre" (existe y no vacío)
-    const m = expr.match(/^(\S+)\s*(==|!=|>=|<=|>|<)?\s*(.*)$/);
-    if (!m) return false;
-    const v = Motor.vars[m[1]];
-    if (!m[2]) return !!v;
-    const w = isNaN(m[3]) ? m[3] : Number(m[3]);
-    const x = isNaN(v) ? v : Number(v);
-    switch (m[2]) { case '==': return x == w; case '!=': return x != w; case '>': return x > w; case '<': return x < w; case '>=': return x >= w; case '<=': return x <= w; }
-    return false;
+  // Condiciones: "nombre == valor", "nombre != valor", "nombre > 3", "nombre" (existe y no vacío),
+  // "true", y combinaciones con && (y), || (o), ! (no) y paréntesis.
+  evaluar(expr) {
+    const toks = String(expr).match(/\(|\)|&&|\|\||==|!=|>=|<=|>|<|!|[^\s()!&|<>=]+/g) || [];
+    let i = 0;
+    const ver = () => toks[i], tomar = () => toks[i++];
+    const comparar = () => {
+      const nombre = tomar();
+      if (nombre === 'true') return true;
+      if (nombre === 'false') return false;
+      const v = Motor.vars[nombre];
+      const op = ver();
+      if (!['==', '!=', '>=', '<=', '>', '<'].includes(op)) return !!v;
+      tomar();
+      const crudo = tomar() ?? '';
+      const w = isNaN(crudo) ? crudo : Number(crudo);
+      const x = v === undefined || v === '' || isNaN(v) ? v : Number(v);
+      switch (op) { case '==': return x == w; case '!=': return x != w; case '>': return x > w; case '<': return x < w; case '>=': return x >= w; case '<=': return x <= w; }
+      return false;
+    };
+    const primario = () => {
+      if (ver() === '!') { tomar(); return !primario(); }
+      if (ver() === '(') { tomar(); const r = o(); if (ver() === ')') tomar(); return r; }
+      return comparar();
+    };
+    const y = () => { let r = primario(); while (ver() === '&&') { tomar(); const d = primario(); r = r && d; } return r; };
+    const o = () => { let r = y(); while (ver() === '||') { tomar(); const d = y(); r = r || d; } return r; };
+    try { return o(); } catch (e) { console.warn('Condición mal escrita:', expr); return false; }
+  },
+
+  // Reemplaza {variable} por su valor, y {variable:2} con dos decimales (para la plata).
+  interpolar(texto) {
+    return texto.replace(/\{([\wáéíóúñ]+)(?::(\d))?\}/g, (_, n, d) => {
+      const v = Motor.vars[n];
+      if (v === undefined) return '';
+      return d !== undefined && !isNaN(v) ? Number(v).toFixed(Number(d)) : String(v);
+    });
   },
 
   saltar(etiqueta) {
@@ -119,16 +152,19 @@ const Motor = {
   },
 
   async ejecutar(L) {
+    if (L.cond && L.tipo !== 'opcion' && !Motor.evaluar(L.cond)) { Motor.pc++; return; }
     if (L.tipo === 'dialogo') {
       Motor.pc++;
-      await Dialogo.decir(L.quien, L.emocion, L.texto);
+      await Dialogo.decir(L.quien, L.emocion, Motor.interpolar(L.texto));
       return;
     }
     if (L.tipo === 'opcion') { // bloque de opciones consecutivas
       const ops = [];
       let i = Motor.pc;
       while (i < Motor.lineas.length && Motor.lineas[i].tipo === 'opcion') { ops.push(Motor.lineas[i]); i++; }
-      const visibles = ops.filter((o) => !o.si || Motor.evaluar(o.si));
+      const visibles = ops.filter((o) => (!o.si || Motor.evaluar(o.si)) && (!o.cond || Motor.evaluar(o.cond)))
+        .map((o) => ({ ...o, texto: Motor.interpolar(o.texto) }));
+      if (!visibles.length) { console.warn('Menú sin opciones visibles (línea ' + L.num + ')'); Motor.pc = i; return; }
       const elegida = await Dialogo.elegir(visibles);
       Motor.pc = i;
       Motor.saltar(elegida.ir);
@@ -188,6 +224,7 @@ const Motor = {
     let destino = null;
     while (Motor.pc < Motor.lineas.length) {
       const L = Motor.lineas[Motor.pc];
+      if (L.cond && L.tipo !== 'opcion' && !Motor.evaluar(L.cond)) { Motor.pc++; continue; }
       if (L.tipo === 'cmd' && L.cmd === 'volver') { Motor.pc++; break; }
       if (L.tipo === 'cmd' && L.cmd === 'ir') { destino = L.arg; Motor.pc++; break; } // @ir dentro de un sub-guion termina la exploración
       await Motor.ejecutar(L);

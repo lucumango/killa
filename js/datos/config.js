@@ -44,7 +44,7 @@ A quien lea esto.`,
   audioAlPasarMouse: true, // en la lista de palabras: true = suena al pasar el mouse; false = solo al hacer clic
 
   // ---------- Arte ----------
-  estiloPixel: true,       // true = las imágenes se escalan con bordes duros (pixel art). false = suavizado (dibujo a línea)
+  estiloPixel: false,      // true = TODO se escala con bordes duros (juego 100 % pixel). false = bustos y fondos suavizados (dibujo); el mapa de exploración siempre va en pixel
 
   // ---------- Yape (la app de plata del celular) ----------
   yape: {

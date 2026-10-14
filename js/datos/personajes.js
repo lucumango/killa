@@ -10,13 +10,22 @@
 // =====================================================================
 const PERSONAJES = {
   ariel:    { nombre: 'Ariel',        color: '#f2d16b', tono: 320, onda: 'square' },
-  flor:     { nombre: 'Flor',         color: '#ff8fb1', tono: 520, onda: 'square' },
-  amaru:    { nombre: 'Amaru',        color: '#7fb3ff', tono: 190, onda: 'triangle', velocidad: 34 },
+  flor:     { nombre: 'Flor',         color: '#ffa58c', tono: 520, onda: 'square' },
+  amaru:    { nombre: 'Amaru',        color: '#aab3c6', tono: 190, onda: 'triangle', velocidad: 34 },
   mama:     { nombre: 'Mamá',         color: '#c9a2ff', tono: 380, onda: 'sine', lado: 'derecha' },
   puku:     { nombre: 'Puku',         color: '#5ad65a', tono: 900, onda: 'sawtooth', velocidad: 18 },
   hilario:  { nombre: 'Don Hilario',  color: '#b0a080', tono: 150, onda: 'triangle', velocidad: 40 },
   tia:      { nombre: 'Tía',          color: '#ffb86b', tono: 420, onda: 'sine' },
-  senora:   { nombre: 'Sra. Rufina',  color: '#ffd0a0', tono: 400, onda: 'sine' },
+  senora:   { nombre: 'Sra. María',   color: '#ffd0a0', tono: 400, onda: 'sine' },   // mamá de Flor y Amaru (la tía es Rufina)
+  nati:     { nombre: 'Doña Nati',    color: '#e8c39e', tono: 360, onda: 'sine', velocidad: 32 },   // la del kiosko, madrina de Amaru
+  tio:      { nombre: 'Tío',          color: '#c9b48a', tono: 170, onda: 'triangle' },
+  yuli:     { nombre: 'Yuli',         color: '#f7a8c4', tono: 640, onda: 'square', velocidad: 22 },
+  primo:    { nombre: 'Primo',        color: '#bbb',    tono: 260, onda: 'square', sinBusto: true },
+  feli:     { nombre: 'Don Feli',     color: '#bbb',    tono: 200, onda: 'triangle', sinBusto: true },
+  compadre: { nombre: 'Un señor',     color: '#bbb',    tono: 180, onda: 'triangle', sinBusto: true },
+  chica:    { nombre: 'Una chica',    color: '#bbb',    tono: 480, onda: 'square', sinBusto: true },
+  profe:    { nombre: 'La profesora', color: '#bbb',    tono: 450, onda: 'sine', sinBusto: true },
+  ninos:    { nombre: 'Los niños',    color: '#bbb',    tono: 700, onda: 'square', sinBusto: true, velocidad: 20 },
   conductor:{ nombre: 'Conductor',    color: '#999',    tono: 170, onda: 'triangle' },
   voz:      { nombre: '???',          color: '#ccc',    tono: 300, onda: 'square', sinBusto: true },
   celular:  { nombre: 'CEL',           color: '#8f8',    tono: 700, onda: 'sine', sinBusto: true, velocidad: 12 },

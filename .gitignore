@@ -5,3 +5,9 @@ escritorio/juego/
 escritorio/salida/
 *.zip
 .DS_Store
+
+# Manuales largos: viven fuera del repo (~/Downloads/uh/killa-docs/)
+/LEEME.md
+/LISTA-DE-ARTE.md
+/FICHAS-DE-PERSONAJE.md
+/GUIA-SONORA.html

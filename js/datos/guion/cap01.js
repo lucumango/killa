@@ -244,7 +244,7 @@ La "q" se te va por otro lado. La "ll" te sale a la limeña, blandita. Suena com
 La chica se lleva las dos manos a la boca. Y se ríe. Pero no es una risa de burla, es una risa que le sale de golpe, con los hombros y todo.
 flor (risa): ¡Ayyy! ¡Habla! ¡Chiqaqchu! ¿Sabes quechua?
 El chico, en cambio, ha hecho una mueca. Una mueca muy específica. Como si hubiera pisado algo blando. Se pasa la mano por la nuca y mira hacia otro lado.
-amaru (molesto): Yaya.
+amaru (molesto): Atataw.
 No queda claro si te lo dice a ti o a su hermana o al universo.
 flor (feliz): ¡No le hagas caso! Está así siempre. Yo soy Flor Miski María Quispe Ccori. Dime Miski, o Flor, cualquiera. Él es...
 amaru (seria): Amaru.
@@ -481,23 +481,23 @@ Le hace un gesto de "gracias, profesor" con la mano, y él la ignora heroicament
 Flor se pone frente a ti, separa un poco los pies, como quien va a hacer algo importante.
 flor (seria): Ya. De nuevo. Pero fuerte. Como si tuvieras derecho.
 Espera. Puku espera. Amaru mira a otro lado pero no se ha movido ni un centímetro.
-ariel (feliz): ¡Allilanchu...!
+ariel (feliz): ¡Allinlachu...!
 Te sale así, con la ele donde va la ele doble, pero fuerte, con la barbilla arriba y una sonrisa chiquita que no puedes controlar.
 Y ya que agarraste vuelo, te arriesgas con algo que viste en la lista y no repasaste bien:
-ariel (feliz): Allin... punchay.
-flor (sorpresa): ¡AY! ¡Dijo allin p'unchay!
+ariel (feliz): Allin... punchaw.
+flor (sorpresa): ¡AY! ¡Dijo allin punchaw!
 amaru (neutral): Está mal.
 flor (feliz): ¡Está bonito!
 amaru (feliz): Está las dos cosas.
 Esta vez sí se le escapa media sonrisa, un ratito, antes de esconderla.
-flor (seria): A ver. Primero: alli-lla-nchu, no allilanchu. Doble ele. Como en "llave", pero más larga. La lengua acá arriba.
-ariel (neutral): Allillanchu.
+flor (seria): A ver. Primero: allin-lla-chu, no allinlachu. Doble ele. Como en "llave", pero más larga. La lengua acá arriba.
+ariel (neutral): Allinllachu.
 flor (feliz): ¡Mejor! Segundo: lo dijiste fuerte. Eso ya. Eso estuvo perfecto. Sonabas como persona y no como fantasma.
-@aprender allillanchu allin_punchay
+@aprender allin_punchaw
 ariel (neutral): ¿Y lo otro?
-amaru (neutral): Allin p'unchay sí existe. Es "buen día". Se usa. Pero es más... de radio.
+amaru (neutral): Allin punchaw sí existe. Es "buen día". Se usa. Pero es más... de radio.
 ariel (curioso): ¿De radio?
-amaru (neutral): De radio. De locutor. De cartel. Nadie te saluda así en la calle. Acá dices allillanchu nomás. O rimaykullayki si es alguien mayor y quieres quedar bien.
+amaru (neutral): De radio. De locutor. De cartel. Nadie te saluda así en la calle. Acá dices allinllachu nomás. O rimaykullayki si es alguien mayor y quieres quedar bien.
 flor (feliz): O buenos días. Que también decimos, ah. Todo el rato. No es que andemos hablando quechua puro como en el museo.
 ariel (nervioso): Yo pensé que sí.
 Los dos se ríen. Flor abiertamente. Amaru por la nariz.
@@ -514,16 +514,16 @@ ariel (neutral): Sulpayki.
 flor (burla): Bien. Eso te salió bien de una. Sospechoso.
 ariel (neutral): Estaba en mi lista.
 flor (sorpresa): ¿Tienes lista? ¡A ver! ¡Muéstrame!
-amaru (neutral): Espera. También se dice añay. O diospagarasunki.
+amaru (neutral): Espera. También se dice añay. O diuspaqarasunki.
 Por primera vez da un paso hacia ustedes en vez de hacia atrás.
 flor (burla): Ese es larguísimo.
 amaru (neutral): Pero es el que dice la abuela.
-flor (feliz): Porque la abuela tiene ochenta años. Tú di sulpayki. Si le dices diospagarasunki a alguien de nuestra edad se van a voltear a mirarte.
+flor (feliz): Porque la abuela tiene ochenta años. Tú di sulpayki. Si le dices diuspaqarasunki a alguien de nuestra edad se van a voltear a mirarte.
 amaru (neutral): Es del español igual. "Dios se lo pague". Se metió y se quedó.
 flor (burla): Ay, ya empezó con la historia.
 amaru (seria): Es verdad.
 flor (feliz): Es verdad, pero ya empezó.
-@aprender anay diospagarasunki
+@aprender anay diuspaqarasunki
 Amaru se calla, pero no rojo esta vez. Más bien con la cara de quien tenía tres datos más preparados y se los está tragando.
 Y tú, que estabas escuchando todo eso, haces la prueba. Los miras a los dos y dices, con la mejor pronunciación que puedes reunir:
 ariel (feliz): Sulpayki.
@@ -599,9 +599,9 @@ amaru (molesto): No empieces con el cerro.
 flor (burla): Ya no digo nada.
 @aprender puka yuraq yana
 Pasan al lado de una señora sentada en la vereda con un balde de habas. Flor la saluda con un movimiento de cabeza y la señora contesta con otro.
-flor (feliz): Y para comprar. Lo más importante: hayk'ataq? ¿Cuánto es?
-ariel (neutral): Hayk'ataq.
-flor (feliz): O completo: hayk'ataq kanki? pero nadie dice completo. Hayk'ataq nomás, señalando.
+flor (feliz): Y para comprar. Lo más importante: haykataq? ¿Cuánto es?
+ariel (neutral): Haykataq.
+flor (feliz): O completo: haykataq kanki? pero nadie dice completo. Haykataq nomás, señalando.
 @aprender haykataq
 ariel (curioso): ¿Y "por favor"?
 Flor abre la boca. La cierra. Mira a Amaru.
@@ -616,8 +616,8 @@ flor (feliz): Ese ya lo tienes. Ese ya es tuyo.
 @aprender ama_hina
 Salen del pasaje. De pronto hay más gente, más ruido, un mototaxi que pasa demasiado cerca, olor a pan.
 @fondo calle_mercado
-flor (feliz): Ah, y dos cosas más. Si alguien te habla en quechua y no cachas nada: manam hamut'anichu. No entiendo.
-ariel (neutral): Manam... hamut'anichu.
+flor (feliz): Ah, y dos cosas más. Si alguien te habla en quechua y no cachas nada: manam hamutanichu. No entiendo.
+ariel (neutral): Manam... hamutanichu.
 flor (feliz): O más fácil: manam yachanichu. No sé.
 ariel (curioso): ¿Y si entiendo un poquito?
 flor (burla): As-asllata rimani. Hablo un poquito. Que en tu caso es mentira, pero mentira bonita.
@@ -759,8 +759,8 @@ flor (feliz): ¡Ah, igual que él! Bueno. Casi. Tú todavía tienes diecisiete y
 amaru (seria): Tengo dieciocho en noviembre.
 flor (burla): Eso es lo que estoy diciendo.
 Flor se voltea hacia ti otra vez y le cambia la cara, porque acaba de ver una oportunidad pedagógica.
-flor (feliz): Ah, espera. Espera. Esto lo tienes que saber. Hayk'a watayuqtaq kanki? ¿Cuántos años tienes?
-ariel (neutral): Hayk'a... watayuqtaq kanki.
+flor (feliz): Ah, espera. Espera. Esto lo tienes que saber. Hayka watayuqtaq kanki? ¿Cuántos años tienes?
+ariel (neutral): Hayka... watayuqtaq kanki.
 amaru (neutral): Wata es año. Ahí está la palabra. Watayuq es "el que tiene años".
 ariel (neutral): Ah, ya. ¿Y cómo contesto?
 flor (burla): Chunka pusaqniyuq watayuqmi kani.
@@ -840,12 +840,12 @@ amaru (neutral): Pero existen.
 flor (burla): Existen. Están en los libros.
 amaru (neutral): Y en el calendario del municipio.
 flor (burla): Nadie lee el calendario del municipio.
-amaru (neutral): Septiembre es Qhapaq Sitwa Killa. Octubre es Uma Raymi Killa. Noviembre es Aya Marq'ay Killa. Killa es mes. También es luna.
+amaru (neutral): Septiembre es Qhapaq Sitwa Killa. Octubre es Uma Raymi Killa. Noviembre es Aya Marqay Killa. Killa es mes. También es luna.
 ariel (curioso): ¿Mes y luna es la misma palabra?
 amaru (neutral): Sí.
 Te quedas con eso un segundo. Te parece bonito de una manera que no sabes explicar.
 ariel (curioso): ¿Y qué significan?
-amaru (neutral): Uma Raymi es como... fiesta de la cabeza, más o menos. Y Aya Marq'ay es cargar a los muertos. Por eso cae en noviembre. Día de los difuntos.
+amaru (neutral): Uma Raymi es como... fiesta de la cabeza, más o menos. Y Aya Marqay es cargar a los muertos. Por eso cae en noviembre. Día de los difuntos.
 flor (burla): Y en ese mes cumple años alguien.
 Amaru cierra los ojos.
 flor (burla): Nació en el mes de cargar a los muertos. Explica mucho.
@@ -889,19 +889,19 @@ amaru (seria): Significa que la gente es así.
 Flor levanta un dedo y baja la voz, conspirativa, aunque están en plena calle.
 flor (feliz): Ya. Uno chiquito nomás. Uno de prueba.
 Amaru mira al cielo.
-flor (feliz): Upa. Es como "tonto", "sonso". Pero suave. Se lo dices a tu hermano y no pasa nada.
+flor (feliz): Upacha. Es como "tontito". Upa solito es "sonso" nomás; con el -cha ya es cariñoso. Se lo dices a tu hermano y no pasa nada.
 amaru (seria): Sí pasa.
 flor (burla): No pasa nada.
 amaru (seria): Cuando me lo dices sí pasa.
 flor (burla): Porque tú eres sensible.
-ariel (neutral): Upa.
+ariel (neutral): Upacha.
 Los dos voltean. Flor se lleva la mano al pecho, herida de muerte.
 flor (sorpresa): ¿A mí?
 ariel (nervioso): A nadie. Estaba practicando.
 amaru (feliz): Estaba practicando. Aprende rápido.
 Esta vez la sonrisa le dura un poquito más.
 flor (risa): ¡Aprendió a insultar en cuatro segundos!
-@aprender upa
+@aprender upacha
 Y desde adentro de la ferretería, sin levantar la vista del televisor chiquito, el señor de la chompa de rombos dice, en voz alta:
 voz: ¿Van a entrar o van a hacer su reunión ahí en la puerta?
 ariel (sorpresa): ¡Ay...!
@@ -913,13 +913,13 @@ ariel (sorpresa): ¡Ay...!
 Casi sueltas la botella de agua. Los tres entran de golpe, uno detrás del otro, como si los hubieran arreado.
 Adentro huele a fierro y a aserrín. Hay un mostrador de madera larguísimo, estantes hasta el techo con cajas sin etiqueta, rollos de cable colgados, y un señor mayor con chompa de rombos sentado en un banquito, mirando un televisor chiquito puesto en una repisa alta.
 Flor te da un codazo suave.
-flor (seria): Ya. Allillanchu. Fuerte.
+flor (seria): Ya. Allinllachu. Fuerte.
 ariel (nervioso): Ah ya...
 Te compones. Enderezas la espalda. Y lo sueltas:
-ariel (feliz): Allilanchu.
+ariel (feliz): Allinlachu.
 El señor Hilario despega los ojos del televisor por primera vez.
 Te mira. Te mira despacio, de arriba a abajo, con la cara de alguien que ha visto pasar mucha gente por esa puerta y que acaba de encontrar una categoría nueva.
-hilario (neutral): Allillanmi. ¿Y tú de dónde saliste?
+hilario (neutral): Allinllam. ¿Y tú de dónde saliste?
 flor (feliz): Es de Lima.
 hilario (neutral): Ah. Ya.
 Y vuelve al televisor.
@@ -965,10 +965,10 @@ Amaru mira el piso, pero se le ve media sonrisa.
 amaru (neutral): Falta la brocha. Si vas a pintar necesitas brocha.
 flor (feliz): ¡Cierto! Don Hilario, una brocha chiquita también.
 Y ahí, mientras el señor va juntando las cosas sobre el mostrador, el rollo de rafia azul, el tarro de esmalte, una brocha de dos pulgadas, tú te acuerdas de la palabra más importante de todas.
-Hayk'ataq.
+Haykataq.
 ¿La usas?
 
-* Hayk'ataq? -> precio_quechua
+* Haykataq? -> precio_quechua
 * ¿Cuánto es? -> precio_espanol
 
 # ---------------------------------------------------------------
@@ -976,10 +976,10 @@ Hayk'ataq.
 @var uso_haykataq = 1
 Respiras. Miras las cosas apiladas sobre el mostrador: el rollo de rafia azul, el tarro de esmalte rojo, la brocha.
 Y lo dices.
-ariel (neutral): Hayk'ataq?
+ariel (neutral): Haykataq?
 El señor Hilario se detiene con la mano todavía sobre el tarro.
 Levanta la cabeza. Y esta vez sí te mira de verdad, no como antes. Como quien reconsidera algo.
-hilario (feliz): Hayk'ataq. Ya pues.
+hilario (feliz): Haykataq. Ya pues.
 Suelta una risita corta por la nariz. Saca una calculadora vieja de debajo del mostrador, de esas grandes con los números medio borrados, y empieza a apretar teclas con el índice, despacio.
 Flor te agarra del brazo y te lo aprieta, fuerte, sin voltear a mirarte. No dice nada. Solo te aprieta el brazo.
 Amaru, del otro lado, está mirando la calculadora con una concentración muy exagerada para ser real.

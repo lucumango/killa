@@ -8,7 +8,7 @@
 // los @si del guion y los `apareceCuando` / `requiere` de los mapas pueden usarla.
 // =====================================================================
 const Exploracion = {
-  lienzo: U.$('#lienzo'), ctx: U.$('#lienzo').getContext('2d'),
+  lienzo: U.$('#lienzo'), ctx: (() => { const c = U.$('#lienzo').getContext('2d'); c.imageSmoothingEnabled = false; return c; })(),
   mapa: null, nombre: null, jugador: null, teclas: {}, activo: false, resolver: null,
   sprites: {}, ocupado: false, fase: 0, andando: false, _t: 0, _cerca: null,
 

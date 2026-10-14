@@ -64,6 +64,7 @@ const Entrada = {
     if (['ArrowUp', 'w', 'W'].includes(e.key)) indice = (indice - 1 + elems.length) % elems.length;
     if (['ArrowDown', 's', 'S'].includes(e.key)) indice = (indice + 1) % elems.length;
     elems.forEach((li, i) => li.classList.toggle('seleccionado', i === indice));
+    if (elems[indice] && elems[indice].scrollIntoView) elems[indice].scrollIntoView({ block: 'nearest' });
     return indice;
   },
 };
