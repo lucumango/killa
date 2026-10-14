@@ -143,12 +143,12 @@ senora (molesto): ¡AY, ESE CHICO!
 Y ahí se desata. Porque no es solo Flor. Es la casa entera. La tía asoma desde la cocina con una olla en la mano, la mamá aparece secándose las manos, alguien más grita algo desde el segundo piso, y todos hablan al mismo tiempo.
 A la mitad de la queja se pasan al quechua y desde ahí ya no entiendes nada salvo la palabra "maní" apareciendo cada tanto como un pescadito saltando en el río. Y las risas.
 Amaru está hundido en su silla con los brazos cruzados, mirando el techo, con la cara de alguien que ha vivido este momento exacto ochocientas veces.
-amaru (triste): Yaya.
-ariel (curioso): ¿Qué es yaya?
-flor (feliz): Es como "ay, no". Como cuando algo te da roche o flojera. Yaya.
-ariel (neutral): Yaya.
+amaru (triste): Atataw.
+ariel (curioso): ¿Qué es atataw?
+flor (feliz): Es como "ay, no". Como cuando algo te da roche o vergüenza. Atataw.
+ariel (neutral): Atataw.
 flor (feliz): ¡Uy! Ese te va a servir mucho.
-@aprender yaya
+@aprender atataw
 La mamá se acerca a la mesa y le pone la mano en la cabeza a Amaru, despeinándolo un poco, con toda la ternura del mundo y ninguna intención de defenderlo.
 senora (feliz): Desde chiquito. Desde chiquito con eso. Le sacaba el maní de la sopa. Uno por uno.
 amaru (seria): No era sopa.
@@ -217,10 +217,10 @@ flor (molesto): Increíble. Increíble lo que estoy viendo.
 amaru (neutral): Está resolviendo un problema.
 flor (molesto): ¡Está siendo tu cómplice!
 amaru (neutral): Es lo mismo.
-amaru (triste): Yaya.
-ariel (curioso): ¿Qué es yaya?
-flor (feliz): Es como "ay, no". Como cuando algo te da roche o flojera. Yaya. Ese te va a servir mucho.
-@aprender yaya
+amaru (triste): Atataw.
+ariel (curioso): ¿Qué es atataw?
+flor (feliz): Es como "ay, no". Como cuando algo te da roche o vergüenza. Atataw. Ese te va a servir mucho.
+@aprender atataw
 @ir tia_conversa
 
 # ===============================================================

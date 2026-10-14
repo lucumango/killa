@@ -46,10 +46,10 @@ flor (feliz): Mira esto. ¿No es precioso?
 ariel (feliz): Sí.
 flor (feliz): Sumaq. Bonito, lindo, precioso. Todo eso junto.
 ariel (neutral): Sumaq.
-flor (seria): Y feo es millay. Pero millay es más fuerte, es como asqueroso, horrible. No le digas millay a algo que solo está feíto. Eso es cruel.
+flor (seria): Y feo es millay. Pero ojo, que millay ya es fuerte, ya es asco. Y si es horrible, asqueroso: millakuypaqmi. No le digas eso a algo que solo está feíto. Eso es cruel.
 Arruga la nariz.
-ariel (neutral): Millay es nivel máximo.
-flor (seria): Millay es nivel máximo.
+ariel (neutral): Millakuypaqmi es nivel máximo.
+flor (seria): Millakuypaqmi es nivel máximo.
 @aprender sumaq millay
 Flor pone el mate sobre tres superficies distintas y te mira.
 flor (feliz): Ya. Tú tienes ojos frescos. ¿Cuál? Rápido, se me va la luz.
@@ -69,15 +69,15 @@ flor (feliz): Ya. Tú tienes ojos frescos. ¿Cuál? Rápido, se me va la luz.
 
 == kaypi
 Señalas. Y ahí ella te enseña, sin darse cuenta de que está enseñando.
-flor (feliz): Kaypi. Acá. Y chaypi es allá.
+flor (feliz): Kaypi. Acá. Chaypi es ahí, y wakpi es allá.
 Pone el mate donde señalaste. Lo mueve.
-flor (feliz): Kaypi, chaypi. Es lo que más vas a usar en tu vida, te juro.
-ariel (neutral): Kaypi. Chaypi.
-flor (feliz): Y si es más arriba: hanaq. Más abajo: uray. Hanaqman, uraman. Para arriba, para abajo.
+flor (feliz): Kaypi, chaypi, wakpi. Es lo que más vas a usar en tu vida, te juro.
+ariel (neutral): Kaypi. Chaypi. Wakpi.
+flor (feliz): Y si es más arriba: hanay. Más abajo: uray. Hanayman, urayman. Para arriba, para abajo.
 Levanta y baja la mano.
 ariel (burla): Suena a instrucciones de mudanza.
 flor (risa): ¡ES QUE ES ESO! La gente cree que el quechua es todo poético. Y sí, hay cosas poéticas. Pero también es "sube eso", "bájalo", "ponlo allá".
-@aprender kaypi_chaypi hanaq_uray
+@aprender kaypi_chaypi hanay_uray
 Grabas tú. Ella sostiene el mate y lo va girando en la luz. Y en un momento, entre toma y toma, dices:
 ariel (feliz): Está bonito.
 Flor baja el mate.
