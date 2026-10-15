@@ -6,9 +6,9 @@
 :root {
   --ancho: 960px;
   --alto: 600px;
-  --fuente: "Courier New", Courier, monospace; /* cámbiala por tu fuente pixel */
-  --color-fondo: #0b0b10;
-  --color-caja: #000;
+  --fuente: "Nunito", "Trebuchet MS", system-ui, sans-serif; /* los .woff2 están en assets/fuentes/ */
+  --color-fondo: #222a40;
+  --color-caja: #222a40;
   --color-borde: #fff;
   --color-texto: #fff;
   --color-pista: #999;
@@ -16,9 +16,8 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var(--color-texto); font-family: var(--fuente); overflow: hidden; }
 #marco { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
-#juego { position: relative; width: var(--ancho); height: var(--alto); overflow: hidden; background: #000; transform-origin: center center; }
-#juego.pixel { image-rendering: pixelated; } /* se activa con CONFIG.estiloPixel */
-#juego canvas { image-rendering: pixelated; } /* el mapa de exploración (sprites en pixel) siempre con bordes duros */
+#juego { position: relative; width: var(--ancho); height: var(--alto); overflow: hidden; background: var(--color-fondo); transform-origin: center center; }
+#juego.pixel, #juego.pixel canvas { image-rendering: pixelated; } /* se activa con CONFIG.estiloPixel */
 .pantalla { position: absolute; inset: 0; }
 [hidden] { display: none !important; }
 .pista { color: var(--color-pista); font-size: 14px; text-align: center; }
@@ -45,18 +44,23 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 
 /* ---------- Escena ---------- */
 .capa { position: absolute; inset: 0; background-size: cover; background-position: center; display: flex; align-items: flex-start; justify-content: flex-end; padding: 10px; font-size: 14px; color: rgba(255,255,255,.5); }
+#animacion { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; image-rendering: auto; } /* capa de @animacion */
+#juego.pixel #animacion.pixel { image-rendering: pixelated; }
 #cuadro { z-index: 2; }
-.tarjeta { position: absolute; inset: 0; z-index: 5; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 34px; text-align: center; white-space: pre-line; line-height: 1.6; }
+.tarjeta { position: absolute; inset: 0; z-index: 5; background: var(--color-fondo); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 34px; text-align: center; white-space: pre-line; line-height: 1.6; }
 
-/* Busto del personaje: aparece a la izquierda, sobre la caja de diálogo. */
-.busto { position: absolute; left: 30px; bottom: 170px; width: 220px; height: 260px; z-index: 3;
+/* Busto del personaje: por defecto a la izquierda, sobre la caja de diálogo.
+   En personajes.js puedes poner `lado: 'derecha'` para que salga al otro lado. */
+.busto { position: absolute; left: 30px; right: auto; bottom: 180px; width: 220px; height: 260px; z-index: 3;
   background-size: contain; background-repeat: no-repeat; background-position: bottom center;
   display: flex; align-items: flex-end; justify-content: center; }
+.busto.derecha { left: auto; right: 30px; }
 .busto-etiqueta { font-size: 13px; color: rgba(255,255,255,.7); padding: 4px; }
 
 /* Caja de diálogo estilo Undertale */
-.caja { position: absolute; left: 30px; right: 30px; bottom: 20px; height: 150px; z-index: 4;
-  background: var(--color-caja); border: 4px solid var(--color-borde); padding: 16px 24px; font-size: 22px; line-height: 1.4; }
+.caja { position: absolute; left: 150px; right: 150px; bottom: 24px; height: 150px; z-index: 4;
+  background: var(--color-caja); border: 2px solid var(--color-borde); box-shadow: 0 0 0 2px var(--color-fondo); /* aro oscuro para que el borde blanco se vea sobre fondos claros */
+  padding: 16px 22px; font-size: 19px; line-height: 1.45; }
 .caja .nombre { position: absolute; top: -18px; left: 16px; background: var(--color-caja); padding: 0 10px; font-size: 16px; font-weight: bold; }
 .caja .texto { white-space: pre-wrap; }
 .caja .flecha { position: absolute; right: 18px; bottom: 8px; font-size: 16px; animation: parpadeo 0.8s infinite; }
@@ -64,13 +68,13 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 .caja.narracion .nombre { display: none; }
 
 /* Opciones */
-.opciones { position: absolute; left: 270px; right: 30px; bottom: 190px; z-index: 6; list-style: none; margin: 0; padding: 12px; background: rgba(0,0,0,.9); border: 4px solid var(--color-borde); font-size: 20px; max-height: 380px; overflow-y: auto; }
+.opciones { position: absolute; left: 300px; right: 150px; bottom: 196px; z-index: 6; list-style: none; margin: 0; padding: 12px; background: rgba(34,42,64,.95); border: 2px solid var(--color-borde); box-shadow: 0 0 0 2px var(--color-fondo); font-size: 18px; max-height: 380px; overflow-y: auto; }
 .opciones li { padding: 6px 12px; cursor: pointer; opacity: .6; }
 .opciones li.seleccionado { opacity: 1; }
 .opciones li.seleccionado::before { content: "❤ "; color: #e33; }
 
 /* ---------- Exploración ---------- */
-#lienzo { display: block; width: 100%; height: 100%; background: #111; }
+#lienzo { display: block; width: 100%; height: 100%; background: #111; image-rendering: auto; } /* los sprites son dibujo a línea: mejor suavizados */
 .explorar-nombre { position: absolute; top: 12px; left: 16px; font-size: 14px; color: rgba(255,255,255,.7); }
 .explorar-pista { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,.8); border: 2px solid #fff; padding: 4px 12px; font-size: 15px; }
 
@@ -83,6 +87,19 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 .celular-cerrar { padding: 0 14px; cursor: pointer; color: #aaa; }
 .celular-pie { text-align: center; color: #555; font-size: 11px; padding: 4px; background: #222; }
 .celular-panel { flex: 1; overflow: auto; padding: 10px; font-size: 15px; }
+/* App de Yape (pestaña del celular) */
+.yape-tarjeta { background: linear-gradient(140deg, #742284, #4b1a6f); border-radius: 12px; padding: 16px 18px; margin-bottom: 14px; }
+.yape-titular { font-size: 13px; opacity: .85; }
+.yape-saldo-rotulo { font-size: 12px; opacity: .7; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.yape-saldo { font-size: 30px; font-weight: 700; line-height: 1.2; }
+.yape-rotulo { color: #c9a2ff; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin: 4px 0 6px; }
+.yape-mov { display: flex; justify-content: space-between; gap: 10px; padding: 8px 2px; border-bottom: 1px solid #333a52; }
+.yape-mov-txt small { display: block; color: #888; font-size: 12px; }
+.yape-mov-monto { white-space: nowrap; font-weight: 700; }
+.yape-mov-monto.entra { color: #6ed67a; }
+.yape-mov-monto.sale { color: #ff8fa0; }
+.yape-vacio { color: #777; }
+
 .palabra-categoria { color: #8fd; margin: 12px 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
 .palabra { display: flex; justify-content: space-between; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; }
 .palabra:hover, .palabra.activa { background: #2a2a35; }
@@ -90,6 +107,7 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 .palabra .es { color: #bbb; text-align: right; }
 .palabra .nota { display: block; color: #fc8; font-size: 12px; }
 .palabra .sin-audio { color: #555; font-size: 12px; }
+.palabra .marca-audio { color: #6ed6c0; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
 .chat-lista .contacto { padding: 12px 10px; border-bottom: 1px solid #222; cursor: pointer; display: flex; justify-content: space-between; }
 .chat-lista .contacto:hover { background: #1c1c26; }
 .chat-lista .contacto .sinleer { background: #2b2; color: #000; border-radius: 10px; padding: 0 7px; font-size: 12px; }
@@ -109,7 +127,7 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 
 /* ---------- Avisos (toasts) ---------- */
 #avisos { position: absolute; top: 14px; right: 14px; z-index: 30; display: flex; flex-direction: column; gap: 6px; }
-.aviso { background: #000; border: 2px solid #fff; padding: 6px 12px; font-size: 14px; animation: aparecer .3s; }
+.aviso { background: var(--color-caja); border: 2px solid #fff; padding: 6px 12px; font-size: 14px; animation: aparecer .3s; }
 @keyframes aparecer { from { transform: translateX(40px); opacity: 0; } }
 
 /* ---------- Bloques de color (placeholders de arte) ---------- */

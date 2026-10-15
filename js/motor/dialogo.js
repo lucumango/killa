@@ -16,6 +16,7 @@ const Dialogo = {
     else { e.fondo.style.backgroundImage = 'none'; e.fondo.style.backgroundColor = '#000'; e.fondo.textContent = ''; }
     if (est.cuadro) { e.cuadro.hidden = false; Dialogo.ocultarBusto(); await U.pintar(e.cuadro, `assets/img/cuadros/${est.cuadro}.png`, 'cuadro: ' + est.cuadro); }
     else e.cuadro.hidden = true;
+    if (est.animacion) Animacion.iniciar(est.animacion); else Animacion.detener();
     if (est.musica) Audio_.reproducirMusica(est.musica);
   },
 
@@ -26,6 +27,7 @@ const Dialogo = {
     let ruta = (p.bustos && p.bustos[em]) || `assets/img/bustos/${id}_${em}.png`;
     const b = Dialogo.el.busto;
     b.hidden = false;
+    b.classList.toggle('derecha', p.lado === 'derecha' || p.lado === 'der'); // ver `lado` en personajes.js
     let ok = await U.imagenExiste(ruta);
     if (!ok && em !== 'neutral') { // si falta esa emoción, usa el busto neutral
       const neutral = (p.bustos && p.bustos.neutral) || `assets/img/bustos/${id}_neutral.png`;

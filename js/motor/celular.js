@@ -1,10 +1,10 @@
 // =====================================================================
-// CELULAR (overlay): pestaña Palabras y pestaña Chats.
+// CELULAR (overlay): pestañas Palabras, Chats y Yape (ver yape.js).
 // Se abre con la tecla configurada (CONFIG.teclas.celular) o desde el guion (@chat).
 // =====================================================================
 const Celular = {
   abierto: false, tab: 'palabras', chatActual: null, _resolverCierre: null, modo: 'libre', bloqueado: false,
-  el: { raiz: U.$('#celular'), palabras: U.$('#celular-palabras'), chats: U.$('#celular-chats'), lista: U.$('#chat-lista'), ventana: U.$('#chat-ventana'), mensajes: U.$('#chat-mensajes'), input: U.$('#chat-input'), form: U.$('#chat-form'), nombre: U.$('#chat-nombre') },
+  el: { raiz: U.$('#celular'), palabras: U.$('#celular-palabras'), chats: U.$('#celular-chats'), yape: U.$('#celular-yape'), lista: U.$('#chat-lista'), ventana: U.$('#chat-ventana'), mensajes: U.$('#chat-mensajes'), input: U.$('#chat-input'), form: U.$('#chat-form'), nombre: U.$('#chat-nombre') },
 
   iniciar() {
     U.$$('.celular-barra button').forEach((b) => b.onclick = () => Celular.irTab(b.dataset.tab));
@@ -37,7 +37,10 @@ const Celular = {
     Celular.tab = tab;
     U.$$('.celular-barra button').forEach((b) => b.classList.toggle('activo', b.dataset.tab === tab));
     Celular.el.palabras.hidden = tab !== 'palabras'; Celular.el.chats.hidden = tab !== 'chats';
-    if (tab === 'palabras') Celular.pintarPalabras(); else Celular.mostrarLista();
+    Celular.el.yape.hidden = tab !== 'yape';
+    if (tab === 'palabras') Celular.pintarPalabras();
+    else if (tab === 'yape') Yape.pintar();
+    else Celular.mostrarLista();
   },
 
   // ---- Palabras aprendidas ----
@@ -50,7 +53,7 @@ const Celular = {
       const h = document.createElement('div'); h.className = 'palabra-categoria'; h.textContent = cat; cont.appendChild(h);
       for (const p of aprendidas.filter((x) => (x.categoria || 'otros') === cat)) {
         const d = document.createElement('div'); d.className = 'palabra';
-        d.innerHTML = `<span><span class="qu">${p.qu}</span>${p.nota ? `<span class="nota">${p.nota}</span>` : ''}</span><span class="es">${p.es}${p.audio ? ' 🔊' : ' <span class="sin-audio">(sin audio)</span>'}</span>`;
+        d.innerHTML = `<span><span class="qu">${p.qu}</span>${p.nota ? `<span class="nota">${p.nota}</span>` : ''}</span><span class="es">${p.es}${p.audio ? ' <span class="marca-audio">audio</span>' : ' <span class="sin-audio">(sin audio)</span>'}</span>`;
         const tocar = () => { U.$$('.palabra.activa').forEach((x) => x.classList.remove('activa')); d.classList.add('activa'); if (p.audio) Audio_.palabra(p.audio); };
         d.onclick = tocar;
         if (CONFIG.audioAlPasarMouse) d.onmouseenter = tocar;

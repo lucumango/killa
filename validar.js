@@ -2,11 +2,11 @@
 const fs = require('fs'), vm = require('vm');
 const ctx = { window: {}, console };
 vm.createContext(ctx);
-for (const f of ['js/datos/config.js', 'js/datos/personajes.js', 'js/datos/palabras.js', 'js/datos/mapas.js']) vm.runInContext(fs.readFileSync(f, 'utf8'), ctx);
+for (const f of ['js/datos/config.js', 'js/datos/personajes.js', 'js/datos/palabras.js', 'js/datos/mapas.js', 'js/datos/animaciones.js']) vm.runInContext(fs.readFileSync(f, 'utf8'), ctx);
 ctx.GUION = { archivos: {}, registrar(n, t) { ctx.GUION.archivos[n] = t; } };
 for (const f of fs.readdirSync('js/datos/guion')) vm.runInContext(fs.readFileSync('js/datos/guion/' + f, 'utf8'), ctx);
-const { PERSONAJES, PALABRAS, MAPAS, CONTACTOS } = vm.runInContext('({PERSONAJES, PALABRAS, MAPAS, CONTACTOS})', ctx); const GUION = ctx.GUION;
-const cmds = new Set(['fondo','cuadro','musica','sfx','busto','limpiar','esperar','tarjeta','aprender','var','si','ir','llamar','volver','capitulo','guardar','explorar','mensaje','chat','celular','fin']);
+const { PERSONAJES, PALABRAS, MAPAS, CONTACTOS, ANIMACIONES } = vm.runInContext('({PERSONAJES, PALABRAS, MAPAS, CONTACTOS, ANIMACIONES})', ctx); const GUION = ctx.GUION;
+const cmds = new Set(['fondo','cuadro','musica','animacion','sfx','busto','limpiar','esperar','tarjeta','aprender','var','si','ir','llamar','volver','capitulo','guardar','explorar','mensaje','chat','celular','yape','fin']);
 let errores = 0;
 const err = (m) => { errores++; console.log('✗', m); };
 const todasEtiquetas = {};
@@ -34,6 +34,8 @@ for (const [cap, texto] of Object.entries(GUION.archivos)) {
       if (c === 'si') { const m = l.match(/^@si\s+(.*?)\s*->\s*(\S+)$/); if (m) { refs.push([m[2], n]); revisarCondicion(m[1], n); } else err(`${n} @si mal escrito`); }
       if (c === 'aprender') a.forEach((id) => { if (!PALABRAS.find((p) => p.id === id)) err(`${n} palabra no definida: ${id}`); });
       if (c === 'explorar' && !MAPAS[a[0]]) err(`${n} mapa no definido: ${a[0]}`);
+      if (c === 'animacion' && !['off','ninguna'].includes(a[0]) && !ANIMACIONES[a[0]]) err(`${n} animación no definida: ${a[0]}`);
+      if (c === 'yape' && !/^(saldo\s+)?[+-]?\d+([.,]\d+)?(\s|$)/i.test(a.join(' '))) err(`${n} @yape mal escrito: ${a.join(' ')}`);
       if (c === 'capitulo' && !GUION.archivos[a[0]]) err(`${n} capítulo no definido: ${a[0]}`);
       if (c === 'mensaje') { const m = a.join(' ').split('|')[0].trim(); if (!CONTACTOS[m]) err(`${n} contacto no definido: ${m}`); }
       if (c === 'chat' && a[0] && !CONTACTOS[a[0]]) err(`${n} contacto no definido: ${a[0]}`);
