@@ -65,6 +65,8 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 .caja { position: absolute; left: 150px; right: 150px; bottom: 24px; height: 150px; z-index: 4;
   background: var(--color-caja); border: 2px solid var(--color-borde); box-shadow: 0 0 0 2px var(--color-fondo); /* aro oscuro para que el borde blanco se vea sobre fondos claros */
   padding: 16px 22px; font-size: 19px; line-height: 1.45; }
+/* con CONFIG.imagenCaja: el dibujo reemplaza al rectángulo (sin borde, sin relleno) */
+.caja.con-imagen { background-color: transparent; border: 0; box-shadow: none; background-size: 100% 100%; background-repeat: no-repeat; }
 .caja .nombre { position: absolute; top: -18px; left: 16px; background: var(--color-caja); padding: 0 10px; font-size: 16px; font-weight: bold; }
 .caja .texto { white-space: pre-wrap; }
 .caja .flecha { position: absolute; right: 18px; bottom: 8px; font-size: 16px; animation: parpadeo 0.8s infinite; }

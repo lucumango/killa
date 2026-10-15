@@ -11,3 +11,6 @@ escritorio/salida/
 /LISTA-DE-ARTE.md
 /FICHAS-DE-PERSONAJE.md
 /GUIA-SONORA.html
+
+# Lo genera "node pruebas/mapa-del-guion.js"
+/mapa-del-guion.html
