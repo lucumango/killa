@@ -45,7 +45,8 @@ Confirmó tal cual: *achka*, *kusa* (también *allin*), *chuqllu*, *suyay*, *pis
 
 ## Por decidir
 
-- **"Hijita".** La mamá se lo dice a Ariel en *Vuelta a casa* (ruta de Amaru), en *La llamada* y en *El patio* (ruta de Flor). ¿Es intencional o va "hijito"? En el juego quedó como en Twine.
+- **Lenguaje neutro (resuelto en el juego).** Ariel no tiene marca de género: la mamá le dice "wawa", la tía grita "¡ES LA WAWA DE ROSITA!", Ariel dice "tengo miedo" en vez de "estoy asustado", "quiero estudiar astronomía", "allá voy a ser *from Peru*". Por eso doña Nati ya no le dice *turiy* (que es de mujer a hombre); solo "Imamanta". **El Twine todavía tiene el texto original con género.**
+
 - **El mes del examen.** En *Confesión*, Flor dice que fue a Lima "en agosto" para el examen. Confirmar (en la escena 2 dice que empieza clases en marzo).
 - **"No le veo cara de gringo".** En *Confesión*, Flor cita a Amaru diciéndolo en quechua. Revisar que no choque con la Ruta C de la escena 1.
 - **Los parlantes.** En la ruta de Flor siguen sin arreglar ("el otro cable"); en la de Amaru quedan arreglados con el parlante del tío. Son dos cánones según la ruta.
