@@ -1,0 +1,13 @@
+[
+ {"name":"flor-ventana-ringpop-luego-amaru", "setup":"(set: $compras to (a: \"pilas\", \"ringpop\", \"linterna\", \"frugele\"))(set: $confesoBeca to true)", "start":"Choice", "dump":true, "max":90,
+  "prefs":["FLOR","ventana","Continuar","Continuar","Haku","Continuar","Sí.","Continuar","Continuar","Tengo algo","Contestar","Haku","Continuar","Continuar","Continuar","Continuar","Continuar","Volver a la tarde",
+           "AMARU","Continuar","Continuar","Continuar","Continuar","Continuar","Continuar","su nombre","Seguir","una foto","Seguir","Vienes","Continuar","...","Continuar","Haku","Continuar","Continuar","Continuar","Continuar"]},
+ {"name":"flor-mesa-video", "setup":"", "start":"Choice", "dump":true,
+  "prefs":["FLOR","mesa","Continuar","Continuar","Haku","Continuar","Sí.","Continuar","Continuar","video","Contestar","Haku","Continuar","Continuar","Continuar","Continuar","Continuar"]},
+ {"name":"flor-patio-contestar", "setup":"", "start":"Choice",
+  "prefs":["FLOR","patio","Continuar","Continuar","Haku","Continuar","Sí.","Continuar","Continuar","Contestar el","Haku","Continuar"]},
+ {"name":"flor-asustado", "setup":"", "start":"Choice", "prefs":["FLOR","patio","Continuar","Continuar","Haku","Continuar","Sí.","Continuar","Continuar","asustado","Contestar","Haku"]},
+ {"name":"flor-silencio", "setup":"", "start":"Choice", "prefs":["FLOR","patio","Continuar","Continuar","Haku","Continuar","Sí.","Continuar","Continuar","No decir","Contestar","Haku"]},
+ {"name":"flor-volver", "setup":"", "start":"Choice", "prefs":["FLOR","patio","Continuar","Continuar","Haku","Continuar","Sí.","Continuar","Continuar","volver","Contestar","Haku"]},
+ {"name":"flor-miski", "setup":"", "start":"Choice", "prefs":["FLOR","patio","Continuar","Continuar","Haku","Continuar","Sí.","Continuar","Continuar","Miski","Contestar","Haku"]}
+]
