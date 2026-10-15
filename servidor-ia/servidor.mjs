@@ -3,47 +3,113 @@
 // El juego (navegador) NO puede guardar la clave del API sin que se vea.
 // Este servidor la guarda y hace la llamada. Correr con:
 //   cd servidor-ia && npm install && cp .env.example .env && npm start
+//
+// Funciona con Google (Gemini) o con Anthropic (Claude): pon UNA de las dos
+// claves en .env y el servidor elige sola. El prompt sale del juego
+// (js/datos/ia.js), acá no se escribe nada del personaje.
 // =====================================================================
 import http from 'node:http';
 import fs from 'node:fs';
-import Anthropic from '@anthropic-ai/sdk';
-import { z } from 'zod';
-import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 
 // Carga .env sin dependencias
 if (fs.existsSync('.env')) for (const l of fs.readFileSync('.env', 'utf8').split('\n')) { const m = l.match(/^\s*([A-Z_]+)\s*=\s*(.*)\s*$/); if (m && !process.env[m[1]]) process.env[m[1]] = m[2]; }
 
 const PUERTO = Number(process.env.PUERTO || 8787);
-const ORIGENES = (process.env.ORIGENES || 'http://localhost:8000').split(',').map((s) => s.trim());
-const MODELO = process.env.MODELO || 'claude-opus-5';
-const client = new Anthropic(); // lee ANTHROPIC_API_KEY
+const ORIGENES = (process.env.ORIGENES || 'http://localhost:8765').split(',').map((s) => s.trim());
+const CLAVE_GOOGLE = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+const PROVEEDOR = CLAVE_GOOGLE ? 'google' : 'anthropic';
+const MODELO = process.env.MODELO || (PROVEEDOR === 'google' ? 'gemini-3.6-flash' : 'claude-opus-5');
+// Si el modelo de arriba está saturado (pasa), se reintenta y después se usa este.
+const MODELO_RESPALDO = process.env.MODELO_RESPALDO || (PROVEEDOR === 'google' ? 'gemini-3.5-flash-lite' : '');
 
-const Respuesta = z.object({
-  accion: z.enum(['responder', 'visto']),
-  mensajes: z.array(z.string()),
-  quien: z.array(z.string()),
-});
+// Lo que tiene que devolver el modelo, sí o sí.
+const VISTO = { accion: 'visto', mensajes: [], quien: [] };
+const ESQUEMA = {
+  type: 'OBJECT',
+  properties: {
+    accion: { type: 'STRING', enum: ['responder', 'visto'] },
+    mensajes: { type: 'ARRAY', items: { type: 'STRING' } },
+    quien: { type: 'ARRAY', items: { type: 'STRING' } },
+  },
+  required: ['accion', 'mensajes', 'quien'],
+};
 
-async function responder(cuerpo) {
-  // historial: [{rol:'user'|'assistant', quien, texto}]. Se juntan turnos seguidos del mismo rol.
-  const messages = [];
+// historial: [{rol:'user'|'assistant', quien, texto}]. Se juntan turnos seguidos del mismo rol.
+function armarTurnos(cuerpo) {
+  const turnos = [];
   for (const m of cuerpo.historial || []) {
     const texto = m.rol === 'assistant' ? `[${m.quien}] ${m.texto}` : m.texto;
-    const ult = messages[messages.length - 1];
-    if (ult && ult.role === m.rol) ult.content += '\n' + texto; else messages.push({ role: m.rol, content: texto });
+    const ult = turnos[turnos.length - 1];
+    if (ult && ult.rol === m.rol) ult.texto += '\n' + texto; else turnos.push({ rol: m.rol, texto });
   }
-  if (!messages.length || messages[0].role !== 'user') messages.unshift({ role: 'user', content: '(inicio del chat)' });
-  if (messages[messages.length - 1].role !== 'user') messages.push({ role: 'user', content: '(sigue la conversación)' });
+  if (!turnos.length || turnos[0].rol !== 'user') turnos.unshift({ rol: 'user', texto: '(inicio del chat)' });
+  if (turnos[turnos.length - 1].rol !== 'user') turnos.push({ rol: 'user', texto: '(sigue la conversación)' });
+  return turnos;
+}
 
+async function unaLlamadaGoogle(modelo, sistema, turnos) {
+  const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelo}:generateContent`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-goog-api-key': CLAVE_GOOGLE },
+    body: JSON.stringify({
+      systemInstruction: { parts: [{ text: sistema }] },
+      contents: turnos.map((t) => ({ role: t.rol === 'assistant' ? 'model' : 'user', parts: [{ text: t.texto }] })),
+      generationConfig: {
+        maxOutputTokens: 1024, responseMimeType: 'application/json', responseSchema: ESQUEMA,
+        // Chat de WhatsApp: contesta rápido antes que pensar bonito. Sube PENSAR en .env si quieres.
+        thinkingConfig: { thinkingBudget: Number(process.env.PENSAR || 0) },
+      },
+    }),
+  });
+  if (!r.ok) { const e = new Error(`google ${r.status}: ${(await r.text()).slice(0, 200)}`); e.estado = r.status; throw e; }
+  const d = await r.json();
+  const txt = d.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || '';
+  try { return JSON.parse(txt); } catch { return VISTO; }
+}
+
+// Los modelos se saturan a ratos (503). Reintenta una vez y si no, usa el de respaldo.
+async function conGoogle(sistema, turnos) {
+  const intentos = [MODELO, MODELO, MODELO_RESPALDO].filter(Boolean);
+  let ultimo;
+  for (const [i, modelo] of intentos.entries()) {
+    try { return await unaLlamadaGoogle(modelo, sistema, turnos); }
+    catch (e) {
+      ultimo = e;
+      if (!(e.estado === 429 || e.estado >= 500)) throw e;   // error de verdad: no insistas
+      console.warn(`  ${modelo} ${e.estado}, reintento ${i + 1}/${intentos.length}`);
+      await new Promise((r) => setTimeout(r, 400));
+    }
+  }
+  throw ultimo;
+}
+
+async function conAnthropic(sistema, turnos) {
+  const { default: Anthropic } = await import('@anthropic-ai/sdk');
+  const { z } = await import('zod');
+  const { zodOutputFormat } = await import('@anthropic-ai/sdk/helpers/zod');
+  const Respuesta = z.object({ accion: z.enum(['responder', 'visto']), mensajes: z.array(z.string()), quien: z.array(z.string()) });
+  const client = new Anthropic(); // lee ANTHROPIC_API_KEY
   const r = await client.messages.parse({
     model: MODELO,
     max_tokens: 1024,
     output_config: { effort: 'low', format: zodOutputFormat(Respuesta) },
-    system: [{ type: 'text', text: cuerpo.sistema, cache_control: { type: 'ephemeral' } }],
-    messages,
+    system: [{ type: 'text', text: sistema, cache_control: { type: 'ephemeral' } }],
+    messages: turnos.map((t) => ({ role: t.rol, content: t.texto })),
   });
-  if (r.stop_reason === 'refusal') return { accion: 'visto', mensajes: [], quien: [] };
-  return r.parsed_output || { accion: 'visto', mensajes: [], quien: [] };
+  if (r.stop_reason === 'refusal') return VISTO;
+  return r.parsed_output || VISTO;
+}
+
+async function responder(cuerpo) {
+  const turnos = armarTurnos(cuerpo);
+  const salida = PROVEEDOR === 'google' ? await conGoogle(cuerpo.sistema, turnos) : await conAnthropic(cuerpo.sistema, turnos);
+  // Red de seguridad: que "quien" y "mensajes" midan lo mismo.
+  if (!salida || !Array.isArray(salida.mensajes)) return VISTO;
+  if (!Array.isArray(salida.quien) || salida.quien.length !== salida.mensajes.length) {
+    const uno = cuerpo.contacto || salida.quien?.[0] || '';
+    salida.quien = salida.mensajes.map(() => uno);
+  }
+  return salida;
 }
 
 http.createServer(async (req, res) => {
@@ -67,4 +133,4 @@ http.createServer(async (req, res) => {
       res.end(JSON.stringify({ error: String(e.message || e) }));
     }
   });
-}).listen(PUERTO, () => console.log(`servidor-ia escuchando en http://localhost:${PUERTO}/chat (modelo ${MODELO})`));
+}).listen(PUERTO, () => console.log(`servidor-ia escuchando en http://localhost:${PUERTO}/chat (${PROVEEDOR}, modelo ${MODELO})`));

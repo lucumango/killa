@@ -8,6 +8,10 @@ const CONFIG = {
   imagenCaja: 'assets/img/caja.png',  // dibujo de la caja de diálogo. null = rectángulo con borde
                            // El PNG va de 660 x 150 (o el doble, se estira solo).
   tituloEnElFondo: true,   // true = el título ya está pintado en fondoMenu, así que no se escribe encima
+  fondoDedicatoria: null,  // ej: 'assets/img/fondo_dedicatoria.png' — el dibujo detrás de la dedicatoria.
+                           // Pantalla entera: 960 x 600 (o el doble, 1920 x 1200). null = azul liso
+  fondoTarjeta: null,      // lo mismo para las tarjetas ("Capítulo 1 | La carretera", "PUNTO DE GUARDADO",
+                           // "CONTINUARÁ"). Mismo tamaño. null = azul liso
   primerCapitulo: 'cap01',           // archivo de js/datos/guion/ con el que empieza la partida
 
   // Pantalla de inicio (antes del menú). Usa saltos de línea normales.
@@ -76,7 +80,8 @@ A quien lea esto.`,
   // Si activa = false, el chat responde con reglas locales (ver js/datos/ia.js → RESPUESTAS_LOCALES).
   // Si activa = true, manda los mensajes al servidor de servidor-ia/ (que guarda la clave del API).
   ia: {
-    activa: false,
+    activa: true,            // necesita el servidor corriendo: cd servidor-ia && npm start
+                             // si no está, el chat usa solo las respuestas locales y no se rompe nada
     url: 'http://localhost:8787/chat',   // cuando lo subas a internet, pon la URL pública del servidor
     maxHistorial: 20,                    // cuántos mensajes previos se le mandan a la IA
   },

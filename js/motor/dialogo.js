@@ -99,6 +99,8 @@ const Dialogo = {
   async tarjeta(texto) {
     const t = Dialogo.el.tarjeta;
     t.textContent = texto; t.hidden = false;
+    // Dibujo detrás de la tarjeta (CONFIG.fondoTarjeta). Sin él queda el azul liso.
+    t.style.backgroundImage = CONFIG.fondoTarjeta ? `url("${CONFIG.fondoTarjeta}")` : 'none';
     await U.espera(300);
     await U.esperarAvance();
     t.hidden = true;

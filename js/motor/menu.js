@@ -12,6 +12,8 @@ const Menu = {
   dedicatoria() {
     Pantallas.mostrar('dedicatoria');
     U.$('.dedicatoria').textContent = CONFIG.dedicatoria;
+    // Dibujo detrás de la dedicatoria (CONFIG.fondoDedicatoria). Sin él queda el azul liso.
+    U.$('#pantalla-dedicatoria').style.backgroundImage = CONFIG.fondoDedicatoria ? `url("${CONFIG.fondoDedicatoria}")` : 'none';
     const tk = (e) => { window.removeEventListener('keydown', tk); U.$('#juego').removeEventListener('click', tk); Audio_.activar(); Menu.mostrar(); };
     window.addEventListener('keydown', tk); U.$('#juego').addEventListener('click', tk);
   },
