@@ -52,5 +52,25 @@ for (const [nombre, M] of Object.entries(MAPAS)) for (const o of (M.objetos || [
   const e = o.accion || o.ir; if (!e) continue;
   if (!Object.values(todasEtiquetas).some((s) => s.has(e))) err(`mapa ${nombre}, objeto ${o.id}: etiqueta no existe: ${e}`);
 }
+// Sonidos que el guion pide y todavía no están en assets/audio/sfx/.
+// No es un error: el juego sigue andando sin ellos, solo se queda callado en esa línea.
+{
+  const pedidos = new Map();   // archivo de sonido -> dónde se pide
+  const anota = (f, donde) => { if (f) (pedidos.get(f) || pedidos.set(f, []).get(f)).push(donde); };
+  for (const [cap, texto] of Object.entries(GUION.archivos))
+    texto.split('\n').forEach((raw, i) => { const m = raw.trim().match(/^@sfx\s+(\S+)/i); if (m) anota(m[1], `${cap}:${i + 1}`); });
+  const CONFIG = vm.runInContext('CONFIG', ctx) || {};
+  anota(CONFIG.sfxPalabraNueva, 'config.js (sfxPalabraNueva)');
+  anota(CONFIG.sfxMensaje, 'config.js (sfxMensaje)');
+  anota(CONFIG.yape?.sfx, 'config.js (yape.sfx)');
+  anota(CONFIG.yape?.sfxPago, 'config.js (yape.sfxPago)');
+  for (const [nombre, M] of Object.entries(MAPAS)) for (const o of (M.objetos || []).concat(M.personajes || []))
+    anota(o.sfxCerca, `mapa ${nombre}, objeto ${o.id}`);
+  const faltan = [...pedidos].filter(([f]) => !fs.existsSync('assets/audio/sfx/' + f));
+  if (faltan.length) {
+    console.log(`\nSonidos que faltan en assets/audio/sfx/ (el juego corre igual, nomás no suena):`);
+    faltan.forEach(([f, donde]) => console.log(`   ${f} — ${donde.length === 1 ? '1 vez' : donde.length + ' veces'}: ${donde.slice(0, 3).join(', ')}${donde.length > 3 ? ', ...' : ''}`));
+  }
+}
 console.log(errores ? `${errores} error(es)` : '✓ Guion OK');
 process.exit(errores ? 1 : 0);
