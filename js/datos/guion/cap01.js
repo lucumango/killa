@@ -468,7 +468,7 @@ Te imita: se encoge, mira al piso, y lo dice en un hilito de voz, temblando.
 Amaru resopla por la nariz. Es lo más cerca de una carcajada que le has visto.
 ariel (molesto): ¡No sonaba así!
 flor (burla): Sonaba exactamente así. Sonaba como si estuvieras pidiendo permiso para existir.
-ariel (nervioso): Es que estaba nervioso.
+ariel (nervioso): Es que me ganaron los nervios.
 flor (feliz): ¡Ya sé! ¡Por eso es bonito! Pero mira, allinllachu es una pregunta. Es "¿estás bien?". Tienes que decirlo como pregunta, no como disculpa.
 Se endereza, levanta la barbilla, y lo suelta al aire con toda la voz:
 flor (feliz): ¡Allinllachu!
@@ -555,6 +555,7 @@ Cuatro. En veinte minutos. Y ningún mensaje antes de la primera, porque tu mam�
 @mensaje mama | contesta
 @mensaje mama | 🙏🙏
 @chat mama leer
+@yape +40 Rosa Quispe
 flor (curioso): ¿Todo bien?
 Estira el cuello con una falta de disimulo impresionante.
 ariel (neutral): Sí. Se va a demorar. Me mandó a comprar cosas. Cuerda, estacas, cinta y pintura. Para marcar un terreno.
@@ -627,11 +628,11 @@ amaru (rojo): O sea. Ya sabe como diez palabras. Pisillata. Más o menos.
 ariel (neutral): Pisillata.
 @aprender manam_hamutanichu manam_yachanichu asasllata pisillata
 flor (feliz): Y si te preguntan de dónde eres, es maymantataq kanki? Y tú contestas Limamantam kani. Soy de Lima.
-Y ahí te quedas callado medio segundo.
+Y ahí te quedas en silencio medio segundo.
 Porque podrías decir eso. O podrías decir otra cosa.
 ariel (neutral): Limamantam kani.
 @aprender maymantataq limamantam
-Flor asiente, satisfecha. Amaru no dice nada, pero te está mirando de reojo, y algo en cómo te quedaste callado antes de contestar no se le pasó por alto.
+Flor asiente, satisfecha. Amaru no dice nada, pero te está mirando de reojo, y algo en ese silencio tuyo antes de contestar no se le pasó por alto.
 amaru (neutral): Ahí es.
 Señala con la barbilla. Al final de la cuadra hay una ferretería con la puerta abierta, sacos de cemento apilados afuera y un letrero pintado a mano: FERRETERÍA "EL PROGRESO" — Todo para su construcción.
 @fondo ferreteria_afuera
@@ -1029,6 +1030,7 @@ flor (burla): La próxima.
 # ===============================================================
 == yape
 Escaneas el QR pegado con cinta al mostrador, medio despintado. Pones el monto. Confirmas.
+@yape -{precio} Ferretería El Progreso
 @sfx yape.wav
 Y suena. Ese sonidito. "¡Yapeaste!", chillón, saliendo de un celular viejísimo que el señor Hilario tiene apoyado contra la caja registradora, con la pantalla rajada en una esquina.
 hilario (neutral): Ya está.

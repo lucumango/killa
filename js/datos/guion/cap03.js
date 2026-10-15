@@ -10,7 +10,8 @@ GUION.registrar('cap03', String.raw`
 # ===============================================================
 == salir_kiosko
 @fondo casa_patio
-@var plata = 30
+@var plata = {yape}
+@var cuenta = 0
 @var n_compras = 0
 ariel (neutral): Voy al kiosko. ¿Quieren algo?
 flor (feliz): ¡Pilas!
@@ -70,7 +71,7 @@ ninos: ¡ASÁ!
 profe: ¡Haykallanchik!
 ninos: ¡ASÁ!
 profe: ¡Kusa! ¡Otra vez! ¡Más fuerte!
-Te quedas parado mirando eso como treinta segundos, sin darte cuenta, hasta que una señora tiene que rodearte para pasar.
+Te quedas mirando eso como treinta segundos, sin darte cuenta, hasta que una señora tiene que rodearte para pasar.
 
 # ===============================================================
 == bodega
@@ -91,12 +92,13 @@ Y ahí, con la luz dorada entrando por la reja y el corazón medio acelerado, de
 ariel (nervioso): Pilas AA, por favor. Y...
 @var c_pilas = 1
 @var plata -= 5
+@var cuenta += 5
 @var n_compras += 1
 La señora pone las pilas en el mostrador. Para el futuro.
 
 == kiosko_nati
-[si kiosko_visto != 1] Doña Nati vuelve a su tejido. Sabe exactamente cuánto tiempo tarda un chico de dieciocho años en decidir.
-[si kiosko_visto != 1] Te quedan S/ {plata:2}: lo que te yapeó tu mamá, menos la ferretería, más lo que ya tenías. Las pilas ya están contadas.
+[si kiosko_visto != 1] Doña Nati vuelve a su tejido. Sabe exactamente cuánto tiempo tarda alguien de dieciocho años en decidir.
+[si kiosko_visto != 1] En tu Yape te quedan S/ {plata:2} si pagas las pilas: lo que te yapeó tu mamá, menos la ferretería, más lo que ya tenías.
 [si kiosko_visto == 1] En el mostrador ya hay {n_compras} cosas. Te quedan S/ {plata:2}.
 @var kiosko_visto = 1
 * Mirar lo que hay para comer -> kiosko_comer
@@ -122,6 +124,7 @@ Como agua para chocolate. Si te lo comes con suficiente sentimiento, alguien a t
 == comprar_chocolate
 @var c_chocolate = 1
 @var plata -= 2
+@var cuenta += 2
 @var n_compras += 1
 @ir kiosko_comer
 
@@ -133,6 +136,7 @@ Puku no come galleta. Nadie dijo nada sobre mandarinas. Nadie ha dicho nada sobr
 == comprar_mandarinas
 @var c_mandarinas = 1
 @var plata -= 5
+@var cuenta += 5
 @var n_compras += 1
 @ir kiosko_comer
 
@@ -144,6 +148,7 @@ NO PARA PUKU. Para ti. Para ti nomás. Mira a Puku. Mira a Puku a los ojos y dil
 == comprar_galletas
 @var c_galletas = 1
 @var plata -= 1.5
+@var cuenta += 1.5
 @var n_compras += 1
 @ir kiosko_comer
 
@@ -155,6 +160,7 @@ Si es cero azúcar, ¿entonces qué tiene? ¿Y por qué es dulce? ¿De dónde sa
 == comprar_gaseosa
 @var c_gaseosa = 1
 @var plata -= 3
+@var cuenta += 3
 @var n_compras += 1
 @ir kiosko_comer
 
@@ -166,6 +172,7 @@ Es un anillo. Es un anillo comestible. Nadie te está obligando a nada. Pero es 
 == comprar_ringpop
 @var c_ringpop = 1
 @var plata -= 2.5
+@var cuenta += 2.5
 @var n_compras += 1
 @ir kiosko_comer
 
@@ -177,6 +184,7 @@ Tus favoritos. Siempre el rojo. Nunca discutas con alguien que prefiere el verde
 == comprar_frugele
 @var c_frugele = 1
 @var plata -= 0.5
+@var cuenta += 0.5
 @var n_compras += 1
 @ir kiosko_comer
 
@@ -199,6 +207,7 @@ Para quienes parten llevando consigo las palabras que algún día esperan volver
 == comprar_libretita
 @var c_libretita = 1
 @var plata -= 3.5
+@var cuenta += 3.5
 @var n_compras += 1
 @ir kiosko_utiles
 
@@ -210,6 +219,7 @@ Tienes un buen presentimiento sobre esto. Are you feeling lucky? No sabes para q
 == comprar_cinta
 @var c_cinta = 1
 @var plata -= 4
+@var cuenta += 4
 @var n_compras += 1
 @ir kiosko_utiles
 
@@ -221,6 +231,7 @@ Indeleble significa que si te equivocas, te equivocaste para siempre. Como los t
 == comprar_plumon
 @var c_plumon = 1
 @var plata -= 3
+@var cuenta += 3
 @var n_compras += 1
 @ir kiosko_utiles
 
@@ -232,17 +243,19 @@ El artículo más aburrido del kiosko. Nadie compra pañuelos pensando en el mom
 == comprar_panuelos
 @var c_panuelos = 1
 @var plata -= 1
+@var cuenta += 1
 @var n_compras += 1
 @ir kiosko_utiles
 
 == ver_cable
-Cuatro celulares cargando en una sola regleta. Alguien en esa casa está sufriendo en silencio. Podrías ser el héroe. Podrías ser el que trajo el quinto puerto.
+Cuatro celulares cargando en una sola regleta. Alguien en esa casa está sufriendo en silencio. Podrías salvar a esa casa. Podrías ser quien trajo el quinto puerto.
 * Llevarlo -> comprar_cable
 * Mejor no -> kiosko_utiles
 
 == comprar_cable
 @var c_cable = 1
 @var plata -= 8
+@var cuenta += 8
 @var n_compras += 1
 @ir kiosko_utiles
 
@@ -254,6 +267,7 @@ Todavía hay sol. Va a haber sol como una hora más. Después ya no.
 == comprar_linterna
 @var c_linterna = 1
 @var plata -= 6
+@var cuenta += 6
 @var n_compras += 1
 @ir kiosko_utiles
 
@@ -342,7 +356,7 @@ ariel (curioso): ¿De acá?
 nati (neutral): Del valle. Acá no crecen.
 Y mientras las mete a la bolsa:
 nati (feliz): Miski están. Bien miski.
-Te ríes solo, y ella te mira.
+Se te escapa la risa, y ella te mira.
 nati (curioso): ¿Qué?
 ariel (feliz): Nada. Conozco a alguien que se llama así.
 
@@ -389,14 +403,13 @@ Suspira, mete la mano en el frasco y te echa un Frugele en la bolsa. Verde.
 nati (seria): Para que aprendas.
 
 == cierre_nati
-Le yapeas. Suena el sonidito.
+Le yapeas los S/ {cuenta:2}. Suena el sonidito.
+@yape -{cuenta} Kiosko de doña Nati
 @si c_ringpop == 1 -> cierre_ringpop
 Ella mete todo en una bolsa de plástico transparente y te la empuja.
 ariel (feliz): Sulpayki.
-nati (feliz): Imamanta, turiy.
+nati (feliz): Imamanta.
 Y vuelve al tejido.
-Sales sin saber qué significa turiy. Lo anotas para preguntar después.
-@aprender turiy
 @ir notas
 
 == cierre_ringpop
