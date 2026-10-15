@@ -207,12 +207,13 @@ voz: ¡Loro! ¡Loro! ¡Ah! ¡Loro!
 Volteas.
 
 # ----- ESCENA DIBUJADA: el loro -----
-@cuadro loro_encuentro
+@cuadro loro_susto
 A tu izquierda, en la entrada de un patio abierto, colgada de un gancho bajo el alero, hay una jaula grande de fierro. Y adentro hay un loro verde brillante, con la cabeza ladeada, mirándote con un ojo redondo y amarillo.
 Se mueve de lado por su palito. Te sigue mirando.
 puku: ¡Loro!
 ariel (sorpresa): ¡Ay! Me asustaste.
 Das un paso atrás por reflejo, con la mano en el pecho, y el loro te mira con una satisfacción evidente. Cero arrepentimiento.
+@cuadro loro_encuentro
 Te acercas otra vez, ya con curiosidad. Es un loro precioso, verde manzana con las plumas del ala más oscuras y unas rayitas amarillas cerca de la cara. La jaula está limpia, tiene un platito de metal con maíz y una rodaja de plátano medio comida. Alguien lo cuida bien.
 @sfx camara.wav
 Sacas el celular y le tomas una foto. El loro, que claramente ya ha sido fotografiado antes, se pone de perfil. En serio. Se pone de perfil.
@@ -241,10 +242,13 @@ Silencio.
 Los dos se quedan quietos. El loro también, lo cual empeora todo.
 ariel (nervioso): ...sutiyqa Arielmi...
 La "q" se te va por otro lado. La "ll" te sale a la limeña, blandita. Suena como si estuvieras leyendo un idioma en voz alta por primera vez, que es exactamente lo que está pasando.
+# ----- ESCENA DIBUJADA: la reacción de los dos -----
+@cuadro hermanos
 La chica se lleva las dos manos a la boca. Y se ríe. Pero no es una risa de burla, es una risa que le sale de golpe, con los hombros y todo.
 flor (risa): ¡Ayyy! ¡Habla! ¡Chiqaqchu! ¿Sabes quechua?
 El chico, en cambio, ha hecho una mueca. Una mueca muy específica. Como si hubiera pisado algo blando. Se pasa la mano por la nuca y mira hacia otro lado.
 amaru (molesto): Atataw.
+@fondo calle_loro
 No queda claro si te lo dice a ti o a su hermana o al universo.
 flor (feliz): ¡No le hagas caso! Está así siempre. Yo soy Flor Miski María Quispe Ccori. Dime Miski, o Flor, cualquiera. Él es...
 amaru (seria): Amaru.

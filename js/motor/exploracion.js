@@ -196,10 +196,19 @@ const Exploracion = {
         c.fillStyle = o.color || U.colorDe(o.id); c.fillRect(ox + 2, oy + 2, ow - 4, oh - 4);
         c.restore();
       }
-      if (o.etiqueta && (!fondo || o.provisional || CONFIG.verChoques)) { c.fillStyle = '#fff'; c.font = '11px monospace'; c.textAlign = 'center'; c.fillText(o.etiqueta, ox + ow / 2, oy - 4); }
+      if (o.etiqueta && (!fondo || o.provisional || CONFIG.verChoques)) Exploracion.rotulo(c, o.etiqueta, ox + ow / 2, oy - 4);
     }
     Exploracion.dibujarJugador(c, M, t, j);
     c.restore();
+  },
+
+  // Texto chiquito sobre el mapa. Va con borde oscuro para que se lea
+  // igual sobre un dibujo claro (los mapas son papel crema) que sobre uno oscuro.
+  rotulo(c, texto, x, y) {
+    c.font = '11px monospace'; c.textAlign = 'center';
+    c.lineWidth = 3; c.lineJoin = 'round'; c.strokeStyle = 'rgba(0,0,0,.8)';
+    c.strokeText(texto, x, y);
+    c.fillStyle = '#fff'; c.fillText(texto, x, y);
   },
 
   // El jugador: quieto usa `spriteJugador`; andando alterna con `spriteCaminar`
@@ -209,7 +218,7 @@ const Exploracion = {
     const paso = M.spriteCaminar && Exploracion.sprites[M.spriteCaminar];
     if (!quieto) { // sin sprite: bloque de color, como antes
       c.fillStyle = CONFIG.colorJugador; c.fillRect(j.x, j.y, j.w, j.h);
-      c.fillStyle = '#fff'; c.font = '11px monospace'; c.textAlign = 'center'; c.fillText('yo', j.x + j.w / 2, j.y - 4);
+      Exploracion.rotulo(c, 'yo', j.x + j.w / 2, j.y - 4);
       return;
     }
     const ciclo = paso ? [[quieto, false], [paso, false], [quieto, false], [paso, true]] : [[quieto, false]];

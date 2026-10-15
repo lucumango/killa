@@ -92,6 +92,7 @@ const MAPAS = {
   casa: {
     nombre: 'Casa de los Quispe Ccori — patio',
     tam: 40, velocidad: 3,
+    imagen: 'assets/img/mapas/casa.png',   // el dibujo: se estira sobre las 24 x 15 casillas
     spriteJugador: 'assets/img/sprites/ariel_base.png',
     spriteCaminar: 'assets/img/sprites/ariel_walk.png',
     pasosPorSegundo: 6, altoJugador: 2.4,
@@ -129,8 +130,10 @@ const MAPAS = {
       { id: 'salida', x: 10, y: 14, ancho: 4, alto: 1, color: '#222', etiqueta: '↓ al kiosko', pisar: true, ir: 'kiosko_barrio' },
     ],
     personajes: [
-      { id: 'flor', x: 8, y: 7, color: '#ef9c86', etiqueta: 'Flor', sprite: 'assets/img/sprites/flor.png', accion: 'casa_flor' },
-      { id: 'amaru', x: 18, y: 9, color: '#636878', etiqueta: 'Amaru', sprite: 'assets/img/sprites/amaru.png', accion: 'casa_amaru' },
+      // ancho/alto = la casilla con la que chocas; el dibujo es cuadrado, así que se apoya
+      // en el borde de abajo y sale de 2.6 casillas, más o menos como Ariel (altoJugador: 2.4).
+      { id: 'flor', x: 8, y: 7, ancho: 2.6, alto: 1, color: '#ef9c86', etiqueta: 'Flor', sprite: 'assets/img/sprites/flor.png', accion: 'casa_flor' },
+      { id: 'amaru', x: 18, y: 9, ancho: 2.6, alto: 1, color: '#636878', etiqueta: 'Amaru', sprite: 'assets/img/sprites/amaru.png', accion: 'casa_amaru' },
     ],
   },
 };

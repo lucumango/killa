@@ -45,6 +45,8 @@ Te sientan. No te preguntan si quieres, te sientan. Aparece un plato.
 flor (feliz): Es puca picante. ¿Has comido?
 ariel (neutral): No.
 flor (feliz): Ay, qué rico ser tú ahorita.
+# ----- ESCENA DIBUJADA: el plato -----
+@cuadro mesa_mani
 Es papa con maní, en una salsa espesa de un color entre rojo y anaranjado, con arroz al costado y un pedazo de chicharrón encima. Huele increíble.
 ariel (curioso): Puca. ¿Como puka? ¿Rojo?
 Flor se congela con el tenedor a medio camino.
@@ -55,6 +57,7 @@ amaru (neutral): Escuché.
 flor (risa): ¡Lo agarró solo! ¡Nadie le dijo!
 amaru (neutral): Sí, sí, sí.
 Trata de sonar aburrido y falla completamente.
+@fondo casa_mesa
 Una señora asoma desde la cocina, secándose las manos en el mandil. Tiene la misma cara de los dos, más el tiempo.
 senora (curioso): ¿Qué agarró?
 flor (feliz): Que puca picante es por puka, mamá. Se dio cuenta solo.
@@ -66,12 +69,15 @@ senora (risa): ¡Pisillata dice!
 ariel (nervioso): ¿Está mal?
 flor (risa): ¡No! ¡Está bien! ¡Está perfecto! Es que lo dijiste tan serio.
 La señora vuelve a la cocina moviendo la cabeza, y la escuchas decirle algo a la tía en quechua, y las dos se ríen otra vez, y esta vez la risa no te deja afuera. Te incluye. Es distinto.
+# ----- ESCENA DIBUJADA: los tres comiendo -----
+@cuadro mesa_los_tres
 Comes. Está buenísimo. El maní le da algo dulce que no esperabas.
 flor (feliz): Miskin.
 ariel (curioso): ¿Qué es?
 flor (feliz): Rico. Sabroso. Y es mi nombre, ojo. Miski. Dulce.
 ariel (sorpresa): Ah, ¿en serio?
 flor (feliz): En serio. Mi abuelita me lo puso. Yo soy la dulce y él es la serpiente.
+@fondo casa_mesa
 ariel (curioso): ¿Serpiente?
 amaru (neutral): Amaru es serpiente. Pero no cualquier serpiente. Es más como... una serpiente grande. De los ríos. Sale en las historias.
 ariel (feliz): Es un nombre buenazo.

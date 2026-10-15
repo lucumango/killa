@@ -4,6 +4,8 @@
 const CONFIG = {
   titulo: 'Killa',
   subtitulo: '',   // texto chico debajo del título (vacío = nada)
+  fondoMenu: 'assets/img/fondo_menu.png',   // dibujo detrás del menú. null = solo color de fondo
+  tituloEnElFondo: true,   // true = el título ya está pintado en fondoMenu, así que no se escribe encima
   primerCapitulo: 'cap01',           // archivo de js/datos/guion/ con el que empieza la partida
 
   // Pantalla de inicio (antes del menú). Usa saltos de línea normales.

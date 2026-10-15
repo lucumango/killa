@@ -24,8 +24,8 @@ const ANIMACIONES = {
     // pantalla por segundo: mientras más cerca está algo, más rápido pasa
     // (eso es el parallax, lo que da la sensación de profundidad).
     // "y" sube (-) o baja (+) esa capa sola, sin mover las demás.
-    color: '#f4f9ff',   // el cielo (un color plano). null = transparente.
-    tinta: '#2d4fff',   // color de las capas que dibuja el motor (el azul de tu lápiz)
+    color: '#fcfae2',   // el cielo (un color plano). Es el crema del papel de tus dibujos. null = transparente.
+    tinta: '#33448c',   // color de las capas que dibuja el motor (el azul de tu lápiz)
     capas: [
       { img: 'assets/img/animaciones/carretera_nubes.png',  vel: -9,  y: 10 },
       { img: 'assets/img/animaciones/carretera_cerros.png', vel: -42, y: 0 },

@@ -18,6 +18,12 @@ const Menu = {
   mostrar() {
     Pantallas.mostrar('menu');
     U.$('#titulo-juego').textContent = CONFIG.titulo; U.$('#subtitulo-juego').textContent = CONFIG.subtitulo;
+    // Fondo dibujado del menú (CONFIG.fondoMenu). Si el título ya está pintado ahí, no se escribe encima.
+    const pm = U.$('#pantalla-menu');
+    pm.style.backgroundImage = CONFIG.fondoMenu ? `url("${CONFIG.fondoMenu}")` : 'none';
+    pm.classList.toggle('con-fondo', !!CONFIG.fondoMenu);
+    U.$('#titulo-juego').hidden = !!(CONFIG.fondoMenu && CONFIG.tituloEnElFondo);
+    U.$('#subtitulo-juego').hidden = !CONFIG.subtitulo;
     if (CONFIG.musicaMenu) Audio_.reproducirMusica(CONFIG.musicaMenu);
     const lis = U.$$('#menu-opciones li');
     const cont = U.$('[data-accion=continuar]');
