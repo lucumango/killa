@@ -24,14 +24,18 @@ const Dialogo = {
     const p = PERSONAJES[id];
     if (!p || p.sinBusto || Motor.estadoEscena.cuadro) { Dialogo.ocultarBusto(); return; }
     const em = emocion || 'neutral';
-    let ruta = (p.bustos && p.bustos[em]) || `assets/img/bustos/${id}_${em}.png`;
     const b = Dialogo.el.busto;
     b.hidden = false;
     b.classList.toggle('derecha', p.lado === 'derecha' || p.lado === 'der'); // ver `lado` en personajes.js
-    let ok = await U.imagenExiste(ruta);
-    if (!ok && em !== 'neutral') { // si falta esa emoción, usa el busto neutral
-      const neutral = (p.bustos && p.bustos.neutral) || `assets/img/bustos/${id}_neutral.png`;
-      if (await U.imagenExiste(neutral)) { ruta = neutral; ok = true; }
+    // Mientras falten dibujos: si no está esa emoción se usa otra del mismo personaje,
+    // antes de caer al bloque de color. El orden de abajo es el de preferencia.
+    const dondeEsta = (e) => (p.bustos && p.bustos[e]) || `assets/img/bustos/${id}_${e}.png`;
+    const intentos = [em, 'neutral', p.bustoRespaldo, ...Object.keys(p.bustos || {}), 'feliz', 'seria', 'curioso'];
+    let ruta = dondeEsta(em), ok = false;
+    for (const e of intentos) {
+      if (!e) continue;
+      const r = dondeEsta(e);
+      if (await U.imagenExiste(r)) { ruta = r; ok = true; break; }
     }
     if (ok) { b.style.backgroundImage = `url("${ruta}")`; b.style.backgroundColor = 'transparent'; b.querySelector('.busto-etiqueta').textContent = ''; }
     else { b.style.backgroundImage = 'none'; b.style.backgroundColor = p.color || U.colorDe(id); b.querySelector('.busto-etiqueta').textContent = `${p.nombre} · ${em} (sin imagen)`; }

@@ -3,11 +3,14 @@ window.addEventListener('DOMContentLoaded', () => {
   Celular.iniciar();
   if (CONFIG.estiloPixel) U.$('#juego').classList.add('pixel');
   // Caja de diálogo dibujada (CONFIG.imagenCaja): si existe, se usa el PNG en vez
-  // del rectángulo con borde. El texto sigue en el mismo sitio.
+  // del rectángulo con borde. El texto sigue en el mismo sitio. La lista de
+  // opciones usa el mismo dibujo, estirado, para que no desentonen.
   if (CONFIG.imagenCaja) {
-    const caja = U.$('#caja-dialogo');
-    caja.style.backgroundImage = `url("${CONFIG.imagenCaja}")`;
-    caja.classList.add('con-imagen');
+    for (const sel of ['#caja-dialogo', '#opciones']) {
+      const el = U.$(sel);
+      el.style.backgroundImage = `url("${CONFIG.imagenCaja}")`;
+      el.classList.add('con-imagen');
+    }
   }
   Chat.historial = Chat.historialInicial();
   window.addEventListener('keydown', (e) => {

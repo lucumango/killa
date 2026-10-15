@@ -4,6 +4,9 @@
 //   flor (feliz): ¡Habla!
 // bustos: se buscan solos en assets/img/bustos/<id>_<emocion>.png
 //         (o pon rutas a mano en `bustos: { feliz: 'ruta.png' }`).
+//         Si todavía no dibujaste esa emoción, se usa otra del mismo personaje
+//         (primero `neutral`, o la que pongas en `bustoRespaldo: 'feliz'`).
+//         Si no hay ninguna, sale el bloque de color con el nombre.
 // lado: 'derecha' = el busto sale a la derecha de la pantalla (por defecto, izquierda).
 // tono: frecuencia del beep al hablar (más alto = voz más aguda).
 // beep: ruta a un archivo de audio si prefieres tu propio "beep".
