@@ -1,0 +1,10 @@
+[
+ {"name":"kiosko-todo-ringpop", "setup":"", "start":"Checkpoint", "dump":true,
+  "prefs":["patio-sala","Volver","Puku","Volver","Salir","Continuar","Mirar","Linterna","Frugele","Ring Pop","Libretita","Mandarinas","Ya está","Hayk","Continuar","yapita","Pagar","Continuar","Sacar","amor","Guardar","Continuar","AMARU","Continuar","Continuar","Continuar","Continuar","Continuar","Continuar","Espera","Seguir","Tengo algo","Seguir","una foto","Seguir","Vienes","Continuar","...","Continuar","Haku","Continuar"]},
+ {"name":"sin-nada", "setup":"(set: $rutaInicial to \"B\")(set: $pregunta to \"vivido\")(set: $confesoBeca to true)(set: $bromeoProfesor to true)", "start":"Checkpoint", "dump":true,
+  "prefs":["Salir","Continuar","Mirar","Ya está","Cuánto","Continuar","Pagar","Continuar","Sacar","imataq sutiyki","Guardar","Continuar","AMARU","Continuar","Continuar","Continuar","Continuar","Continuar","Continuar","irías","Seguir","postulas","Seguir","su nombre","Seguir","No decir","Continuar","...","Continuar","Haku","Continuar"]},
+ {"name":"foto-sabatico", "setup":"(set: $pregunta to \"edades\")", "start":"Checkpoint", "dump":true,
+  "prefs":["Salir","Continuar","Mirar","Linterna","Cable","Galletas","Ya está","Hayk","Continuar","Pagar","Continuar","Sacar","phiña upa","Guardar","Continuar","FLOR","Volver","AMARU","Continuar","Continuar","Continuar","Continuar","Continuar","Continuar","una foto","Seguir","postulas","Seguir","Vienes","Continuar","...","Continuar","Haku","Continuar"]},
+ {"name":"kiosko-max", "setup":"(set: $pregunta to \"67\")", "start":"Bodega", "max":30,
+  "prefs":["Mirar","Frugele","Pañuelos","Galletas","Sublime","Ring Pop","Gaseosa","Plumón","Libretita","Cinta","Ya está","Hayk","Continuar","yapita","Pagar","Continuar","Sacar","punchay","Guardar"]}
+]

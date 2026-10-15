@@ -36,11 +36,11 @@ flor (feliz): ¡Hasta luego! ¡Literal "hasta que nos volvamos a encontrar"!
 Lo grita ya desde el pasaje. Y se va.
 @aprender tupananchikkama
 Y de golpe el patio está mucho más silencioso.
-Amaru sigue agachado. Tú te quedas parado. Pasan como cuatro segundos que se sienten como veinte.
+Amaru sigue agachado. Tú te quedas de pie. Pasan como cuatro segundos que se sienten como veinte.
 amaru (neutral): Puedes sentarte.
 No voltea. Te sientas en un banquito de plástico. Pasan otros cuatro segundos.
 amaru (rojo): O sea, si quieres.
-ariel (neutral): Ya estoy sentado.
+ariel (neutral): Ya me senté.
 amaru (neutral): Ya.
 Puku, desde su jaula, hace un ruidito.
 ariel (curioso): ¿Qué le pasa?
@@ -92,7 +92,7 @@ ariel (sorpresa): Ah. Poquito, poquita cantidad.
 Eso te acomoda otra cosa en la cabeza.
 amaru (neutral): Ajá.
 @aprender pisi
-Se quedan callados. Pero ya no incómodo. Es otro tipo de callado.
+Se quedan en silencio. Pero ya no es incómodo. Es otro tipo de silencio.
 Amaru saca el celular, mira la hora y lo vuelve a guardar.
 ariel (curioso): ¿Qué hora es?
 amaru (neutral): Cinco y veinte.
@@ -117,7 +117,7 @@ ariel (curioso): ¿Y antes del español? ¿Cómo preguntaban?
 amaru (neutral): Hay otra. Haykañataq kay intiwatana?
 Lo dice despacio.
 amaru (neutral): Intiwatana es el reloj de sol. Literal es "donde se amarra el sol".
-Te quedas callado.
+Te quedas en silencio.
 ariel (sorpresa): ¿Se amarra el sol?
 amaru (neutral): Eso dice la palabra. Mi abuelita la usaba. Yo no, suena a museo.
 ariel (feliz): A mí me encanta.
@@ -205,7 +205,7 @@ Sientes el calor subiéndote desde el cuello hasta las orejas en tiempo real, co
 ariel (nervioso): Ah. Qué bien.
 amaru (neutral): ¿Qué te pasa?
 ariel (nervioso): Nada.
-amaru (neutral): Estás rojo.
+amaru (neutral): Tienes la cara roja.
 ariel (nervioso): Es el frío.
 amaru (neutral): Hace el mismo frío que hace dos horas.
 ariel (nervioso): Es acumulativo.
@@ -472,7 +472,7 @@ amaru (neutral): Sulpayki.
 Te corrige bajito.
 ariel (feliz): Sulpayki.
 amaru (neutral): Imamanta.
-Y se quedan callados masticando pan.
+Y se quedan en silencio, masticando pan.
 El pan está frío pero está rico. Es de esos redondos, gruesos, con la corteza dura. Se escucha el viento moviendo algo de metal a lo lejos, y muy abajo, muy lejos, un huayno de la fiesta de alguien que no es la de su tía.
 amaru (neutral): Oye.
 ariel (neutral): Ya.
@@ -496,7 +496,7 @@ amaru (rojo): No sé, nunca la encuentro. Mi abuelita sí. Ella se sentaba y dec
 ariel (feliz): Yo hago eso.
 amaru (neutral): Todo el mundo hace eso.
 @aprender constelaciones
-Se quedan callados otro rato.
+Pasa otro rato sin que nadie hable.
 Y entonces Amaru levanta la barbilla hacia un punto que no titila. Uno solo, gordo, blanco, quietísimo entre todo lo demás.
 amaru (neutral): Ese no es estrella.
 ariel (neutral): Es Júpiter.
@@ -524,14 +524,14 @@ amaru (neutral): Tú sí sabes lo tuyo.
 No es pregunta.
 ariel (nervioso): ...Sí.
 amaru (neutral): Dilo.
-Y ahí lo dices. En voz alta. Por primera vez en Ayacucho, sentado en el respaldo de una banca fea con un pedazo de pan en la mano.
-ariel (neutral): Quiero ser astrónomo.
+Y ahí lo dices. En voz alta. Por primera vez en Ayacucho, en el respaldo de una banca fea, con un pedazo de pan en la mano.
+ariel (neutral): Quiero estudiar astronomía.
 Amaru no dice nada.
 No es un silencio incómodo. Es de los otros. Sigue mirando arriba, masticando el último pedazo de pan, y tú te quedas ahí con la frase colgando en el aire frío, sintiendo cómo se enfría.
 Pasan como quince segundos.
 amaru (neutral): Ya. Ya me hacía sentido.
 ariel (curioso): ¿Qué cosa?
-amaru (neutral): Que preguntaras tanto. Preguntas como el que ya sabe qué quiere saber. Es distinto de preguntar por preguntar.
+amaru (neutral): Que preguntaras tanto. Preguntas como quien ya sabe qué quiere saber. Es distinto de preguntar por preguntar.
 Se sacude las migas de la mano. Te quedas mirándote las zapatillas en la oscuridad.
 ariel (triste): En Perú no hay. Bueno, hay un poco. Hay gente. Pero es chiquito. Y para hacer investigación de verdad tienes que irte.
 @si amaru_sabe_becas != 1 -> mayu_no_sabia
@@ -563,7 +563,7 @@ ariel (sorpresa): ¿No?
 amaru (neutral): Es feo, pero no está mal. Todo el mundo empieza por interés. Mi hermana empezó a leer porque quería ganarle a una amiga. Yo empecé a arreglar cosas porque me pagaban veinte soles.
 ariel (neutral): Eso es distinto.
 amaru (neutral): No es distinto. Lo que importa es qué pasa después. Si te quedas nomás con lo que servía, ahí sí es feo. Pero tú te aprendiste tutamanta hace veinte minutos y no te sirve para ninguna beca.
-Te ríes, medio ahogado.
+Se te escapa una risa medio ahogada.
 ariel (feliz): No me sirve para nada.
 amaru (neutral): No te sirve para nada.
 Lo confirma. Y después, más bajo:
@@ -616,14 +616,14 @@ ariel (neutral): Bien frío.
 amaru (neutral): Ajá.
 Ninguno se levanta.
 Desde acá abajo es distinto. Ya no es un cielo que está allá arriba: es un techo que empieza justo encima de tu nariz y que sigue para todos lados hasta donde alcanzan los ojos. Se te va la noción de dónde termina el parque.
-Y de pronto sientes muy claramente que la tierra es redonda y que estás pegado a ella boca arriba, y que si no fuera por algo estarías cayéndote hacia arriba.
+Y de pronto sientes muy claramente que la tierra es redonda y que algo te pega a ella boca arriba, y que si no fuera por eso estarías cayéndote hacia arriba.
 ariel (sorpresa): Oye.
 amaru (neutral): Ya.
 ariel (sorpresa): Ahorita sentí que me caía.
 amaru (neutral): A mí me pasa siempre acá.
 ariel (curioso): ¿En serio?
 amaru (neutral): Siempre. Por eso vengo. En mi cuarto no me pasa.
-Se quedan callados un rato largo. Se escucha el viento. Un perro ladra tres cuadras abajo y otro le contesta.
+Pasa un rato largo sin que nadie hable. Se escucha el viento. Un perro ladra tres cuadras abajo y otro le contesta.
 amaru (neutral): Quyllur.
 ariel (curioso): ¿Qué?
 amaru (neutral): Estrella. Quyllur. Ya que estás aprendiendo.
@@ -664,7 +664,7 @@ amaru (neutral): Ya.
 ariel (curioso): ¿Eso está bien?
 Amaru se demora.
 amaru (neutral): Es lo más honesto que has dicho en todo el día. Y eso que has dicho como diez cosas honestas.
-Se quedan echados.
+Se quedan así, en el cemento.
 En algún momento sacas el celular para ver la hora y la pantalla te ciega y los dos se quejan al mismo tiempo.
 amaru (molesto): ¡Apaga!
 ariel (nervioso): ¡Perdón, perdón!
@@ -677,7 +677,7 @@ Y lo guardas, y esperas a que los ojos se te vuelvan a acostumbrar, y de a pocas
 # ===============================================================
 == parque
 @fondo parque_noche
-Los dos echados en el cemento. Frío en la espalda. Las estrellas volviendo de a pocas.
+El cemento debajo. Frío en la espalda. Las estrellas volviendo de a pocas.
 ¿Qué dices?
 * «Amaru» (solo su nombre) -> tema_nombre [si temas < 3 && tema_nombre != 1]
 * «Espera, tengo algo» -> tema_frugele [si temas < 3 && c_frugele == 1 && c_linterna == 1 && tema_frugele != 1]
@@ -729,7 +729,7 @@ amaru (rojo): Ya te dije que es bueno.
 ariel (neutral): Nunca sé.
 amaru (rojo): Es bueno, Ariel. Es que no sé qué hacer con eso.
 ariel (neutral): No tienes que hacer nada.
-Se quedan echados.
+Se quedan así, en el cemento.
 En algún momento su brazo y tu brazo quedan cerca, no tocándose, pero lo suficientemente cerca para que sientas el frío de su casaca al lado del tuyo, y ninguno de los dos se mueve ni un centímetro, y los dos están perfectamente conscientes de eso.
 Y arriba, el río sigue ahí, quieto, sin enterarse de nada.
 @var ultimo_tema = nombre
@@ -792,7 +792,7 @@ amaru (neutral): Vi un video.
 ariel (sorpresa): ¿Viste un video de observatorios?
 amaru (feliz): Veo videos de gente arreglando cosas. Los observatorios son cosas.
 Se le nota la sonrisa aunque no la veas.
-Y te quedas ahí, echado en el cemento helado de un parque feo, con un caramelo rojo en la boca y un envoltorio arrugado en la mano, dándote cuenta de que sin querer acabas de armar exactamente lo que arma la gente que hace lo que tú quieres hacer.
+Y te quedas ahí, en el cemento helado de un parque feo, con un caramelo rojo en la boca y un envoltorio arrugado en la mano, dándote cuenta de que sin querer acabas de armar exactamente lo que arma la gente que hace lo que tú quieres hacer.
 ariel (feliz): Entonces lo hice bien.
 amaru (neutral): Lo hiciste bien.
 @var ultimo_tema = frugele
@@ -903,7 +903,7 @@ Se queda pensando un rato.
 amaru (triste): Que era ruidoso. Que en el colegio se reían de cómo hablaba mi mamá cuando iba a recogerme. Que el cielo estaba tapado siempre y yo pensaba que era humo. Y que no había nadie.
 ariel (curioso): ¿Cómo que no había nadie? Es Lima, hay diez millones de personas.
 amaru (neutral): Por eso. Había un montón de gente y ninguna sabía quién era yo.
-Te quedas callado, porque eso es exactamente tu vida y nunca lo habías escuchado dicho así.
+Te quedas en silencio, porque eso es exactamente tu vida y nunca lo habías escuchado dicho así.
 amaru (neutral): Acá me pesa que todos me conozcan. Todos los días me pesa. Doña Nati sabe qué compraste, mi tío ya sabe de tu mamá, en la fiesta van a preguntarme veinte veces qué voy a estudiar.
 Levanta una mano y la deja caer.
 amaru (neutral): Pero allá me pesaba lo otro. Y lo otro pesa más.
@@ -943,7 +943,7 @@ ariel (neutral): Es una promesa.
 amaru (neutral): Es media promesa. Es "hasta que", no "cuándo". No dice cuándo.
 ariel (triste): Eso es peor.
 amaru (neutral): Eso es más honesto.
-Y se quedan echados los dos, mirando el mismo río de estrellas desde el mismo cemento helado, sin decir nada más durante mucho rato.
+Y se quedan ahí, en el cemento, mirando el mismo río de estrellas desde el mismo cemento helado, sin decir nada más durante mucho rato.
 @var ultimo_tema = irte
 * Seguir mirando el cielo -> parque
 
@@ -1055,7 +1055,7 @@ amaru (feliz): Flor sabe. Flor sabe todo. Flor me ofreció darme lo de su cumple
 Media sonrisa en la oscuridad.
 ariel (curioso): ¿Por qué?
 amaru (neutral): Porque es de su cumpleaños.
-Se quedan callados. Un carro pasa dos calles abajo y las luces barren la pared del fondo del parque, un segundo nomás, y después nada.
+Nadie dice nada. Un carro pasa dos calles abajo y las luces barren la pared del fondo del parque, un segundo nomás, y después nada.
 ariel (neutral): Pero igual.
 amaru (neutral): Igual qué.
 ariel (neutral): Igual estás pagando una academia para postular a algo que no sabes si quieres.
@@ -1081,7 +1081,7 @@ amaru (neutral): Tú sabes que puedes irte. Yo recién estoy averiguando qué pu
 Lo agrega antes de que digas nada.
 ariel (neutral): Ya.
 amaru (neutral): Es un buen dato. Es mejor tener el dato que no tenerlo.
-Se le nota que está tratando de que no suene triste. Se quedan echados.
+Se le nota que está tratando de que no suene triste. Se quedan así, en el cemento.
 ariel (neutral): Amaru.
 amaru (neutral): Ya.
 ariel (neutral): Si algún día decides que quieres mirar cosas y no arreglarlas, avísame.
@@ -1170,7 +1170,7 @@ Lo segundo es dónde tienes la cabeza.
 Te sientas tan rápido que te raspas el codo contra el cemento.
 ariel (nervioso): Ay. Ay, perdón. Perdón...
 amaru (neutral): No pasa nada.
-ariel (nervioso): Me quedé dormido.
+ariel (nervioso): Me dormí.
 amaru (neutral): Sí.
 ariel (nervioso): ¿Cuánto?
 Amaru mira su celular. La pantalla les ilumina la cara a los dos, azul, y en ese medio segundo le ves la expresión: absolutamente neutra, demasiado neutra, la cara de alguien que lleva un rato practicándola.
@@ -1206,7 +1206,7 @@ ariel (feliz): Gracias.
 amaru (neutral): Sulpayki.
 ariel (feliz): Sulpayki.
 amaru (neutral): Imamanta.
-Se quedan sentados un momento. El cielo está igual. La fiesta de abajo se acabó o se mudó adentro.
+Se quedan un momento así, sin pararse. El cielo está igual. La fiesta de abajo se acabó o se mudó adentro.
 ariel (neutral): Oye.
 amaru (seria): No.
 ariel (neutral): Todavía no dije nada.
@@ -1242,7 +1242,7 @@ mama (seria): ¡¿CON QUIÉN ESTÁS?!
 Y del otro lado, de fondo, escuchas la voz de otra señora diciendo algo, y después una risa, y después la voz de tu mamá cambiando completamente de tono:
 mama (feliz): Ah, ya. Está con el hijo de la María.
 Y después, alejándose del teléfono, hablándole a alguien más, en quechua.
-Y tú te quedas parado en la oscuridad escuchando a tu mamá hablar quechua por teléfono, fluido, rápido, riéndose, con una soltura que no le has escuchado nunca en dieciocho años.
+Y tú te quedas de pie en la oscuridad, escuchando a tu mamá hablar quechua por teléfono, fluido, rápido, riéndose, con una soltura que no le has escuchado nunca en dieciocho años.
 ariel (sorpresa): ...Ma.
 mama (feliz): ¡Ya, ya! ¡Ven!
 Y cuelga. Bajas el celular despacio.
@@ -1361,7 +1361,7 @@ amaru (molesto): ¡NO!
 Y Flor se lanza por encima de la mesa y Amaru se levanta de golpe y sale al patio, y ella detrás gritando "¡A VER!" y él gritando "¡NO!", y los primos riéndose, y la tía diciendo "¡el mantel! ¡EL MANTEL!", y Puku, encima de todo el escándalo, gritando:
 puku: ¡LORO! ¡LORO!
 Y tu mamá, en medio de todo eso, te agarra del brazo y te sienta a su lado.
-mama (feliz): Ay, hijita. ¿Comiste?
+mama (feliz): Ay, wawa. ¿Comiste?
 Todavía se está riendo.
 ariel (feliz): Comí un montón.
 mama (feliz): ¿Te portaste bien?

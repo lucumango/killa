@@ -35,7 +35,7 @@ for (const [cap, texto] of Object.entries(GUION.archivos)) {
       if (c === 'aprender') a.forEach((id) => { if (!PALABRAS.find((p) => p.id === id)) err(`${n} palabra no definida: ${id}`); });
       if (c === 'explorar' && !MAPAS[a[0]]) err(`${n} mapa no definido: ${a[0]}`);
       if (c === 'animacion' && !['off','ninguna'].includes(a[0]) && !ANIMACIONES[a[0]]) err(`${n} animación no definida: ${a[0]}`);
-      if (c === 'yape' && !/^(saldo\s+)?[+-]?\d+([.,]\d+)?(\s|$)/i.test(a.join(' '))) err(`${n} @yape mal escrito: ${a.join(' ')}`);
+      if (c === 'yape' && !/^(saldo\s+)?[+-]?(\d+([.,]\d+)?|\{[\wáéíóúñ]+\})(\s|$)/i.test(a.join(' '))) err(`${n} @yape mal escrito: ${a.join(' ')}`);
       if (c === 'capitulo' && !GUION.archivos[a[0]]) err(`${n} capítulo no definido: ${a[0]}`);
       if (c === 'mensaje') { const m = a.join(' ').split('|')[0].trim(); if (!CONTACTOS[m]) err(`${n} contacto no definido: ${m}`); }
       if (c === 'chat' && a[0] && !CONTACTOS[a[0]]) err(`${n} contacto no definido: ${a[0]}`);

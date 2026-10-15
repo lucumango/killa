@@ -184,9 +184,10 @@ const Motor = {
       case 'esperar':    await U.espera(Number(arg) || 500); break;
       case 'tarjeta':    await Dialogo.tarjeta(arg.replace(/\s*\|\s*/g, '\n')); break;
       case 'aprender':   Motor.aprender(a); break;
-      case 'yape':       Yape.comando(arg); break;
+      case 'yape':       Yape.comando(Motor.interpolar(arg)); break;   // @yape -{cuenta} Kiosko
       case 'var': {      const m = arg.match(/^(\S+)\s*(\+=|-=|=)\s*(.*)$/); if (!m) throw new Error('@var mal escrito');
-                         const val = isNaN(m[3]) ? m[3].trim() : Number(m[3]);
+                         const crudo = Motor.interpolar(m[3]);   // permite @var plata = {yape}
+                         const val = isNaN(crudo) ? crudo.trim() : Number(crudo);
                          if (m[2] === '=') Motor.vars[m[1]] = val; else if (m[2] === '+=') Motor.vars[m[1]] = (Number(Motor.vars[m[1]]) || 0) + val; else Motor.vars[m[1]] = (Number(Motor.vars[m[1]]) || 0) - val;
                          break; }
       case 'si': {       const m = arg.match(/^(.*?)\s*->\s*(\S+)$/); if (!m) throw new Error('@si mal escrito'); if (Motor.evaluar(m[1])) Motor.saltar(m[2]); break; }

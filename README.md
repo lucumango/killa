@@ -34,14 +34,14 @@ node validar.js
 Se edita directamente en `js/datos/guion/`, usando una sintaxis sencilla:
 
 ```text
-flor (feliz): Allillanmi. ¿Y tú?
+flor (feliz): Allinllam. ¿Y tú?
 Ariel no entiende nada, pero asiente.
 
 * Preguntarle qué dijo -> preguntar
 * Asentir nomás -> asentir
 
 == preguntar
-@aprender allillanmi
+@aprender allinmi
 @volver
 ```
 

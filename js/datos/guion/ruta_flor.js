@@ -89,7 +89,7 @@ flor (seria): Nivel uno: describir. Puka kachkan, está rojo. Eso no es nada, es
 ariel (neutral): Ya.
 flor (seria): Nivel dos: cumplido. Sumaq kachkan, está bonito. Eso ya es una opinión. Se lo dices a una cosa, a una comida, a un mate. Y también a una persona, y no pasa nada.
 ariel (neutral): Ya.
-flor (rojo): Nivel tres: piropo. Kuyayllapaqmi kanki. Eres lindo. Eres para quererte, algo así. Ahí ya cambiaste el sujeto. Ya no es la cosa, es la persona.
+flor (rojo): Nivel tres: piropo. Kuyayllapaqmi kanki. Eres para quererte, algo así. Ahí ya cambiaste el sujeto. Ya no es la cosa, es la persona.
 Baja la voz.
 ariel (nervioso): ...Ya.
 flor (seria): Y nivel cuatro: demasiado intenso.
@@ -122,7 +122,7 @@ Flor lo mueve al alféizar sin discutir. Y en la toma catorce, con el cerro al f
 En la toma catorce ella pone el mate en el alféizar, con el cerro al fondo, y la luz le pega justo en el borde tallado y se ve el relieve entero.
 
 == toma_buena
-Los dos se quedan callados.
+Ninguno de los dos dice nada.
 ariel (sorpresa): Esa.
 flor (sorpresa): Esa.
 ariel (feliz): Esa.
@@ -251,7 +251,7 @@ flor (triste): Una chica me dijo que hablaba bonito el español. Bonito. Como so
 Se ríe sin gracia.
 ariel (triste): Uf.
 flor (triste): Y yo me reí. Ese es el problema. Me reí y dije gracias. Porque qué vas a hacer.
-Se encoge de hombros. Se quedan callados. Abajo, alguien está barriendo.
+Se encoge de hombros. Un silencio. Abajo, alguien está barriendo.
 flor (seria): Y entonces hoy te hice lo mismo a ti. En mi propia calle. A alguien que nació acá.
 ariel (neutral): No es lo mismo.
 flor (seria): Es lo mismo pero al revés.
@@ -338,7 +338,7 @@ flor (risa): Don Hilario.
 ariel (feliz): Don Hilario.
 flor (risa): Es terrible.
 ariel (feliz): Es terrible. Y no sabes lo raro que se siente que alguien sepa quién eres.
-Se quedan callados. Se está poniendo azul oscuro. Se prende una luz en una casa, y después otra.
+Un silencio. Se está poniendo azul oscuro. Se prende una luz en una casa, y después otra.
 @si amaru_sabe_becas != 1 -> azotea_no_sabia
 flor (triste): Ahí está la cosa. Que tú te estás yendo a Estados Unidos, que es lejísimos, y estás aprendiendo quechua. Y yo me voy a Lima y en Lima voy a dejar de hablarlo.
 @ir azotea_por_que
@@ -406,7 +406,7 @@ Tienes unos segundos antes de contestar. ¿Qué haces?
 * «Miski.» -> azotea_miski
 * «Mándame el video cuando lo edites.» -> azotea_video
 * «Puedes volver, ¿no?» -> azotea_volver
-* «Yo también estoy asustado.» -> azotea_asustado
+* «Yo también tengo miedo.» -> azotea_asustado
 * No decir nada. Solo quedarte ahí. -> azotea_silencio
 * Contestar el teléfono -> la_llamada
 
@@ -535,7 +535,7 @@ flor (triste): Yo no quiero volver de visita a mi propia casa.
 # ---------------------------------------------------------------
 == azotea_asustado
 @var tema_azotea = asustado
-ariel (triste): Yo también estoy asustado.
+ariel (triste): Yo también tengo miedo.
 Flor voltea.
 flor (sorpresa): ¿Tú?
 ariel (triste): Yo.
@@ -546,11 +546,11 @@ Se acomoda.
 ariel (triste): Tú te vas a Lima, que está a nueve horas en carro y donde vive gente que habla tu idioma. Yo me voy a un sitio donde no conozco a nadie, en otro idioma, y ni siquiera sé si voy a entrar.
 Te frotas las manos.
 flor (triste): Ay.
-ariel (triste): Y si entro, me voy solo. Mi mamá se queda.
+ariel (triste): Y si entro, me voy sin nadie. Mi mamá se queda.
 Flor no dice nada. Solo se acerca un poquito en el borde de la azotea, hombro con hombro, que es su manera de decir cosas.
 flor (curioso): ¿Y qué es lo que más te asusta?
 Lo piensas.
-ariel (triste): Que allá voy a ser el peruano. Nada más que eso. Acá soy Ariel. Allá voy a ser el peruano y ya.
+ariel (triste): Que allá voy a ser "from Peru". Nada más que eso. Acá soy Ariel. Allá voy a ser "from Peru" y ya.
 flor (triste): Uf.
 ariel (curioso): ¿Qué?
 flor (triste): Nada, es que... es lo mismo pero peor.
@@ -575,7 +575,7 @@ ariel (feliz): Sigue siendo una azotea bonita.
 == azotea_silencio
 @var tema_azotea = silencio
 No dices nada.
-Te quedas ahí, sentado en el borde, con las piernas colgando al lado de las de ella, mirando la ciudad prenderse abajo.
+Te quedas ahí, en el borde, con las piernas colgando al lado de las de ella, mirando la ciudad prenderse abajo.
 Flor se seca la cara con la manga. Respira hondo dos veces. Y como no dices nada, sigue.
 flor (triste): Y lo peor es que ya pagué la matrícula. O sea, mi mamá pagó. Con lo del terreno de mi abuelita.
 ariel (triste): ...
@@ -615,7 +615,7 @@ senora (molesto): ¡FLOR! ¡BAJEN!
 Y a Flor, al lado tuyo, gritar hacia abajo:
 flor (feliz): ¡YA VAMOS!
 Y tu mamá, en el teléfono, riéndose:
-mama (feliz): Ay, hijita. Baja pues.
+mama (feliz): Ay, wawa. Baja pues.
 Cuelga.
 Flor se para, se sacude el pantalón y te estira la mano para ayudarte a levantar.
 flor (feliz): Haku.
@@ -651,7 +651,7 @@ flor (seria): Amaru.
 amaru (seria): Es distinto.
 flor (seria): Es un cable.
 amaru (seria): Es el otro cable. Ariel. Dile. Es distinto.
-Se voltea hacia ti, buscando al único aliado disponible.
+Se voltea hacia ti, buscando apoyo en la única persona disponible.
 ariel (nervioso): Yo no sé nada de cables.
 amaru (molesto): Es distinto. Uno es de señal y el otro es de corriente. No son el mismo problema. No son la misma familia de problema.
 Insiste, hablándole al aire.
@@ -688,7 +688,7 @@ amaru (neutral): Yo también tuve un proceso, y a mí me dijeron obsesivo.
 Señala el parlante.
 flor (molesto): ¡Es distinto!
 amaru (neutral): Es exactamente lo mismo.
-Y ahí los dos se quedan callados al mismo tiempo, mirándose, con la incomodidad de dos personas que acaban de descubrir en público que son la misma persona.
+Y ahí los dos se callan al mismo tiempo, mirándose, con la incomodidad de dos personas que acaban de descubrir en público que son la misma persona.
 flor (rojo): ...Ya.
 amaru (rojo): Ya.
 flor (rojo): No hablemos de esto.
@@ -710,7 +710,7 @@ Flor y tú al mismo tiempo: "No preguntes".
 
 == patio_mama
 Y tu mamá, en medio de todo eso, te agarra del brazo y te sienta a su lado.
-mama (feliz): Ay, hijita. ¿Comiste?
+mama (feliz): Ay, wawa. ¿Comiste?
 Todavía se está riendo.
 ariel (feliz): Comí un montón.
 mama (feliz): ¿Te portaste bien?

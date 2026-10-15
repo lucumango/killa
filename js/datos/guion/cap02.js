@@ -17,7 +17,7 @@ Y entonces entras al patio, y pasa algo.
 tia (feliz): ¡Ah, buenas tardes!
 senora (feliz): Buenas, buenas. Pasa nomás, pasa.
 Todos, absolutamente todos, cambian al español. En automático. Sin pensarlo. Como quien se para cuando entra alguien a la sala.
-No lo hacen con mala intención, al contrario, es una cortesía, es hacerte sentir cómodo, pero sientes clarísimo que la puerta se cerró un poquito, y que del otro lado sigue pasando la fiesta de verdad.
+No lo hacen con mala intención, al contrario, es una cortesía, es para que te sientas en confianza, pero sientes clarísimo que la puerta se cerró un poquito, y que del otro lado sigue pasando la fiesta de verdad.
 Flor lo nota. Te mira de reojo. No dice nada.
 El patio es la sala. O la sala es el patio, no queda claro dónde termina uno y empieza el otro. Hay una mesa larga con hule floreado, sillas de plástico de tres colores distintos, un banco de madera.
 Contra la pared, una repisa con una regleta de la que salen cuatro cables cargando cuatro celulares, todos con la pantalla prendida, todos de alguien distinto. Una laptop abierta con un Excel a medio hacer y una taza al lado. Un parlante bluetooth grande, negro, que es de donde sale el huayno.
@@ -253,7 +253,7 @@ amaru (molesto): No de la manera en que ustedes lo dicen.
 Y ahí ves algo que no habías visto: Amaru molesto de verdad. Poquito. Un segundo. Como si esa conversación ya la hubiera tenido demasiadas veces y siempre terminara igual.
 Flor lo nota también, y cambia de tema con una habilidad profesional.
 flor (feliz): Oye, Ariel, ¿tú tienes hermanos?
-Hablan de familia un rato. Tú les cuentas que eres hijo único, que son tú y tu mamá nomás, y ellos hacen esa cara de "ah" que hace la gente que creció en una casa llena.
+Hablan de familia un rato. Tú les cuentas que no tienes hermanos, que son tú y tu mamá nomás, y ellos hacen esa cara de "ah" que hace la gente que creció en una casa llena.
 flor (curioso): ¿Y no te aburres?
 ariel (neutral): A veces. Pero hay silencio.
 flor (sorpresa): ¿Y eso es bueno?
@@ -323,7 +323,7 @@ ariel (neutral): Dice que le mande saludos. Que es Rosa, la hija de la señora J
 Silencio en la mesa.
 tia (sorpresa): ¿ROSA? ¿La hija de doña Julia?
 ariel (nervioso): ...Sí.
-tia (sorpresa): ¡ROSITA! ¡MARÍA! ¡ES EL HIJO DE ROSITA!
+tia (sorpresa): ¡ROSITA! ¡MARÍA! ¡ES LA WAWA DE ROSITA!
 Se para. Se para de verdad. La mamá sale de la cocina secándose las manos, otra vez, y esta vez con la cara completamente distinta.
 senora (sorpresa): ¿La Rosita que se fue a Lima?
 tia (feliz): ¡Esa!
@@ -380,7 +380,7 @@ Después de un rato, mientras ellos discuten sobre si el grupo debería llamarse
 @mensaje causas | renzo | AH VERDAD
 @mensaje causas | renzo | ARIEL TRAEME ALGO
 @celular
-Te ríes solo, ahí sentado en la mesa.
+Se te escapa la risa, ahí en la mesa.
 Y te das cuenta, medio raro, de que Lima se siente lejísimos. Como si hubieras estado acá una semana y no seis horas.
 Levantas la vista. Flor sigue peleando con Amaru por lo de admin. La mamá y la tía siguen hablando de tu mamá en quechua. Puku dice "loro". El parlante se corta un segundo y vuelve.
 amaru (molesto): ¡Es el cable!
@@ -422,7 +422,7 @@ El parlante bluetooth. Se corta un segundo y vuelve. Es el cable.
 == casa_cocina
 Asomas la cabeza y la mamá te ve inmediatamente.
 senora (feliz): ¿Quieres más?
-ariel (nervioso): No, no, gracias, estoy lleno...
+ariel (nervioso): No, no, gracias, ya comí un montón...
 senora (feliz): ¿Seguro?
 ariel (nervioso): Sí.
 senora (feliz): ¿Segurísimo?
