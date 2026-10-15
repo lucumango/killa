@@ -2,9 +2,12 @@
 // LISTA DE PALABRAS
 // El guion las desbloquea con:  @aprender allinllachu sulpayki
 // audio: ruta al archivo (grábalo y ponlo en assets/audio/palabras/). Si es null, no suena.
+// Las grabaciones están en .m4a (son los WAV de la entrega de voces, convertidos para que pesen poco).
+// Van 79 de 88. Faltan por grabar (hoy con audio: null): suqta, sinka, imay_uranataq, muruchaqnin,
+// intiwatana, atataw, acuchimay, qam_hina y upacha. Cuando las tengas, pon audio: A('id') de vuelta.
 // Ortografía chanka (revisada por Abner): tres vocales, sin ph/th/kh/qh ni apóstrofos.
 // =====================================================================
-const A = (n) => `assets/audio/palabras/${n}.mp3`;
+const A = (n) => `assets/audio/palabras/${n}.m4a`;
 const PALABRAS = [
   // saludos
   { id: 'rimaykullayki', qu: 'rimaykullayki', es: 'saludo formal, para mayores', categoria: 'saludos', audio: A('rimaykullayki') },
@@ -39,7 +42,7 @@ const PALABRAS = [
   { id: 'kimsa', qu: 'kimsa', es: '3', categoria: 'números', audio: A('kimsa') },
   { id: 'tawa', qu: 'tawa', es: '4', categoria: 'números', audio: A('tawa') },
   { id: 'pichqa', qu: 'pichqa', es: '5', nota: 'con la q de garganta', categoria: 'números', audio: A('pichqa') },
-  { id: 'suqta', qu: 'suqta', es: '6', categoria: 'números', audio: A('suqta') },
+  { id: 'suqta', qu: 'suqta', es: '6', categoria: 'números', audio: null },
   { id: 'qanchis', qu: 'qanchis', es: '7', categoria: 'números', audio: A('qanchis') },
   { id: 'pusaq', qu: 'pusaq', es: '8', categoria: 'números', audio: A('pusaq') },
   { id: 'isqun', qu: 'isqun', es: '9', categoria: 'números', audio: A('isqun') },
@@ -65,7 +68,7 @@ const PALABRAS = [
   { id: 'chuqllu', qu: 'chuqllu', es: 'choclo', nota: 'había un cartel', categoria: 'comida', audio: A('chuqllu') },
   // en la calle
   { id: 'waska', qu: 'waska', es: '"borracho" (¡lo decimos en lima!)', nota: '¿de acá sale? preguntarle a amaru', categoria: 'en la calle', audio: A('waska') },
-  { id: 'sinka', qu: 'sinka / sinkaña kachkanki', es: 'borracho / ¡ya estás borracho!', nota: 'esto sí es quechua', categoria: 'en la calle', audio: A('sinka') },
+  { id: 'sinka', qu: 'sinka / sinkaña kachkanki', es: 'borracho / ¡ya estás borracho!', nota: 'esto sí es quechua', categoria: 'en la calle', audio: null },
   { id: 'wawa', qu: 'wawa', es: 'bebé, niñito o niñita', categoria: 'en la calle', audio: A('wawa') },
   { id: 'kusa', qu: 'kusa', es: '¡bien!, ¡qué bueno!', nota: 'la profe de la ronda lo decía feliz', categoria: 'en la calle', audio: A('kusa') },
   { id: 'tupananchikkama', qu: 'tupananchikkama', es: 'hasta que nos volvamos a encontrar', nota: 'media promesa: dice "hasta que", no "cuándo"', categoria: 'en la calle', audio: A('tupananchikkama') },
@@ -78,9 +81,9 @@ const PALABRAS = [
   { id: 'kaypi_chaypi', qu: 'kaypi / chaypi / wakpi', es: 'acá / ahí / allá', categoria: 'haciendo cosas', audio: A('kaypi_chaypi') },
   { id: 'hanay_uray', qu: 'hanay / uray', es: 'arriba / abajo (hanayman, urayman: para arriba, para abajo)', categoria: 'haciendo cosas', audio: A('hanay_uray') },
   // la hora
-  { id: 'imay_uranataq', qu: 'imay urañataq?', es: '¿qué hora es?', nota: 'ura viene de "hora"', categoria: 'la hora', audio: A('imay_uranataq') },
-  { id: 'muruchaqnin', qu: 'pichqa uram iskay chunka muruchaqnin', es: 'son las cinco y veinte (muruchaqnin: los minutos). de tarde: kay pacha chisinkuypi', categoria: 'la hora', audio: A('muruchaqnin') },
-  { id: 'intiwatana', qu: 'intiwatana', es: 'reloj de sol. literal: "donde se amarra el sol"', categoria: 'la hora', audio: A('intiwatana') },
+  { id: 'imay_uranataq', qu: 'imay urañataq?', es: '¿qué hora es?', nota: 'ura viene de "hora"', categoria: 'la hora', audio: null },
+  { id: 'muruchaqnin', qu: 'pichqa uram iskay chunka muruchaqnin', es: 'son las cinco y veinte (muruchaqnin: los minutos). de tarde: kay pacha chisinkuypi', categoria: 'la hora', audio: null },
+  { id: 'intiwatana', qu: 'intiwatana', es: 'reloj de sol. literal: "donde se amarra el sol"', categoria: 'la hora', audio: null },
   { id: 'tutamanta', qu: 'tuta / tutamanta', es: 'noche / temprano ("desde la noche")', categoria: 'la hora', audio: A('tutamanta') },
   { id: 'chisi', qu: 'chisi', es: 'tarde, cuando oscurece', categoria: 'la hora', audio: A('chisi') },
   // el cielo
@@ -100,13 +103,13 @@ const PALABRAS = [
   // otros
   { id: 'wata', qu: 'wata', es: 'año', categoria: 'otros', audio: A('wata') },
   { id: 'amaru', qu: 'amaru', es: 'serpiente grande, de los ríos. vive abajo y sube', categoria: 'otros', audio: A('amaru'), nombrePropio: true },
-  { id: 'atataw', qu: '¡atataw!', es: '"ay no" / qué roche / qué vergüenza', categoria: 'otros', audio: A('atataw') },
+  { id: 'atataw', qu: '¡atataw!', es: '"ay no" / qué roche / qué vergüenza', categoria: 'otros', audio: null },
   { id: 'meses', qu: 'Uma Raymi Killa / Aya Marqay Killa', es: 'octubre / noviembre (el mes de cargar a los muertos)', categoria: 'otros', audio: A('meses') },
   { id: 'acuchimay', qu: 'Acuchimay', es: 'el cerro con el Cristo blanco', categoria: 'otros', audio: null, nombrePropio: true },
   { id: 'chayqa', qu: 'chayqa', es: '"y qué" (según Flor)', categoria: 'otros', audio: A('chayqa') },
   // cariñosos
-  { id: 'qam_hina', qu: 'qam hina', es: 'como tú (así se devuelve un upacha)', categoria: 'cariñosos', audio: A('qam_hina') },
-  { id: 'upacha', qu: 'upacha', es: 'tontito (cariñoso). upa solito es "sonso"', categoria: 'cariñosos', audio: A('upacha') },
+  { id: 'qam_hina', qu: 'qam hina', es: 'como tú (así se devuelve un upacha)', categoria: 'cariñosos', audio: null },
+  { id: 'upacha', qu: 'upacha', es: 'tontito (cariñoso). upa solito es "sonso"', categoria: 'cariñosos', audio: null },
   { id: 'qachakuchi', qu: 'qachakuchi', es: 'sucio, mugroso, como chanchito (cariñoso)', categoria: 'cariñosos', audio: A('qachakuchi') },
   { id: 'pinapsu', qu: 'piñapsu', es: 'renegón, molestoso (cariñoso)', nota: 'NO JUNTARLOS', categoria: 'cariñosos', audio: A('pinapsu') },
 ];

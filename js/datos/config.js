@@ -8,10 +8,10 @@ const CONFIG = {
   imagenCaja: 'assets/img/caja.png',  // dibujo de la caja de diálogo. null = rectángulo con borde
                            // El PNG va de 660 x 150 (o el doble, se estira solo).
   tituloEnElFondo: true,   // true = el título ya está pintado en fondoMenu, así que no se escribe encima
-  fondoDedicatoria: null,  // ej: 'assets/img/fondo_dedicatoria.png' — el dibujo detrás de la dedicatoria.
-                           // Pantalla entera: 960 x 600 (o el doble, 1920 x 1200). null = azul liso
-  fondoTarjeta: null,      // lo mismo para las tarjetas ("Capítulo 1 | La carretera", "PUNTO DE GUARDADO",
-                           // "CONTINUARÁ"). Mismo tamaño. null = azul liso
+  fondoDedicatoria: 'assets/img/fondo_dedicatoria.png',  // el dibujo detrás de la dedicatoria.
+                           // Pantalla entera: 960 x 600 (o más grande, misma proporción). null = azul liso
+  fondoTarjeta: 'assets/img/fondo_dedicatoria.png',      // lo mismo para las tarjetas ("Capítulo 1 | La
+                           // carretera", "PUNTO DE GUARDADO", "CONTINUARÁ"). null = azul liso
   primerCapitulo: 'cap01',           // archivo de js/datos/guion/ con el que empieza la partida
 
   // Pantalla de inicio (antes del menú). Usa saltos de línea normales.
