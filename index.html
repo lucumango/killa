@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Killa</title>
+<link rel="stylesheet" href="css/fuentes.css">
 <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
@@ -40,6 +41,7 @@
     <!-- Escena de novela (cámara fija) -->
     <section id="pantalla-escena" class="pantalla" hidden>
       <div id="fondo" class="capa"></div>
+      <canvas id="animacion" width="1920" height="1200" hidden></canvas>
       <div id="cuadro" class="capa" hidden></div>
     </section>
 
@@ -66,9 +68,11 @@
         <div class="celular-barra">
           <button data-tab="palabras" class="activo">Palabras</button>
           <button data-tab="chats">Chats</button>
+          <button data-tab="yape">Yape</button>
           <span class="celular-cerrar" title="Esc">✕</span>
         </div>
         <div id="celular-palabras" class="celular-panel"></div>
+        <div id="celular-yape" class="celular-panel" hidden></div>
         <div id="celular-chats" class="celular-panel" hidden>
           <div id="chat-lista" class="chat-lista"></div>
           <div id="chat-ventana" class="chat-ventana" hidden>
@@ -95,6 +99,7 @@
 <script src="js/datos/palabras.js"></script>
 <script src="js/datos/mapas.js"></script>
 <script src="js/datos/ia.js"></script>
+<script src="js/datos/animaciones.js"></script>
 <script src="js/datos/guion/cap01.js"></script>
 <script src="js/datos/guion/cap02.js"></script>
 <script src="js/datos/guion/cap03.js"></script>
@@ -107,9 +112,11 @@
 <script src="js/motor/audio.js"></script>
 <script src="js/motor/guardado.js"></script>
 <script src="js/motor/guion.js"></script>
+<script src="js/motor/animacion.js"></script>
 <script src="js/motor/dialogo.js"></script>
 <script src="js/motor/exploracion.js"></script>
 <script src="js/motor/chat.js"></script>
+<script src="js/motor/yape.js"></script>
 <script src="js/motor/celular.js"></script>
 <script src="js/motor/menu.js"></script>
 <script src="js/motor/main.js"></script>
