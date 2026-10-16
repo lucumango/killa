@@ -16,6 +16,16 @@ const CONFIG = {
                            // Créditos y Agradecimientos. null = azul liso
   primerCapitulo: 'cap01',           // archivo de js/datos/guion/ con el que empieza la partida
 
+  // ---------- Modo demo ----------
+  // Corta la partida al llegar a esa etiqueta del guion ('capitulo:etiqueta') y muestra
+  // la tarjeta de abajo. `null` = se juega el juego entero. No toca el guion: para
+  // alargar o acortar la demo solo cambias el nombre de la etiqueta.
+  //   'cap01:sutiyqa'          ~13 min — hasta el loro y conocer a los hermanos
+  //   'cap01:whatsapp_mama_1'  ~20 min — + la lección de pronunciación, corta cuando vibra el celular
+  //   'cap01:camino_ferreteria' ~21 min — + los chats de la mamá y el Yape
+  demoHasta: 'cap01:whatsapp_mama_1',
+  tarjetaDemo: 'FIN DE LA DEMO | Gracias por jugar',
+
   // Pantalla de inicio (antes del menú). Usa saltos de línea normales.
   dedicatoria: `A quienes parten en busca de las estrellas
 y guardan, entre sus palabras, el camino de regreso.`,

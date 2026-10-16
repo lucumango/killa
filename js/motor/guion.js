@@ -139,6 +139,7 @@ const Motor = {
     await Dialogo.aplicarEscena(Motor.estadoEscena);
     try {
       while (Motor.corriendo && Motor.pc < Motor.lineas.length) {
+        if (await Motor.cortarDemo()) break;
         const L = Motor.lineas[Motor.pc];
         try { await Motor.ejecutar(L); }
         catch (e) { console.error(`Error en línea ${L.num} del guion (${L.tipo} ${L.cmd || ''}):`, e); U.aviso('Error en guion, línea ' + L.num); Motor.pc++; }
@@ -149,6 +150,23 @@ const Motor = {
   async terminar() {
     Motor.corriendo = false; Audio_.pararMusica(); Dialogo.limpiar();
     Menu.mostrar();
+  },
+
+  // Corte de la demo (CONFIG.demoHasta, en config.js). Al llegar a esa etiqueta
+  // muestra la tarjeta de despedida y vuelve al menú. Con null se juega entero.
+  async cortarDemo() {
+    if (!CONFIG.demoHasta) return false;
+    const [cap, et] = String(CONFIG.demoHasta).split(':');
+    if (Motor.capitulo !== cap) return false;
+    if (Motor.etiquetas[et] === undefined) {
+      if (!Motor._avisoDemo) { Motor._avisoDemo = true; console.warn(`CONFIG.demoHasta: no existe la etiqueta == ${et} en ${cap}`); }
+      return false;
+    }
+    if (Motor.pc !== Motor.etiquetas[et]) return false;
+    Audio_.pararMusica();
+    await Dialogo.tarjeta(String(CONFIG.tarjetaDemo || 'FIN DE LA DEMO').replace(/\s*\|\s*/g, '\n'));
+    await Motor.terminar();
+    return true;
   },
 
   async ejecutar(L) {

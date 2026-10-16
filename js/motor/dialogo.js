@@ -27,6 +27,7 @@ const Dialogo = {
     const b = Dialogo.el.busto;
     b.hidden = false;
     b.classList.toggle('derecha', p.lado === 'derecha' || p.lado === 'der'); // ver `lado` en personajes.js
+    b.style.setProperty('--escala', p.escalaBusto || 1); // ver `escalaBusto` en personajes.js
     // Mientras falten dibujos: si no está esa emoción se usa otra del mismo personaje,
     // antes de caer al bloque de color. El orden de abajo es el de preferencia.
     const dondeEsta = (e) => (p.bustos && p.bustos[e]) || `assets/img/bustos/${id}_${e}.png`;

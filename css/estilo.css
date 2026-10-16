@@ -59,7 +59,10 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 
 /* Busto del personaje: por defecto a la izquierda, sobre la caja de diálogo.
    En personajes.js puedes poner `lado: 'derecha'` para que salga al otro lado. */
-.busto { position: absolute; left: 30px; right: auto; bottom: 180px; width: 220px; height: 260px; z-index: 3;
+/* --escala la pone el motor con `escalaBusto` de cada personaje (ver personajes.js).
+   El busto crece hacia arriba, porque queda pegado abajo: no se recorta nada. */
+.busto { --escala: 1; position: absolute; left: 30px; right: auto; bottom: 180px; z-index: 3;
+  width: calc(220px * var(--escala)); height: calc(260px * var(--escala));
   background-size: contain; background-repeat: no-repeat; background-position: bottom center;
   display: flex; align-items: flex-end; justify-content: center; }
 .busto.derecha { left: auto; right: 30px; }

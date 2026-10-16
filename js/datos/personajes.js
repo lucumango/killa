@@ -8,12 +8,16 @@
 //         (primero `neutral`, o la que pongas en `bustoRespaldo: 'feliz'`).
 //         Si no hay ninguna, sale el bloque de color con el nombre.
 // lado: 'derecha' = el busto sale a la derecha de la pantalla (por defecto, izquierda).
+// escalaBusto: de qué tamaño sale el busto. 1 = normal; 1.15 = 15 % más grande.
+//         Sirve para emparejar personajes dibujados más chicos dentro de su marco
+//         (a Flor la cola le come sitio, así que al lado de Amaru se veía pequeña).
+//         Crece hacia arriba, pegado al piso, así que nunca se recorta.
 // tono: frecuencia del beep al hablar (más alto = voz más aguda).
 // beep: ruta a un archivo de audio si prefieres tu propio "beep".
 // =====================================================================
 const PERSONAJES = {
   ariel:    { nombre: 'Ariel',        color: '#f2d16b', tono: 320, onda: 'square' },
-  flor:     { nombre: 'Flor',         color: '#ffa58c', tono: 520, onda: 'square' },
+  flor:     { nombre: 'Flor',         color: '#ffa58c', tono: 520, onda: 'square', escalaBusto: 1.15 },
   amaru:    { nombre: 'Amaru',        color: '#aab3c6', tono: 190, onda: 'triangle', velocidad: 34 },
   mama:     { nombre: 'Mamá',         color: '#c9a2ff', tono: 380, onda: 'sine', lado: 'derecha' },
   puku:     { nombre: 'Puku',         color: '#5ad65a', tono: 900, onda: 'sawtooth', velocidad: 18 },

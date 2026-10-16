@@ -8,6 +8,8 @@ const ctx = { console, window: {}, document: {}, setTimeout, Promise };
 vm.createContext(ctx);
 const run = (f) => vm.runInContext(fs.readFileSync(path.join(R, f), 'utf8'), ctx, { filename: f });
 for (const f of ['js/datos/config.js', 'js/datos/personajes.js', 'js/datos/palabras.js', 'js/datos/mapas.js']) run(f);
+// La simulación recorre el juego ENTERO, aunque config.js tenga puesto el corte de la demo.
+vm.runInContext('CONFIG.demoHasta = null;', ctx);
 vm.runInContext(`var GUION = { archivos: {}, registrar(n, t) { GUION.archivos[n] = t; } };`, ctx);
 for (const f of fs.readdirSync(path.join(R, 'js/datos/guion'))) run('js/datos/guion/' + f);
 vm.runInContext(`
