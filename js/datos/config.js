@@ -12,6 +12,8 @@ const CONFIG = {
                            // Pantalla entera: 960 x 600 (o más grande, misma proporción). null = azul liso
   fondoTarjeta: 'assets/img/fondo_dedicatoria.png',      // lo mismo para las tarjetas ("Capítulo 1 | La
                            // carretera", "PUNTO DE GUARDADO", "CONTINUARÁ"). null = azul liso
+  fondoTexto: 'assets/img/fondo_dedicatoria.png',        // lo mismo para las pantallas de Instrucciones,
+                           // Créditos y Agradecimientos. null = azul liso
   primerCapitulo: 'cap01',           // archivo de js/datos/guion/ con el que empieza la partida
 
   // Pantalla de inicio (antes del menú). Usa saltos de línea normales.

@@ -42,9 +42,13 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 .menu li.seleccionado::before { content: "❤ "; color: #e33; }
 .menu li.deshabilitado { opacity: 0.25; }
 
-/* ---------- Pantalla de texto ---------- */
-#pantalla-texto { padding: 50px 80px; overflow: auto; }
+/* ---------- Pantalla de texto (instrucciones / créditos / agradecimientos) ---------- */
+#pantalla-texto { padding: 50px 80px; overflow: auto; background-size: cover; background-position: center; }
 #texto-cuerpo { white-space: pre-line; line-height: 1.7; font-size: 18px; }
+/* con dibujo de fondo (CONFIG.fondoTexto): sombrita para que el texto no se pierda en la textura */
+#pantalla-texto.con-fondo #texto-titulo,
+#pantalla-texto.con-fondo #texto-cuerpo,
+#pantalla-texto.con-fondo .pista { text-shadow: 0 2px 6px rgba(0,0,0,.85); }
 
 /* ---------- Escena ---------- */
 .capa { position: absolute; inset: 0; background-size: cover; background-position: center; display: flex; align-items: flex-start; justify-content: flex-end; padding: 10px; font-size: 14px; color: rgba(255,255,255,.5); }

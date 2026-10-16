@@ -53,6 +53,10 @@ const Menu = {
   textoPantalla(clave) {
     const titulos = { instrucciones: 'Instrucciones', creditos: 'Créditos', agradecimientos: 'Agradecimientos' };
     Pantallas.mostrar('texto');
+    // Dibujo detrás de instrucciones / créditos / agradecimientos (CONFIG.fondoTexto).
+    const pt = U.$('#pantalla-texto');
+    pt.style.backgroundImage = CONFIG.fondoTexto ? `url("${CONFIG.fondoTexto}")` : 'none';
+    pt.classList.toggle('con-fondo', !!CONFIG.fondoTexto);
     U.$('#texto-titulo').textContent = titulos[clave];
     U.$('#texto-cuerpo').textContent = CONFIG[clave];
     const tk = (e) => { if (Entrada.esAvance(e) || Entrada.esCancelar(e)) { window.removeEventListener('keydown', tk); Menu.mostrar(); } };
