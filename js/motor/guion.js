@@ -165,8 +165,47 @@ const Motor = {
     if (Motor.pc !== Motor.etiquetas[et]) return false;
     Audio_.pararMusica();
     await Dialogo.tarjeta(String(CONFIG.tarjetaDemo || 'FIN DE LA DEMO').replace(/\s*\|\s*/g, '\n'));
-    await Motor.terminar();
+    if (CONFIG.demoChatLibre) await Motor.chatLibre();
+    else await Motor.terminar();
     return true;
+  },
+
+  // Al acabarse la demo, en vez de volver al menú, deja al jugador con el celular
+  // para que siga chateando con Flor y Amaru (CONFIG.demoChatLibre).
+  async chatLibre() {
+    Motor.corriendo = false; Audio_.pararMusica(); Dialogo.limpiar();
+    // Los chats arrancan con unos mensajes, si no los contactos ni aparecen en la lista.
+    // Se meten derecho al historial, para que no salten los avisos de "mensaje nuevo".
+    for (const linea of CONFIG.demoChatsIniciales || []) {
+      const p = String(linea).split('|').map((s) => s.trim());
+      const [contacto, de] = p, texto = p.slice(2).join(' | ');
+      if (!CONTACTOS[contacto] || !texto) { console.warn('demoChatsIniciales mal escrito: ' + linea); continue; }
+      const h = (Chat.historial[contacto] = Chat.historial[contacto] || []);
+      if (!h.some((m) => m.texto === texto)) h.push({ de, texto, hora: Chat.hora() });
+    }
+    Chat.sinLeer = {};
+    Celular.bloqueado = false;
+    Pantallas.mostrar('escena');
+    // Deja puesto el fondo de la última escena, para no dejar la pantalla pelada
+    // cuando el jugador cierra el celular. Si ahí no había fondo (porque el corte
+    // cayó en un cuadro o en un @fondo off), usa el dibujo de la dedicatoria.
+    Motor.estadoEscena.cuadro = null;
+    if (!Motor.estadoEscena.fondo && CONFIG.fondoDedicatoria) U.$('#fondo').style.backgroundImage = `url("${CONFIG.fondoDedicatoria}")`;
+    else await Dialogo.aplicarEscena(Motor.estadoEscena);
+    const pista = U.$('#pista-libre');
+    pista.textContent = CONFIG.demoPista || 'C abre el celular · Enter para volver al menú';
+    pista.hidden = false;
+    Celular.modo = 'libre';
+    // Salir con avanzar (Enter / Espacio), no con Esc: Esc ya se usa para cerrar el
+    // celular, y si fuera la misma tecla se cerraría y se saldría de un solo toque.
+    const salir = (e) => {
+      if (Celular.abierto || !Entrada.esAvance(e)) return;
+      window.removeEventListener('keydown', salir);
+      pista.hidden = true;
+      Motor.terminar();
+    };
+    window.addEventListener('keydown', salir);
+    Celular.abrir('chats');
   },
 
   async ejecutar(L) {

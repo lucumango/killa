@@ -24,7 +24,24 @@ const CONFIG = {
   //   'cap01:whatsapp_mama_1'  ~20 min — + la lección de pronunciación, corta cuando vibra el celular
   //   'cap01:camino_ferreteria' ~21 min — + los chats de la mamá y el Yape
   demoHasta: 'cap01:whatsapp_mama_1',
-  tarjetaDemo: 'FIN DE LA DEMO | Gracias por jugar',
+  tarjetaDemo: 'FIN DE LA DEMO | Lo que sigue todavía lo estamos haciendo. | Mientras tanto, quédate conversando con ellos.',
+
+  // Al acabarse la demo, en vez de volver al menú, te deja el celular abierto para
+  // seguir chateando con Flor y Amaru. `false` = vuelve al menú y ya.
+  demoChatLibre: true,
+  demoPista: 'C o Esc abre y cierra el celular  ·  Enter para volver al menú',
+  // Con qué mensajes arrancan esos chats. Sin esto los contactos ni salen en la lista,
+  // porque están ocultos hasta que les llega algo. Formato: 'contacto | quién | texto',
+  // donde "quién" es `yo` o el id del personaje. Edítalos como quieras.
+  demoChatsIniciales: [
+    'flor | flor | oe ya te agregué',
+    'flor | flor | practica conmigo ah, no te hagas',
+    'amaru | amaru | soy amaru',
+    'amaru | amaru | si escribes mal te corrijo, avisado estás',
+    'grupo | flor | BIENVENIDO AL GRUPO',
+    'grupo | flor | regla 1: se intenta en quechua',
+    'grupo | amaru | regla 2: no hay regla 2',
+  ],
 
   // Pantalla de inicio (antes del menú). Usa saltos de línea normales.
   dedicatoria: `A quienes parten en busca de las estrellas
