@@ -186,8 +186,17 @@ http.createServer(async (req, res) => {
     req.on('end', () => {
       try {
         const j = JSON.parse(d);
-        fs.appendFileSync(ARCHIVO_ESTUDIO, JSON.stringify({ recibido: new Date().toISOString(), ...j }) + '\n');
-        console.log(`  registro de ${j.participante || '?'} guardado (${j.cuantas_palabras ?? '?'} palabras)`);
+        // Los códigos son al azar: con mucha gente podrían repetirse. Si pasa,
+        // se avisa en el log para que puedas separarlos por la hora.
+        let repetido = false;
+        try {
+          if (fs.existsSync(ARCHIVO_ESTUDIO) && j.participante)
+            repetido = fs.readFileSync(ARCHIVO_ESTUDIO, 'utf8')
+              .split('\n').some((l) => l.includes(`"participante":"${j.participante}"`));
+        } catch {}
+        fs.appendFileSync(ARCHIVO_ESTUDIO, JSON.stringify({ recibido: new Date().toISOString(), repetido, ...j }) + '\n');
+        console.log(`  registro de ${j.participante || '?'} guardado (${j.cuantas_palabras ?? '?'} palabras)`
+          + (repetido ? '  <-- OJO: ese código ya había aparecido' : ''));
         res.writeHead(200, { ...cors, 'Content-Type': 'application/json' }); res.end('{"ok":true}');
       } catch (e) {
         res.writeHead(400, { ...cors, 'Content-Type': 'application/json' });
