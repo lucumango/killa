@@ -12,7 +12,7 @@ const Exploracion = {
   mapa: null, nombre: null, jugador: null, teclas: {}, activo: false, resolver: null,
   sprites: {}, ocupado: false, fase: 0, andando: false, _t: 0, _cerca: null,
 
-  correr(nombreMapa) {
+  async correr(nombreMapa) {
     const M = MAPAS[nombreMapa];
     if (!M) throw new Error('No existe el mapa ' + nombreMapa);
     Exploracion.mapa = M; Exploracion.nombre = nombreMapa;
@@ -122,7 +122,8 @@ const Exploracion = {
     if (o.ir) { Exploracion.terminar(o.ir); return; }
     Exploracion.ocupado = true; Exploracion.teclas = {};
     if (o.huir) await Exploracion.huir(o);              // el gato se va corriendo antes de hablar
-    Motor.vars['visto_' + o.id] = 1;                     // queda registrado para los @si y los apareceCuando
+    Motor.vars['visto_' + o.id] = 1;
+    Registro.anotar('mira', { cosa: o.id, mapa: Exploracion.nombre });                     // queda registrado para los @si y los apareceCuando
     const destino = o.accion ? await Motor.subGuion(o.accion) : null;
     Exploracion.refrescarCuenta();
     Exploracion.ocupado = false;

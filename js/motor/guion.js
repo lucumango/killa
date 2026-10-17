@@ -96,7 +96,7 @@ const Motor = {
     let nuevas = 0;
     ids.forEach((id) => {
       if (!PALABRAS.find((p) => p.id === id)) { console.warn('Palabra no definida en palabras.js:', id); return; }
-      if (!Motor.palabras.includes(id)) { Motor.palabras.push(id); U.aviso('CEL · Nueva palabra: ' + id); nuevas++; }
+      if (!Motor.palabras.includes(id)) { Motor.palabras.push(id); U.aviso('CEL · Nueva palabra: ' + id); nuevas++; Registro.anotar('palabra_nueva', { palabra: id }); }
     });
     // un solo sonido aunque entren varias palabras de golpe
     if (nuevas && CONFIG.sfxPalabraNueva) Audio_.sfx(CONFIG.sfxPalabraNueva);
@@ -182,6 +182,7 @@ const Motor = {
     if (Motor.pc !== Motor.etiquetas[et]) return false;
     Audio_.pararMusica();
     await Dialogo.tarjeta(String(CONFIG.tarjetaDemo || 'FIN DE LA DEMO').replace(/\s*\|\s*/g, '\n'));
+    Registro.anotar('fin_demo', { palabras: Motor.palabras.length });
     if (CONFIG.demoChatLibre) await Motor.chatLibre();
     else await Motor.terminar();
     return true;
@@ -215,6 +216,9 @@ const Motor = {
     const pista = U.$('#pista-libre');
     pista.textContent = CONFIG.demoPista || 'C abre el celular · Enter para volver al menú';
     pista.hidden = false;
+    // Para el estudio: botón para que el jugador baje su .json
+    U.$$('#juego > .boton-datos').forEach((x) => x.remove());
+    Registro.ofrecerDescarga();
     Celular.modo = 'libre';
     // Salir con avanzar (Enter / Espacio), no con Esc: Esc ya se usa para cerrar el
     // celular, y si fuera la misma tecla se cerraría y se saldría de un solo toque.

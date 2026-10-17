@@ -16,6 +16,7 @@ vm.runInContext(`
 var log = { textos: [], errores: [], fin: false, etiquetas: new Set(), fondos: new Set(), cuadros: new Set(), bustos: new Set(), chats: 0 };
 var U = { aviso() {}, espera: async () => {}, $: () => ({}), $$: () => [] };
 var Pantallas = { mostrar() {} };
+var Registro = { activo: false, anotar() {}, encender() {}, pedirCodigo() {}, ofrecerDescarga() {} };
 var Yape = { comando(t) { const p = t.trim().split(/ +/); const saldo = p[0].toLowerCase() === 'saldo'; const n = Number((saldo ? p[1] : p[0]).replace(',', '.')); if (isNaN(n)) { log.errores.push('yape mal: ' + t); return; } Motor.vars.yape = saldo ? n : Math.round(((Number(Motor.vars.yape) || 0) + n) * 100) / 100; log.yapeMin = Math.min(log.yapeMin ?? 999, Motor.vars.yape); }, reiniciar() {}, estado() { return {}; }, restaurar() {}, pintar() {} };
 var Animacion = { iniciar: async () => {}, ritmo() {}, detener() {} };
 var Camara = { usarFondo: async () => {}, mover: async () => {}, poner() {}, quitar() {}, caminar: async () => {} };

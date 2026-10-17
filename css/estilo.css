@@ -229,3 +229,14 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 .actores { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
 .actor { position: absolute; background-size: contain; background-repeat: no-repeat;
   background-position: bottom center; }
+
+/* ---------- Estudio con jugadores (CONFIG.estudio.activo) ---------- */
+.codigo-estudio { margin-top: 18px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.codigo-estudio label { font-size: 12px; color: var(--color-pista); letter-spacing: 1px; text-transform: uppercase; }
+.codigo-estudio input { width: 120px; text-align: center; font-family: inherit; font-size: 18px;
+  padding: 6px; background: rgba(0,0,0,.45); color: #fff; border: 2px solid var(--color-borde); border-radius: 4px; }
+.boton-datos { position: absolute; top: 14px; left: 14px; z-index: 9; cursor: pointer;
+  background: #15312c; color: #6ed6c0; border: 1px solid #2d6a5e; border-radius: 4px;
+  padding: 7px 14px; font-family: inherit; font-size: 13px; }
+.boton-datos:hover:not(:disabled) { background: #1d4a41; color: #9ff0de; }
+.boton-datos:disabled { opacity: .7; cursor: default; }

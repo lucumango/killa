@@ -30,6 +30,7 @@ const Menu = {
     U.$('#titulo-juego').hidden = !!(CONFIG.fondoMenu && CONFIG.tituloEnElFondo);
     U.$('#subtitulo-juego').hidden = !CONFIG.subtitulo;
     if (CONFIG.musicaMenu) Audio_.reproducirMusica(CONFIG.musicaMenu);
+    Registro.pedirCodigo();
     const lis = U.$$('#menu-opciones li');
     const cont = U.$('[data-accion=continuar]');
     cont.classList.toggle('deshabilitado', !Guardado.existe());
@@ -63,7 +64,7 @@ const Menu = {
   async accion(a) {
     if (a === 'nueva' || a === 'continuar') {
       await Menu.cortinilla();              // el papel texturizado, un momento, antes de jugar
-      if (a === 'nueva') Motor.nuevaPartida();
+      if (a === 'nueva') { Registro.encender(); Motor.nuevaPartida(); }
       else Motor.restaurar(Guardado.cargar());
       // Si la partida se guardó en el chat del final, vuelves ahí, no a la historia.
       if (a === 'continuar' && Motor.vieneDeChatLibre) {

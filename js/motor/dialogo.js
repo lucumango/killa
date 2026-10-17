@@ -210,7 +210,8 @@ const Dialogo = {
     const lis = U.$$('#opciones li');
     let idx = 0; lis[0].classList.add('seleccionado');
     return new Promise((res) => {
-      const fin = (i) => { window.removeEventListener('keydown', tk); ul.hidden = true; res(ops[i]); };
+      const fin = (i) => { window.removeEventListener('keydown', tk); ul.hidden = true;
+        Registro.anotar('elige', { texto: ops[i].texto, de: ops.length }); res(ops[i]); };
       const tk = (e) => {
         if (Celular.abierto) return;
         const antes = idx;

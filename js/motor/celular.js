@@ -15,6 +15,7 @@ const Celular = {
   },
   abrir(tab) {
     Celular.abierto = true; Celular.el.raiz.hidden = false;
+    Registro.anotar('celular_abre', { pestana: tab || Celular.tab });
     Celular.irTab(tab || Celular.tab);
   },
   cerrar() {
@@ -78,6 +79,7 @@ const Celular = {
           d.classList.add('activa');
           if (!p.audio) return;
           if (Audio_.palabra(p.audio)) {
+            Registro.anotar('palabra_oye', { palabra: p.id });
             d.classList.add('sonando');
             const soltar = setInterval(() => {
               if (Audio_.sonando) return;

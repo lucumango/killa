@@ -25,6 +25,7 @@ const Chat = {
   // ---- El jugador manda un mensaje ----
   async enviar(contacto, texto) {
     const mio = Chat.agregar(contacto, 'yo', texto);
+    Registro.anotar('chat_envia', { a: contacto, texto, palabras: Motor.palabras.length });
     const C = CONTACTOS[contacto];
     if (!C || !C.responde) { mio.estado = 'enviado'; Celular.pintarMensajes(); return; }
     let respuesta;
@@ -32,6 +33,7 @@ const Chat = {
       try { respuesta = await Chat.preguntarIA(contacto, texto); }
       catch (e) { console.warn('IA falló, usando modo local:', e); respuesta = Chat.respuestaLocal(contacto, texto); }
     } else respuesta = Chat.respuestaLocal(contacto, texto);
+    Registro.anotar('chat_recibe', { de: contacto, accion: respuesta?.accion || 'visto', mensajes: respuesta?.mensajes || [] });
     await Chat.aplicarRespuesta(contacto, mio, respuesta);
   },
 

@@ -16,6 +16,12 @@ const CONFIG = {
                            // Créditos y Agradecimientos. null = azul liso
   primerCapitulo: 'cap01',           // archivo de js/datos/guion/ con el que empieza la partida
 
+  // ---------- Estudio con jugadores ----------
+  // Con activo: true sale una casilla en el menú para el código de participante
+  // (K01, K02...) y, al terminar, un botón para descargar un .json con todo lo
+  // que hizo. No se guarda nada personal. Apágalo para la versión pública.
+  estudio: { activo: true },
+
   // ---------- Modo demo ----------
   // Corta la partida al llegar a esa etiqueta del guion ('capitulo:etiqueta') y muestra
   // la tarjeta de abajo. `null` = se juega el juego entero. No toca el guion: para
