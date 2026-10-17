@@ -80,7 +80,7 @@ const ANIMACIONES = {
 //   porSegundo: cuántos cambios de pie por segundo
 // =====================================================================
 const CRUCES = {
-  ariel: { marcos: ['ariel_base', 'ariel_walk'], alto: 150, piso: 40, porSegundo: 6 },
+  ariel: { marcos: ['ariel_base', 'ariel_walk'], alto: 165, piso: 40, porSegundo: 6 },
   gato:  { marcos: ['gato', 'gato_corre'],       alto: 56,  piso: 40, porSegundo: 7, espejo: true },
   flor:  { marcos: ['flor'],                     alto: 150, piso: 40 },
   amaru: { marcos: ['amaru'],                    alto: 150, piso: 40 },

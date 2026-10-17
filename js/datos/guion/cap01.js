@@ -283,6 +283,7 @@ Te acercas otra vez, ya con curiosidad. Es un loro precioso, verde manzana con l
 Sacas el celular y le tomas una foto. El loro, que claramente ya ha sido fotografiado antes, se pone de perfil. En serio. Se pone de perfil.
 Miras alrededor. El patio detrás de la jaula tiene el piso de tierra apisonada, una pared con baldes apilados, una bicicleta sin cadena. Nadie.
 ariel (neutral): Hubiese comprado galleta en el kiosko para invitarte.
+@cuadro nocomegalleta
 voz: No come galleta.
 @cuadro off
 @fondo calle_loro

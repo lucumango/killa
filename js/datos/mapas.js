@@ -23,7 +23,7 @@ const MAPAS = {
     imagen: 'assets/img/mapas/plaza.png',   // el dibujo: 1920 x 1200 = 48 x 30 casillas
     spriteJugador: 'assets/img/sprites/ariel_base.png',
     spriteCaminar: 'assets/img/sprites/ariel_walk.png',
-    pasosPorSegundo: 6, altoJugador: 4,   // Ariel mide 4 casillas: la escala del dibujo
+    pasosPorSegundo: 6, altoJugador: 4.35,   // Ariel mide 4 casillas: la escala del dibujo
     // Esta grilla ya no se ve: solo dice por dónde NO se puede caminar.
     // Sale del dibujo (donde hay tinta, choca). Para ajustarla a ojo pon
     // verChoques: true en config.js y mueve los # hasta que calce.
