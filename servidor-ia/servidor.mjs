@@ -91,6 +91,10 @@ async function unaLlamadaGoogle(modelo, sistema, turnos) {
     body: JSON.stringify({
       systemInstruction: { parts: [{ text: sistema }] },
       contents: turnos.map((t) => ({ role: t.rol === 'assistant' ? 'model' : 'user', parts: [{ text: t.texto }] })),
+      // Si GUARDAR_EN_GOOGLE=1, Google guarda la conversación y la puedes leer
+      // en AI Studio > Logs. Apagado por defecto: tus propios registros ya la
+      // llevan, atada al código de participante, que allá no existe.
+      ...(process.env.GUARDAR_EN_GOOGLE === '1' ? { store: true } : {}),
       generationConfig: {
         maxOutputTokens: 1024, responseMimeType: 'application/json', responseSchema: ESQUEMA,
         // Chat de WhatsApp: contesta rápido antes que pensar bonito. Sube PENSAR en .env si quieres.
