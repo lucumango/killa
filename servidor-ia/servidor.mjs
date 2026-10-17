@@ -39,6 +39,7 @@ function pasaElFreno(ip) {
   return true;
 }
 const CLAVE_GOOGLE = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+const PENSAR = Number(process.env.PENSAR || 0);
 const PROVEEDOR = CLAVE_GOOGLE ? 'google' : 'anthropic';
 const MODELO = process.env.MODELO || (PROVEEDOR === 'google' ? 'gemini-3.6-flash' : 'claude-opus-5');
 // Si el modelo de arriba está saturado (pasa), se reintenta y después se usa este.
@@ -79,11 +80,20 @@ async function unaLlamadaGoogle(modelo, sistema, turnos) {
       generationConfig: {
         maxOutputTokens: 1024, responseMimeType: 'application/json', responseSchema: ESQUEMA,
         // Chat de WhatsApp: contesta rápido antes que pensar bonito. Sube PENSAR en .env si quieres.
-        thinkingConfig: { thinkingBudget: Number(process.env.PENSAR || 0) },
+        // Solo se manda si lo pides: hay modelos (los "lite") que no lo aceptan y
+        // devuelven un 400 confuso justo cuando el principal está saturado.
+        ...(PENSAR > 0 ? { thinkingConfig: { thinkingBudget: PENSAR } } : {}),
       },
     }),
   });
-  if (!r.ok) { const e = new Error(`google ${r.status}: ${(await r.text()).slice(0, 200)}`); e.estado = r.status; throw e; }
+  if (!r.ok) {
+    const cuerpo = await r.text();
+    const cuota = r.status === 429 && /quota/i.test(cuerpo);
+    const e = new Error(cuota
+      ? 'se acabó la cuota diaria de la API de Google (el chat sigue andando con las respuestas locales)'
+      : `google ${r.status}: ${cuerpo.slice(0, 200)}`);
+    e.estado = r.status; e.cuota = cuota; throw e;
+  }
   const d = await r.json();
   const txt = d.candidates?.[0]?.content?.parts?.map((p) => p.text).join('') || '';
   try { return JSON.parse(txt); } catch { return VISTO; }

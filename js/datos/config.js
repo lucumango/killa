@@ -183,7 +183,7 @@ Tupananchiskama.
     // Cuando el juego está subido (itch.io), usa esta en vez de la de arriba.
     // El juego se da cuenta solo: si lo abres en localhost usa la de arriba.
     // Pon acá la URL que te da Render, terminada en /chat.
-    urlPublica: 'https://killa-ia.onrender.com/chat',
+    urlPublica: 'https://killa-2gpy.onrender.com/chat',
     maxHistorial: 20,                    // cuántos mensajes previos se le mandan a la IA
   },
 };
