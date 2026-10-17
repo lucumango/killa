@@ -61,7 +61,7 @@ const Motor = {
       if (L.cmd === 'fondo') arte.add(`assets/img/fondos/${L.arg}.png`);
       if (L.cmd === 'cuadro') arte.add(`assets/img/cuadros/${L.arg}.png`);
     }
-    U.precargar([...arte]);
+    U.precargar?.([...arte]);
   },
 
   // ---------- Estado / guardado ----------
@@ -262,11 +262,14 @@ const Motor = {
       // Al poner un cuadro, se esconde la caja de diálogo un momento para que se
       // vea el dibujo entero y limpio (CONFIG.pausaCuadro, en milisegundos).
       case 'cuadro': {
-        const nuevo = arg === 'off' ? null : arg;
+        // "@cuadro algo ya" = aparece al toque, sin la pausa para mirarlo
+        // (para cuando la lámina tiene que caer junto con la línea que la acompaña).
+        const alToque = a[1] === 'ya' || a[1] === 'sinpausa';
+        const nuevo = a[0] === 'off' ? null : a[0];
         const entra = nuevo && nuevo !== Motor.estadoEscena.cuadro;
         Motor.estadoEscena.cuadro = nuevo;
         await Dialogo.aplicarEscena(Motor.estadoEscena);
-        if (entra && CONFIG.pausaCuadro) { Dialogo.limpiar(); await U.espera(CONFIG.pausaCuadro); }
+        if (entra && !alToque && CONFIG.pausaCuadro) { Dialogo.limpiar(); await U.espera(CONFIG.pausaCuadro); }
         break; }
       // @ojos cerrar / @ojos abrir / @ojos medio - los párpados
       case 'ojos':       await Dialogo.ojos(a[0] || 'cerrar', a[1]); break;
