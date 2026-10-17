@@ -61,29 +61,34 @@ El juego se guarda solo en los puntos de guardado.`,
 
   creditos: `Validación en quechua y voz: ABNER VILCA RENOJO
 intérprete y traductor del quechua chanka,
-inscrito en el registro oficial del Ministerio de Cultura.
+inscrito en el registro oficial del Ministerio de Cultura, muy amable, dispuesto y paciente!!
 
-Música: Zerovolt0v — SÍGANLO, ES INCREÍBLE
-Cover del menú: GatoSupercalifragilistico!!!
+Música: Zerovolt0v
+
+SÍGANLO EN KICK Y YOUTUBE, ES INCREÍBLE Y CANTA MUY BONITOOO!!!! <333
+
+Cover del menú GatoSupercalifragilistico!!! El primer beta player
+
+Procesamiento de los audios (quechua) por Nakato156, hizo magia xd
 
 Los otros audios de efectos especiales fueron sacados de recursos
-libres, abiertos para todos, y no nos pertenecen. Menos el yape/yapo:
-esa es mi voz.
+libres, abiertos para todos, y no nos pertenecen! Menos el yape/yapo:
+esa es mi voz...
 
-El resto de cosas fueron hechas por mi persona.
+El resto de cosas en el juego fueron hechas por mi persona.
+
 Tengo muchos nombres en internet, pero en la mayoría estoy como
 lonelynode (nodo solitario) o lucumango.
 
-Contacto: daniellavargas@ieee.org
-Daniella Alexandra Crysti Vargas Saldaña`,
+Contacto: daniellavargas@ieee.org`,
 
   agradecimientos: `GRACIAS GRACIAS GRACIAS Al Señor Abner Vilca por prestarnos su voz y validación experta para este increíble proyecto!!!
 
 SULPAYKI a Amorcha, quien fue mi primer acercamiento para aprender quechua y también animó la idea del proyecto.
 
-Gracias A MIS AMIGOS que me motivaron a hacer este proyecto! Gracias a ZeroV0ltov quien le dio vida y sonido a esta demo, a Leo por la investigación y por mostrarme que también puedo. A Harvy por escuchar y apoyar la locura. A Christian por el procesamiento de los audios.
+Gracias A MIS AMIGOS que me motivaron a hacer este proyecto! Gracias a Zerovolt0v quien le dio vida y sonido a esta demo, a GatoSupercalifragilistico por la investigación, la portada y por mostrarme que también puedo. A Nakato156 por el procesamiento de los audios.
 
-Gracias gracias a las personas que me escucharon y apoyaron la locura. Gracias papi, mami, Harvy, gracias Sam!!! gracias Manuel!! gracias Luciano!! gracias Sebas!! gracias Hernan!! gracias a mi hermano que sin decir nada me motivó a dibujar de nuevo!
+Gracias gracias a las personas que me escucharon y apoyaron la locura. Gracias papi, mami, Harvy, gracias Sam!!! gracias Manuel!! gracias Luciano!! gracias Sebas!! gracias Hernan!! Aaron!! Rody!! probablemente se lo conté a más personas-- gracias a mi hermano que sin decir nada también me motivó a dibujar de nuevo!
 
 GRACIAS AL GAMELAB UPC LOS QUIERO MUCHO
 
@@ -93,9 +98,9 @@ GRACIAS a todas las personas que no dejan que una lengua muera! Sea hablando, cr
 
 Gracias a quienes inspiraron esta historia.
 
-Y Gracias a todos los que están probando este juego!!!
+Y gracias a todos los que están probando esta demo!!!
 
-Pásense por la página que hicimos de recurso junto a Leo! y sigan practicando quechua.
+Pásense por la página que hicimos de recurso junto a Gato! y sigan practicando quechua.
 
 Un abrazote!
 Tupananchiskama.

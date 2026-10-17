@@ -14,7 +14,7 @@ GUION.registrar('cap01', String.raw`
 @tarjeta Capítulo 1 | La carretera
 @fondo off
 @animacion carro
-@musica carretera.mp3
+@musica carretera.m4a
 @limpiar
 @esperar 7000
 
@@ -82,7 +82,7 @@ Miras. Es de piedra rosada, enorme, con dos torres.
 == plaza_llegada
 @animacion off
 @fondo off
-@musica plaza.mp3
+@musica plaza.m4a
 El carro los deja cerca de la plaza. Bajas y las piernas te tiemblan como si el piso todavía se moviera, pero el aire de acá afuera te arregla en diez segundos: seco, delgado, con un frío que no es el frío pegajoso de Lima.
 Respiras hondo y hasta te da un poco de risa lo bien que se siente.
 Y lo primero que ves, en el medio de todo, es un señor de bronce encima de un caballo.
