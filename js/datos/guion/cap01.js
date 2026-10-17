@@ -125,15 +125,20 @@ La plaza es un cuadrado perfecto con un montón de cosas adentro. Camina, mira, 
 
 # ----- cosas de la plaza (se activan con E; terminan con @volver) -----
 == plaza_kiosko
+@sfx wand.mp3
+@cuadro kiosko
 Entras al kiosko. Huele a cartón y a caramelo. Hay revistas colgadas con pinzas, chicles, galletas, cigarros sueltos, una nevera con Inca Kola y chicha morada embotellada.
 La señora te mira desde atrás del mostrador con cara de no tener ningún apuro.
 @si agua == 1 -> plaza_kiosko_ya
 Compras una botella de agua porque te da vergüenza salir sin comprar nada.
 @yape -2 Kiosko de la plaza
 @var agua = 1
+@cuadro off
 @volver
 == plaza_kiosko_ya
+@cuadro kiosko
 Ya tienes tu agua. La señora sigue sin apuro.
+@cuadro off
 @volver
 
 == plaza_iglesia
