@@ -56,6 +56,22 @@ const Registro = {
     };
   },
 
+  // Manda la partida al servidor, para no depender de que el jugador te
+  // pase el archivo. Si no hay servidor o falla, no pasa nada: el botón de
+  // descargar sigue estando. CONFIG.estudio.enviar lo enciende.
+  async enviar() {
+    if (!Registro.activo || !(CONFIG.estudio && CONFIG.estudio.enviar)) return false;
+    const base = (typeof Chat !== 'undefined' && Chat.urlIA) ? Chat.urlIA() : '';
+    const url = base.replace(/\/chat$/, '/registro');
+    if (!url) return false;
+    try {
+      const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Registro.resumen()) });
+      Registro._enviado = r.ok;
+      return r.ok;
+    } catch { Registro._enviado = false; return false; }
+  },
+
   descargar() {
     const d = Registro.resumen();
     const nombre = `killa_${(Registro.codigo || 'anon').replace(/[^\w-]/g, '')}_${new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-')}.json`;
@@ -90,6 +106,8 @@ const Registro = {
     b.type = 'button'; b.className = 'boton-datos';
     b.textContent = 'Descargar mis datos';
     b.onclick = () => { const n = Registro.descargar(); b.textContent = 'Descargado: ' + n; b.disabled = true; };
+    // intenta mandarlo solo, en silencio
+    Registro.enviar().then((ok) => { if (ok) b.textContent = 'Datos enviados ✓ (o descárgalos)'; });
     b.addEventListener('keydown', (e) => e.stopPropagation());
     (donde || U.$('#juego')).appendChild(b);
     return b;

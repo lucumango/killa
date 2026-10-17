@@ -40,6 +40,9 @@ function pasaElFreno(ip) {
 }
 const CLAVE_GOOGLE = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
 const PENSAR = Number(process.env.PENSAR || 0);
+// Dónde se guardan los registros del estudio y con qué clave te los bajas.
+const ARCHIVO_ESTUDIO = process.env.ARCHIVO_ESTUDIO || 'datos-estudio.jsonl';
+const CLAVE_ESTUDIO = process.env.CLAVE_ESTUDIO || '';
 const PROVEEDOR = CLAVE_GOOGLE ? 'google' : 'anthropic';
 const MODELO = process.env.MODELO || (PROVEEDOR === 'google' ? 'gemini-3.6-flash' : 'claude-opus-5');
 // Si el modelo de arriba está saturado (pasa), se reintenta y después se usa este.
@@ -161,6 +164,35 @@ http.createServer(async (req, res) => {
   if (req.method === 'GET' && (req.url === '/' || req.url === '/salud')) {
     res.writeHead(200, { ...cors, 'Content-Type': 'application/json; charset=utf-8' });
     return res.end(JSON.stringify({ ok: true, juego: 'Killa', proveedor: PROVEEDOR, modelo: MODELO }));
+  }
+  // Registro del estudio: el juego manda acá el .json de cada partida, así no
+  // dependes de que el jugador te lo mande a mano. Se guarda una línea por
+  // partida en datos-estudio.jsonl, al lado del servidor.
+  if (req.method === 'POST' && req.url === '/registro') {
+    if (!origenVale(origen)) { res.writeHead(403, cors); return res.end('{}'); }
+    let d = '';
+    req.on('data', (c) => { d += c; if (d.length > 2_000_000) req.destroy(); });
+    req.on('end', () => {
+      try {
+        const j = JSON.parse(d);
+        fs.appendFileSync(ARCHIVO_ESTUDIO, JSON.stringify({ recibido: new Date().toISOString(), ...j }) + '\n');
+        console.log(`  registro de ${j.participante || '?'} guardado (${j.cuantas_palabras ?? '?'} palabras)`);
+        res.writeHead(200, { ...cors, 'Content-Type': 'application/json' }); res.end('{"ok":true}');
+      } catch (e) {
+        res.writeHead(400, { ...cors, 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: String(e.message || e) }));
+      }
+    });
+    return;
+  }
+  // Para bajarte todo lo recogido: /estudio?clave=LACLAVE
+  if (req.method === 'GET' && req.url.startsWith('/estudio')) {
+    const clave = new URL(req.url, 'http://x').searchParams.get('clave');
+    if (!CLAVE_ESTUDIO || clave !== CLAVE_ESTUDIO) { res.writeHead(403, cors); return res.end('no'); }
+    const hay = fs.existsSync(ARCHIVO_ESTUDIO);
+    res.writeHead(200, { ...cors, 'Content-Type': 'application/x-ndjson; charset=utf-8',
+      'Content-Disposition': 'attachment; filename="datos-estudio.jsonl"' });
+    return res.end(hay ? fs.readFileSync(ARCHIVO_ESTUDIO) : '');
   }
   if (req.method !== 'POST' || req.url !== '/chat') { res.writeHead(404, cors); return res.end('no'); }
   if (!origenVale(origen)) {

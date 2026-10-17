@@ -20,7 +20,11 @@ const CONFIG = {
   // Con activo: true sale una casilla en el menú para el código de participante
   // (K01, K02...) y, al terminar, un botón para descargar un .json con todo lo
   // que hizo. No se guarda nada personal. Apágalo para la versión pública.
-  estudio: { activo: true },
+  estudio: {
+    activo: true,     // la casilla del código y el botón de descargar
+    enviar: true,     // además manda la partida sola al servidor (misma URL que el chat,
+                      // pero terminada en /registro). Si falla, el botón sigue ahí
+  },
 
   // ---------- Modo demo ----------
   // Corta la partida al llegar a esa etiqueta del guion ('capitulo:etiqueta') y muestra

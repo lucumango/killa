@@ -20,3 +20,6 @@ services:
         value: https://*.hwcdn.net,https://*.itch.zone,https://itch.io,http://localhost:8765
       - key: LIMITE_POR_MINUTO
         value: "20"
+      # Para bajarte los datos del estudio: /estudio?clave=LOQUEPONGASACA
+      - key: CLAVE_ESTUDIO
+        sync: false
