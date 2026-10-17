@@ -17,12 +17,12 @@ var log = { textos: [], errores: [], fin: false, etiquetas: new Set(), fondos: n
 var U = { aviso() {}, espera: async () => {}, $: () => ({}), $$: () => [] };
 var Pantallas = { mostrar() {} };
 var Yape = { comando(t) { const p = t.trim().split(/ +/); const saldo = p[0].toLowerCase() === 'saldo'; const n = Number((saldo ? p[1] : p[0]).replace(',', '.')); if (isNaN(n)) { log.errores.push('yape mal: ' + t); return; } Motor.vars.yape = saldo ? n : Math.round(((Number(Motor.vars.yape) || 0) + n) * 100) / 100; log.yapeMin = Math.min(log.yapeMin ?? 999, Motor.vars.yape); }, reiniciar() {}, estado() { return {}; }, restaurar() {}, pintar() {} };
-var Animacion = { iniciar: async () => {} };
+var Animacion = { iniciar: async () => {}, ritmo() {}, detener() {} };
 var Audio_ = { reproducirMusica() {}, pararMusica() {}, sfx() {} };
 var Guardado = { guardar() {} };
 var Menu = { mostrar() {} };
 var Exploracion = { correr: async (m) => (MAPAS[m].objetos || []).find((o) => o.ir).ir };
-var Celular = { abierto: false, chatActual: null, abrirDesdeGuion: async () => { log.chats++; }, pintarMensajes() {} };
+var Celular = { abierto: false, chatActual: null, abrirDesdeGuion: async () => { log.chats++; }, abrirMapa: async () => { log.mapas = (log.mapas || 0) + 1; }, pintarMensajes() {} };
 var Chat = { historial: {}, historialInicial() { return {}; }, agregar(c, de, t) { if (!CONTACTOS[c]) log.errores.push('contacto ' + c); } };
 var elegir = null;
 var Dialogo = {
@@ -30,6 +30,7 @@ var Dialogo = {
   decir: async (q, em, t) => { log.textos.push((q || '') + ': ' + t); log.porCap = log.porCap || {}; const k = Motor.capitulo + (Motor.capitulo === 'cap03' && log.eligio ? '_post' : ''); log.porCap[k] = (log.porCap[k] || 0) + 1; if (q && q !== 'narrador' && !PERSONAJES[q].sinBusto) log.bustos.add(q + '_' + (em || 'neutral')); if (/\\{|undefined|NaN/.test(t)) log.errores.push('texto raro: ' + t); },
   elegir: async (ops) => elegir(ops),
   tarjeta: async () => {}, limpiar() {}, ocultarBusto() {}, mostrarBusto: async () => {},
+  cruzar: async (n) => { if (n) log.cruces = (log.cruces || 0) + 1; },
 };
 `, ctx);
 run('js/motor/guion.js');

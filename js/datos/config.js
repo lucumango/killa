@@ -78,7 +78,8 @@ A quien lea esto.`,
   musicaMenu: null,        // ej: 'menu.mp3' (en assets/audio/musica/). null = sin música
   sfxMensaje: null,        // ej: 'mensaje.wav' (en assets/audio/sfx/) cuando llega un chat
   sfxPalabraNueva: 'wand.mp3', // al aprender una palabra. Si entran varias de golpe, suena UNA sola vez. null = sin sonido
-  audioAlPasarMouse: true, // en la lista de palabras: true = suena al pasar el mouse; false = solo al hacer clic
+  audioAlPasarMouse: false, // en la lista de palabras cada palabra tiene su botón "oír".
+                           // true = además suena al pasar el mouse por encima (molesto, pero ahí está)
 
   // ---------- Arte ----------
   estiloPixel: false,      // true = TODO se escala con bordes duros (juego 100 % pixel). false = bustos, fondos y mapa de exploración suavizados (dibujo a línea)
@@ -91,6 +92,12 @@ A quien lea esto.`,
     sfx: null,                // ej: 'yape.mp3' cuando entra plata. null = sin sonido
     sfxPago: null,            // ej: 'yape_pago.mp3' al pagar. null = usa el de arriba
   },
+
+  // ---------- Quien cruza la pantalla (@cruzar en el guion) ----------
+  // Qué tan grande sale cada uno, en px (la pantalla mide 600 de alto).
+  // `_` es el tamaño por defecto; el resto son excepciones por nombre de sprite.
+  altoCruce: { _: 230, gato: 105, gato_corre: 105 },
+  pisoCruce: 150,          // a qué altura pisa, contando desde abajo (la caja de diálogo tapa 170)
 
   // ---------- Exploración ----------
   colorJugador: '#f2d16b',

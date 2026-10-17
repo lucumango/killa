@@ -23,12 +23,22 @@ const Exploracion = {
     Pantallas.mostrar('explorar');
     U.$('#explorar-nombre').textContent = (M.nombre || nombreMapa) + '   ·   flechas/WASD mover · ' + CONFIG.teclas.interactuar[0].toUpperCase() + ' interactuar · ' + CONFIG.teclas.celular[0].toUpperCase() + ' celular';
     if (M.musica) { Motor.estadoEscena.musica = M.musica; Audio_.reproducirMusica(M.musica); }
-    Exploracion.todos().forEach((o) => { o._ido = false; o._dx = 0; o._dy = 0; o._sprite = null; Exploracion.cargarSprite(o.sprite); Exploracion.cargarSprite(o.huir && o.huir.sprite); });
+    Exploracion.todos().forEach((o) => { o._ido = false; o._dx = 0; o._dy = 0; o._sprite = null; Exploracion.cargarSprite(o.sprite); Exploracion.cargarSprite(o.huir && o.huir.sprite); Exploracion.cargarSprite(o.seVa && o.seVa.sprite); });
     Exploracion.anunciados = new Set(Exploracion.todos().filter(Exploracion.yaAparecio).map((o) => o.id));
     [M.spriteJugador, M.spriteCaminar, M.imagen].forEach(Exploracion.cargarSprite);
     Exploracion.fase = 0; Exploracion.andando = false; Exploracion._t = 0; Exploracion._cerca = null;
     Exploracion.ctx.imageSmoothingEnabled = true; // el arte es a línea, no pixel art
     Exploracion.activo = true;
+    // `seVa`: el que lo tenga se va caminando solo al poco rato de empezar el mapa
+    // (mamá yéndose a la notaría). Se desliza fuera del cuadro, como en Pokémon.
+    for (const o of Exploracion.todos()) {
+      if (!o.seVa || Motor.vars['ido_' + o.id]) { if (o.seVa) o._ido = true; continue; }
+      setTimeout(() => {
+        if (!Exploracion.activo || Exploracion.nombre !== nombreMapa) return;
+        if (o.seVa.aviso) U.aviso(o.seVa.aviso);
+        Exploracion.deslizar(o, o.seVa).then(() => { Motor.vars['ido_' + o.id] = 1; });
+      }, o.seVa.retraso || 1200);
+    }
     window.addEventListener('keydown', Exploracion.onDown);
     window.addEventListener('keyup', Exploracion.onUp);
     requestAnimationFrame(Exploracion.bucle);
@@ -102,8 +112,12 @@ const Exploracion = {
     return false;
   },
   // Animación de huida: cambia de sprite y se desliza hasta salir del cuadro.
-  huir(o) {
-    const h = o.huir, ms = h.ms || 900;
+  huir(o) { return Exploracion.deslizar(o, o.huir); },
+
+  // Desliza un objeto dx/dy píxeles en ms milisegundos y lo da por ido.
+  // Lo usan el gato cuando huye y mamá cuando se va a la notaría.
+  deslizar(o, h) {
+    const ms = h.ms || 900;
     o._sprite = h.sprite || o.sprite;
     const t0 = performance.now();
     return new Promise((res) => {

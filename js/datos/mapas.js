@@ -72,8 +72,14 @@ const MAPAS = {
       { id: 'perro', x: 9, y: 23, ancho: 3, alto: 2, solido: false, etiqueta: 'Perro', accion: 'plaza_perro' },
       { id: 'monumento', x: 18, y: 9, ancho: 12, alto: 11, etiqueta: 'Monumento', accion: 'plaza_monumento' },
       { id: 'pileta', x: 1, y: 12, ancho: 6, alto: 7, etiqueta: 'Pileta', accion: 'plaza_pileta' },
+      // Mamá llega con Ariel y al ratito se va caminando a la notaría: se desliza
+      // fuera del mapa, como los personajes de Pokémon. No se puede hablar con ella
+      // (no tiene `accion`) ni estorba el paso (`solido: false`).
+      // `ancho: 4.4` es el tamaño del dibujo, no una casilla de choque: su PNG es cuadrado
+      // y la figura ocupa el 95 % del alto, así que queda un pelo más alta que Ariel (4 casillas).
+      { id: 'mama', x: 25, y: 24, ancho: 4.4, alto: 3, solido: false, sprite: 'assets/img/sprites/mama.png',
+        seVa: { dx: -1200, dy: -260, ms: 3200, retraso: 1400, aviso: 'Tu mamá se va a la notaría.' } },
       // --- todavía sin dibujar: se ven como bloques de color hasta que existan ---
-      { id: 'notaria', x: 1, y: 1, ancho: 2, alto: 2, color: '#555', etiqueta: 'Notaría', provisional: true, accion: 'plaza_notaria' },
       { id: 'kiosko', x: 2, y: 26, ancho: 2, alto: 2, color: '#d9a441', etiqueta: 'Kiosko', provisional: true, accion: 'plaza_kiosko' },
       // la catedral queda fuera del dibujo, hacia arriba: se habla con ella desde el borde
       { id: 'iglesia', x: 18, y: 0, ancho: 12, alto: 1, solido: false, etiqueta: 'Catedral', accion: 'plaza_iglesia' },
@@ -82,7 +88,7 @@ const MAPAS = {
         sprite: 'assets/img/sprites/gato.png', accion: 'plaza_gato', sfxCerca: 'meow1.mp3',
         aviso: 'Un gato se sentó a mirarte.',
         huir: { sprite: 'assets/img/sprites/gato_corre.png', dx: 60, dy: 420, ms: 900 },   // baja hacia la calle
-        apareceCuando: ['kiosko', 'iglesia', 'pileta', 'senores', 'retablos', 'heladero', 'perro', 'monumento', 'notaria'] },
+        apareceCuando: ['kiosko', 'iglesia', 'pileta', 'senores', 'retablos', 'heladero', 'perro', 'monumento'] },
       // salida: al pisar la abertura de abajo se va a perder, pero recién después del gato
       { id: 'salida', x: 22, y: 29, ancho: 4, alto: 1, color: '#222', etiqueta: '↓ calles', provisional: true, pisar: true, ir: 'perderse',
         requiere: 'gato', avisoBloqueado: 'Todavía no. Date una vuelta por la plaza primero.' },

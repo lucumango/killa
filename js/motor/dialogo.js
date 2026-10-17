@@ -20,6 +20,42 @@ const Dialogo = {
     if (est.musica) Audio_.reproducirMusica(est.musica);
   },
 
+  // Alguien cruza la pantalla de lado a lado y sale. Desde el guion:
+  //   @cruzar gato 2400 meow1.mp3      (sprite, milisegundos, sonido al entrar)
+  //   @cruzar ariel 3000               (de izquierda a derecha, por defecto)
+  //   @cruzar gato 2400 meow1.mp3 der  (al revés: de derecha a izquierda)
+  // El sprite sale de assets/img/sprites/<nombre>.png. Si no existe, no pasa nada
+  // y el guion sigue igual, para que nunca se trabe por un dibujo que falta.
+  async cruzar(nombre, ms, sfx, desde) {
+    const ruta = `assets/img/sprites/${nombre}.png`;
+    if (!(await U.imagenExiste(ruta))) { console.warn('@cruzar: falta', ruta); return; }
+    const el = U.$('#cruce');
+    // Tamaño: CONFIG.altoCruce puede ser un número para todos, o una tabla por sprite.
+    const tabla = CONFIG.altoCruce;
+    const alto = Number(typeof tabla === 'object' && tabla ? (tabla[nombre] ?? tabla._) : tabla) || 230;
+    el.style.height = alto + 'px';
+    el.style.width = Math.round(alto * 1.1) + 'px';
+    el.style.bottom = (Number(CONFIG.pisoCruce) || 150) + 'px';
+    el.style.backgroundImage = `url("${ruta}")`;
+    el.hidden = false;
+    const alReves = /^(der|derecha|<-|izq_)/i.test(String(desde || ''));
+    const dur = Math.max(200, Number(ms) || 2400);
+    if (sfx && sfx !== '-') Audio_.sfx(sfx);
+    const t0 = performance.now();
+    await new Promise((res) => {
+      const paso = () => {
+        const k = Math.min(1, (performance.now() - t0) / dur);
+        // de fuera por un lado a fuera por el otro
+        const x = alReves ? 100 - k * 125 : -25 + k * 125;
+        el.style.left = x + '%';
+        el.style.transform = alReves ? 'scaleX(-1)' : 'none';
+        if (k < 1) requestAnimationFrame(paso); else res();
+      };
+      requestAnimationFrame(paso);
+    });
+    el.hidden = true; el.style.backgroundImage = 'none';
+  },
+
   async mostrarBusto(id, emocion) {
     const p = PERSONAJES[id];
     if (!p || p.sinBusto || Motor.estadoEscena.cuadro) { Dialogo.ocultarBusto(); return; }

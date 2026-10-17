@@ -51,6 +51,7 @@ mama (seria): Baja la luna un poco, wawa. Estás verde. Respira por la nariz.
 ariel (nausea): Estoy bien.
 mama (seria): Estás verde.
 Le dice algo al conductor en quechua. El hombre se ríe otra vez y afloja un poco la velocidad.
+@ritmo 0.5 2200
 Bajas la ventana dos dedos. Entra un aire frío, seco, con olor a eucalipto y a tierra removida, un olor que no conoces pero que tu cuerpo parece reconocer de algún lado, de esas dos veces que viniste cuando eras peque y no recuerdas casi nada. Solo un patio. Un perro amarillo. Nada más.
 Afuera, los cerros son enormes y pelados y bonitos de una manera que no sabes explicar todavía.
 Cierras los ojos y vuelves a la lista. Allinllachu. Allinllachu. Te imaginas diciéndoselo a alguien más tarde, a alguna tía, a algún primo lejano que no vas a reconocer. Te imaginas la cara que pondrían.
@@ -72,12 +73,18 @@ Miras. Es de piedra rosada, enorme, con dos torres.
 # ---------------------------------------------------------------
 == plaza_llegada
 @animacion off
-@cuadro off
-@fondo plaza
+@fondo off
 @musica plaza.mp3
 El carro los deja cerca de la plaza. Bajas y las piernas te tiemblan como si el piso todavía se moviera, pero el aire de acá afuera te arregla en diez segundos: seco, delgado, con un frío que no es el frío pegajoso de Lima.
 Respiras hondo y hasta te da un poco de risa lo bien que se siente.
-Tu mamá ya está sacando papeles del bolso, contándolos con el pulgar. Modo trámite.
+Y lo primero que ves, en el medio de todo, es un señor de bronce encima de un caballo.
+@cuadro monumento
+ariel (curioso): ¿Y ese quién es?
+Tu mamá levanta la vista medio segundo, sin dejar de buscar en el bolso.
+mama (feliz): No sé.
+mama (feliz): Pero está bonito, ¿no?
+@cuadro off
+Y vuelve a lo suyo: saca los papeles del bolso y los cuenta con el pulgar. Modo trámite.
 mama (seria): Voy a la notaría. Es acá nomás, en la esquina, pero puede demorar. ¿Te vienes o te quedas?
 Sientes el celular en el bolsillo con las palabras adentro. Allinllachu. Rimaykullayki. La plaza está ahí, llena de gente y de palmeras chiquitas y de un sonido general que quieres escuchar mejor.
 * Me quedo acá -> plaza_quedarse
@@ -122,12 +129,18 @@ Ya tienes tu agua. La señora sigue sin apuro.
 @volver
 
 == plaza_iglesia
+@sfx wand.mp3
+@cuadro iglesia
 Piedra rosada, enorme, dos torres. Ahí bautizaron a tu mamá. Intentas imaginarla bebé y no puedes.
+@cuadro off
 @volver
 
 == plaza_monumento
-El monumento del centro: un soldado a caballo sobre un bloque de piedra con placas, rodeado de una reja baja y de dos arbolitos podados en bola.
-No sabes quién es. Hay un nombre en la placa que no alcanzas a leer desde acá.
+@sfx wand.mp3
+@cuadro monumento
+El señor del caballo, de cerca: una bandera de piedra detrás, un escudo con laureles, la capa volando como si hubiera viento hace doscientos años.
+Hay un nombre en la placa. SUCRE. No te dice nada, pero tu mamá tiene razón: está bonito.
+@cuadro off
 @volver
 
 == plaza_pileta
@@ -178,28 +191,66 @@ Lo sigues con la vista hasta que dobla por la abertura de los portales y desapar
 Te quedas mirando esa calle.
 @volver
 
-== plaza_notaria
-La notaría. Adentro se ve una fila de sillas de plástico y tu mamá de espaldas, con los papeles. Mejor no molestar.
-@volver
-
 # ---------------------------------------------------------------
 == perderse
-@fondo calle_bajada
+# ----- EL GATO VA ADELANTE Y ARIEL DETRÁS, CALLE POR CALLE -----
+# @cruzar <sprite> <milisegundos> <sonido> — cruza la pantalla y sale.
+@fondo calle_mercado
 Sales. El sol te pega de frente, blanquísimo, y te tapas la cara con la mano, lo cual es ridículo porque al mismo tiempo tienes los brazos con piel de gallina del frío.
 Así funciona acá, parece. El sol y el frío al mismo tiempo, sin ponerse de acuerdo.
-Caminas. Miras una pared, porque tiene un color que no habías visto: un azul añil despintado, con una mancha de humedad que parece un mapa.
-Después una puerta de madera vieja con un aldabón de fierro en forma de mano.
-Después una escalera de piedra que sube entre dos casas y no sabes a dónde va, pero subes un poco solo para ver.
-Después una calle angosta con el techo de teja y un cable de luz cruzando de un lado al otro, con zapatillas colgadas.
+Y entonces, por delante de ti, cruza un gato.
+@limpiar
+@cruzar gato_corre 2300 meow1.mp3
+@esperar 200
+No es el de la plaza. O sí. No sabrías decirlo.
+Lo sigues, porque no tienes nada mejor que hacer y porque va con una seguridad que tú no tienes.
+@limpiar
+@cruzar ariel_walk 2600
+
+@fondo tienda_mates
+Pasas por delante de un muro largo de piedra con tres puertas y un letrero pintado a mano.
+@limpiar
+@cruzar gato_corre 2300
+@esperar 200
+Miras una pared, porque tiene un color que no habías visto: un azul añil despintado, con una mancha de humedad que parece un mapa.
+@limpiar
+@cruzar ariel_walk 2600
+
+@fondo calle_bajada
+Una puerta de madera vieja con un aldabón de fierro en forma de mano. Una capilla chiquita con un arco.
+@limpiar
+@cruzar gato_corre 2200 meow1.mp3
+@esperar 200
 Después una tiendita con sacos abiertos de maíz de mil colores en la puerta: blanco gigante, morado, amarillo.
-Después una escalera otra vez, o la misma, no sabes.
+@limpiar
+@cruzar ariel_walk 2600
+
+@fondo calle_subida
+Una escalera de piedra que baja en diagonal entre dos casas y no sabes a dónde va, pero bajas un poco solo para ver.
+@limpiar
+@cruzar gato_corre 2200
+@esperar 200
+Después una calle angosta con el techo de teja y un cable de luz cruzando de un lado al otro, con zapatillas colgadas.
+@limpiar
+@cruzar ariel_walk 2600
+
+@fondo ferreteria_afuera
+Una ferretería con el letrero pintado a mano. Te acuerdas de la lista de tu mamá, pero no de lo que decía.
+@limpiar
+@cruzar gato_corre 2200
+@esperar 200
 Después doblas por un pasaje porque escuchaste una radio sonando huayno y querías escuchar de dónde salía.
+@limpiar
+@cruzar ariel_walk 2600
 Y entonces te detienes.
+
 @musica off
 @fondo calle_loro
-La radio ya no se escucha. La plaza tampoco. Estás en una calle empedrada y estrecha, en bajada, con casas de adobe pintadas de blanco y las esquinas de las puertas gastadas. No hay nadie.
+La radio ya no se escucha. La plaza tampoco. El gato tampoco. Estás en una calle empedrada y estrecha, en bajada, con casas de adobe pintadas de blanco y las esquinas de las puertas gastadas. No hay nadie.
 Hay una carretilla vacía apoyada contra una pared. Hay una maceta con geranios rojos sobre un muro. Hay ropa tendida en un segundo piso.
-Sacas el celular. Una raya de señal, que va y viene. El mapa gira sobre sí mismo tratando de decidir dónde estás y termina poniéndote un puntito azul gordo que abarca como cuatro cuadras.
+Sacas el celular.
+@mapa
+Una raya de señal, que va y viene. El mapa gira sobre sí mismo tratando de decidir dónde estás y termina poniéndote un puntito azul gordo que abarca como cuatro cuadras.
 Excelente.
 Guardas el celular. Bueno. La plaza es hacia... ¿arriba? Fue todo bajada, ¿no? ¿O fue subida?
 Y ahí, mientras sigues ahí de pie tratando de reconstruir tus últimos veinte minutos, escuchas algo raro. Muy cerca. Una voz chillona, aguda, que dice, clarísimo:

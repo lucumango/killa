@@ -15,6 +15,26 @@ const Animacion = {
   _t0: 0,
   _token: 0,         // evita que una carga lenta pise a una animación más nueva
 
+  // ---------- ritmo ----------
+  // Todo lo que se mueve (ruedas, cerros, pista, rebote, ladeo) se calcula a partir
+  // de un reloj propio. Si ese reloj va más lento, la animación entera afloja junta,
+  // que es lo que pasa cuando el conductor suelta el acelerador.
+  _reloj: 0,         // segundos "de la animación" (no los del cronómetro)
+  _real: 0,          // último instante real, para medir cuánto pasó
+  _ritmo: 1,         // a qué velocidad corre el reloj ahora mismo
+  _ritmoFin: 1,      // a dónde va
+  _ritmoPaso: 0,     // cuánto cambia por segundo (0 = de golpe)
+
+  // Desde el guion: @ritmo 0.55 1800  (a 55 % de velocidad, bajando en 1,8 segundos)
+  ritmo(factor, ms) {
+    const f = Math.max(0, Number(factor));
+    if (!isFinite(f)) { console.warn('@ritmo: número raro:', factor); return; }
+    Animacion._ritmoFin = f;
+    const dur = Math.max(0, Number(ms) || 0) / 1000;
+    Animacion._ritmoPaso = dur ? Math.abs(f - Animacion._ritmo) / dur : 0;
+    if (!dur) Animacion._ritmo = f;
+  },
+
   // ---------- encender / apagar ----------
   async iniciar(nombre) {
     if (!nombre || nombre === 'off' || nombre === 'ninguna') return Animacion.detener();
@@ -29,6 +49,7 @@ const Animacion = {
     const ruedas = await Animacion._cargar(def.ruedas, def.quitarFondo);
     if (mio !== Animacion._token) return;             // ya cambiaron de animación
     Animacion._piezas = Animacion._centrosDeRueda(def, ruedas);
+    Animacion._reloj = 0; Animacion._ritmo = 1; Animacion._ritmoFin = 1; Animacion._ritmoPaso = 0;
     Animacion._arrancarBucle();
   },
 
@@ -167,11 +188,20 @@ const Animacion = {
     if (!l) return;
     l.hidden = false;
     Animacion._t0 = performance.now();
+    Animacion._real = Animacion._t0;
     if (Animacion._bucle) cancelAnimationFrame(Animacion._bucle);
     const paso = (ahora) => {
       Animacion._bucle = requestAnimationFrame(paso);
+      // el reloj avanza aunque la escena esté tapada, pero a trompicones no:
+      // si el navegador estuvo dormido mucho rato, no des un salto feo.
+      const dt = Math.min((ahora - Animacion._real) / 1000, 0.1);
+      Animacion._real = ahora;
+      // acercar el ritmo a su destino
+      const r = Animacion._ritmo, fin = Animacion._ritmoFin, p = Animacion._ritmoPaso;
+      if (r !== fin) Animacion._ritmo = p ? (r < fin ? Math.min(fin, r + p * dt) : Math.max(fin, r - p * dt)) : fin;
+      Animacion._reloj += dt * Animacion._ritmo;
       if (!Animacion._def || l.offsetParent === null) return; // escena oculta: no dibujes
-      Animacion._dibujar((ahora - Animacion._t0) / 1000);
+      Animacion._dibujar(Animacion._reloj);
     };
     Animacion._bucle = requestAnimationFrame(paso);
   },

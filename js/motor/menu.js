@@ -4,6 +4,9 @@
 const Pantallas = {
   mostrar(nombre, sinOcultarCelular) {
     ['dedicatoria', 'menu', 'texto', 'escena', 'explorar'].forEach((p) => (U.$('#pantalla-' + p).hidden = p !== nombre));
+    // El cuadro está fuera de las pantallas (para que se vea también sobre el mapa),
+    // así que hay que esconderlo a mano cuando salimos del juego.
+    if (nombre !== 'escena' && nombre !== 'explorar') U.$('#cuadro').hidden = true;
   },
 };
 

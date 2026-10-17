@@ -4,7 +4,7 @@
 // =====================================================================
 const Celular = {
   abierto: false, tab: 'palabras', chatActual: null, _resolverCierre: null, modo: 'libre', bloqueado: false,
-  el: { raiz: U.$('#celular'), palabras: U.$('#celular-palabras'), chats: U.$('#celular-chats'), yape: U.$('#celular-yape'), lista: U.$('#chat-lista'), ventana: U.$('#chat-ventana'), mensajes: U.$('#chat-mensajes'), input: U.$('#chat-input'), form: U.$('#chat-form'), nombre: U.$('#chat-nombre') },
+  el: { raiz: U.$('#celular'), palabras: U.$('#celular-palabras'), chats: U.$('#celular-chats'), yape: U.$('#celular-yape'), mapa: U.$('#celular-mapa'), lista: U.$('#chat-lista'), ventana: U.$('#chat-ventana'), mensajes: U.$('#chat-mensajes'), input: U.$('#chat-input'), form: U.$('#chat-form'), nombre: U.$('#chat-nombre') },
 
   iniciar() {
     U.$$('.celular-barra button').forEach((b) => b.onclick = () => Celular.irTab(b.dataset.tab));
@@ -33,11 +33,25 @@ const Celular = {
     Celular.bloqueado = false; Celular.modo = 'libre';
   },
 
+  // Desde el guion: @mapa — abre el mapa con la raya de señal y el puntito azul
+  // gordo, y espera a que lo cierren. No es una pestaña: es un momento del guion.
+  async abrirMapa() {
+    Celular.modo = 'guion'; Celular.bloqueado = true;
+    Celular.abierto = true; Celular.el.raiz.hidden = false;
+    U.$$('.celular-barra button').forEach((b) => b.classList.remove('activo'));
+    Celular.el.palabras.hidden = true; Celular.el.chats.hidden = true; Celular.el.yape.hidden = true;
+    Celular.el.mapa.hidden = false;
+    await Celular.esperarCierre();
+    Celular.el.mapa.hidden = true;
+    Celular.bloqueado = false; Celular.modo = 'libre';
+    Celular.irTab(Celular.tab);
+  },
+
   irTab(tab) {
     Celular.tab = tab;
     U.$$('.celular-barra button').forEach((b) => b.classList.toggle('activo', b.dataset.tab === tab));
     Celular.el.palabras.hidden = tab !== 'palabras'; Celular.el.chats.hidden = tab !== 'chats';
-    Celular.el.yape.hidden = tab !== 'yape';
+    Celular.el.yape.hidden = tab !== 'yape'; Celular.el.mapa.hidden = true;
     if (tab === 'palabras') Celular.pintarPalabras();
     else if (tab === 'yape') Yape.pintar();
     else Celular.mostrarLista();
@@ -53,10 +67,16 @@ const Celular = {
       const h = document.createElement('div'); h.className = 'palabra-categoria'; h.textContent = cat; cont.appendChild(h);
       for (const p of aprendidas.filter((x) => (x.categoria || 'otros') === cat)) {
         const d = document.createElement('div'); d.className = 'palabra';
-        d.innerHTML = `<span><span class="qu">${p.qu}</span>${p.nota ? `<span class="nota">${p.nota}</span>` : ''}</span><span class="es">${p.es}${p.audio ? ' <span class="marca-audio">audio</span>' : ' <span class="sin-audio">(sin audio)</span>'}</span>`;
+        // El audio se oye con el botón, no al pasar el mouse por encima.
+        d.innerHTML = `<span><span class="qu">${p.qu}</span>${p.nota ? `<span class="nota">${p.nota}</span>` : ''}</span>`
+          + `<span class="es">${p.es}</span>`
+          + (p.audio ? '<button type="button" class="oir" title="Escuchar">► oír</button>'
+                     : '<span class="sin-audio">sin audio</span>');
         const tocar = () => { U.$$('.palabra.activa').forEach((x) => x.classList.remove('activa')); d.classList.add('activa'); if (p.audio) Audio_.palabra(p.audio); };
-        d.onclick = tocar;
-        if (CONFIG.audioAlPasarMouse) d.onmouseenter = tocar;
+        const boton = d.querySelector('.oir');
+        if (boton) boton.onclick = (e) => { e.stopPropagation(); tocar(); };
+        d.onclick = tocar;   // tocar la fila también suena, por si le dan al texto
+        if (CONFIG.audioAlPasarMouse) d.onmouseenter = tocar;   // apagado por defecto en config.js
         cont.appendChild(d);
       }
     }

@@ -42,7 +42,6 @@
     <section id="pantalla-escena" class="pantalla" hidden>
       <div id="fondo" class="capa"></div>
       <canvas id="animacion" width="1920" height="1200" hidden></canvas>
-      <div id="cuadro" class="capa" hidden></div>
     </section>
 
     <!-- Exploración (vista desde arriba) -->
@@ -52,7 +51,12 @@
       <div id="explorar-pista" class="explorar-pista" hidden></div>
     </section>
 
-    <!-- Capa de diálogo (se usa tanto en escenas como sobre el mapa de exploración) -->
+    <!-- Capa de diálogo (se usa tanto en escenas como sobre el mapa de exploración).
+         El cuadro vive acá y no dentro de la escena, para poder mostrar una
+         ilustración también mientras exploras (el monumento, la catedral). -->
+    <div id="cuadro" class="capa" hidden></div>
+    <!-- Alguien cruzando la pantalla de lado a lado (@cruzar en el guion) -->
+    <div id="cruce" class="cruce" hidden></div>
     <div id="busto" class="busto" hidden><span class="busto-etiqueta"></span></div>
     <div id="caja-dialogo" class="caja" hidden>
       <div id="nombre-hablante" class="nombre"></div>
@@ -73,6 +77,18 @@
           <span class="celular-cerrar" title="Esc">✕</span>
         </div>
         <div id="celular-palabras" class="celular-panel"></div>
+        <!-- El mapa cuando se pierde: una raya de señal y el puntito azul gordo.
+             No es una pestaña: lo abre el guion con @mapa y se cierra con Esc. -->
+        <div id="celular-mapa" class="celular-panel cel-mapa" hidden>
+          <div class="mapa-senal"><span class="rayas"><i class="on"></i><i></i><i></i><i></i></span> 1 raya · buscando señal…</div>
+          <div class="mapa-lienzo">
+            <span class="calle c1"></span><span class="calle c2"></span><span class="calle c3"></span>
+            <span class="calle v1"></span><span class="calle v2"></span>
+            <span class="manzana m1"></span><span class="manzana m2"></span><span class="manzana m3"></span>
+            <span class="bolita"></span>
+          </div>
+          <div class="mapa-pie">Tu ubicación aproximada</div>
+        </div>
         <div id="celular-yape" class="celular-panel" hidden></div>
         <div id="celular-chats" class="celular-panel" hidden>
           <div id="chat-lista" class="chat-lista"></div>
