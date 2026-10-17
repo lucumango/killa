@@ -20,12 +20,18 @@ const PUERTO = Number(process.env.PORT || process.env.PUERTO || 8787);
 // subdominios al azar con los que itch.io sirve los juegos.
 const ORIGENES = (process.env.ORIGENES || 'http://localhost:8765').split(',').map((s) => s.trim()).filter(Boolean);
 const sinEsquema = (s) => String(s).replace(/^https?:\/\//, '').replace(/\/+$/, '');
-const origenVale = (o) => ORIGENES.some((p) => {
+const origenVale = (o) => {
+  // Sin Origin (o "null") = no viene de una página web: es la app de escritorio
+  // o una herramienta. CORS solo protege navegadores, así que se deja pasar;
+  // quien frena los abusos es el límite por minuto.
+  if (!o || o === 'null') return true;
+  return ORIGENES.some((p) => {
   if (p === '*' || p === o) return true;
   const pp = sinEsquema(p), oo = sinEsquema(o);
   if (pp.startsWith('*.')) return oo === pp.slice(2) || oo.endsWith(pp.slice(1));
-  return pp === oo;
-});
+    return pp === oo;
+  });
+};
 
 // Freno simple por IP, para que nadie se cuelgue de tu clave.
 const PETICIONES_POR_MINUTO = Number(process.env.LIMITE_POR_MINUTO || 20);

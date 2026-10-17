@@ -80,7 +80,10 @@ const Chat = {
   // ---- Modo IA: manda todo al servidor-ia (que sí tiene la clave). ----
   // En tu compu usa el servidor local; subido a internet, el público.
   urlIA() {
-    const local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+    // Solo es "local" si estás sirviendo el juego desde tu compu. En la app
+    // de escritorio (file://) no hay servidor local, así que va al público.
+    const local = location.protocol !== 'file:'
+      && /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
     return (local ? CONFIG.ia.url : (CONFIG.ia.urlPublica || CONFIG.ia.url));
   },
 

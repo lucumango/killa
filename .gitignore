@@ -1,16 +1,15 @@
-servidor-ia/node_modules/
-servidor-ia/.env
-escritorio/node_modules/
-escritorio/juego/
-escritorio/salida/
-*.zip
-.DS_Store
-
-# Manuales largos: viven fuera del repo (~/Downloads/uh/killa-docs/)
-/LEEME.md
-/LISTA-DE-ARTE.md
-/FICHAS-DE-PERSONAJE.md
-/GUIA-SONORA.html
 
 # Lo genera "node pruebas/mapa-del-guion.js"
+# Manuales largos: viven fuera del repo (~/Downloads/uh/killa-docs/)
+*.zip
+.DS_Store
+/FICHAS-DE-PERSONAJE.md
+/GUIA-SONORA.html
+/LEEME.md
+/LISTA-DE-ARTE.md
 /mapa-del-guion.html
+escritorio/juego/
+escritorio/node_modules/
+escritorio/salida/
+servidor-ia/.env
+servidor-ia/node_modules/
