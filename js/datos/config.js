@@ -179,7 +179,11 @@ Tupananchiskama.
   ia: {
     activa: true,            // necesita el servidor corriendo: cd servidor-ia && npm start
                              // si no está, el chat usa solo las respuestas locales y no se rompe nada
-    url: 'http://localhost:8787/chat',   // cuando lo subas a internet, pon la URL pública del servidor
+    url: 'http://localhost:8787/chat',   // el servidor corriendo en TU compu
+    // Cuando el juego está subido (itch.io), usa esta en vez de la de arriba.
+    // El juego se da cuenta solo: si lo abres en localhost usa la de arriba.
+    // Pon acá la URL que te da Render, terminada en /chat.
+    urlPublica: 'https://killa-ia.onrender.com/chat',
     maxHistorial: 20,                    // cuántos mensajes previos se le mandan a la IA
   },
 };

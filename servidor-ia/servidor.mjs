@@ -14,8 +14,30 @@ import fs from 'node:fs';
 // Carga .env sin dependencias
 if (fs.existsSync('.env')) for (const l of fs.readFileSync('.env', 'utf8').split('\n')) { const m = l.match(/^\s*([A-Z_]+)\s*=\s*(.*)\s*$/); if (m && !process.env[m[1]]) process.env[m[1]] = m[2]; }
 
-const PUERTO = Number(process.env.PUERTO || 8787);
-const ORIGENES = (process.env.ORIGENES || 'http://localhost:8765').split(',').map((s) => s.trim());
+// Render (y casi cualquier hosting) manda el puerto en PORT.
+const PUERTO = Number(process.env.PORT || process.env.PUERTO || 8787);
+// Dominios permitidos. Se admite * al principio: *.hwcdn.net cubre los
+// subdominios al azar con los que itch.io sirve los juegos.
+const ORIGENES = (process.env.ORIGENES || 'http://localhost:8765').split(',').map((s) => s.trim()).filter(Boolean);
+const sinEsquema = (s) => String(s).replace(/^https?:\/\//, '').replace(/\/+$/, '');
+const origenVale = (o) => ORIGENES.some((p) => {
+  if (p === '*' || p === o) return true;
+  const pp = sinEsquema(p), oo = sinEsquema(o);
+  if (pp.startsWith('*.')) return oo === pp.slice(2) || oo.endsWith(pp.slice(1));
+  return pp === oo;
+});
+
+// Freno simple por IP, para que nadie se cuelgue de tu clave.
+const PETICIONES_POR_MINUTO = Number(process.env.LIMITE_POR_MINUTO || 20);
+const visitas = new Map();
+function pasaElFreno(ip) {
+  const ahora = Date.now(), min = 60_000;
+  const lista = (visitas.get(ip) || []).filter((t) => ahora - t < min);
+  if (lista.length >= PETICIONES_POR_MINUTO) { visitas.set(ip, lista); return false; }
+  lista.push(ahora); visitas.set(ip, lista);
+  if (visitas.size > 500) for (const [k, v] of visitas) if (!v.some((t) => ahora - t < min)) visitas.delete(k);
+  return true;
+}
 const CLAVE_GOOGLE = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
 const PROVEEDOR = CLAVE_GOOGLE ? 'google' : 'anthropic';
 const MODELO = process.env.MODELO || (PROVEEDOR === 'google' ? 'gemini-3.6-flash' : 'claude-opus-5');
@@ -115,11 +137,27 @@ async function responder(cuerpo) {
 http.createServer(async (req, res) => {
   const origen = req.headers.origin || '';
   const cors = {
-    'Access-Control-Allow-Origin': ORIGENES.includes(origen) || ORIGENES.includes('*') ? origen : ORIGENES[0],
+    'Access-Control-Allow-Origin': origenVale(origen) ? origen : ORIGENES[0] || 'null',
+    'Vary': 'Origin',
     'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type',
   };
   if (req.method === 'OPTIONS') { res.writeHead(204, cors); return res.end(); }
+  // Página de estado: sirve para el health check de Render y para que abras
+  // la URL en el navegador y veas si está vivo.
+  if (req.method === 'GET' && (req.url === '/' || req.url === '/salud')) {
+    res.writeHead(200, { ...cors, 'Content-Type': 'application/json; charset=utf-8' });
+    return res.end(JSON.stringify({ ok: true, juego: 'Killa', proveedor: PROVEEDOR, modelo: MODELO }));
+  }
   if (req.method !== 'POST' || req.url !== '/chat') { res.writeHead(404, cors); return res.end('no'); }
+  if (!origenVale(origen)) {
+    res.writeHead(403, { ...cors, 'Content-Type': 'application/json' });
+    return res.end(JSON.stringify({ error: 'origen no permitido: ' + origen }));
+  }
+  const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress || '?';
+  if (!pasaElFreno(ip)) {
+    res.writeHead(429, { ...cors, 'Content-Type': 'application/json' });
+    return res.end(JSON.stringify({ error: 'muchos mensajes seguidos, espera un ratito' }));
+  }
   let datos = '';
   req.on('data', (c) => { datos += c; if (datos.length > 200_000) req.destroy(); });
   req.on('end', async () => {
@@ -133,4 +171,4 @@ http.createServer(async (req, res) => {
       res.end(JSON.stringify({ error: String(e.message || e) }));
     }
   });
-}).listen(PUERTO, () => console.log(`servidor-ia escuchando en http://localhost:${PUERTO}/chat (${PROVEEDOR}, modelo ${MODELO})`));
+}).listen(PUERTO, '0.0.0.0', () => console.log(`servidor-ia escuchando en el puerto ${PUERTO} (${PROVEEDOR}, modelo ${MODELO}); orígenes: ${ORIGENES.join(', ')}`));

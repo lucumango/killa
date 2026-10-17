@@ -76,6 +76,12 @@ const Chat = {
   },
 
   // ---- Modo IA: manda todo al servidor-ia (que sí tiene la clave). ----
+  // En tu compu usa el servidor local; subido a internet, el público.
+  urlIA() {
+    const local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+    return (local ? CONFIG.ia.url : (CONFIG.ia.urlPublica || CONFIG.ia.url));
+  },
+
   async preguntarIA(contacto, texto) {
     const C = CONTACTOS[contacto];
     const cuerpo = {
@@ -83,7 +89,7 @@ const Chat = {
       sistema: IA.sistema(contacto),
       historial: Chat.historial[contacto].filter((m) => !m.escribiendo).slice(-CONFIG.ia.maxHistorial).map((m) => ({ rol: m.de === 'yo' ? 'user' : 'assistant', quien: m.de, texto: m.texto })),
     };
-    const resp = await fetch(CONFIG.ia.url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(cuerpo) });
+    const resp = await fetch(Chat.urlIA(), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(cuerpo) });
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     return await resp.json();
   },

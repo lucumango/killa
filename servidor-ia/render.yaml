@@ -1,0 +1,22 @@
+# Para desplegar en Render: New > Blueprint y apunta a este repo.
+# La clave NO va acá: se pone a mano en el panel de Render (Environment).
+services:
+  - type: web
+    name: killa-ia
+    runtime: node
+    plan: free            # el gratis se duerme a los 15 min; "starter" no
+    rootDir: servidor-ia
+    buildCommand: npm install
+    startCommand: node servidor.mjs
+    healthCheckPath: /
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false       # la escribes tú en el panel, no queda en el repo
+      - key: MODELO
+        value: gemini-3.6-flash
+      - key: MODELO_RESPALDO
+        value: gemini-3.5-flash-lite
+      - key: ORIGENES
+        value: https://*.hwcdn.net,https://*.itch.zone,https://itch.io,http://localhost:8765
+      - key: LIMITE_POR_MINUTO
+        value: "20"
