@@ -36,22 +36,54 @@ const Menu = {
     Menu.idx = Guardado.existe() ? 0 : 1;
     lis.forEach((li, i) => li.classList.toggle('seleccionado', i === Menu.idx));
     const tk = (e) => {
+      const antes = Menu.idx;
       Menu.idx = Entrada.navegarLista(lis, Menu.idx, e);
+      if (Menu.idx !== antes && CONFIG.sfxMenuMover) Audio_.sfx(CONFIG.sfxMenuMover);
       if (Entrada.esAvance(e)) { e.preventDefault(); fin(lis[Menu.idx].dataset.accion); }
     };
     const fin = (accion) => {
       if (accion === 'continuar' && !Guardado.existe()) return;
       window.removeEventListener('keydown', tk);
       lis.forEach((li) => (li.onclick = null));
+      // Empezar y continuar tienen su propio sonido; el resto comparte otro.
+      const empieza = accion === 'nueva' || accion === 'continuar';
+      const son = empieza ? CONFIG.sfxMenuPartida : CONFIG.sfxMenuOpcion;
+      if (son) Audio_.sfx(son);
       Menu.accion(accion);
     };
     window.addEventListener('keydown', tk);
-    lis.forEach((li, i) => { li.onclick = () => fin(li.dataset.accion); li.onmouseenter = () => { Menu.idx = i; lis.forEach((x, j) => x.classList.toggle('seleccionado', j === i)); }; });
+    lis.forEach((li, i) => {
+      li.onclick = () => fin(li.dataset.accion);
+      li.onmouseenter = () => {
+        if (Menu.idx !== i && CONFIG.sfxMenuMover) Audio_.sfx(CONFIG.sfxMenuMover);
+        Menu.idx = i; lis.forEach((x, j) => x.classList.toggle('seleccionado', j === i));
+      };
+    });
   },
-  accion(a) {
-    if (a === 'nueva') { Motor.nuevaPartida(); Motor.correr(); return; }
-    if (a === 'continuar') { Motor.restaurar(Guardado.cargar()); Motor.correr(); return; }
+  async accion(a) {
+    if (a === 'nueva' || a === 'continuar') {
+      await Menu.cortinilla();              // el papel texturizado, un momento, antes de jugar
+      if (a === 'nueva') Motor.nuevaPartida();
+      else Motor.restaurar(Guardado.cargar());
+      Motor.correr();
+      return;
+    }
     Menu.textoPantalla(a);
+  },
+
+  // Pantalla de papel entre el menú y la partida (CONFIG.pausaAlEmpezar).
+  // Usa el mismo dibujo de la dedicatoria. Sin él, queda el azul liso.
+  async cortinilla() {
+    const ms = Number(CONFIG.pausaAlEmpezar) || 0;
+    if (!ms) return;
+    Audio_.pararMusica();
+    const t = U.$('#tarjeta');
+    t.textContent = '';
+    t.style.backgroundImage = CONFIG.fondoDedicatoria ? `url("${CONFIG.fondoDedicatoria}")` : 'none';
+    t.hidden = false;
+    Pantallas.mostrar('escena');
+    await U.espera(ms);
+    t.hidden = true;
   },
   textoPantalla(clave) {
     const titulos = { instrucciones: 'Instrucciones', creditos: 'Créditos', agradecimientos: 'Agradecimientos' };

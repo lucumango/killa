@@ -78,6 +78,12 @@ A quien lea esto.`,
 
   // ---------- Audio ----------
   musicaMenu: null,        // ej: 'menu.mp3' (en assets/audio/musica/). null = sin música
+  // Sonidos del menú principal (en assets/audio/sfx/). null = sin sonido.
+  sfxMenuMover: 'menu_mover.mp3',      // al moverte entre las opciones con las flechas
+  sfxMenuOpcion: 'menu_opcion.mp3',    // al elegir Instrucciones, Créditos o Agradecimientos
+  sfxMenuPartida: 'menu_partida.mp3',  // al elegir Empezar o Continuar partida
+  pausaAlEmpezar: 1500,    // antes de arrancar la partida, cuántos milisegundos se queda
+                           // el fondo texturizado en pantalla. 0 = empieza de una
   sfxMensaje: null,        // ej: 'mensaje.wav' (en assets/audio/sfx/) cuando llega un chat
   sfxPalabraNueva: 'wand.mp3', // al aprender una palabra. Si entran varias de golpe, suena UNA sola vez. null = sin sonido
   audioAlPasarMouse: false, // en la lista de palabras cada palabra tiene su botón "oír".
