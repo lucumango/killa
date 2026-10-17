@@ -94,7 +94,23 @@ const Menu = {
     pt.classList.toggle('con-fondo', !!CONFIG.fondoTexto);
     U.$('#texto-titulo').textContent = titulos[clave];
     U.$('#texto-cuerpo').textContent = CONFIG[clave];
-    const tk = (e) => { if (Entrada.esAvance(e) || Entrada.esCancelar(e)) { window.removeEventListener('keydown', tk); Menu.mostrar(); } };
+    pt.scrollTop = 0;
+    // Los agradecimientos son largos: se bajan con las flechas o la rueda del mouse.
+    const hayMas = () => pt.scrollHeight > pt.clientHeight + 4;
+    U.$('#pantalla-texto .pista').textContent = hayMas()
+      ? '↑ ↓ para leer el resto  ·  Esc para volver'
+      : 'Esc o Enter para volver';
+    const tk = (e) => {
+      const salto = pt.clientHeight * 0.8;
+      if (['ArrowDown', 's', 'S'].includes(e.key)) { e.preventDefault(); pt.scrollTop += 60; return; }
+      if (['ArrowUp', 'w', 'W'].includes(e.key)) { e.preventDefault(); pt.scrollTop -= 60; return; }
+      if (e.key === 'PageDown') { e.preventDefault(); pt.scrollTop += salto; return; }
+      if (e.key === 'PageUp') { e.preventDefault(); pt.scrollTop -= salto; return; }
+      // Con texto largo, Enter no debe salirse sin querer mientras lees.
+      if (Entrada.esCancelar(e) || (Entrada.esAvance(e) && !hayMas())) {
+        window.removeEventListener('keydown', tk); Menu.mostrar();
+      }
+    };
     window.addEventListener('keydown', tk);
   },
 };

@@ -601,7 +601,7 @@ Tres minutos después:
 
 # ===============================================================
 == vuelta
-@sfx vibrar.wav
+@sfx vibrar.mp3
 El celular vibra en tu mano.
 @mensaje mama | ariel esto va a terminar tardísimo me quedo hasta que salga el sistema te recojo más noche donde los quispe ya le escribí a la señora maría ella dice que no hay problema
 @mensaje mama | yo | ya ma

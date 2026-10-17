@@ -59,14 +59,47 @@ Si escribes en quechua y no se entiende... te pueden dejar en visto.
 
 El juego se guarda solo en los puntos de guardado.`,
 
-  creditos: `Guion e ilustraciones: (tu nombre)
-Código: hecho con cariño en HTML/JS
-Música: (pendiente)
-Voces en quechua: (pendiente)`,
+  creditos: `Validación en quechua y voz: ABNER VILCA RENOJO
+intérprete y traductor del quechua chanka,
+inscrito en el registro oficial del Ministerio de Cultura.
 
-  agradecimientos: `A Flor, a Amaru y a Puku, que no existen pero casi.
-A la gente de Ayacucho.
-A quien lea esto.`,
+Música: Zerovolt0v — SÍGANLO, ES INCREÍBLE
+Cover del menú: GatoSupercalifragilistico!!!
+
+Los otros audios de efectos especiales fueron sacados de recursos
+libres, abiertos para todos, y no nos pertenecen. Menos el yape/yapo:
+esa es mi voz.
+
+El resto de cosas fueron hechas por mi persona.
+Tengo muchos nombres en internet, pero en la mayoría estoy como
+lonelynode (nodo solitario) o lucumango.
+
+Contacto: daniellavargas@ieee.org
+Daniella Alexandra Crysti Vargas Saldaña`,
+
+  agradecimientos: `GRACIAS GRACIAS GRACIAS Al Señor Abner Vilca por prestarnos su voz y validación experta para este increíble proyecto!!!
+
+SULPAYKI a Amorcha, quien fue mi primer acercamiento para aprender quechua y también animó la idea del proyecto.
+
+Gracias A MIS AMIGOS que me motivaron a hacer este proyecto! Gracias a ZeroV0ltov quien le dio vida y sonido a esta demo, a Leo por la investigación y por mostrarme que también puedo. A Harvy por escuchar y apoyar la locura. A Christian por el procesamiento de los audios.
+
+Gracias gracias a las personas que me escucharon y apoyaron la locura. Gracias papi, mami, Harvy, gracias Sam!!! gracias Manuel!! gracias Luciano!! gracias Sebas!! gracias Hernan!! gracias a mi hermano que sin decir nada me motivó a dibujar de nuevo!
+
+GRACIAS AL GAMELAB UPC LOS QUIERO MUCHO
+
+GRACIAS A LAS PERSONAS QUE CREAN CONTENIDO EN QUECHUA
+
+GRACIAS a todas las personas que no dejan que una lengua muera! Sea hablando, creando, aprendiendo o compartiendo!
+
+Gracias a quienes inspiraron esta historia.
+
+Y Gracias a todos los que están probando este juego!!!
+
+Pásense por la página que hicimos de recurso junto a Leo! y sigan practicando quechua.
+
+Un abrazote!
+Tupananchiskama.
+- Dani`,
 
   // ---------- Texto ----------
   velocidadTexto: 28,      // milisegundos por letra (menos = más rápido)
@@ -84,6 +117,11 @@ A quien lea esto.`,
   sfxMenuPartida: 'menu_partida.mp3',  // al elegir Empezar o Continuar partida
   pausaAlEmpezar: 1500,    // antes de arrancar la partida, cuántos milisegundos se queda
                            // el fondo texturizado en pantalla. 0 = empieza de una
+  // A qué velocidad suena cada efecto. 2 = al doble (más gracioso con las voces).
+  velocidadSfx: { 'yape.mp3': 2, 'yapo.mp3': 2 },
+  // Pistas que tienen intro: suenan enteras la primera vez y después repiten
+  // solo desde ese segundo. (El marcador LOOP del wav de Puku cae en 5.486 s.)
+  bucleMusica: { 'loro.m4a': 5.486 },
   sfxMensaje: null,        // ej: 'mensaje.wav' (en assets/audio/sfx/) cuando llega un chat
   sfxPalabraNueva: 'wand.mp3', // al aprender una palabra. Si entran varias de golpe, suena UNA sola vez. null = sin sonido
   audioAlPasarMouse: false, // en la lista de palabras cada palabra tiene su botón "oír".
@@ -97,8 +135,9 @@ A quien lea esto.`,
     titular: 'Ariel Cosimo Villanueva',  // el nombre que sale en la tarjeta
     saldoInicial: 0,          // con cuánta plata empieza
     moneda: 'S/',
-    sfx: null,                // ej: 'yape.mp3' cuando entra plata. null = sin sonido
-    sfxPago: null,            // ej: 'yape_pago.mp3' al pagar. null = usa el de arriba
+    sfx: 'yape.mp3',          // cuando entra plata (tu voz haciendo el sonidito clásico)
+    sfxPago: 'yapo.mp3',      // al pagar. null = usa el de arriba
+                              // Los dos van al doble de velocidad; se cambia en velocidadSfx
   },
 
   // (El tamaño y la caminata de quien cruza la pantalla con @cruzar están

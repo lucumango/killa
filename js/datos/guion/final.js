@@ -52,7 +52,7 @@ Los cerros pasando. La luz blanquísima.
 [si pidio_foto != 1 && tema_azotea == video] En la mano, el celular. En la pantalla, un video de treinta segundos: un mate girando frente a un cerro borroso.
 [si pidio_foto != 1 && tema_azotea != video] En la mano, el celular. En la pantalla, el grupo, con la foto de Puku arriba.
 Y en la esquina de arriba, una notificación.
-@sfx vibrar.wav
+@sfx vibrar.mp3
 @mensaje grupo | flor | ya llegaron?
 @mensaje grupo | flor | AVISA
 @mensaje grupo | amaru | avisa

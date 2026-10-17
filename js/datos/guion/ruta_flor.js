@@ -393,7 +393,7 @@ ariel (triste): ...
 flor (triste): En Lima el cielo está tapado siempre. Y voy a seguir contando los meses igual.
 Vuelve a mirar arriba. Y después, más bajo:
 flor (triste): Voy a seguir diciendo killa aunque no la vea.
-@sfx vibrar.wav
+@sfx vibrar.mp3
 Y ahí, en la azotea, con la ciudad prendiéndose abajo, tu celular empieza a vibrar.
 Y vibra. Y vuelve a vibrar. Y no para.
 

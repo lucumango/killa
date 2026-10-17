@@ -298,7 +298,7 @@ Lo dice con la certeza de un profeta.
 
 # ===============================================================
 == whatsapp_mama_2
-@sfx vibrar.wav
+@sfx vibrar.mp3
 El celular vibra sobre la mesa.
 @mensaje mama | Ariel
 @mensaje mama | comiste?

@@ -263,6 +263,8 @@ voz: ¡Loro! ¡Loro! ¡Ah! ¡Loro!
 Volteas.
 
 # ----- ESCENA DIBUJADA: el loro -----
+# la pista de Puku: tiene intro y después repite desde el segundo 5.486 (ver bucleMusica)
+@musica loro.m4a
 @cuadro loro_susto
 A tu izquierda, en la entrada de un patio abierto, colgada de un gancho bajo el alero, hay una jaula grande de fierro. Y adentro hay un loro verde brillante, con la cabeza ladeada, mirándote con un ojo redondo y amarillo.
 Se mueve de lado por su palito. Te sigue mirando.
@@ -602,7 +604,7 @@ ariel (neutral): Como cuando alguien dice "no fue nada".
 Amaru levanta la vista. Te mira. Asiente una sola vez, corto.
 amaru (neutral): Eso.
 @aprender imamanta
-@sfx vibrar.wav
+@sfx vibrar.mp3
 Y en ese momento, en algún lugar del bolsillo de tu casaca, empieza a vibrar el celular.
 
 # ===============================================================
@@ -1097,7 +1099,7 @@ flor (burla): La próxima.
 == yape
 Escaneas el QR pegado con cinta al mostrador, medio despintado. Pones el monto. Confirmas.
 @yape -{precio} Ferretería El Progreso
-@sfx yape.wav
+@sfx yape.mp3
 Y suena. Ese sonidito. "¡Yapeaste!", chillón, saliendo de un celular viejísimo que el señor Hilario tiene apoyado contra la caja registradora, con la pantalla rajada en una esquina.
 hilario (neutral): Ya está.
 ariel (neutral): Sulpayki.

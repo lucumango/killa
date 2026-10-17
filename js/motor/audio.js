@@ -20,7 +20,14 @@ const Audio_ = {
     Audio_.pararMusica();
     if (!nombre || nombre === 'off') return;
     const a = new Audio(`assets/audio/musica/${nombre}`);
-    a.loop = true; a.volume = Audio_.volMusica;
+    a.volume = Audio_.volMusica;
+    // Pistas con intro (CONFIG.bucleMusica): suenan enteras la primera vez y
+    // después repiten solo desde ese segundo, para no repetir la entrada.
+    const desde = (CONFIG.bucleMusica || {})[nombre];
+    if (desde > 0) {
+      a.loop = false;
+      a.addEventListener('ended', () => { a.currentTime = desde; a.play().catch(() => {}); });
+    } else a.loop = true;
     a.play().catch(() => console.warn('No se pudo reproducir música:', nombre));
     Audio_.musica = a; Audio_.musicaActual = nombre;
   },
@@ -30,6 +37,9 @@ const Audio_ = {
   sfx(nombre) {
     const a = new Audio(`assets/audio/sfx/${nombre}`);
     a.volume = Audio_.volSfx;
+    // CONFIG.velocidadSfx: a qué velocidad suena cada efecto (2 = al doble).
+    const v = (CONFIG.velocidadSfx || {})[nombre];
+    if (v > 0) a.playbackRate = v;
     a.play().catch(() => console.warn('No existe el sfx:', nombre));
   },
   // Audio de una palabra del celular. Devuelve false si no hay archivo.

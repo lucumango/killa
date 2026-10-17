@@ -1220,7 +1220,7 @@ amaru (rojo): Piénsalo callado.
 
 # ===============================================================
 == ocho_y_media
-@sfx vibrar.wav
+@sfx vibrar.mp3
 Y entonces vibra tu celular.
 Vibra, y vuelve a vibrar, y vuelve a vibrar, y no para.
 Lo sacas. La pantalla te ciega. Y en el brillo blanco lees, una encima de otra: Mamá, llamada perdida. Mamá, llamada perdida. Mamá, llamada perdida. Mamá, llamada perdida. Mamá, llamada perdida.
