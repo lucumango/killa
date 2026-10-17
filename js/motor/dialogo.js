@@ -107,7 +107,9 @@ const Dialogo = {
     const b = Dialogo.el.busto;
     b.hidden = false;
     b.classList.toggle('derecha', p.lado === 'derecha' || p.lado === 'der'); // ver `lado` en personajes.js
-    b.style.setProperty('--escala', p.escalaBusto || 1); // ver `escalaBusto` en personajes.js
+    // ver `escalaBusto` en personajes.js. Además se compensa que los dibujos de
+    // un mismo personaje estén encuadrados distinto, para que no crezca y se
+    // encoja al cambiar de cara (a Puku le pasaba: sus caras varían un 50 %).
     // Mientras falten dibujos: si no está esa emoción se usa otra del mismo personaje,
     // antes de caer al bloque de color. El orden de abajo es el de preferencia.
     const dondeEsta = (e) => (p.bustos && p.bustos[e]) || `assets/img/bustos/${id}_${e}.png`;
@@ -118,8 +120,18 @@ const Dialogo = {
       const r = dondeEsta(e);
       if (await U.imagenExiste(r)) { ruta = r; ok = true; break; }
     }
-    if (ok) { b.style.backgroundImage = `url("${ruta}")`; b.style.backgroundColor = 'transparent'; b.querySelector('.busto-etiqueta').textContent = ''; }
-    else { b.style.backgroundImage = 'none'; b.style.backgroundColor = p.color || U.colorDe(id); b.querySelector('.busto-etiqueta').textContent = `${p.nombre} · ${em} (sin imagen)`; }
+    if (ok) {
+      let esc = Number(p.escalaBusto) || 1;
+      const base = p.bustoBase || `assets/img/bustos/${id}_neutral.png`;
+      if (ruta !== base && await U.imagenExiste(base)) {
+        const [tRef, tEste] = [await U.medirTinta(base), await U.medirTinta(ruta)];
+        if (tEste > 0.05) esc *= tRef / tEste;      // que ocupe lo mismo que su cara base
+      }
+      b.style.setProperty('--escala', Math.round(esc * 1000) / 1000);
+      b.style.backgroundImage = `url("${ruta}")`; b.style.backgroundColor = 'transparent';
+      b.querySelector('.busto-etiqueta').textContent = '';
+    }
+    else { b.style.setProperty('--escala', Number(p.escalaBusto) || 1); b.style.backgroundImage = 'none'; b.style.backgroundColor = p.color || U.colorDe(id); b.querySelector('.busto-etiqueta').textContent = `${p.nombre} · ${em} (sin imagen)`; }
   },
   ocultarBusto() { Dialogo.el.busto.hidden = true; },
   limpiar() { Dialogo.el.caja.hidden = true; Dialogo.el.opciones.hidden = true; Dialogo.ocultarBusto(); },

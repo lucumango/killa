@@ -183,19 +183,34 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
   border-radius: 999px; padding: 4px 0; font-family: inherit; font-size: 11px; cursor: pointer; letter-spacing: .5px; }
 .palabra .oir:hover { background: #1d4a41; color: #9ff0de; }
 .palabra .oir:active { transform: scale(.94); }
+/* mientras suena, el botón se apaga para que no lo machaquen */
+.palabra.sonando .oir { background: #2d6a5e; color: #d8fff5; }
+.palabra.sonando { background: #24343a; }
 .chat-lista .contacto { padding: 12px 10px; border-bottom: 1px solid #222; cursor: pointer; display: flex; justify-content: space-between; }
 .chat-lista .contacto:hover { background: #1c1c26; }
 .chat-lista .contacto .sinleer { background: #2b2; color: #000; border-radius: 10px; padding: 0 7px; font-size: 12px; }
 .chat-ventana { display: flex; flex-direction: column; height: 100%; }
-.chat-cabecera { background: #1f2a24; padding: 10px; font-weight: bold; display: flex; gap: 10px; }
-#chat-volver { cursor: pointer; }
+.chat-cabecera { background: #1f2a24; padding: 6px 10px; font-weight: bold; display: flex; align-items: center; gap: 6px; }
+/* Botón de volver a la lista de chats: grande, que se pueda dar sin apuntar */
+#chat-volver { cursor: pointer; font-size: 26px; line-height: 1; width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center; border-radius: 50%;
+  color: #cfe8df; flex: 0 0 auto; }
+#chat-volver:hover { background: #2c3b33; color: #fff; }
+#chat-volver:active { transform: scale(.92); }
 .chat-mensajes { flex: 1; overflow: auto; padding: 10px; display: flex; flex-direction: column; gap: 6px; background: #0d1410; }
 .msg { max-width: 80%; padding: 7px 10px; border-radius: 10px; font-size: 14px; line-height: 1.35; white-space: pre-wrap; word-break: break-word; }
 .msg.yo { align-self: flex-end; background: #0f5c3a; }
 .msg.otro { align-self: flex-start; background: #2a2a2a; }
 .msg .quien { display: block; font-size: 11px; color: #9c9; margin-bottom: 2px; }
 .msg .estado { display: block; text-align: right; font-size: 10px; color: #7cf; }
-.msg.escribiendo { color: #888; font-style: italic; }
+/* "Escribiendo…": los tres puntitos que suben y bajan, como en WhatsApp */
+.msg.escribiendo { color: #888; display: flex; align-items: center; gap: 4px; padding: 12px 14px; }
+.msg.escribiendo i { width: 7px; height: 7px; border-radius: 50%; background: #9aa6a0;
+  display: inline-block; animation: puntito 1.3s infinite ease-in-out; }
+.msg.escribiendo i:nth-child(2) { animation-delay: .18s; }
+.msg.escribiendo i:nth-child(3) { animation-delay: .36s; }
+@keyframes puntito { 0%, 60%, 100% { transform: translateY(0); opacity: .45; }
+                     30% { transform: translateY(-5px); opacity: 1; } }
 .chat-form { display: flex; border-top: 1px solid #222; }
 .chat-form input { flex: 1; background: #1a1a1a; border: 0; color: #fff; padding: 10px; font-family: inherit; font-size: 14px; }
 .chat-form button { background: #0f5c3a; border: 0; color: #fff; padding: 0 14px; cursor: pointer; }

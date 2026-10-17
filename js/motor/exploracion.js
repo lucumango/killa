@@ -26,7 +26,13 @@ const Exploracion = {
     Exploracion.todos().forEach((o) => { o._ido = false; o._dx = 0; o._dy = 0; o._sprite = null; Exploracion.cargarSprite(o.sprite); Exploracion.cargarSprite(o.huir && o.huir.sprite); Exploracion.cargarSprite(o.seVa && o.seVa.sprite); });
     Exploracion.anunciados = new Set(Exploracion.todos().filter(Exploracion.yaAparecio).map((o) => o.id));
     Exploracion.refrescarCuenta();
-    [M.spriteJugador, M.spriteCaminar, M.imagen].forEach(Exploracion.cargarSprite);
+    [M.spriteJugador, M.spriteCaminar].forEach(Exploracion.cargarSprite);
+    // El dibujo del mapa se espera: si no, se ve un momento la grilla de bloques
+    // de colores antes de que aparezca la imagen.
+    if (M.imagen) {
+      const im = await U.cargarImagen(M.imagen);
+      if (im) Exploracion.sprites[M.imagen] = im;
+    }
     Exploracion.fase = 0; Exploracion.andando = false; Exploracion._t = 0; Exploracion._cerca = null;
     Exploracion.ctx.imageSmoothingEnabled = true; // el arte es a línea, no pixel art
     Exploracion.activo = true;

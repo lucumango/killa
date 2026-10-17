@@ -27,6 +27,30 @@ const U = {
   },
   imagenExiste(ruta) { return U.cargarImagen(ruta).then(Boolean); },
 
+  // Cuánto del alto del PNG ocupa realmente el dibujo (0 a 1). Se usa para que
+  // un personaje no crezca y se encoja al cambiar de cara, cuando sus dibujos
+  // están encuadrados distinto. Se mide una vez y se guarda.
+  _tinta: {},
+  async medirTinta(ruta) {
+    if (ruta in U._tinta) return U._tinta[ruta];
+    const im = await U.cargarImagen(ruta);
+    if (!im) return (U._tinta[ruta] = 1);
+    try {
+      const c = document.createElement('canvas');
+      c.width = im.naturalWidth; c.height = im.naturalHeight;
+      const g = c.getContext('2d', { willReadFrequently: true });
+      g.drawImage(im, 0, 0);
+      const p = g.getImageData(0, 0, c.width, c.height).data;
+      let y0 = c.height, y1 = -1;
+      for (let y = 0; y < c.height; y++) {
+        for (let x = 0; x < c.width; x += 2) {
+          if (p[(y * c.width + x) * 4 + 3] > 24) { if (y < y0) y0 = y; y1 = y; break; }
+        }
+      }
+      return (U._tinta[ruta] = y1 < 0 ? 1 : (y1 - y0 + 1) / c.height);
+    } catch { return (U._tinta[ruta] = 1); }
+  },
+
   // Va cargando imágenes en segundo plano, sin hacer esperar a nadie, para que
   // cuando el guion las pida ya estén listas y el cambio sea instantáneo.
   precargar(rutas) {

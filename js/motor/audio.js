@@ -154,13 +154,16 @@ const Audio_ = {
 
   // Audio de una palabra del celular. Devuelve false si no hay archivo.
   // Mientras suena, la música de fondo se agacha para que se oiga bien.
+  sonando: null,          // la palabra que está sonando ahora, si hay alguna
   palabra(ruta) {
     if (!ruta) return false;
+    if (Audio_.sonando) return false;   // deja que termine la anterior
     const a = new Audio(ruta);
+    Audio_.sonando = ruta;
     a.volume = 1;
     Audio_.agacharMusica();
     let listo = false;
-    const fin = () => { if (listo) return; listo = true; Audio_.levantarMusica(); };
+    const fin = () => { if (listo) return; listo = true; Audio_.sonando = null; Audio_.levantarMusica(); };
     a.addEventListener('ended', fin); a.addEventListener('error', fin);
     a.play().catch(() => { U.aviso('Sin audio todavía: ' + ruta.split('/').pop()); fin(); });
     setTimeout(fin, 6000);   // red de seguridad, por si nunca llega el "ended"

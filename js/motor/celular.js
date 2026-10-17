@@ -72,7 +72,19 @@ const Celular = {
           + `<span class="es">${p.es}</span>`
           + (p.audio ? '<button type="button" class="oir" title="Escuchar">► oír</button>'
                      : '<span class="sin-audio">sin audio</span>');
-        const tocar = () => { U.$$('.palabra.activa').forEach((x) => x.classList.remove('activa')); d.classList.add('activa'); if (p.audio) Audio_.palabra(p.audio); };
+        const tocar = () => {
+          if (Audio_.sonando) return;                 // una por vez: deja que acabe
+          U.$$('.palabra.activa').forEach((x) => x.classList.remove('activa'));
+          d.classList.add('activa');
+          if (!p.audio) return;
+          if (Audio_.palabra(p.audio)) {
+            d.classList.add('sonando');
+            const soltar = setInterval(() => {
+              if (Audio_.sonando) return;
+              clearInterval(soltar); d.classList.remove('sonando');
+            }, 120);
+          }
+        };
         const boton = d.querySelector('.oir');
         if (boton) boton.onclick = (e) => { e.stopPropagation(); tocar(); };
         d.onclick = tocar;   // tocar la fila también suena, por si le dan al texto
@@ -111,7 +123,7 @@ const Celular = {
       const d = document.createElement('div');
       d.className = 'msg ' + (m.de === 'yo' ? 'yo' : 'otro') + (m.escribiendo ? ' escribiendo' : '');
       const quien = C.miembros && m.de !== 'yo' ? `<span class="quien">${PERSONAJES[m.de]?.nombre || m.de}</span>` : '';
-      d.innerHTML = quien + (m.escribiendo ? 'escribiendo…' : m.texto.replace(/</g, '&lt;')) + (m.de === 'yo' && m.estado ? `<span class="estado">${m.estado === 'visto' ? '✓✓ visto' : '✓'}</span>` : '');
+      d.innerHTML = quien + (m.escribiendo ? '<i></i><i></i><i></i>' : m.texto.replace(/</g, '&lt;')) + (m.de === 'yo' && m.estado ? `<span class="estado">${m.estado === 'visto' ? '✓✓ visto' : '✓'}</span>` : '');
       c.appendChild(d);
     }
     c.scrollTop = c.scrollHeight;

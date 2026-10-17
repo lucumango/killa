@@ -60,6 +60,11 @@ const Motor = {
       if (L.tipo !== 'cmd' || !L.arg || L.arg === 'off') continue;
       if (L.cmd === 'fondo') arte.add(`assets/img/fondos/${L.arg}.png`);
       if (L.cmd === 'cuadro') arte.add(`assets/img/cuadros/${L.arg}.png`);
+      if (L.cmd === 'explorar' && typeof MAPAS !== 'undefined' && MAPAS[L.arg]) {
+        const M = MAPAS[L.arg];
+        [M.imagen, M.spriteJugador, M.spriteCaminar].forEach((r) => r && arte.add(r));
+        (M.objetos || []).forEach((o) => { if (o.sprite) arte.add(o.sprite); if (o.huir?.sprite) arte.add(o.huir.sprite); });
+      }
     }
     U.precargar?.([...arte]);
   },
