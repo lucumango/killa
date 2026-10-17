@@ -107,12 +107,20 @@ const Registro = {
     if (!c) {
       c = document.createElement('div'); c.id = 'codigo-estudio'; c.className = 'codigo-estudio';
       c.innerHTML = '<label for="cod">Tu código de participante</label>'
-        + '<input id="cod" maxlength="12" autocomplete="off" spellcheck="false">'
-        + '<small>Cópialo en el formulario. Si te dieron uno, bórralo y escribe el tuyo.</small>';
+        + '<div class="codigo-fila"><input id="cod" maxlength="12" autocomplete="off" spellcheck="false">'
+        + '<button type="button" id="cod-copiar">copiar</button></div>'
+        + '<small>Antes de jugar, apunta este código: te lo van a pedir en el formulario.</small>';
       U.$('#pantalla-menu').appendChild(c);
       const i = c.querySelector('input');
       i.addEventListener('keydown', (e) => e.stopPropagation());   // que no muevan el menú al escribir
       i.addEventListener('input', () => { Registro.codigo = i.value.trim(); });
+      const bc = c.querySelector('#cod-copiar');
+      bc.addEventListener('keydown', (e) => e.stopPropagation());
+      bc.onclick = async () => {
+        try { await navigator.clipboard.writeText(i.value); }
+        catch { i.select(); try { document.execCommand('copy'); } catch {} }
+        bc.textContent = 'copiado'; setTimeout(() => (bc.textContent = 'copiar'), 1600);
+      };
     }
     c.querySelector('input').value = Registro.miCodigo();
     c.hidden = false;

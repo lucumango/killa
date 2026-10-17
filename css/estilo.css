@@ -243,6 +243,10 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 
 .codigo-estudio small { font-size: 11px; color: var(--color-pista); max-width: 260px; text-align: center; line-height: 1.4; }
 .codigo-estudio input { letter-spacing: 2px; text-transform: uppercase; }
+.codigo-fila { display: flex; gap: 6px; align-items: stretch; }
+#cod-copiar { background: #15312c; color: #6ed6c0; border: 2px solid #2d6a5e; border-radius: 4px;
+  padding: 0 12px; font-family: inherit; font-size: 13px; cursor: pointer; }
+#cod-copiar:hover { background: #1d4a41; color: #9ff0de; }
 /* El código, bien visible al terminar, para que lo copien al formulario */
 .codigo-final { position: absolute; bottom: 14px; right: 14px; z-index: 25; text-align: right;
   background: rgba(0,0,0,.72); border: 1px solid #2d6a5e; border-radius: 6px; padding: 8px 14px; font-size: 14px; color: #cfe8df; }
