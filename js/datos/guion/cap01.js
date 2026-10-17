@@ -296,14 +296,6 @@ voz: No come galleta.
 La voz viene de atrás y arriba, y das un segundo salto en menos de un minuto, lo cual empieza a ser una racha.
 Hay dos personas paradas en el balcón de la casa de al lado. Una chica y un chico, más o menos de tu edad, ella un poquito más baja, los dos con el mismo pelo negrísimo y la misma forma de cara, así que no hay que ser detective.
 Ella tiene una casaca rosada con el cierre a medio subir y está sonriendo con toda la cara, encantada con la situación. Él tiene una polera negra, las manos en los bolsillos, y una expresión de estar evaluando cuánto le va a costar esto.
-@limpiar
-# bajan la escalera mientras la cámara vuelve abajo
-@mover flor 80 58 1500
-@mover amaru 86 55 900
-@camara abajo 2400
-@mover flor 72 79 1900
-@mover amaru 83 76 1600
-@esperar 1600
 flor (feliz): Le hace mal. Una vez mi tía le dio galleta de vainilla y estuvo mal dos días. Sufriendo. Gritando.
 amaru (neutral): Gritando no.
 flor (burla): Gritando. Tú estabas en el colegio.
@@ -319,18 +311,27 @@ La chica le responde más largo, más rápido, y le da un empujoncito en el braz
 Y a ti se te suben los nervios al cuello. ¿Será por los ojos? ¿Por la manera de pararte? ¿Por la casaca? No eres turista, tu mamá nació a como quince cuadras de acá, pero eso ahorita no está escrito en tu cara.
 Entonces abres la boca. Y sale, en un hilito de voz:
 ariel (nervioso): ...Allinllachu...
+@musica off
 Silencio.
 Los dos se quedan quietos. El loro también, lo cual empeora todo.
 ariel (nervioso): ...sutiyqa Arielmi...
 La "q" se te va por otro lado. La "ll" te sale a la limeña, blandita. Suena como si estuvieras leyendo un idioma en voz alta por primera vez, que es exactamente lo que está pasando.
 # ----- ESCENA DIBUJADA: la reacción de los dos -----
 @sfx wand.mp3
+@musica loro.m4a
 @cuadro hermanos
 La chica se lleva las dos manos a la boca. Y se ríe. Pero no es una risa de burla, es una risa que le sale de golpe, con los hombros y todo.
 flor (risa): ¡Ayyy! ¡Habla! ¡Chiqaqchu! ¿Sabes quechua?
 El chico, en cambio, ha hecho una mueca. Una mueca muy específica. Como si hubiera pisado algo blando. Se pasa la mano por la nuca y mira hacia otro lado.
 amaru (molesto): Atataw.
-@fondo calle_loro
+@cuadro off
+@camara abajo
+# los tres ya están abajo, al lado de la jaula de Puku
+@actor ariel ariel 40 87
+@actor flor flor 59 85
+@actor amaru amaru 71 84
+@limpiar
+@esperar 1800
 No queda claro si te lo dice a ti o a su hermana o al universo.
 flor (feliz): ¡No le hagas caso! Está así siempre. Yo soy Flor Miski María Quispe Ccori. Dime Miski, o Flor, cualquiera. Él es...
 amaru (seria): Amaru.
