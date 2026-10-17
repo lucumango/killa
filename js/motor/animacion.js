@@ -94,18 +94,24 @@ const Animacion = {
       g.drawImage(im, 0, 0);
       const d = g.getImageData(0, 0, c.width, c.height);
       const px = d.data;
-      if (modo !== true) { // auto: ¿las cuatro esquinas son blanco opaco?
-        const esq = [0, (c.width - 1) * 4, (c.height - 1) * c.width * 4, (c.height * c.width - 1) * 4];
-        const blanca = (i) => px[i + 3] > 200 && px[i] > 235 && px[i + 1] > 235 && px[i + 2] > 235;
-        if (!esq.every(blanca)) return im;
-        console.log('[animacion]', ruta, 'venía con fondo blanco: lo hice transparente.');
+      // El fondo no siempre es blanco: tus dibujos vienen sobre papel crema.
+      // Se mira el color de las cuatro esquinas y ESE es el que se quita.
+      const esq = [0, (c.width - 1) * 4, (c.height - 1) * c.width * 4, (c.height * c.width - 1) * 4];
+      const f = [px[0], px[1], px[2]];
+      if (modo !== true) { // auto: ¿las cuatro esquinas son del mismo color claro y opaco?
+        const igual = (i) => px[i + 3] > 200 && Math.abs(px[i] - f[0]) < 10 && Math.abs(px[i + 1] - f[1]) < 10 && Math.abs(px[i + 2] - f[2]) < 10;
+        const clara = f[0] > 200 && f[1] > 200 && f[2] > 200;
+        if (!clara || !esq.every(igual)) return im;
+        console.log('[animacion]', ruta, `venía con fondo opaco (${f.join(',')}): lo hice transparente.`);
       }
       for (let i = 0; i < px.length; i += 4) {
-        const a = 255 - Math.min(px[i], px[i + 1], px[i + 2]);
+        // cuánto más oscuro que el papel es este pixel: eso es la tinta
+        let a = 0;
+        for (let k = 0; k < 3; k++) if (f[k] > 0) a = Math.max(a, (f[k] - px[i + k]) / f[k]);
         if (a <= 0) { px[i + 3] = 0; continue; }
-        // deshacer la mezcla con el blanco para que el trazo no quede desteñido
-        for (let k = 0; k < 3; k++) px[i + k] = Math.max(0, Math.min(255, 255 - (255 - px[i + k]) * 255 / a));
-        px[i + 3] = Math.min(px[i + 3], a);
+        // deshacer la mezcla con el papel para que el trazo no quede desteñido
+        for (let k = 0; k < 3; k++) px[i + k] = Math.max(0, Math.min(255, f[k] + (px[i + k] - f[k]) / a));
+        px[i + 3] = Math.min(px[i + 3], Math.round(a * 255));
       }
       g.putImageData(d, 0, 0);
       c.naturalWidth = c.width; c.naturalHeight = c.height;

@@ -54,7 +54,8 @@ ariel (nausea): Estoy bien.
 mama (seria): Estás verde.
 Le dice algo al conductor en quechua. El hombre se ríe otra vez y afloja un poco la velocidad.
 @ritmo 0.5 2200
-Bajas la ventana dos dedos. Entra un aire frío, seco, con olor a eucalipto y a tierra removida, un olor que no conoces pero que tu cuerpo parece reconocer de algún lado, de esas dos veces que viniste cuando eras peque y no recuerdas casi nada. Solo un patio. Un perro amarillo. Nada más.
+Bajas la ventana dos dedos. Entra un aire frío, seco, con olor a eucalipto y a tierra removida, un olor que no conoces pero que tu cuerpo parece reconocer de algún lado.
+De esas dos veces que viniste cuando eras peque y de las que no recuerdas casi nada. Solo un patio. Un perro amarillo. Nada más.
 Afuera, los cerros son enormes y pelados y bonitos de una manera que no sabes explicar todavía.
 Cierras los ojos y vuelves a la lista. Allinllachu. Allinllachu. Te imaginas diciéndoselo a alguien más tarde, a alguna tía, a algún primo lejano que no vas a reconocer. Te imaginas la cara que pondrían.
 Al rato el motor cambia de tono. Empiezan a aparecer casas, un grifo, un letrero pintado a mano, gente caminando por la berma. El conductor dice algo y tu mamá te toca la rodilla por encima del asiento.
