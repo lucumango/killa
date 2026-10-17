@@ -235,8 +235,16 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 .codigo-estudio label { font-size: 12px; color: var(--color-pista); letter-spacing: 1px; text-transform: uppercase; }
 .codigo-estudio input { width: 120px; text-align: center; font-family: inherit; font-size: 18px;
   padding: 6px; background: rgba(0,0,0,.45); color: #fff; border: 2px solid var(--color-borde); border-radius: 4px; }
-.boton-datos { position: absolute; top: 14px; left: 14px; z-index: 9; cursor: pointer;
+.boton-datos { position: absolute; top: 14px; left: 14px; z-index: 25; cursor: pointer;
   background: #15312c; color: #6ed6c0; border: 1px solid #2d6a5e; border-radius: 4px;
   padding: 7px 14px; font-family: inherit; font-size: 13px; }
 .boton-datos:hover:not(:disabled) { background: #1d4a41; color: #9ff0de; }
 .boton-datos:disabled { opacity: .7; cursor: default; }
+
+.codigo-estudio small { font-size: 11px; color: var(--color-pista); max-width: 260px; text-align: center; line-height: 1.4; }
+.codigo-estudio input { letter-spacing: 2px; text-transform: uppercase; }
+/* El código, bien visible al terminar, para que lo copien al formulario */
+.codigo-final { position: absolute; bottom: 14px; right: 14px; z-index: 25; text-align: right;
+  background: rgba(0,0,0,.72); border: 1px solid #2d6a5e; border-radius: 6px; padding: 8px 14px; font-size: 14px; color: #cfe8df; }
+.codigo-final b { font-size: 22px; letter-spacing: 3px; color: #6ed6c0; display: block; }
+.codigo-final small { display: block; font-size: 11px; color: #8aa; margin-top: 2px; }

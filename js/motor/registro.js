@@ -16,10 +16,27 @@ const Registro = {
   inicio: 0,
   eventos: [],
 
+  // Código de participante. Si no hay, se inventa uno y se guarda en el
+  // navegador, para que si vuelve a jugar siga siendo el mismo. Así la gente
+  // que juega lejos no tiene que escribir nada: lo lee y lo copia al formulario.
+  CLAVE_GUARDADA: 'killa-participante',
+  miCodigo() {
+    if (Registro.codigo) return Registro.codigo;
+    let c = null;
+    try { c = localStorage.getItem(Registro.CLAVE_GUARDADA); } catch {}
+    if (!c) {
+      const letras = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';   // sin I, O, 0, 1: se confunden
+      c = 'K-' + Array.from({ length: 4 }, () => letras[Math.floor(Math.random() * letras.length)]).join('');
+      try { localStorage.setItem(Registro.CLAVE_GUARDADA, c); } catch {}
+    }
+    Registro.codigo = c;
+    return c;
+  },
+
   encender(codigo) {
     Registro.activo = !!(CONFIG.estudio && CONFIG.estudio.activo);
     if (!Registro.activo) return;
-    Registro.codigo = String(codigo || Registro.codigo || '').trim();
+    Registro.codigo = String(codigo || Registro.codigo || '').trim() || Registro.miCodigo();
     Registro.inicio = Date.now();
     Registro.eventos = [];
     Registro.anotar('inicio', { navegador: navigator.userAgent.slice(0, 120), pantalla: `${screen.width}x${screen.height}` });
@@ -89,13 +106,15 @@ const Registro = {
     let c = U.$('#codigo-estudio');
     if (!c) {
       c = document.createElement('div'); c.id = 'codigo-estudio'; c.className = 'codigo-estudio';
-      c.innerHTML = '<label for="cod">Código de participante</label><input id="cod" maxlength="12" autocomplete="off" placeholder="K01">';
+      c.innerHTML = '<label for="cod">Tu código de participante</label>'
+        + '<input id="cod" maxlength="12" autocomplete="off" spellcheck="false">'
+        + '<small>Cópialo en el formulario. Si te dieron uno, bórralo y escribe el tuyo.</small>';
       U.$('#pantalla-menu').appendChild(c);
       const i = c.querySelector('input');
       i.addEventListener('keydown', (e) => e.stopPropagation());   // que no muevan el menú al escribir
       i.addEventListener('input', () => { Registro.codigo = i.value.trim(); });
     }
-    c.querySelector('input').value = Registro.codigo;
+    c.querySelector('input').value = Registro.miCodigo();
     c.hidden = false;
   },
 
@@ -105,6 +124,10 @@ const Registro = {
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'boton-datos';
     b.textContent = 'Descargar mis datos';
+    const cod = document.createElement('div');
+    cod.className = 'codigo-final';
+    cod.innerHTML = 'Tu código: <b>' + Registro.miCodigo() + '</b><small>Ponlo en el formulario de después</small>';
+    (donde || U.$('#juego')).appendChild(cod);
     b.onclick = () => { const n = Registro.descargar(); b.textContent = 'Descargado: ' + n; b.disabled = true; };
     // intenta mandarlo solo, en silencio
     Registro.enviar().then((ok) => { if (ok) b.textContent = 'Datos enviados ✓ (o descárgalos)'; });
