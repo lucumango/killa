@@ -1,7 +1,7 @@
 // =====================================================================
 // YAPE (app del celular): saldo y movimientos.
 // Desde el guion:
-//   @yape +15 Rosa Quispe        ← le entra plata (notificación + sonido)
+//   @yape +15 Rosa Villanueva        ← le entra plata (notificación + sonido)
 //   @yape -2.50 Kiosko           ← paga algo
 //   @yape saldo 20               ← deja el saldo en ese número, sin movimiento
 // En los @si se puede usar la variable `yape`, que siempre vale el saldo:
@@ -25,7 +25,7 @@ const Yape = {
     if (Motor.vars.yape == null) Yape.saldo = Number(Yape.conf().saldoInicial) || 0;
   },
 
-  // Desde el guion. `texto` es "+15 Rosa Quispe", "-2.5 Kiosko" o "saldo 20".
+  // Desde el guion. `texto` es "+15 Rosa Villanueva", "-2.5 Kiosko" o "saldo 20".
   comando(texto) {
     const m = texto.trim().match(/^(saldo\s+)?([+-]?\d+(?:[.,]\d+)?)\s*(.*)$/i);
     if (!m) throw new Error('@yape mal escrito. Ejemplos: @yape +15 Mamá | @yape -2.50 Kiosko | @yape saldo 20');

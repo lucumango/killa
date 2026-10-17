@@ -69,6 +69,7 @@ const Motor = {
     Chat.historial = est.chats || Chat.historialInicial();
     Motor.estadoEscena = est.escena || { fondo: null, cuadro: null, musica: null, animacion: null };
     Motor.enExploracion = est.exploracion || null;
+    Motor.vieneDeChatLibre = !!est.chatLibre;
     Yape.restaurar(est.yape);
   },
   nuevaPartida() {
@@ -187,6 +188,9 @@ const Motor = {
     }
     Chat.sinLeer = {};
     Celular.bloqueado = false;
+    // Se guarda acá para que "Continuar partida" te devuelva al chat, y no
+    // al último punto de guardado de la historia.
+    Guardado.guardar({ ...Motor.estado(), chatLibre: true });
     Pantallas.mostrar('escena');
     // Deja puesto el fondo de la última escena, para no dejar la pantalla pelada
     // cuando el jugador cierra el celular. Si ahí no había fondo (porque el corte

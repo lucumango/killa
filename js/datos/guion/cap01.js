@@ -118,7 +118,7 @@ mama (seria): Anda siéntate por la plaza nomás. Media hora. Y contesta el celu
 
 == plaza_lonche
 Saca el celular de la cartera con una agilidad que no le ves en la casa. Sus dedos van directo a la pantalla, y dos segundos después el tuyo vibra en el bolsillo.
-@yape +15 Rosa Quispe
+@yape +15 Rosa Villanueva
 mama (burla): Cómprate un lonche por ahí. Un pan con queso, un mate caliente para que se te asiente la barriga.
 Cierra la puerta del carro de un golpe seco. La ves cruzar la pista afirmando los pasos sobre la tierra, saludando con la cabeza a una señora que vende panes en una canasta.
 La plaza es un cuadrado perfecto con un montón de cosas adentro. Camina, mira, y cuando quieras irte, baja por la abertura de los portales.
@@ -254,6 +254,8 @@ Lo sigues, porque no tienes nada mejor que hacer y porque va con una seguridad q
 @musica off
 @fondo calle_loro
 @camara abajo
+@limpiar
+@esperar 2200
 La radio ya no se escucha. La plaza tampoco. El gato tampoco. Estás en una calle empedrada y estrecha, en bajada, con casas de adobe pintadas de blanco y las esquinas de las puertas gastadas. No hay nadie.
 Hay una carretilla vacía apoyada contra una pared. Hay una maceta con geranios rojos sobre un muro. Hay ropa tendida en un segundo piso.
 Sacas el celular.
@@ -289,7 +291,7 @@ voz: No come galleta.
 @actor flor flor 70 40
 @actor amaru amaru 81 40
 @camara arriba 2200
-@esperar 400
+@esperar 1600
 La voz viene de atrás y arriba, y das un segundo salto en menos de un minuto, lo cual empieza a ser una racha.
 Hay dos personas paradas en el balcón de la casa de al lado. Una chica y un chico, más o menos de tu edad, ella un poquito más baja, los dos con el mismo pelo negrísimo y la misma forma de cara, así que no hay que ser detective.
 Ella tiene una casaca rosada con el cierre a medio subir y está sonriendo con toda la cara, encantada con la situación. Él tiene una polera negra, las manos en los bolsillos, y una expresión de estar evaluando cuánto le va a costar esto.
@@ -300,7 +302,7 @@ Ella tiene una casaca rosada con el cierre a medio subir y está sonriendo con t
 @camara abajo 2400
 @mover flor 72 79 1900
 @mover amaru 83 76 1600
-@esperar 300
+@esperar 1600
 flor (feliz): Le hace mal. Una vez mi tía le dio galleta de vainilla y estuvo mal dos días. Sufriendo. Gritando.
 amaru (neutral): Gritando no.
 flor (burla): Gritando. Tú estabas en el colegio.
@@ -669,7 +671,7 @@ Cuatro. En veinte minutos. Y ningún mensaje antes de la primera, porque tu mam�
 @mensaje mama | contesta
 @mensaje mama | 🙏🙏
 @chat mama leer
-@yape +40 Rosa Quispe
+@yape +40 Rosa Villanueva
 flor (curioso): ¿Todo bien?
 Estira el cuello con una falta de disimulo impresionante.
 ariel (neutral): Sí. Se va a demorar. Me mandó a comprar cosas. Cuerda, estacas, cinta y pintura. Para marcar un terreno.

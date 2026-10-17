@@ -125,6 +125,10 @@ Tupananchiskama.
                            // el fondo texturizado en pantalla. 0 = empieza de una
   musicaAtenuada: 0.4,     // mientras escuchas una palabra en el celular, la música baja
                            // a esta parte de su volumen (0.4 = 40 %). 1 = no baja nada
+  filtroAtenuado: 900,     // además se le quitan los agudos: todo lo que esté por encima
+                           // de estos Hz se apaga. Así la pista se va "atrás" y la voz
+                           // se oye limpia. 20000 = sin filtro
+  fundidoMusica: 900,      // milisegundos de fundido al cambiar de pista o al cortarla
   // A qué velocidad suena cada efecto. 2 = al doble (más gracioso con las voces).
   velocidadSfx: { 'yape.mp3': 2, 'yapo.mp3': 2 },
   // Cuánto se le sube a cada efecto. 3 = al triple. El del mareo venía muy bajito
@@ -143,7 +147,7 @@ Tupananchiskama.
 
   // ---------- Yape (la app de plata del celular) ----------
   yape: {
-    titular: 'Ariel Cosimo Villanueva',  // el nombre que sale en la tarjeta
+    titular: 'Ariel Stella Villanueva',  // el nombre que sale en la tarjeta
     saldoInicial: 0,          // con cuánta plata empieza
     moneda: 'S/',
     sfx: 'yape.mp3',          // cuando entra plata (tu voz haciendo el sonidito clásico)

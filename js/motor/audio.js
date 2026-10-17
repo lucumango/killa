@@ -15,24 +15,61 @@ const Audio_ = {
     if (Audio_.ctx.state === 'suspended') Audio_.ctx.resume();
   },
 
+  // La música pasa por WebAudio: un filtro pasa-bajos y un volumen.
+  // Así, para dejar oír una voz encima, en vez de bajarle el volumen a secas
+  // se le bajan los agudos (que es lo que recomienda cualquier músico: la pista
+  // se va "atrás" pero se sigue sintiendo). Y los cambios de pista van con fundido.
+  _pista: null,     // { el, gan, filtro }
+  _viejas: [],      // pistas apagándose
+
+  _armar(el) {
+    const c = Audio_.ctx;
+    if (!c) return null;                       // sin WebAudio: volumen pelado
+    const src = c.createMediaElementSource(el);
+    const filtro = c.createBiquadFilter();
+    filtro.type = 'lowpass'; filtro.frequency.value = 20000; filtro.Q.value = 0.0001;
+    const gan = c.createGain(); gan.gain.value = 0;
+    src.connect(filtro); filtro.connect(gan); gan.connect(c.destination);
+    return { filtro, gan };
+  },
+  _rampa(param, valor, ms) {
+    const c = Audio_.ctx, t = c.currentTime;
+    param.cancelScheduledValues(t);
+    param.setValueAtTime(param.value, t);
+    if (ms > 0) param.linearRampToValueAtTime(valor, t + ms / 1000); else param.setValueAtTime(valor, t);
+  },
+
   reproducirMusica(nombre) {
     if (nombre === Audio_.musicaActual) return;
-    Audio_.pararMusica();
+    const fundido = CONFIG.fundidoMusica == null ? 900 : CONFIG.fundidoMusica;
+    Audio_.pararMusica(fundido);
     if (!nombre || nombre === 'off') return;
-    const a = new Audio(`assets/audio/musica/${nombre}`);
-    a.volume = Audio_.volMusica;
+    const el = new Audio(`assets/audio/musica/${nombre}`);
+    el.crossOrigin = 'anonymous';
     // Pistas con intro (CONFIG.bucleMusica): suenan enteras la primera vez y
     // después repiten solo desde ese segundo, para no repetir la entrada.
     const desde = (CONFIG.bucleMusica || {})[nombre];
     if (desde > 0) {
-      a.loop = false;
-      a.addEventListener('ended', () => { a.currentTime = desde; a.play().catch(() => {}); });
-    } else a.loop = true;
-    a.play().catch(() => console.warn('No se pudo reproducir música:', nombre));
-    Audio_.musica = a; Audio_.musicaActual = nombre;
+      el.loop = false;
+      el.addEventListener('ended', () => { el.currentTime = desde; el.play().catch(() => {}); });
+    } else el.loop = true;
+    const nodos = Audio_._armar(el);
+    if (!nodos) el.volume = 0;                 // sin WebAudio arrancamos en silencio y subimos a mano
+    el.play().catch(() => console.warn('No se pudo reproducir música:', nombre));
+    Audio_._pista = { el, ...(nodos || {}) };
+    Audio_.musica = el; Audio_.musicaActual = nombre;
+    Audio_.ajustarMusica(fundido);             // entra con fundido
   },
-  pararMusica() {
-    if (Audio_.musica) { Audio_.musica.pause(); Audio_.musica = null; Audio_.musicaActual = null; }
+
+  pararMusica(ms) {
+    const p = Audio_._pista;
+    Audio_._pista = null; Audio_.musica = null; Audio_.musicaActual = null;
+    if (!p) return;
+    const dur = ms == null ? (CONFIG.fundidoMusica == null ? 900 : CONFIG.fundidoMusica) : ms;
+    if (!dur || !p.gan) { p.el.pause(); return; }
+    Audio_._viejas.push(p);
+    Audio_._rampa(p.gan.gain, 0, dur);
+    setTimeout(() => { p.el.pause(); Audio_._viejas = Audio_._viejas.filter((x) => x !== p); }, dur + 60);
   },
   // Efectos. CONFIG.velocidadSfx = a qué velocidad suena cada uno (2 = al doble).
   // CONFIG.volumenSfx = cuánto se le sube a cada uno. Por encima de 1 no alcanza
@@ -81,38 +118,38 @@ const Audio_ = {
   // Dos cosas la bajan y no se pisan entre ellas:
   //   _agachada  = cuántas palabras del celular están sonando encima
   //   _factorOjos = 1 con los ojos abiertos, baja al cerrarlos (@ojos)
-  _agachada: 0, _factorOjos: 1, _subiendo: null,
+  // Cuánto está "tapada" la música, de 0 a 1. Se tapa por dos motivos y gana el mayor:
+  //   _agachada = hay una voz sonando encima (una palabra del celular, el mareo)
+  //   _ojos     = los párpados cerrados
+  _agachada: 0, _ojos: 0,
   _bajo() { return CONFIG.musicaAtenuada == null ? 0.4 : CONFIG.musicaAtenuada; },
-  nivelMusica() {
-    return Audio_.volMusica * Audio_._factorOjos * (Audio_._agachada > 0 ? Audio_._bajo() : 1);
+  _corte() { return CONFIG.filtroAtenuado == null ? 900 : CONFIG.filtroAtenuado; },
+  _tapado() { return Math.max(Audio_._agachada > 0 ? 1 : 0, Audio_._ojos); },
+  nivelMusica() { return Audio_.volMusica * (1 - Audio_._tapado() * (1 - Audio_._bajo())); },
+
+  // Pone el volumen y el filtro donde toca, con el fundido que le pidas.
+  // El filtro es lo que hace que la pista se vaya "para atrás" en vez de
+  // simplemente bajar: se le quitan los agudos (lo que recomendó Luis).
+  ajustarMusica(ms) {
+    const p = Audio_._pista; if (!p) return;
+    const dur = ms == null ? 300 : ms;
+    if (!p.gan) { p.el.volume = Audio_.nivelMusica(); return; }   // sin WebAudio
+    Audio_._rampa(p.gan.gain, Audio_.nivelMusica(), dur);
+    const corte = 20000 - Audio_._tapado() * (20000 - Audio_._corte());
+    Audio_._rampa(p.filtro.frequency, corte, dur);
   },
-  ajustarMusica() { if (Audio_.musica) Audio_.musica.volume = Audio_.nivelMusica(); },
 
   // Con los ojos: 0 = abiertos del todo, 1 = cerrados del todo.
   musicaPorOjos(cerrado) {
-    Audio_._factorOjos = 1 - Math.max(0, Math.min(1, cerrado)) * (1 - Audio_._bajo());
-    if (Audio_._subiendo) { clearInterval(Audio_._subiendo); Audio_._subiendo = null; }
-    Audio_.ajustarMusica();
+    Audio_._ojos = Math.max(0, Math.min(1, cerrado));
+    Audio_.ajustarMusica(0);
   },
 
-  agacharMusica() {
-    Audio_._agachada++;
-    if (Audio_._subiendo) { clearInterval(Audio_._subiendo); Audio_._subiendo = null; }
-    Audio_.ajustarMusica();
-  },
+  agacharMusica() { Audio_._agachada++; Audio_.ajustarMusica(180); },
   levantarMusica() {
     if (Audio_._agachada > 0) Audio_._agachada--;
     if (Audio_._agachada > 0) return;            // todavía suena otra encima
-    if (!Audio_.musica) return;
-    if (Audio_._subiendo) clearInterval(Audio_._subiendo);
-    Audio_._subiendo = setInterval(() => {       // vuelve de a poquito, no de golpe
-      const m = Audio_.musica, meta = Audio_.nivelMusica();
-      if (!m || m.volume >= meta - 0.01) {
-        if (m) m.volume = meta;
-        clearInterval(Audio_._subiendo); Audio_._subiendo = null; return;
-      }
-      m.volume = Math.min(meta, m.volume + Audio_.volMusica * 0.08);
-    }, 40);
+    Audio_.ajustarMusica(650);                   // vuelve de a poquito, no de golpe
   },
 
   // Audio de una palabra del celular. Devuelve false si no hay archivo.
