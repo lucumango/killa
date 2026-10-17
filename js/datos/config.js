@@ -88,7 +88,7 @@ SULPAYKI a Amorcha, quien fue mi primer acercamiento para aprender quechua y tam
 
 Gracias A MIS AMIGOS que me motivaron a hacer este proyecto! Gracias a Zerovolt0v quien le dio vida y sonido a esta demo, a GatoSupercalifragilistico por la investigación, la portada y por mostrarme que también puedo. A Nakato156 por el procesamiento de los audios.
 
-Gracias gracias a las personas que me escucharon y apoyaron la locura. Gracias papi, mami, Harvy, gracias Sam!!! gracias Manuel!! gracias Luciano!! gracias Sebas!! gracias Hernan!! Aaron!! Rody!! probablemente se lo conté a más personas-- gracias a mi hermano que sin decir nada también me motivó a dibujar de nuevo!
+Gracias gracias a las personas que me escucharon y apoyaron la locura. Gracias papi, mami, Harvy, gracias Sam!!! gracias Manuel!! gracias Luciano!! gracias Sebas!! gracias Hernan!! Aaron!! Rody!! probablemente se lo conté a más personas... gracias a mi hermano que sin decir nada también me motivó a dibujar de nuevo!
 
 GRACIAS AL GAMELAB UPC LOS QUIERO MUCHO
 
