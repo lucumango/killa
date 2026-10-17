@@ -68,3 +68,21 @@ const ANIMACIONES = {
   },
 
 };
+
+// =====================================================================
+// QUIEN CRUZA LA PANTALLA (en el guion: @cruzar gato 2300 meow1.mp3)
+// Camina de un borde al otro y sale. La caminata es la misma del mapa:
+// quieto, un pie, quieto, el otro pie (el motor voltea el segundo paso).
+//   marcos: los dibujos que se alternan, de assets/img/sprites/<nombre>.png
+//   alto:   qué tan grande sale, en px de los 600 que mide la pantalla
+//   piso:   a qué altura apoya los pies, contando desde abajo
+//   espejo: true si el dibujo mira a la izquierda y hay que voltearlo
+//   porSegundo: cuántos cambios de pie por segundo
+// =====================================================================
+const CRUCES = {
+  ariel: { marcos: ['ariel_base', 'ariel_walk'], alto: 150, piso: 40, porSegundo: 6 },
+  gato:  { marcos: ['gato', 'gato_corre'],       alto: 56,  piso: 40, porSegundo: 7, espejo: true },
+  flor:  { marcos: ['flor'],                     alto: 150, piso: 40 },
+  amaru: { marcos: ['amaru'],                    alto: 150, piso: 40 },
+  mama:  { marcos: ['mama'],                     alto: 160, piso: 40 },
+};

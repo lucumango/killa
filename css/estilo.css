@@ -55,11 +55,21 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 #animacion { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; image-rendering: auto; } /* capa de @animacion */
 #juego.pixel #animacion.pixel { image-rendering: pixelated; }
 #cuadro { z-index: 2; }
+/* Párpados (@ojos). Dos franjas que crecen hasta juntarse en el medio.
+   Van por encima de todo lo de la escena, pero por debajo del celular. */
+/* Entre la escena (cuadro, busto, el que cruza) y la caja de diálogo:
+   con los ojos cerrados igual se lee lo que dicen. */
+.parpados { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+.parpados .parpado { position: absolute; left: 0; right: 0; height: 0;
+  background-color: var(--color-fondo); background-size: cover; }
+.parpados .arriba { top: 0; background-position: top center; box-shadow: 0 6px 18px rgba(0,0,0,.45); }
+.parpados .abajo { bottom: 0; background-position: bottom center; box-shadow: 0 -6px 18px rgba(0,0,0,.45); }
+
 /* Alguien que cruza la pantalla caminando (@cruzar). Se apoya en el piso y
    el motor lo mueve de un borde al otro. */
 .cruce { position: absolute; z-index: 4; background-size: contain; background-repeat: no-repeat;
   background-position: bottom center; pointer-events: none; }
-.tarjeta { position: absolute; inset: 0; z-index: 5; background: var(--color-fondo); background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 34px; text-align: center; white-space: pre-line; line-height: 1.6; }
+.tarjeta { position: absolute; inset: 0; z-index: 8; background: var(--color-fondo); background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 34px; text-align: center; white-space: pre-line; line-height: 1.6; }
 
 /* Busto del personaje: por defecto a la izquierda, sobre la caja de diálogo.
    En personajes.js puedes poner `lado: 'derecha'` para que salga al otro lado. */
@@ -73,7 +83,7 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 .busto-etiqueta { font-size: 13px; color: rgba(255,255,255,.7); padding: 4px; }
 
 /* Caja de diálogo estilo Undertale */
-.caja { position: absolute; left: 150px; right: 150px; bottom: 24px; height: 150px; z-index: 4;
+.caja { position: absolute; left: 150px; right: 150px; bottom: 24px; height: 150px; z-index: 6;
   background: var(--color-caja); border: 2px solid var(--color-borde); box-shadow: 0 0 0 2px var(--color-fondo); /* aro oscuro para que el borde blanco se vea sobre fondos claros */
   padding: 16px 22px; font-size: 19px; line-height: 1.45; }
 /* con CONFIG.imagenCaja: el dibujo reemplaza al rectángulo (sin borde, sin relleno) */
@@ -86,7 +96,7 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 .caja.narracion .nombre { display: none; }
 
 /* Opciones */
-.opciones { position: absolute; left: 300px; right: 150px; bottom: 196px; z-index: 6; list-style: none; margin: 0; padding: 12px; background: rgba(34,42,64,.95); border: 2px solid var(--color-borde); box-shadow: 0 0 0 2px var(--color-fondo); font-size: 18px; max-height: 380px; overflow-y: auto; }
+.opciones { position: absolute; left: 300px; right: 150px; bottom: 196px; z-index: 7; list-style: none; margin: 0; padding: 12px; background: rgba(34,42,64,.95); border: 2px solid var(--color-borde); box-shadow: 0 0 0 2px var(--color-fondo); font-size: 18px; max-height: 380px; overflow-y: auto; }
 .opciones li { padding: 6px 12px; cursor: pointer; opacity: .6; }
 .opciones li.seleccionado { opacity: 1; }
 .opciones li.seleccionado::before { content: "❤ "; color: #e33; }

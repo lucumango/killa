@@ -61,11 +61,19 @@ ariel (neutral): Ya, mamá.
 Apoyas la frente contra el vidrio y cierras los ojos. El vidrio está frío y vibra un poquito con el motor, y por alguna razón eso ayuda más que cualquier otra cosa.
 Las voces de adelante se vuelven un murmullo con forma, sin palabras: la de tu mamá subiendo al final de las frases, la del conductor bajando siempre.
 En algún momento el sueño te gana a medias. No del todo. Lo suficiente para que el estómago te suelte.
+# los párpados se van cerrando mientras lee
+@ojos medio 2600
+Los cerros pasan cada vez más despacio, o eso parece.
+@ojos cerrar 2400
+@limpiar
+@esperar 1400
+# duerme un rato con los ojos cerrados
 @fondo ciudad_entrada
+mama (feliz): Ariel. Mira esa iglesia. Ahí me bautizaron.
+@ojos abrir 1100
 Cuando abres los ojos ya están entrando de verdad. Casas de dos pisos con las varillas de fierro saliendo del techo, esperando un tercer piso que quizás nunca llegue. Un mototaxi rojo que se les cruza sin mirar.
 Mujeres con sombrero de ala ancha y falda ancha caminando por el borde de la pista con una naturalidad que no tiene nada que ver con el turismo. Un letrero: Se vende chicha de jora. Otro: Jr. 28 de Julio.
 Y la luz. Es otra luz. Como si alguien le hubiera subido el contraste al mundo.
-mama (feliz): Ariel. Mira esa iglesia. Ahí me bautizaron.
 @sfx wand.mp3
 @cuadro iglesia
 Miras. Es de piedra rosada, enorme, con dos torres.
@@ -198,51 +206,43 @@ Te quedas mirando esa calle.
 @fondo calle_mercado
 Sales. El sol te pega de frente, blanquísimo, y te tapas la cara con la mano, lo cual es ridículo porque al mismo tiempo tienes los brazos con piel de gallina del frío.
 Así funciona acá, parece. El sol y el frío al mismo tiempo, sin ponerse de acuerdo.
-Y entonces, por delante de ti, cruza un gato.
-@limpiar
-@cruzar gato_corre 2300 meow1.mp3
-@esperar 200
-No es el de la plaza. O sí. No sabrías decirlo.
+Y entonces, por delante de ti, cruza un gato. No es el de la plaza. O sí. No sabrías decirlo.
 Lo sigues, porque no tienes nada mejor que hacer y porque va con una seguridad que tú no tienes.
+
+# ----- LA PERSECUCIÓN: solo imagen, sin caja de texto -----
 @limpiar
-@cruzar ariel_walk 2600
+@cruzar gato 2300 meow1.mp3
+@esperar 250
+@cruzar ariel 2600
+@esperar 350
 
 @fondo tienda_mates
-Pasas por delante de un muro largo de piedra con tres puertas y un letrero pintado a mano.
-@limpiar
-@cruzar gato_corre 2300
-@esperar 200
-Miras una pared, porque tiene un color que no habías visto: un azul añil despintado, con una mancha de humedad que parece un mapa.
-@limpiar
-@cruzar ariel_walk 2600
+@esperar 350
+@cruzar gato 2300
+@esperar 250
+@cruzar ariel 2600
+@esperar 350
 
 @fondo calle_bajada
-Una puerta de madera vieja con un aldabón de fierro en forma de mano. Una capilla chiquita con un arco.
-@limpiar
-@cruzar gato_corre 2200 meow1.mp3
-@esperar 200
-Después una tiendita con sacos abiertos de maíz de mil colores en la puerta: blanco gigante, morado, amarillo.
-@limpiar
-@cruzar ariel_walk 2600
+@esperar 350
+@cruzar gato 2200 meow1.mp3
+@esperar 250
+@cruzar ariel 2600
+@esperar 350
 
 @fondo calle_subida
-Una escalera de piedra que baja en diagonal entre dos casas y no sabes a dónde va, pero bajas un poco solo para ver.
-@limpiar
-@cruzar gato_corre 2200
-@esperar 200
-Después una calle angosta con el techo de teja y un cable de luz cruzando de un lado al otro, con zapatillas colgadas.
-@limpiar
-@cruzar ariel_walk 2600
+@esperar 350
+@cruzar gato 2200
+@esperar 250
+@cruzar ariel 2600
+@esperar 350
 
 @fondo ferreteria_afuera
-Una ferretería con el letrero pintado a mano. Te acuerdas de la lista de tu mamá, pero no de lo que decía.
-@limpiar
-@cruzar gato_corre 2200
-@esperar 200
-Después doblas por un pasaje porque escuchaste una radio sonando huayno y querías escuchar de dónde salía.
-@limpiar
-@cruzar ariel_walk 2600
-Y entonces te detienes.
+@esperar 350
+@cruzar gato 2200
+@esperar 250
+@cruzar ariel 2600
+@esperar 500
 
 @musica off
 @fondo calle_loro

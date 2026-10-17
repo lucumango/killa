@@ -73,6 +73,8 @@ A quien lea esto.`,
   beepAlHablar: true,      // "beep beep" tipo Undertale mientras habla un personaje
   beepCadaLetras: 2,       // 1 = beep en cada letra, 2 = cada dos letras, etc.
   narradorOcultaBusto: false, // true = cuando narra, se esconde el busto del último que habló
+  pausaCuadro: 1800,       // al aparecer una ilustración a pantalla completa (@cuadro), cuántos
+                           // milisegundos se queda sola, sin la caja de texto abajo. 0 = sin pausa
 
   // ---------- Audio ----------
   musicaMenu: null,        // ej: 'menu.mp3' (en assets/audio/musica/). null = sin música
@@ -93,11 +95,8 @@ A quien lea esto.`,
     sfxPago: null,            // ej: 'yape_pago.mp3' al pagar. null = usa el de arriba
   },
 
-  // ---------- Quien cruza la pantalla (@cruzar en el guion) ----------
-  // Qué tan grande sale cada uno, en px (la pantalla mide 600 de alto).
-  // `_` es el tamaño por defecto; el resto son excepciones por nombre de sprite.
-  altoCruce: { _: 230, gato: 105, gato_corre: 105 },
-  pisoCruce: 150,          // a qué altura pisa, contando desde abajo (la caja de diálogo tapa 170)
+  // (El tamaño y la caminata de quien cruza la pantalla con @cruzar están
+  //  en js/datos/animaciones.js, en la tabla CRUCES.)
 
   // ---------- Exploración ----------
   colorJugador: '#f2d16b',

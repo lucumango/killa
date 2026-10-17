@@ -20,6 +20,36 @@ const Dialogo = {
     if (est.musica) Audio_.reproducirMusica(est.musica);
   },
 
+  // Los ojos que se cierran y se abren. Desde el guion:
+  //   @ojos cerrar        se cierran y se quedan cerrados (el sueño en el carro)
+  //   @ojos abrir         se abren
+  //   @ojos cerrar 2500   lo mismo, pero tardando 2,5 segundos
+  //   @ojos medio         a medio cerrar, para la modorra
+  // El dibujo es el mismo papel azul de la dedicatoria (CONFIG.fondoDedicatoria).
+  _ojos: 0,   // 0 = abiertos, 1 = cerrados del todo
+  async ojos(como, ms) {
+    const p = U.$('#parpados');
+    const fin = como === 'abrir' ? 0 : como === 'medio' ? 0.42 : 0.5;   // 0.5 = juntos en el medio
+    const dur = Math.max(0, Number(ms) || (como === 'abrir' ? 900 : 1800));
+    const img = CONFIG.fondoDedicatoria ? `url("${CONFIG.fondoDedicatoria}")` : 'none';
+    const franjas = [...p.querySelectorAll('.parpado')];
+    franjas.forEach((f) => (f.style.backgroundImage = img));
+    p.hidden = false;
+    const ini = Dialogo._ojos, t0 = performance.now();
+    await new Promise((res) => {
+      const paso = () => {
+        const k = dur ? Math.min(1, (performance.now() - t0) / dur) : 1;
+        const suave = k * k * (3 - 2 * k);                     // arranca y frena suave
+        const v = ini + (fin - ini) * suave;
+        franjas.forEach((f) => (f.style.height = v * 100 + '%'));
+        if (k < 1) requestAnimationFrame(paso); else res();
+      };
+      requestAnimationFrame(paso);
+    });
+    Dialogo._ojos = fin;
+    if (!fin) p.hidden = true;
+  },
+
   // Alguien cruza la pantalla de lado a lado y sale. Desde el guion:
   //   @cruzar gato 2400 meow1.mp3      (sprite, milisegundos, sonido al entrar)
   //   @cruzar ariel 3000               (de izquierda a derecha, por defecto)
@@ -27,31 +57,44 @@ const Dialogo = {
   // El sprite sale de assets/img/sprites/<nombre>.png. Si no existe, no pasa nada
   // y el guion sigue igual, para que nunca se trabe por un dibujo que falta.
   async cruzar(nombre, ms, sfx, desde) {
-    const ruta = `assets/img/sprites/${nombre}.png`;
-    if (!(await U.imagenExiste(ruta))) { console.warn('@cruzar: falta', ruta); return; }
+    // La ficha está en CRUCES (js/datos/animaciones.js). Si no está, se usa el
+    // sprite con ese nombre y valores por defecto, para no romper nada.
+    const d = (typeof CRUCES !== 'undefined' && CRUCES[nombre]) || { marcos: [nombre] };
+    const rutas = (d.marcos || [nombre]).map((m) => `assets/img/sprites/${m}.png`);
+    const hay = [];
+    for (const r of rutas) if (await U.imagenExiste(r)) hay.push(r);
+    if (!hay.length) { console.warn('@cruzar: no encontré el dibujo de', nombre); return; }
+
     const el = U.$('#cruce');
-    // Tamaño: CONFIG.altoCruce puede ser un número para todos, o una tabla por sprite.
-    const tabla = CONFIG.altoCruce;
-    const alto = Number(typeof tabla === 'object' && tabla ? (tabla[nombre] ?? tabla._) : tabla) || 230;
+    const alto = Number(d.alto) || 150;
     el.style.height = alto + 'px';
-    el.style.width = Math.round(alto * 1.1) + 'px';
-    el.style.bottom = (Number(CONFIG.pisoCruce) || 150) + 'px';
-    el.style.backgroundImage = `url("${ruta}")`;
+    el.style.width = Math.round(alto * 1.3) + 'px';   // ancho holgado: el dibujo se centra solo
+    el.style.bottom = (Number(d.piso) || 40) + 'px';
     el.hidden = false;
-    const alReves = /^(der|derecha|<-|izq_)/i.test(String(desde || ''));
+
+    const alReves = /^(der|derecha|<-)/i.test(String(desde || ''));
     const dur = Math.max(200, Number(ms) || 2400);
+    // Mismo ciclo que la caminata del mapa: quieto, paso, quieto, paso volteado.
+    const quieto = hay[0], paso2 = hay[1] || hay[0];
+    const ciclo = hay.length > 1 ? [[quieto, false], [paso2, false], [quieto, false], [paso2, true]]
+                                 : [[quieto, false]];
+    const porSeg = Number(d.porSegundo) || 6;
+    // Mirar hacia donde camina: `espejo` corrige los dibujos que miran al otro lado.
+    const miraIzq = alReves !== !!d.espejo;
     if (sfx && sfx !== '-') Audio_.sfx(sfx);
+
     const t0 = performance.now();
     await new Promise((res) => {
-      const paso = () => {
-        const k = Math.min(1, (performance.now() - t0) / dur);
-        // de fuera por un lado a fuera por el otro
-        const x = alReves ? 100 - k * 125 : -25 + k * 125;
-        el.style.left = x + '%';
-        el.style.transform = alReves ? 'scaleX(-1)' : 'none';
-        if (k < 1) requestAnimationFrame(paso); else res();
+      const tic = () => {
+        const t = (performance.now() - t0) / 1000;
+        const k = Math.min(1, (t * 1000) / dur);
+        el.style.left = (alReves ? 100 - k * 125 : -25 + k * 125) + '%';
+        const [img, volteado] = ciclo[Math.floor(t * porSeg) % ciclo.length];
+        el.style.backgroundImage = `url("${img}")`;
+        el.style.transform = (miraIzq !== volteado) ? 'scaleX(-1)' : 'none';
+        if (k < 1) requestAnimationFrame(tic); else res();
       };
-      requestAnimationFrame(paso);
+      requestAnimationFrame(tic);
     });
     el.hidden = true; el.style.backgroundImage = 'none';
   },

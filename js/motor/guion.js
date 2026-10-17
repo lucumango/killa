@@ -232,7 +232,17 @@ const Motor = {
     Motor.pc++;
     switch (L.cmd) {
       case 'fondo':      Motor.estadoEscena.fondo = arg === 'off' ? null : arg; Motor.estadoEscena.cuadro = null; await Dialogo.aplicarEscena(Motor.estadoEscena); break;
-      case 'cuadro':     Motor.estadoEscena.cuadro = arg === 'off' ? null : arg; await Dialogo.aplicarEscena(Motor.estadoEscena); break;
+      // Al poner un cuadro, se esconde la caja de diálogo un momento para que se
+      // vea el dibujo entero y limpio (CONFIG.pausaCuadro, en milisegundos).
+      case 'cuadro': {
+        const nuevo = arg === 'off' ? null : arg;
+        const entra = nuevo && nuevo !== Motor.estadoEscena.cuadro;
+        Motor.estadoEscena.cuadro = nuevo;
+        await Dialogo.aplicarEscena(Motor.estadoEscena);
+        if (entra && CONFIG.pausaCuadro) { Dialogo.limpiar(); await U.espera(CONFIG.pausaCuadro); }
+        break; }
+      // @ojos cerrar / @ojos abrir / @ojos medio — los párpados
+      case 'ojos':       await Dialogo.ojos(a[0] || 'cerrar', a[1]); break;
       case 'musica':     Motor.estadoEscena.musica = arg === 'off' ? null : arg; Audio_.reproducirMusica(Motor.estadoEscena.musica); break;
       case 'animacion':  Motor.estadoEscena.animacion = (arg === 'off' || arg === 'ninguna') ? null : arg; await Animacion.iniciar(Motor.estadoEscena.animacion); break;
       // @ritmo 0.55 1800 = la animación baja al 55 % de velocidad en 1,8 segundos.
