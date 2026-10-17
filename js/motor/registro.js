@@ -20,6 +20,7 @@ const Registro = {
   // navegador, para que si vuelve a jugar siga siendo el mismo. Así la gente
   // que juega lejos no tiene que escribir nada: lo lee y lo copia al formulario.
   CLAVE_GUARDADA: 'killa-participante',
+  CLAVE_INTENTOS: 'killa-intentos',
   miCodigo() {
     if (Registro.codigo) return Registro.codigo;
     let c = null;
@@ -39,6 +40,12 @@ const Registro = {
     Registro.codigo = String(codigo || Registro.codigo || '').trim() || Registro.miCodigo();
     Registro.inicio = Date.now();
     Registro.eventos = [];
+    // Cuántas veces ha jugado ya esta persona. Sirve para distinguir
+    // "el mismo jugó dos veces" de "a dos jugadores les tocó el mismo código".
+    let n = 0;
+    try { n = Number(localStorage.getItem(Registro.CLAVE_INTENTOS)) || 0; } catch {}
+    Registro.intento = n + 1;
+    try { localStorage.setItem(Registro.CLAVE_INTENTOS, String(Registro.intento)); } catch {}
     Registro.anotar('inicio', { navegador: navigator.userAgent.slice(0, 120), pantalla: `${screen.width}x${screen.height}` });
   },
 
@@ -58,6 +65,7 @@ const Registro = {
     const chats = Registro.eventos.filter((e) => e.que === 'chat_envia');
     return {
       participante: Registro.codigo || '(sin código)',
+      intento: Registro.intento || 1,     // 1 = su primera partida
       empezo: new Date(Registro.inicio).toISOString(),
       termino: new Date().toISOString(),
       duracion_min: Math.round((Date.now() - Registro.inicio) / 6000) / 10,

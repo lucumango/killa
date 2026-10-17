@@ -195,8 +195,10 @@ http.createServer(async (req, res) => {
               .split('\n').some((l) => l.includes(`"participante":"${j.participante}"`));
         } catch {}
         fs.appendFileSync(ARCHIVO_ESTUDIO, JSON.stringify({ recibido: new Date().toISOString(), repetido, ...j }) + '\n');
-        console.log(`  registro de ${j.participante || '?'} guardado (${j.cuantas_palabras ?? '?'} palabras)`
-          + (repetido ? '  <-- OJO: ese código ya había aparecido' : ''));
+        const n = j.intento || 1;
+        console.log(`  registro de ${j.participante || '?'} (intento ${n}) guardado (${j.cuantas_palabras ?? '?'} palabras)`
+          + (repetido && n === 1 ? '  <-- OJO: ese código ya había aparecido Y dice intento 1: puede ser otra persona' : '')
+          + (repetido && n > 1 ? '  (el mismo volvió a jugar)' : ''));
         res.writeHead(200, { ...cors, 'Content-Type': 'application/json' }); res.end('{"ok":true}');
       } catch (e) {
         res.writeHead(400, { ...cors, 'Content-Type': 'application/json' });
