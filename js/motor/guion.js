@@ -242,7 +242,7 @@ const Motor = {
                          await Camara.usarFondo(Motor.estadoEscena.fondo); break;
       // Cámara y actores, para los fondos más altos que la pantalla (ver camara.js)
       case 'camara':     await Camara.mover(a[0], a[1]); break;
-      case 'actor':      if (a[1] === 'off') Camara.quitar(a[0]); else Camara.poner(a[0], a[1], a[2], a[3]); break;
+      case 'actor':      if (a[1] === 'off') Camara.quitar(a[0]); else Camara.poner(a[0], a[1], a[2], a[3], a[4]); break;
       case 'mover':      await Camara.caminar(a[0], a[1], a[2], a[3]); break;
       // @murmullo mama conductor texto... — se oyen las voces pero no se entiende
       case 'murmullo': {

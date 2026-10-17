@@ -327,9 +327,9 @@ amaru (molesto): Atataw.
 @cuadro off
 @camara abajo
 # los tres ya están abajo, al lado de la jaula de Puku
-@actor ariel ariel 40 87
-@actor flor flor 59 85
-@actor amaru amaru 71 84
+@actor ariel ariel 38 90 230
+@actor flor flor 57 87 225
+@actor amaru amaru 70 86 230
 @limpiar
 @esperar 1800
 No queda claro si te lo dice a ti o a su hermana o al universo.

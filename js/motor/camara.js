@@ -75,7 +75,9 @@ const Camara = {
       U.$('#juego').insertBefore(c, U.$('#cuadro')); }
     return c;
   },
-  poner(id, tipo, bx, by) {
+  // El quinto dato es opcional: el alto en px, por si en esa escena la cámara
+  // está más cerca y el tamaño de CRUCES se queda corto.
+  poner(id, tipo, bx, by, alto) {
     if (tipo === 'off' || bx === 'off') return Camara.quitar(id);
     const def = (typeof CRUCES !== 'undefined' && CRUCES[tipo]) || { marcos: [tipo] };
     let a = Camara.actores[id];
@@ -84,7 +86,7 @@ const Camara = {
       Camara.capa().appendChild(el);
       a = Camara.actores[id] = { el, fase: 0 };
     }
-    a.def = def; a.tipo = tipo;
+    a.def = def; a.tipo = tipo; a.alto = Number(alto) || null;
     a.bx = Math.max(0, Math.min(1, (Number(bx) || 0) / 100));
     a.by = Math.max(0, Math.min(1, (Number(by) || 0) / 100));
     a.el.style.backgroundImage = `url("assets/img/sprites/${def.marcos[0]}.png")`;
@@ -126,7 +128,7 @@ const Camara = {
     if (f) f.style.backgroundPosition = `center ${Camara.y * 100}%`;
     const g = Camara.geo();
     for (const a of Object.values(Camara.actores)) {
-      const alto = Number(a.def.alto) || 150;
+      const alto = a.alto || Number(a.def.alto) || 150;
       // el punto que das es DONDE PISA: los pies del dibujo
       const x = a.bx * g.dw - g.ox * 0.5;
       const y = a.by * g.dh - g.oy * Camara.y;
