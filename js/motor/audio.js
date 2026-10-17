@@ -42,11 +42,43 @@ const Audio_ = {
     if (v > 0) a.playbackRate = v;
     a.play().catch(() => console.warn('No existe el sfx:', nombre));
   },
+  // Baja la música mientras suena otra cosa encima y la devuelve a su sitio
+  // al terminar (CONFIG.musicaAtenuada). Aguanta que le den a varias seguidas.
+  _agachada: 0, _subiendo: null,
+  agacharMusica() {
+    const m = Audio_.musica; if (!m) return;
+    Audio_._agachada++;
+    if (Audio_._subiendo) { clearInterval(Audio_._subiendo); Audio_._subiendo = null; }
+    const bajo = CONFIG.musicaAtenuada == null ? 0.12 : CONFIG.musicaAtenuada;
+    m.volume = Math.min(m.volume, Audio_.volMusica * bajo);
+  },
+  levantarMusica() {
+    if (Audio_._agachada > 0) Audio_._agachada--;
+    if (Audio_._agachada > 0) return;            // todavía suena otra encima
+    const m = Audio_.musica; if (!m) return;
+    if (Audio_._subiendo) clearInterval(Audio_._subiendo);
+    Audio_._subiendo = setInterval(() => {       // vuelve de a poquito, no de golpe
+      const m2 = Audio_.musica;
+      if (!m2 || m2.volume >= Audio_.volMusica - 0.01) {
+        if (m2) m2.volume = Audio_.volMusica;
+        clearInterval(Audio_._subiendo); Audio_._subiendo = null; return;
+      }
+      m2.volume = Math.min(Audio_.volMusica, m2.volume + Audio_.volMusica * 0.08);
+    }, 40);
+  },
+
   // Audio de una palabra del celular. Devuelve false si no hay archivo.
+  // Mientras suena, la música de fondo se agacha para que se oiga bien.
   palabra(ruta) {
     if (!ruta) return false;
     const a = new Audio(ruta);
-    a.play().catch(() => U.aviso('Sin audio todavía: ' + ruta.split('/').pop()));
+    a.volume = 1;
+    Audio_.agacharMusica();
+    let listo = false;
+    const fin = () => { if (listo) return; listo = true; Audio_.levantarMusica(); };
+    a.addEventListener('ended', fin); a.addEventListener('error', fin);
+    a.play().catch(() => { U.aviso('Sin audio todavía: ' + ruta.split('/').pop()); fin(); });
+    setTimeout(fin, 6000);   // red de seguridad, por si nunca llega el "ended"
     return true;
   },
 
