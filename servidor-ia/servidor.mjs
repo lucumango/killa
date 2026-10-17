@@ -100,14 +100,18 @@ async function unaLlamadaGoogle(modelo, sistema, turnos) {
 }
 
 // Los modelos se saturan a ratos (503). Reintenta una vez y si no, usa el de respaldo.
+const quemados = new Set();   // modelos sin cuota por hoy
 async function conGoogle(sistema, turnos) {
-  const intentos = [MODELO, MODELO, MODELO_RESPALDO].filter(Boolean);
+  const intentos = [MODELO, MODELO, MODELO_RESPALDO].filter(Boolean).filter((m, i, a) => !quemados.has(m) || i === a.length - 1);
   let ultimo;
   for (const [i, modelo] of intentos.entries()) {
     try { return await unaLlamadaGoogle(modelo, sistema, turnos); }
     catch (e) {
       ultimo = e;
       if (!(e.estado === 429 || e.estado >= 500)) throw e;   // error de verdad: no insistas
+      // Si es la cuota diaria, insistir con el mismo modelo es perder el tiempo:
+      // se salta directo al de respaldo, que tiene su propia cuota.
+      if (e.cuota && intentos[i + 1] === modelo) { quemados.add(modelo); continue; }
       console.warn(`  ${modelo} ${e.estado}, reintento ${i + 1}/${intentos.length}`);
       await new Promise((r) => setTimeout(r, 400));
     }
