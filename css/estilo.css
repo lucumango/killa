@@ -43,8 +43,17 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 .menu li.deshabilitado { opacity: 0.25; }
 
 /* ---------- Pantalla de texto (instrucciones / créditos / agradecimientos) ---------- */
-#pantalla-texto { padding: 50px 80px; overflow: auto; background-size: cover; background-position: center; }
-#texto-cuerpo { white-space: pre-line; line-height: 1.7; font-size: 18px; }
+/* El título y la ayuda de abajo quedan fijos; lo que se desplaza es el cuerpo,
+   para que el aviso de "sigue" se vea siempre y no se vaya con el texto. */
+#pantalla-texto { padding: 42px 80px 14px; display: flex; flex-direction: column; overflow: hidden;
+  background-size: cover; background-position: center; }
+#texto-titulo { margin: 0 0 14px; flex: 0 0 auto; }
+#texto-cuerpo { flex: 1 1 auto; overflow-y: auto; white-space: pre-line; line-height: 1.7; font-size: 18px; }
+/* Aviso de que hay más texto abajo */
+.texto-mas { flex: 0 0 auto; text-align: center; font-size: 13px; letter-spacing: 2px; padding: 6px 0 2px;
+  color: #ffd79a; text-shadow: 0 2px 6px rgba(0,0,0,.9); }
+.texto-mas span { display: inline-block; animation: bajando 1.1s ease-in-out infinite; }
+@keyframes bajando { 50% { transform: translateY(4px); opacity: .45; } }
 /* con dibujo de fondo (CONFIG.fondoTexto): sombrita para que el texto no se pierda en la textura */
 #pantalla-texto.con-fondo #texto-titulo,
 #pantalla-texto.con-fondo #texto-cuerpo,

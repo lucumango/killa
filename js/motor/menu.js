@@ -94,21 +94,31 @@ const Menu = {
     pt.classList.toggle('con-fondo', !!CONFIG.fondoTexto);
     U.$('#texto-titulo').textContent = titulos[clave];
     U.$('#texto-cuerpo').textContent = CONFIG[clave];
-    pt.scrollTop = 0;
-    // Los agradecimientos son largos: se bajan con las flechas o la rueda del mouse.
-    const hayMas = () => pt.scrollHeight > pt.clientHeight + 4;
-    U.$('#pantalla-texto .pista').textContent = hayMas()
-      ? '↑ ↓ para leer el resto  ·  Esc para volver'
-      : 'Esc o Enter para volver';
+    // Los agradecimientos son largos: el cuerpo se desplaza con las flechas o
+    // con la rueda del mouse, y abajo avisa mientras quede texto por leer.
+    const cuerpo = U.$('#texto-cuerpo'), mas = U.$('#texto-mas'), pista = U.$('#pantalla-texto .pista');
+    cuerpo.scrollTop = 0;
+    const seDesplaza = () => cuerpo.scrollHeight > cuerpo.clientHeight + 4;
+    const quedaAbajo = () => cuerpo.scrollTop + cuerpo.clientHeight < cuerpo.scrollHeight - 4;
+    const refrescar = () => {
+      mas.hidden = !quedaAbajo();
+      pista.textContent = seDesplaza()
+        ? (quedaAbajo() ? '↑ ↓ o la rueda del mouse para leer el resto  ·  Esc para volver'
+                        : 'Eso es todo  ·  Esc o Enter para volver')
+        : 'Esc o Enter para volver';
+    };
+    cuerpo.onscroll = refrescar;
+    // El texto se mide recién cuando el navegador lo pinta.
+    refrescar(); requestAnimationFrame(refrescar);
     const tk = (e) => {
-      const salto = pt.clientHeight * 0.8;
-      if (['ArrowDown', 's', 'S'].includes(e.key)) { e.preventDefault(); pt.scrollTop += 60; return; }
-      if (['ArrowUp', 'w', 'W'].includes(e.key)) { e.preventDefault(); pt.scrollTop -= 60; return; }
-      if (e.key === 'PageDown') { e.preventDefault(); pt.scrollTop += salto; return; }
-      if (e.key === 'PageUp') { e.preventDefault(); pt.scrollTop -= salto; return; }
-      // Con texto largo, Enter no debe salirse sin querer mientras lees.
-      if (Entrada.esCancelar(e) || (Entrada.esAvance(e) && !hayMas())) {
-        window.removeEventListener('keydown', tk); Menu.mostrar();
+      const salto = cuerpo.clientHeight * 0.8;
+      if (['ArrowDown', 's', 'S'].includes(e.key)) { e.preventDefault(); cuerpo.scrollTop += 60; refrescar(); return; }
+      if (['ArrowUp', 'w', 'W'].includes(e.key)) { e.preventDefault(); cuerpo.scrollTop -= 60; refrescar(); return; }
+      if (e.key === 'PageDown') { e.preventDefault(); cuerpo.scrollTop += salto; refrescar(); return; }
+      if (e.key === 'PageUp') { e.preventDefault(); cuerpo.scrollTop -= salto; refrescar(); return; }
+      // Con texto por leer, Enter no debe salirse sin querer.
+      if (Entrada.esCancelar(e) || (Entrada.esAvance(e) && !quedaAbajo())) {
+        window.removeEventListener('keydown', tk); cuerpo.onscroll = null; Menu.mostrar();
       }
     };
     window.addEventListener('keydown', tk);
