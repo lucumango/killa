@@ -9,21 +9,38 @@ const U = {
     for (const c of String(texto)) h = (h * 31 + c.charCodeAt(0)) >>> 0;
     return `hsl(${h % 360}, 45%, 38%)`;
   },
-  // Comprueba si una imagen existe (cacheado). Si no existe, se usa bloque de color.
+  // Carga una imagen y espera a que esté LISTA PARA PINTAR (decode), no solo
+  // descargada. Si no se espera al decode, al cambiar de fondo el navegador
+  // sigue mostrando el anterior mientras procesa el nuevo.
+  // Guarda el objeto Image, no un booleano, para que no se descarte de memoria.
   _imgCache: {},
-  imagenExiste(ruta) {
+  cargarImagen(ruta) {
     if (!ruta) return Promise.resolve(false);
     if (ruta in U._imgCache) return Promise.resolve(U._imgCache[ruta]);
     return new Promise((res) => {
       const im = new Image();
-      im.onload = () => { U._imgCache[ruta] = true; res(true); };
+      const listo = () => { U._imgCache[ruta] = im; res(im); };
+      im.onload = () => (im.decode ? im.decode().then(listo, listo) : listo());
       im.onerror = () => { U._imgCache[ruta] = false; res(false); };
       im.src = ruta;
     });
   },
+  imagenExiste(ruta) { return U.cargarImagen(ruta).then(Boolean); },
+
+  // Va cargando imágenes en segundo plano, sin hacer esperar a nadie, para que
+  // cuando el guion las pida ya estén listas y el cambio sea instantáneo.
+  precargar(rutas) {
+    let i = 0;
+    const siguiente = () => {
+      if (i >= rutas.length) return;
+      U.cargarImagen(rutas[i++]).then(() => setTimeout(siguiente, 0));
+    };
+    for (let k = 0; k < 3; k++) siguiente();   // de tres en tres, sin atorar la red
+  },
+
   // Pone imagen de fondo en un elemento o, si no existe, un bloque de color con etiqueta.
   async pintar(el, ruta, etiqueta) {
-    const ok = await U.imagenExiste(ruta);
+    const ok = await U.cargarImagen(ruta);
     el.classList.add('placeholder');
     if (ok) { el.style.backgroundImage = `url("${ruta}")`; el.style.backgroundColor = ''; el.textContent = ''; }
     else { el.style.backgroundImage = 'none'; el.style.backgroundColor = U.colorDe(etiqueta); el.textContent = etiqueta + ' (sin imagen)'; }

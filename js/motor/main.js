@@ -13,6 +13,19 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
   Chat.historial = Chat.historialInicial();
+
+  // Teclas que el navegador usa para desplazar la página. Cuando el juego está
+  // metido en una página ajena (itch.io), si no las reclamamos el navegador
+  // mueve la página de atrás mientras caminas. Las pedimos para el juego,
+  // salvo cuando estás escribiendo en el chat.
+  const TECLAS_DE_SCROLL = new Set(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
+    ' ', 'Spacebar', 'PageUp', 'PageDown', 'Home', 'End']);
+  window.addEventListener('keydown', (e) => {
+    if (document.activeElement === Celular.el.input) return;   // está escribiendo
+    if (e.ctrlKey || e.metaKey || e.altKey) return;            // atajos del navegador
+    if (TECLAS_DE_SCROLL.has(e.key)) e.preventDefault();
+  }, { capture: true });
+
   window.addEventListener('keydown', (e) => {
     // Tecla del celular: solo dentro del juego (escena o exploración).
     const enJuego = !U.$('#pantalla-escena').hidden || !U.$('#pantalla-explorar').hidden;

@@ -53,6 +53,15 @@ const Motor = {
         empujar({ tipo: 'dialogo', quien: 'narrador', emocion: '', texto: l, num });
       }
     });
+    // Deja cargando en segundo plano los fondos y las láminas de este capítulo,
+    // para que al cambiar de escena no se vea un momento la anterior.
+    const arte = new Set();
+    for (const L of Motor.lineas) {
+      if (L.tipo !== 'cmd' || !L.arg || L.arg === 'off') continue;
+      if (L.cmd === 'fondo') arte.add(`assets/img/fondos/${L.arg}.png`);
+      if (L.cmd === 'cuadro') arte.add(`assets/img/cuadros/${L.arg}.png`);
+    }
+    U.precargar([...arte]);
   },
 
   // ---------- Estado / guardado ----------
