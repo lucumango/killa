@@ -17,7 +17,7 @@ cd escritorio
 [ -d node_modules ] || npm install
 
 echo "3/3  Empaquetando..."
-npx electron-builder --win --linux ${MAC:+--mac}
+npx electron-builder --win portable --linux AppImage --x64 ${MAC:+--mac}
 
 echo
 echo "Listo. Mira en escritorio/salida/"
