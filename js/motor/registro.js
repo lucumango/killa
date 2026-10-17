@@ -46,7 +46,9 @@ const Registro = {
     try { n = Number(localStorage.getItem(Registro.CLAVE_INTENTOS)) || 0; } catch {}
     Registro.intento = n + 1;
     try { localStorage.setItem(Registro.CLAVE_INTENTOS, String(Registro.intento)); } catch {}
+    Registro._ultimoEnviado = 0;
     Registro.anotar('inicio', { navegador: navigator.userAgent.slice(0, 120), pantalla: `${screen.width}x${screen.height}` });
+    Registro.vigilar();
   },
 
   anotar(que, datos) {
@@ -84,17 +86,50 @@ const Registro = {
   // Manda la partida al servidor, para no depender de que el jugador te
   // pase el archivo. Si no hay servidor o falla, no pasa nada: el botón de
   // descargar sigue estando. CONFIG.estudio.enviar lo enciende.
-  async enviar() {
-    if (!Registro.activo || !(CONFIG.estudio && CONFIG.estudio.enviar)) return false;
+  url() {
     const base = (typeof Chat !== 'undefined' && Chat.urlIA) ? Chat.urlIA() : '';
-    const url = base.replace(/\/chat$/, '/registro');
+    return base ? base.replace(/\/chat$/, '/registro') : '';
+  },
+
+  async enviar(parcial) {
+    if (!Registro.activo || !(CONFIG.estudio && CONFIG.estudio.enviar)) return false;
+    const url = Registro.url();
     if (!url) return false;
+    const cuerpo = JSON.stringify({ ...Registro.resumen(), parcial: !!parcial });
+    Registro._ultimoEnviado = Registro.eventos.length;
     try {
-      const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Registro.resumen()) });
+      const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: cuerpo });
       Registro._enviado = r.ok;
       return r.ok;
     } catch { Registro._enviado = false; return false; }
+  },
+
+  // Va mandando lo que lleva cada tanto y al cerrar la pestaña, para que si
+  // alguien abandona a mitad no se pierda todo (y se vea DÓNDE lo dejó).
+  _ultimoEnviado: 0, _reloj: null, _vigilando: false,
+  vigilar() {
+    if (Registro._vigilando || !Registro.activo) return;
+    if (!(CONFIG.estudio && CONFIG.estudio.enviar)) return;
+    Registro._vigilando = true;
+    const cada = Math.max(15, Number(CONFIG.estudio.cadaSegundos) || 60) * 1000;
+    Registro._reloj = setInterval(() => {
+      if (Registro.eventos.length > Registro._ultimoEnviado) Registro.enviar(true);
+    }, cada);
+    // Al cerrar o cambiar de pestaña: sendBeacon llega aunque la página se vaya.
+    const alIrse = () => {
+      if (!Registro.activo || Registro.eventos.length <= Registro._ultimoEnviado) return;
+      const url = Registro.url();
+      if (!url || !navigator.sendBeacon) return;
+      Registro._ultimoEnviado = Registro.eventos.length;
+      try {
+        // text/plain a propósito: con application/json el navegador pediría
+        // permiso con un preflight, y sendBeacon no puede hacerlo al cerrar.
+        navigator.sendBeacon(url, new Blob([JSON.stringify({ ...Registro.resumen(), parcial: true })],
+          { type: 'text/plain;charset=UTF-8' }));
+      } catch {}
+    };
+    window.addEventListener('pagehide', alIrse);
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') alIrse(); });
   },
 
   descargar() {
@@ -146,7 +181,7 @@ const Registro = {
     (donde || U.$('#juego')).appendChild(cod);
     b.onclick = () => { const n = Registro.descargar(); b.textContent = 'Descargado: ' + n; b.disabled = true; };
     // intenta mandarlo solo, en silencio
-    Registro.enviar().then((ok) => { if (ok) b.textContent = 'Datos enviados ✓ (o descárgalos)'; });
+    Registro.enviar(false).then((ok) => { if (ok) b.textContent = 'Datos enviados ✓ (o descárgalos)'; });
     b.addEventListener('keydown', (e) => e.stopPropagation());
     (donde || U.$('#juego')).appendChild(b);
     return b;

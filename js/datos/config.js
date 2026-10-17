@@ -24,6 +24,8 @@ const CONFIG = {
     activo: true,     // la casilla del código y el botón de descargar
     enviar: true,     // además manda la partida sola al servidor (misma URL que el chat,
                       // pero terminada en /registro). Si falla, el botón sigue ahí
+    cadaSegundos: 60, // cada cuánto manda lo que lleva, por si abandona a mitad.
+                      // También manda al cerrar la pestaña
   },
 
   // ---------- Modo demo ----------
