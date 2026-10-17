@@ -25,6 +25,7 @@ const Exploracion = {
     if (M.musica) { Motor.estadoEscena.musica = M.musica; Audio_.reproducirMusica(M.musica); }
     Exploracion.todos().forEach((o) => { o._ido = false; o._dx = 0; o._dy = 0; o._sprite = null; Exploracion.cargarSprite(o.sprite); Exploracion.cargarSprite(o.huir && o.huir.sprite); Exploracion.cargarSprite(o.seVa && o.seVa.sprite); });
     Exploracion.anunciados = new Set(Exploracion.todos().filter(Exploracion.yaAparecio).map((o) => o.id));
+    Exploracion.refrescarCuenta();
     [M.spriteJugador, M.spriteCaminar, M.imagen].forEach(Exploracion.cargarSprite);
     Exploracion.fase = 0; Exploracion.andando = false; Exploracion._t = 0; Exploracion._cerca = null;
     Exploracion.ctx.imageSmoothingEnabled = true; // el arte es a línea, no pixel art
@@ -77,6 +78,22 @@ const Exploracion = {
   todos() { const M = Exploracion.mapa; return (M.objetos || []).concat(M.personajes || []); },
   // visibles: los que ya aparecieron y todavía no se fueron
   todosObjetos() { return Exploracion.todos().filter((o) => !o._ido && Exploracion.yaAparecio(o)); },
+
+  // Aviso de cuántas cosas quedan por mirar. Solo cuenta las que ya aparecieron,
+  // para no delatar las que todavía están escondidas (el gato de la plaza).
+  // Se apaga con CONFIG.contarExploracion: false.
+  refrescarCuenta() {
+    const el = U.$('#explorar-cuenta');
+    if (!el) return;
+    if (CONFIG.contarExploracion === false) { el.hidden = true; return; }
+    const mirables = Exploracion.todos().filter((o) => o.accion && Exploracion.yaAparecio(o));
+    const faltan = mirables.filter((o) => !Motor.vars['visto_' + o.id]).length;
+    el.hidden = false;
+    el.classList.toggle('listo', faltan === 0);
+    el.textContent = faltan === 0 ? 'Ya viste todo'
+      : faltan === 1 ? 'Te falta 1 cosa por mirar'
+      : `Te faltan ${faltan} cosas por mirar`;
+  },
   yaAparecio(o) { return !o.apareceCuando || o.apareceCuando.every((id) => Motor.vars['visto_' + id]); },
   cargarSprite(ruta) { if (ruta && !Exploracion.sprites[ruta]) U.imagenExiste(ruta).then((ok) => { if (ok) { const im = new Image(); im.src = ruta; Exploracion.sprites[ruta] = im; } }); },
   objetoCerca() {
@@ -101,6 +118,7 @@ const Exploracion = {
     if (o.huir) await Exploracion.huir(o);              // el gato se va corriendo antes de hablar
     Motor.vars['visto_' + o.id] = 1;                     // queda registrado para los @si y los apareceCuando
     const destino = o.accion ? await Motor.subGuion(o.accion) : null;
+    Exploracion.refrescarCuenta();
     Exploracion.ocupado = false;
     if (destino) Exploracion.terminar(destino);
   },

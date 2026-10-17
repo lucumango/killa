@@ -96,7 +96,7 @@ const MAPAS = {
   },
 
   casa: {
-    nombre: 'Casa de los Quispe Ccori — patio',
+    nombre: 'Casa de los Quispe Ccori - patio',
     tam: 40, velocidad: 3,
     imagen: 'assets/img/mapas/casa.png',   // el dibujo: se estira sobre las 24 x 15 casillas
     spriteJugador: 'assets/img/sprites/ariel_base.png',

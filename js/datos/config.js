@@ -1,5 +1,5 @@
 // =====================================================================
-// CONFIGURACIÓN GENERAL — edita libremente
+// CONFIGURACIÓN GENERAL - edita libremente
 // =====================================================================
 const CONFIG = {
   titulo: 'Killa',
@@ -20,9 +20,9 @@ const CONFIG = {
   // Corta la partida al llegar a esa etiqueta del guion ('capitulo:etiqueta') y muestra
   // la tarjeta de abajo. `null` = se juega el juego entero. No toca el guion: para
   // alargar o acortar la demo solo cambias el nombre de la etiqueta.
-  //   'cap01:sutiyqa'          ~13 min — hasta el loro y conocer a los hermanos
-  //   'cap01:whatsapp_mama_1'  ~20 min — + la lección de pronunciación, corta cuando vibra el celular
-  //   'cap01:camino_ferreteria' ~21 min — + los chats de la mamá y el Yape
+  //   'cap01:sutiyqa'          ~13 min - hasta el loro y conocer a los hermanos
+  //   'cap01:whatsapp_mama_1'  ~20 min - + la lección de pronunciación, corta cuando vibra el celular
+  //   'cap01:camino_ferreteria' ~21 min - + los chats de la mamá y el Yape
   demoHasta: 'cap01:whatsapp_mama_1',
   tarjetaDemo: 'FIN DE LA DEMO | Lo que sigue todavía lo estamos haciendo. | Mientras tanto, quédate conversando con ellos.',
 
@@ -88,7 +88,7 @@ SULPAYKI a Amorcha, quien fue mi primer acercamiento para aprender quechua y tam
 
 Gracias A MIS AMIGOS que me motivaron a hacer este proyecto! Gracias a Zerovolt0v quien le dio vida y sonido a esta demo, a GatoSupercalifragilistico por la investigación, la portada y por mostrarme que también puedo. A Nakato156 por el procesamiento de los audios.
 
-Gracias gracias a las personas que me escucharon y apoyaron la locura. Gracias papi, mami, Harvy, gracias Sam!!! gracias Manuel!! gracias Luciano!! gracias Sebas!! gracias Hernan!! Aaron!! Rody!! probablemente se lo conté a más personas... gracias a mi hermano que sin decir nada también me motivó a dibujar de nuevo!
+Gracias gracias a las personas que me escucharon y apoyaron la locura. Gracias papi, mami, Harvy, gracias Sam!!! gracias Manuel!! gracias Luciano!! gracias Sebas!! gracias Hernan!! Aaron!! Rody!! probablemente se lo conté a más personas-- gracias a mi hermano que sin decir nada también me motivó a dibujar de nuevo!
 
 GRACIAS AL GAMELAB UPC LOS QUIERO MUCHO
 
@@ -109,6 +109,7 @@ Tupananchiskama.
   // ---------- Texto ----------
   velocidadTexto: 28,      // milisegundos por letra (menos = más rápido)
   beepAlHablar: true,      // "beep beep" tipo Undertale mientras habla un personaje
+  volumenBeep: 0.14,       // qué tan fuerte suena ese beep (antes era 0.06 y se perdía)
   beepCadaLetras: 2,       // 1 = beep en cada letra, 2 = cada dos letras, etc.
   narradorOcultaBusto: false, // true = cuando narra, se esconde el busto del último que habló
   pausaCuadro: 1800,       // al aparecer una ilustración a pantalla completa (@cuadro), cuántos
@@ -126,6 +127,9 @@ Tupananchiskama.
                            // a esta parte de su volumen (0.4 = 40 %). 1 = no baja nada
   // A qué velocidad suena cada efecto. 2 = al doble (más gracioso con las voces).
   velocidadSfx: { 'yape.mp3': 2, 'yapo.mp3': 2 },
+  // Cuánto se le sube a cada efecto. 3 = al triple. El del mareo venía muy bajito
+  // (la mitad de volumen que el ladrido) y con la música encima no se oía.
+  volumenSfx: { 'nausea.mp3': 3 },
   // Pistas que tienen intro: suenan enteras la primera vez y después repiten
   // solo desde ese segundo. (El marcador LOOP del wav de Puku cae en 5.486 s.)
   bucleMusica: { 'loro.m4a': 5.486 },
@@ -152,6 +156,8 @@ Tupananchiskama.
 
   // ---------- Exploración ----------
   colorJugador: '#f2d16b',
+  contarExploracion: true, // arriba a la derecha del mapa, cuántas cosas te faltan por mirar.
+                           // Solo cuenta las que ya se ven (no delata las escondidas)
   verChoques: false,       // true = pinta de rojo las casillas por donde no se puede caminar (para calzar el dibujo con la grilla)
 
   // ---------- Teclas ----------

@@ -34,36 +34,84 @@ const Audio_ = {
   pararMusica() {
     if (Audio_.musica) { Audio_.musica.pause(); Audio_.musica = null; Audio_.musicaActual = null; }
   },
-  sfx(nombre) {
-    const a = new Audio(`assets/audio/sfx/${nombre}`);
-    a.volume = Audio_.volSfx;
-    // CONFIG.velocidadSfx: a qué velocidad suena cada efecto (2 = al doble).
-    const v = (CONFIG.velocidadSfx || {})[nombre];
-    if (v > 0) a.playbackRate = v;
-    a.play().catch(() => console.warn('No existe el sfx:', nombre));
+  // Efectos. CONFIG.velocidadSfx = a qué velocidad suena cada uno (2 = al doble).
+  // CONFIG.volumenSfx = cuánto se le sube a cada uno. Por encima de 1 no alcanza
+  // un <audio> normal (su tope es 1), así que esos van por WebAudio, con un
+  // limitador detrás para que subirle no lo haga reventar.
+  _bufers: {},
+  _buffer(ruta) {
+    if (ruta in Audio_._bufers) return Promise.resolve(Audio_._bufers[ruta]);
+    return fetch(ruta).then((r) => r.arrayBuffer()).then((d) => Audio_.ctx.decodeAudioData(d))
+      .then((b) => (Audio_._bufers[ruta] = b))
+      .catch(() => (Audio_._bufers[ruta] = null));
   },
-  // Baja la música mientras suena otra cosa encima y la devuelve a su sitio
-  // al terminar (CONFIG.musicaAtenuada). Aguanta que le den a varias seguidas.
-  _agachada: 0, _subiendo: null,
+  sfx(nombre) {
+    const ruta = `assets/audio/sfx/${nombre}`;
+    const vel = (CONFIG.velocidadSfx || {})[nombre] || 1;
+    const sube = (CONFIG.volumenSfx || {})[nombre] || 1;
+    const normal = () => {
+      const a = new Audio(ruta);
+      a.volume = Math.min(1, Audio_.volSfx * sube);
+      if (vel !== 1) a.playbackRate = vel;
+      a.play().catch(() => console.warn('No existe el sfx:', nombre));
+    };
+    if (sube <= 1 || !Audio_.ctx) return normal();
+    Audio_._buffer(ruta).then((buf) => {
+      if (!buf) return normal();
+      const c = Audio_.ctx;
+      const src = c.createBufferSource(); src.buffer = buf; src.playbackRate.value = vel;
+      const g = c.createGain(); g.gain.value = Audio_.volSfx * sube;
+      // Recorte suave: en vez de cortar los picos en seco los va doblando,
+      // así se puede subir bastante sin que suene roto.
+      const suave = c.createWaveShaper(); suave.curve = Audio_._curvaSuave(); suave.oversample = '4x';
+      src.connect(g); g.connect(suave); suave.connect(c.destination);
+      Audio_.agacharMusica();                       // que la música se haga a un lado
+      src.onended = () => Audio_.levantarMusica();
+      src.start();
+    });
+  },
+  _curva: null,
+  _curvaSuave() {
+    if (Audio_._curva) return Audio_._curva;
+    const n = 2048, c = new Float32Array(n);
+    for (let i = 0; i < n; i++) { const x = (i / (n - 1)) * 2 - 1; c[i] = Math.tanh(x * 1.6) / Math.tanh(1.6); }
+    return (Audio_._curva = c);
+  },
+  // ---------- volumen de la música ----------
+  // Dos cosas la bajan y no se pisan entre ellas:
+  //   _agachada  = cuántas palabras del celular están sonando encima
+  //   _factorOjos = 1 con los ojos abiertos, baja al cerrarlos (@ojos)
+  _agachada: 0, _factorOjos: 1, _subiendo: null,
+  _bajo() { return CONFIG.musicaAtenuada == null ? 0.4 : CONFIG.musicaAtenuada; },
+  nivelMusica() {
+    return Audio_.volMusica * Audio_._factorOjos * (Audio_._agachada > 0 ? Audio_._bajo() : 1);
+  },
+  ajustarMusica() { if (Audio_.musica) Audio_.musica.volume = Audio_.nivelMusica(); },
+
+  // Con los ojos: 0 = abiertos del todo, 1 = cerrados del todo.
+  musicaPorOjos(cerrado) {
+    Audio_._factorOjos = 1 - Math.max(0, Math.min(1, cerrado)) * (1 - Audio_._bajo());
+    if (Audio_._subiendo) { clearInterval(Audio_._subiendo); Audio_._subiendo = null; }
+    Audio_.ajustarMusica();
+  },
+
   agacharMusica() {
-    const m = Audio_.musica; if (!m) return;
     Audio_._agachada++;
     if (Audio_._subiendo) { clearInterval(Audio_._subiendo); Audio_._subiendo = null; }
-    const bajo = CONFIG.musicaAtenuada == null ? 0.12 : CONFIG.musicaAtenuada;
-    m.volume = Math.min(m.volume, Audio_.volMusica * bajo);
+    Audio_.ajustarMusica();
   },
   levantarMusica() {
     if (Audio_._agachada > 0) Audio_._agachada--;
     if (Audio_._agachada > 0) return;            // todavía suena otra encima
-    const m = Audio_.musica; if (!m) return;
+    if (!Audio_.musica) return;
     if (Audio_._subiendo) clearInterval(Audio_._subiendo);
     Audio_._subiendo = setInterval(() => {       // vuelve de a poquito, no de golpe
-      const m2 = Audio_.musica;
-      if (!m2 || m2.volume >= Audio_.volMusica - 0.01) {
-        if (m2) m2.volume = Audio_.volMusica;
+      const m = Audio_.musica, meta = Audio_.nivelMusica();
+      if (!m || m.volume >= meta - 0.01) {
+        if (m) m.volume = meta;
         clearInterval(Audio_._subiendo); Audio_._subiendo = null; return;
       }
-      m2.volume = Math.min(Audio_.volMusica, m2.volume + Audio_.volMusica * 0.08);
+      m.volume = Math.min(meta, m.volume + Audio_.volMusica * 0.08);
     }, 40);
   },
 
@@ -86,16 +134,18 @@ const Audio_ = {
   _beepArchivo: {},
   beep(personaje) {
     const p = personaje || {};
+    // CONFIG.volumenBeep: qué tan fuerte es el "beep beep" al hablar.
+    const vol = CONFIG.volumenBeep == null ? 0.14 : CONFIG.volumenBeep;
     if (p.beep) { // archivo propio
       const a = Audio_._beepArchivo[p.beep] || (Audio_._beepArchivo[p.beep] = new Audio(p.beep));
-      a.currentTime = 0; a.volume = Audio_.volSfx * 0.5; a.play().catch(() => {});
+      a.currentTime = 0; a.volume = Math.min(1, Audio_.volSfx * vol * 8); a.play().catch(() => {});
       return;
     }
     if (!Audio_.ctx) return;
     const c = Audio_.ctx, o = c.createOscillator(), g = c.createGain();
     o.type = p.onda || 'square';
     o.frequency.value = (p.tono || 300) * (0.95 + Math.random() * 0.1);
-    g.gain.setValueAtTime(0.06, c.currentTime);
+    g.gain.setValueAtTime(vol, c.currentTime);
     g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + 0.05);
     o.connect(g).connect(c.destination);
     o.start(); o.stop(c.currentTime + 0.05);

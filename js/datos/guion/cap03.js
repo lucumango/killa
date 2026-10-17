@@ -1,5 +1,5 @@
 // =====================================================================
-// CAPÍTULO 3 — El kiosko de doña Nati, las notas, los mensajes al grupo,
+// CAPÍTULO 3 - El kiosko de doña Nati, las notas, los mensajes al grupo,
 // la vuelta a la casa y la elección de ruta (Flor o Amaru).
 // =====================================================================
 GUION.registrar('cap03', String.raw`

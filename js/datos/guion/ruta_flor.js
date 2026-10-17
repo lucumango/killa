@@ -1,5 +1,5 @@
 // =====================================================================
-// RUTA DE FLOR — el video de los mates, la azotea, la confesión y la luna.
+// RUTA DE FLOR - el video de los mates, la azotea, la confesión y la luna.
 // Termina en el capítulo "final".
 // =====================================================================
 GUION.registrar('ruta_flor', String.raw`

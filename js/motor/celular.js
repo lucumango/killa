@@ -33,7 +33,7 @@ const Celular = {
     Celular.bloqueado = false; Celular.modo = 'libre';
   },
 
-  // Desde el guion: @mapa — abre el mapa con la raya de señal y el puntito azul
+  // Desde el guion: @mapa - abre el mapa con la raya de señal y el puntito azul
   // gordo, y espera a que lo cierren. No es una pestaña: es un momento del guion.
   async abrirMapa() {
     Celular.modo = 'guion'; Celular.bloqueado = true;

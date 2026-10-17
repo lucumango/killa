@@ -42,6 +42,7 @@ const Dialogo = {
         const suave = k * k * (3 - 2 * k);                     // arranca y frena suave
         const v = ini + (fin - ini) * suave;
         franjas.forEach((f) => (f.style.height = v * 100 + '%'));
+        Audio_.musicaPorOjos(v / 0.5);   // la música se apaga con los párpados
         if (k < 1) requestAnimationFrame(paso); else res();
       };
       requestAnimationFrame(paso);
@@ -167,11 +168,20 @@ const Dialogo = {
       const fin = (i) => { window.removeEventListener('keydown', tk); ul.hidden = true; res(ops[i]); };
       const tk = (e) => {
         if (Celular.abierto) return;
+        const antes = idx;
         idx = Entrada.navegarLista(lis, idx, e);
+        // el mismo sonidito del menú al moverte entre las opciones
+        if (idx !== antes && CONFIG.sfxMenuMover) Audio_.sfx(CONFIG.sfxMenuMover);
         if (Entrada.esAvance(e)) { e.preventDefault(); fin(idx); }
       };
       window.addEventListener('keydown', tk);
-      lis.forEach((li, i) => { li.onclick = () => fin(i); li.onmouseenter = () => { idx = i; lis.forEach((x, j) => x.classList.toggle('seleccionado', j === i)); }; });
+      lis.forEach((li, i) => {
+        li.onclick = () => fin(i);
+        li.onmouseenter = () => {
+          if (idx !== i && CONFIG.sfxMenuMover) Audio_.sfx(CONFIG.sfxMenuMover);
+          idx = i; lis.forEach((x, j) => x.classList.toggle('seleccionado', j === i));
+        };
+      });
     });
   },
 

@@ -1,5 +1,5 @@
 // =====================================================================
-// FINAL — Tupananchikkama. Lo comparten las dos rutas.
+// FINAL - Tupananchikkama. Lo comparten las dos rutas.
 // Después de los créditos se puede volver a la elección y jugar la otra ruta.
 // =====================================================================
 GUION.registrar('final', String.raw`
@@ -83,7 +83,7 @@ Afuera, los cerros.
 @tarjeta Al quechua chanka, | que no está en un museo, | que se mezcla, se adapta, insulta con cariño, | manda mensajes por WhatsApp | y grita cosas desde la cocina.
 @tarjeta A las madres que dejaron de enseñarlo | por miedo a que sus hijos hablaran raro, | y a las que lo enseñaron igual.
 @tarjeta A quien lo está aprendiendo tarde: | pisillata también cuenta.
-@tarjeta Tupananchikkama. | — FIN —
+@tarjeta Tupananchikkama. | - FIN -
 @guardar
 * Volver a la tarde y quedarte con el otro -> otra_ruta [si jugo_flor != 1 || jugo_amaru != 1]
 * Terminar -> terminar

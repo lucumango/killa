@@ -1,5 +1,5 @@
 // =====================================================================
-// CAPÍTULO 2 — La casa de los Quispe Ccori. Comida, familia, el grupo,
+// CAPÍTULO 2 - La casa de los Quispe Ccori. Comida, familia, el grupo,
 // punto de guardado, exploración del patio, kiosko, mensaje, elección de ruta.
 // =====================================================================
 GUION.registrar('cap02', String.raw`

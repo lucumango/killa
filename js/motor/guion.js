@@ -241,14 +241,14 @@ const Motor = {
         await Dialogo.aplicarEscena(Motor.estadoEscena);
         if (entra && CONFIG.pausaCuadro) { Dialogo.limpiar(); await U.espera(CONFIG.pausaCuadro); }
         break; }
-      // @ojos cerrar / @ojos abrir / @ojos medio — los párpados
+      // @ojos cerrar / @ojos abrir / @ojos medio - los párpados
       case 'ojos':       await Dialogo.ojos(a[0] || 'cerrar', a[1]); break;
       case 'musica':     Motor.estadoEscena.musica = arg === 'off' ? null : arg; Audio_.reproducirMusica(Motor.estadoEscena.musica); break;
       case 'animacion':  Motor.estadoEscena.animacion = (arg === 'off' || arg === 'ninguna') ? null : arg; await Animacion.iniciar(Motor.estadoEscena.animacion); break;
       // @ritmo 0.55 1800 = la animación baja al 55 % de velocidad en 1,8 segundos.
       // Sirve para que el carro afloje de verdad cuando el guion dice que afloja.
       case 'ritmo':      Animacion.ritmo(a[0], a[1]); break;
-      // @cruzar gato 2400 meow1.mp3 — alguien cruza la pantalla caminando y sale.
+      // @cruzar gato 2400 meow1.mp3 - alguien cruza la pantalla caminando y sale.
       case 'cruzar':     await Dialogo.cruzar(a[0], a[1], a[2], a[3]); break;
       case 'sfx':        Audio_.sfx(arg); break;
       case 'busto':      if (arg === 'off') Dialogo.ocultarBusto(); else await Dialogo.mostrarBusto(a[0], a[1] || 'neutral'); break;
@@ -275,7 +275,7 @@ const Motor = {
                          break; }
       case 'chat':       await Celular.abrirDesdeGuion(a[0], a[1] || 'leer'); break;
       case 'celular':    await Celular.abrirDesdeGuion(null, 'leer'); break;
-      // @mapa — el mapa del celular con la raya de señal y el puntito azul gordo
+      // @mapa - el mapa del celular con la raya de señal y el puntito azul gordo
       case 'mapa':       await Celular.abrirMapa(); break;
       case 'fin':        await Motor.terminar(); break;
       default:           console.warn('Comando desconocido @' + L.cmd + ' (línea ' + L.num + ')');

@@ -1,5 +1,5 @@
 // =====================================================================
-// IA DEL CHAT — prompt y respuestas locales
+// IA DEL CHAT - prompt y respuestas locales
 // El prompt se arma acá (en el navegador) y se manda al servidor-ia/,
 // que solo agrega la clave y llama al modelo. Edita el texto libremente.
 // =====================================================================

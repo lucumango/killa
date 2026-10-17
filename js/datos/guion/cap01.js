@@ -1,5 +1,5 @@
 // =====================================================================
-// CAPÍTULO 1 — Llegada, la plaza, el loro, los hermanos, la ferretería.
+// CAPÍTULO 1 - Llegada, la plaza, el loro, los hermanos, la ferretería.
 // Formato (ver LEEME.md):
 //   == etiqueta            marca un lugar al que se puede saltar
 //   personaje (emocion): texto     diálogo (el busto cambia según la emoción)
@@ -32,12 +32,12 @@ Escuchas "Ayacucho" en medio de la frase, y después algo con "terreno", y despu
 @cuadro ariel_ventana
 En tu celular tienes las notas abiertas:
 @aprender rimaykullayki allinllachu allinmi imataq_sutiyki sutiymi sulpayki
-celular: rimaykullayki — buenos días / saludo formal
-celular: allinllachu? — ¿estás bien? (= hola)
-celular: allinmi — estoy bien
-celular: imataq sutiyki? — ¿cómo te llamas?
-celular: ñuqapa sutiymi Ariel — me llamo Ariel
-celular: sulpayki — gracias
+celular: rimaykullayki - buenos días / saludo formal
+celular: allinllachu? - ¿estás bien? (= hola)
+celular: allinmi - estoy bien
+celular: imataq sutiyki? - ¿cómo te llamas?
+celular: ñuqapa sutiymi Ariel - me llamo Ariel
+celular: sulpayki - gracias
 Las repites mentalmente. Ri-may-ku-llay-ki. Suena a algo que se enrolla. Intentas moverlo con los labios sin sonido, porque si tu mamá te escucha va a girar la cabeza y va a poner esa cara.
 
 # --- el mareo ---
@@ -207,7 +207,7 @@ Te quedas mirando esa calle.
 # ---------------------------------------------------------------
 == perderse
 # ----- EL GATO VA ADELANTE Y ARIEL DETRÁS, CALLE POR CALLE -----
-# @cruzar <sprite> <milisegundos> <sonido> — cruza la pantalla y sale.
+# @cruzar <sprite> <milisegundos> <sonido> - cruza la pantalla y sale.
 @fondo calle_mercado
 Sales. El sol te pega de frente, blanquísimo, y te tapas la cara con la mano, lo cual es ridículo porque al mismo tiempo tienes los brazos con piel de gallina del frío.
 Así funciona acá, parece. El sol y el frío al mismo tiempo, sin ponerse de acuerdo.
@@ -702,7 +702,7 @@ ariel (neutral): Limamantam kani.
 @aprender maymantataq limamantam
 Flor asiente, satisfecha. Amaru no dice nada, pero te está mirando de reojo, y algo en ese silencio tuyo antes de contestar no se le pasó por alto.
 amaru (neutral): Ahí es.
-Señala con la barbilla. Al final de la cuadra hay una ferretería con la puerta abierta, sacos de cemento apilados afuera y un letrero pintado a mano: FERRETERÍA "EL PROGRESO" — Todo para su construcción.
+Señala con la barbilla. Al final de la cuadra hay una ferretería con la puerta abierta, sacos de cemento apilados afuera y un letrero pintado a mano: FERRETERÍA "EL PROGRESO" - Todo para su construcción.
 @fondo ferreteria_afuera
 flor (feliz): Ya. Adentro está el señor Hilario. Es medio sordo, pero de mentira. Escucha perfecto cuando quiere. Si le hablas en quechua te va a bajar el precio.
 ariel (sorpresa): ¿En serio?

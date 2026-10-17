@@ -1,5 +1,5 @@
 // =====================================================================
-// RUTA DE AMARU — el cable, la casa del tío, la fuga y el parque de noche.
+// RUTA DE AMARU - el cable, la casa del tío, la fuga y el parque de noche.
 // Termina en el capítulo "final".
 // =====================================================================
 GUION.registrar('ruta_amaru', String.raw`
