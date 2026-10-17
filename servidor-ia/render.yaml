@@ -11,7 +11,10 @@ services:
     healthCheckPath: /
     envVars:
       - key: GEMINI_API_KEY
-        sync: false       # la escribes tú en el panel, no queda en el repo
+        sync: false
+      # Para usar Claude en vez de Gemini: PROVEEDOR=anthropic + ANTHROPIC_API_KEY
+      - key: PROVEEDOR
+        value: google       # la escribes tú en el panel, no queda en el repo
       - key: MODELO
         value: gemini-3.6-flash
       - key: MODELO_RESPALDO

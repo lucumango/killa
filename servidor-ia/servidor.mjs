@@ -49,7 +49,11 @@ const PENSAR = Number(process.env.PENSAR || 0);
 // Dónde se guardan los registros del estudio y con qué clave te los bajas.
 const ARCHIVO_ESTUDIO = process.env.ARCHIVO_ESTUDIO || 'datos-estudio.jsonl';
 const CLAVE_ESTUDIO = process.env.CLAVE_ESTUDIO || '';
-const PROVEEDOR = CLAVE_GOOGLE ? 'google' : 'anthropic';
+// Con las dos claves puestas gana Google, salvo que pongas PROVEEDOR=anthropic
+const PROVEEDOR = (process.env.PROVEEDOR || '').toLowerCase() === 'anthropic' ? 'anthropic'
+  : (process.env.PROVEEDOR || '').toLowerCase() === 'google' ? 'google'
+  : (CLAVE_GOOGLE ? 'google' : 'anthropic');
+const MODELO_ANTHROPIC = process.env.MODELO_ANTHROPIC || 'claude-haiku-5-5';
 const MODELO = process.env.MODELO || (PROVEEDOR === 'google' ? 'gemini-3.6-flash' : 'claude-opus-5');
 // Si el modelo de arriba está saturado (pasa), se reintenta y después se usa este.
 const MODELO_RESPALDO = process.env.MODELO_RESPALDO || (PROVEEDOR === 'google' ? 'gemini-3.5-flash-lite' : '');
@@ -135,7 +139,7 @@ async function conAnthropic(sistema, turnos) {
   const Respuesta = z.object({ accion: z.enum(['responder', 'visto']), mensajes: z.array(z.string()), quien: z.array(z.string()) });
   const client = new Anthropic(); // lee ANTHROPIC_API_KEY
   const r = await client.messages.parse({
-    model: MODELO,
+    model: MODELO_ANTHROPIC,
     max_tokens: 1024,
     output_config: { effort: 'low', format: zodOutputFormat(Respuesta) },
     system: [{ type: 'text', text: sistema, cache_control: { type: 'ephemeral' } }],
