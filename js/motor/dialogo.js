@@ -142,7 +142,8 @@ const Dialogo = {
     const onSkip = (ev) => { if (Celular.abierto) return; if (Entrada.esAvance(ev) || Entrada.esSaltar(ev)) saltar = true; };
     const onClick = () => { if (!Celular.abierto) saltar = true; };
     window.addEventListener('keydown', onSkip); U.$('#juego').addEventListener('click', onClick);
-    const vel = (p && p.velocidad) || CONFIG.velocidadTexto;
+    // @velocidad manda sobre la del personaje, para las líneas que van más lento
+    const vel = Motor.velocidadForzada || (p && p.velocidad) || CONFIG.velocidadTexto;
     for (let i = 0; i < texto.length; i++) {
       if (miId !== Dialogo._id) break; // otro diálogo tomó la caja
       if (saltar) { e.texto.textContent = texto; break; }
@@ -153,6 +154,38 @@ const Dialogo = {
     }
     window.removeEventListener('keydown', onSkip); U.$('#juego').removeEventListener('click', onClick);
     await U.espera(60); // evita que la misma tecla que saltó también avance
+    e.flecha.hidden = false;
+    await U.esperarAvance();
+  },
+
+  // Hablan en quechua delante de ti y no entiendes nada: sale como narración
+  // pero con los beeps de las voces que le pases, alternándose.
+  //   @murmullo mama conductor [...... Ayacucho ...... ]
+  async murmullo(voces, texto) {
+    const e = Dialogo.el;
+    const miId = ++Dialogo._id;
+    const quienes = (voces || []).map((v) => PERSONAJES[v]).filter(Boolean);
+    e.caja.hidden = false; e.caja.classList.add('narracion');
+    if (CONFIG.narradorOcultaBusto) Dialogo.ocultarBusto();
+    e.texto.textContent = ''; e.flecha.hidden = true;
+    let saltar = false;
+    const onSkip = (ev) => { if (Celular.abierto) return; if (Entrada.esAvance(ev) || Entrada.esSaltar(ev)) saltar = true; };
+    const onClick = () => { if (!Celular.abierto) saltar = true; };
+    window.addEventListener('keydown', onSkip); U.$('#juego').addEventListener('click', onClick);
+    const vel = CONFIG.velocidadTexto;
+    let turno = 0, desde = 0;
+    for (let i = 0; i < texto.length; i++) {
+      if (miId !== Dialogo._id) break;
+      if (saltar) { e.texto.textContent = texto; break; }
+      const ch = texto[i];
+      e.texto.textContent += ch;
+      // cada tanto cambia de voz, como cuando dos se van respondiendo
+      if (quienes.length && i - desde > 6 + Math.floor(Math.random() * 8)) { turno = (turno + 1) % quienes.length; desde = i; }
+      if (ch !== ' ' && quienes.length && CONFIG.beepAlHablar && i % CONFIG.beepCadaLetras === 0) Audio_.beep(quienes[turno]);
+      await U.espera('.,;:!?…'.includes(ch) ? vel * 6 : vel);
+    }
+    window.removeEventListener('keydown', onSkip); U.$('#juego').removeEventListener('click', onClick);
+    await U.espera(60);
     e.flecha.hidden = false;
     await U.esperarAvance();
   },

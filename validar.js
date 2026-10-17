@@ -6,7 +6,7 @@ for (const f of ['js/datos/config.js', 'js/datos/personajes.js', 'js/datos/palab
 ctx.GUION = { archivos: {}, registrar(n, t) { ctx.GUION.archivos[n] = t; } };
 for (const f of fs.readdirSync('js/datos/guion')) vm.runInContext(fs.readFileSync('js/datos/guion/' + f, 'utf8'), ctx);
 const { PERSONAJES, PALABRAS, MAPAS, CONTACTOS, ANIMACIONES } = vm.runInContext('({PERSONAJES, PALABRAS, MAPAS, CONTACTOS, ANIMACIONES})', ctx); const GUION = ctx.GUION;
-const cmds = new Set(['fondo','cuadro','musica','animacion','ritmo','cruzar','sfx','busto','limpiar','esperar','tarjeta','aprender','var','si','ir','llamar','volver','capitulo','guardar','explorar','mensaje','chat','celular','mapa','ojos','yape','fin']);
+const cmds = new Set(['fondo','cuadro','musica','animacion','ritmo','cruzar','sfx','busto','limpiar','esperar','tarjeta','aprender','var','si','ir','llamar','volver','capitulo','guardar','explorar','mensaje','chat','celular','mapa','ojos','camara','actor','mover','murmullo','velocidad','yape','fin']);
 let errores = 0;
 const err = (m) => { errores++; console.log('✗', m); };
 const todasEtiquetas = {};

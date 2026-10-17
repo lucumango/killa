@@ -85,6 +85,8 @@ const Motor = {
     });
     // un solo sonido aunque entren varias palabras de golpe
     if (nuevas && CONFIG.sfxPalabraNueva) Audio_.sfx(CONFIG.sfxPalabraNueva);
+    // si el celular está abierto en la lista, que se vea la palabra nueva al toque
+    if (nuevas && Celular.abierto && Celular.tab === 'palabras') Celular.pintarPalabras();
   },
 
   // Condiciones: "nombre == valor", "nombre != valor", "nombre > 3", "nombre" (existe y no vacío),
@@ -231,7 +233,19 @@ const Motor = {
     const a = L.args, arg = L.arg;
     Motor.pc++;
     switch (L.cmd) {
-      case 'fondo':      Motor.estadoEscena.fondo = arg === 'off' ? null : arg; Motor.estadoEscena.cuadro = null; await Dialogo.aplicarEscena(Motor.estadoEscena); break;
+      case 'fondo':      Motor.estadoEscena.fondo = arg === 'off' ? null : arg; Motor.estadoEscena.cuadro = null;
+                         await Dialogo.aplicarEscena(Motor.estadoEscena);
+                         await Camara.usarFondo(Motor.estadoEscena.fondo); break;
+      // Cámara y actores, para los fondos más altos que la pantalla (ver camara.js)
+      case 'camara':     await Camara.mover(a[0], a[1]); break;
+      case 'actor':      if (a[1] === 'off') Camara.quitar(a[0]); else Camara.poner(a[0], a[1], a[2], a[3]); break;
+      case 'mover':      await Camara.caminar(a[0], a[1], a[2], a[3]); break;
+      // @murmullo mama conductor texto... — se oyen las voces pero no se entiende
+      case 'murmullo': {
+        const voces = []; const resto = a.slice();
+        while (resto.length && PERSONAJES[resto[0].toLowerCase()]) voces.push(resto.shift().toLowerCase());
+        await Dialogo.murmullo(voces, Motor.interpolar(resto.join(' ')));
+        break; }
       // Al poner un cuadro, se esconde la caja de diálogo un momento para que se
       // vea el dibujo entero y limpio (CONFIG.pausaCuadro, en milisegundos).
       case 'cuadro': {
@@ -248,6 +262,9 @@ const Motor = {
       // @ritmo 0.55 1800 = la animación baja al 55 % de velocidad en 1,8 segundos.
       // Sirve para que el carro afloje de verdad cuando el guion dice que afloja.
       case 'ritmo':      Animacion.ritmo(a[0], a[1]); break;
+      // @velocidad 95  — las siguientes líneas se escriben más despacio (y los
+      // beeps salen más espaciados, porque van con cada letra). @velocidad off vuelve.
+      case 'velocidad':  Motor.velocidadForzada = (arg === 'off' || arg === 'normal') ? null : Number(arg) || null; break;
       // @cruzar gato 2400 meow1.mp3 - alguien cruza la pantalla caminando y sale.
       case 'cruzar':     await Dialogo.cruzar(a[0], a[1], a[2], a[3]); break;
       case 'sfx':        Audio_.sfx(arg); break;

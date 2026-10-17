@@ -207,3 +207,10 @@ html, body { margin: 0; height: 100%; background: var(--color-fondo); color: var
 
 /* ---------- Bloques de color (placeholders de arte) ---------- */
 .placeholder { display: flex; align-items: center; justify-content: center; text-align: center; color: rgba(255,255,255,.75); font-size: 14px; text-shadow: 0 1px 2px #000; }
+
+/* ---------- Actores pegados al fondo (@actor / @mover) ----------
+   Van encima del dibujo y debajo de la caja de diálogo. Se colocan por
+   coordenadas del DIBUJO, así que la cámara los arrastra al desplazarse. */
+.actores { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+.actor { position: absolute; background-size: contain; background-repeat: no-repeat;
+  background-position: bottom center; }

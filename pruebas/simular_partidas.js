@@ -18,6 +18,7 @@ var U = { aviso() {}, espera: async () => {}, $: () => ({}), $$: () => [] };
 var Pantallas = { mostrar() {} };
 var Yape = { comando(t) { const p = t.trim().split(/ +/); const saldo = p[0].toLowerCase() === 'saldo'; const n = Number((saldo ? p[1] : p[0]).replace(',', '.')); if (isNaN(n)) { log.errores.push('yape mal: ' + t); return; } Motor.vars.yape = saldo ? n : Math.round(((Number(Motor.vars.yape) || 0) + n) * 100) / 100; log.yapeMin = Math.min(log.yapeMin ?? 999, Motor.vars.yape); }, reiniciar() {}, estado() { return {}; }, restaurar() {}, pintar() {} };
 var Animacion = { iniciar: async () => {}, ritmo() {}, detener() {} };
+var Camara = { usarFondo: async () => {}, mover: async () => {}, poner() {}, quitar() {}, caminar: async () => {} };
 var Audio_ = { reproducirMusica() {}, pararMusica() {}, sfx() {} };
 var Guardado = { guardar() {} };
 var Menu = { mostrar() {} };
@@ -31,6 +32,7 @@ var Dialogo = {
   elegir: async (ops) => elegir(ops),
   tarjeta: async () => {}, limpiar() {}, ocultarBusto() {}, mostrarBusto: async () => {},
   cruzar: async (n) => { if (n) log.cruces = (log.cruces || 0) + 1; },
+  ojos: async () => {}, murmullo: async (v, t) => { log.textos.push('murmullo: ' + t); },
 };
 `, ctx);
 run('js/motor/guion.js');

@@ -23,9 +23,11 @@ La carretera sube en curvas que parecen dibujadas por alguien con rencor. Cada v
 @limpiar
 @esperar 1500
 Adelante, tu mamá y el conductor van en quechua desde hace como veinte minutos. No entiendes nada, pero entiendes el ritmo: ella dice algo largo, él responde con dos sílabas, los dos se ríen.
+@murmullo mama conductor ...... ....... ...... (no entiendes lo que dicen) ...... ....... ......
 Hay una manera de reírse que tu mamá solo tiene acá, en el carro, saliendo de Lima. Más suelta. Como si en Lima hablara con el cuerpo un poco encogido y recién ahora lo estirara.
 @limpiar
 @esperar 1500
+@murmullo mama conductor ...... Ayacucho ....... ...... terreno ....... ...... (no entiendes lo que dicen) ......
 Escuchas "Ayacucho" en medio de la frase, y después algo con "terreno", y después otra vez puro quechua.
 
 # --- recién acá entramos al carro y aparece la ilustración ---
@@ -251,6 +253,7 @@ Lo sigues, porque no tienes nada mejor que hacer y porque va con una seguridad q
 
 @musica off
 @fondo calle_loro
+@camara abajo
 La radio ya no se escucha. La plaza tampoco. El gato tampoco. Estás en una calle empedrada y estrecha, en bajada, con casas de adobe pintadas de blanco y las esquinas de las puertas gastadas. No hay nadie.
 Hay una carretilla vacía apoyada contra una pared. Hay una maceta con geranios rojos sobre un muro. Hay ropa tendida en un segundo piso.
 Sacas el celular.
@@ -280,9 +283,24 @@ ariel (neutral): Hubiese comprado galleta en el kiosko para invitarte.
 voz: No come galleta.
 @cuadro off
 @fondo calle_loro
+@camara abajo
+@limpiar
+# los dos están arriba, en el balcón, y la cámara sube a buscarlos
+@actor flor flor 70 40
+@actor amaru amaru 81 40
+@camara arriba 2200
+@esperar 400
 La voz viene de atrás y arriba, y das un segundo salto en menos de un minuto, lo cual empieza a ser una racha.
-Hay dos personas paradas en el escalón de la puerta de al lado. Una chica y un chico, más o menos de tu edad, ella un poquito más baja, los dos con el mismo pelo negrísimo y la misma forma de cara, así que no hay que ser detective.
+Hay dos personas paradas en el balcón de la casa de al lado. Una chica y un chico, más o menos de tu edad, ella un poquito más baja, los dos con el mismo pelo negrísimo y la misma forma de cara, así que no hay que ser detective.
 Ella tiene una casaca rosada con el cierre a medio subir y está sonriendo con toda la cara, encantada con la situación. Él tiene una polera negra, las manos en los bolsillos, y una expresión de estar evaluando cuánto le va a costar esto.
+@limpiar
+# bajan la escalera mientras la cámara vuelve abajo
+@mover flor 80 58 1500
+@mover amaru 86 55 900
+@camara abajo 2400
+@mover flor 72 79 1900
+@mover amaru 83 76 1600
+@esperar 300
 flor (feliz): Le hace mal. Una vez mi tía le dio galleta de vainilla y estuvo mal dos días. Sufriendo. Gritando.
 amaru (neutral): Gritando no.
 flor (burla): Gritando. Tú estabas en el colegio.
@@ -290,7 +308,9 @@ Se te quedan mirando los dos. La chica con curiosidad abierta, el chico con las 
 flor (feliz): ¿Te perdiste?
 No lo pregunta con maldad, lo pregunta con la certeza absoluta de quien ya sabe la respuesta.
 puku: ¡Loro!
-Los dos se voltean a mirarse y se dicen algo en quechua, rápido, con la naturalidad de quien lleva toda la vida haciéndolo. No agarras nada, salvo una palabra que sale flotando entre las otras como un pescado muerto en un río:
+Los dos se voltean a mirarse y se dicen algo en quechua, rápido, con la naturalidad de quien lleva toda la vida haciéndolo.
+@murmullo flor amaru ...... ....... ...... (no entiendes nada de lo que dicen) ....... ......
+No agarras nada, salvo una palabra que sale flotando entre las otras como un pescado muerto en un río:
 amaru (neutral): ...gringo...
 La chica le responde más largo, más rápido, y le da un empujoncito en el brazo. Él pone los ojos en blanco.
 Y a ti se te suben los nervios al cuello. ¿Será por los ojos? ¿Por la manera de pararte? ¿Por la casaca? No eres turista, tu mamá nació a como quince cuadras de acá, pero eso ahorita no está escrito en tu cara.
@@ -301,6 +321,7 @@ Los dos se quedan quietos. El loro también, lo cual empeora todo.
 ariel (nervioso): ...sutiyqa Arielmi...
 La "q" se te va por otro lado. La "ll" te sale a la limeña, blandita. Suena como si estuvieras leyendo un idioma en voz alta por primera vez, que es exactamente lo que está pasando.
 # ----- ESCENA DIBUJADA: la reacción de los dos -----
+@sfx wand.mp3
 @cuadro hermanos
 La chica se lleva las dos manos a la boca. Y se ríe. Pero no es una risa de burla, es una risa que le sale de golpe, con los hombros y todo.
 flor (risa): ¡Ayyy! ¡Habla! ¡Chiqaqchu! ¿Sabes quechua?
@@ -448,14 +469,22 @@ amaru (rojo): Él preguntó.
 Se pone rojo otra vez, y ahora no queda claro si es por la corrección o por haberte tenido que mirar de nuevo.
 Flor te toma del brazo, así nomás.
 flor (feliz): A ver, di conmigo. Despacio. Ñu-qa-pa.
+@velocidad 95
 ariel (neutral): Ñuqapa.
+@velocidad off
 flor (seria): Nooo, la q no es k. Es más atrás. Acá. Como si te estuvieras atorando un poquito. Ñu-qa-pa.
+@velocidad 110
 ariel (neutral): Ñu... qa... pa.
+@velocidad off
 flor (feliz): ¡Mejor! Sutiymi.
+@velocidad 95
 ariel (neutral): Sutiymi.
+@velocidad off
 flor (feliz): Ñuqapa sutiymi Ariel.
 Respiras. Lo dices entero, despacio, tratando de meter la garganta donde te dijo:
+@velocidad 105
 ariel (neutral): Ñuqapa sutiymi Ariel.
+@velocidad off
 Silencio de dos segundos.
 flor (sorpresa): Uy.
 amaru (neutral): Estuvo bien.
@@ -564,6 +593,21 @@ ariel (curioso): ¿De radio?
 amaru (neutral): De radio. De locutor. De cartel. Nadie te saluda así en la calle. Acá dices allinllachu nomás. O rimaykullayki si es alguien mayor y quieres quedar bien.
 puku (durmiendo): zzzz
 amaru (molesto): Tú no opines.
+flor (risa): ¡Hasta el loro se aburre! Piñapsu.
+@aprender pinapsu
+ariel (curioso): ¿Piñapsu?
+flor (burla): Renegón. Molestoso. Pero bonito, ah, no es insulto insulto. Es de cariño.
+amaru (rojo): No soy piñapsu.
+flor (feliz): Es piñapsu.
+Amaru se sacude una pelusa que no existe de la manga.
+amaru (seria): Y tú eres qachakuchi.
+@aprender qachakuchi
+flor (sorpresa): ¡OYE!
+ariel (curioso): ¿Y eso?
+amaru (neutral): Sucia. Mugrosa. Como chanchito.
+flor (risa): ¡Una vez! ¡Me caí UNA VEZ en el barro y es de por vida!
+amaru (feliz): De por vida.
+Y por primera vez desde que aparecieron, los dos se están riendo al mismo tiempo. Y tú también, sin darte cuenta.
 flor (feliz): O buenos días. Que también decimos, ah. Todo el rato. No es que andemos hablando quechua puro como en el museo.
 ariel (nervioso): Yo pensé que sí.
 Los dos se ríen. Flor abiertamente. Amaru por la nariz.
@@ -599,6 +643,8 @@ flor (feliz): Ay. De nada, pues.
 Se lleva la mano al pecho, dramática.
 amaru (rojo): Imamanta.
 ariel (curioso): ¿Eso qué es?
+Lo preguntas en serio, sin broma, y eso lo agarra desprevenido.
+amaru (sorpresa): ...
 amaru (neutral): Es "de nada". Literal es como "¿de qué?". O sea, ni agradezcas.
 ariel (neutral): Como cuando alguien dice "no fue nada".
 Amaru levanta la vista. Te mira. Asiente una sola vez, corto.
