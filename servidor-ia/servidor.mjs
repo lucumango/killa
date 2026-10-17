@@ -48,6 +48,7 @@ const CLAVE_GOOGLE = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
 const PENSAR = Number(process.env.PENSAR || 0);
 // Dónde se guardan los registros del estudio y con qué clave te los bajas.
 const ARCHIVO_ESTUDIO = process.env.ARCHIVO_ESTUDIO || 'datos-estudio.jsonl';
+try { fs.mkdirSync(ARCHIVO_ESTUDIO.replace(/\/[^/]*$/, '') || '.', { recursive: true }); } catch {}
 const CLAVE_ESTUDIO = process.env.CLAVE_ESTUDIO || '';
 // Con las dos claves puestas gana Google, salvo que pongas PROVEEDOR=anthropic
 const PROVEEDOR = (process.env.PROVEEDOR || '').toLowerCase() === 'anthropic' ? 'anthropic'
@@ -227,4 +228,4 @@ http.createServer(async (req, res) => {
       res.end(JSON.stringify({ error: String(e.message || e) }));
     }
   });
-}).listen(PUERTO, '0.0.0.0', () => console.log(`servidor-ia escuchando en el puerto ${PUERTO} (${PROVEEDOR}, modelo ${MODELO}); orígenes: ${ORIGENES.join(', ')}`));
+}).listen(PUERTO, '0.0.0.0', () => console.log(`servidor-ia escuchando en el puerto ${PUERTO} (${PROVEEDOR}, modelo ${MODELO}); orígenes: ${ORIGENES.join(', ')}; estudio -> ${ARCHIVO_ESTUDIO}`));
