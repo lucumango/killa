@@ -494,6 +494,8 @@ amaru (rojo): ...Es distinto.
 flor (burla): Pero se puede.
 amaru (seria): Se puede, pero no es lo que él estaba haciendo. Él se estaba presentando de la nada. Nadie le había preguntado.
 flor (risa): ¡PERO SE PUEDE! ¿Ves? Tenías razón y no sabías. Eso es lo más bonito.
+puku (feliz): ¡JAJAJ!
+Puku abre las alas enteras, como si la victoria fuera suya.
 @aprender sutiyqa
 ariel (neutral): Yo no tenía razón. Yo lo copié de una nota del celular.
 flor (risa): ¡No importa! ¡El profesor se equivocó igual!
@@ -553,11 +555,15 @@ ariel (neutral): ¿Y lo otro?
 amaru (neutral): Allin punchaw sí existe. Es "buen día". Se usa. Pero es más... de radio.
 ariel (curioso): ¿De radio?
 amaru (neutral): De radio. De locutor. De cartel. Nadie te saluda así en la calle. Acá dices allinllachu nomás. O rimaykullayki si es alguien mayor y quieres quedar bien.
+puku (durmiendo): zzzz
+amaru (molesto): Tú no opines.
 flor (feliz): O buenos días. Que también decimos, ah. Todo el rato. No es que andemos hablando quechua puro como en el museo.
 ariel (nervioso): Yo pensé que sí.
 Los dos se ríen. Flor abiertamente. Amaru por la nariz.
 flor (feliz): Mezclamos. Todo el mundo mezcla. Mi mamá te dice ya pues, mamita, apúrate, ñañay, todo en la misma frase y ni se da cuenta.
 Y ahí, sin querer, se te forma un nudo chiquito en la garganta. Porque tu mamá también hace eso a veces. Muy de vez en cuando, cuando está distraída, se le escapa una palabra suelta en medio del español y después se calla, como si se le hubiera caído algo.
+@busto puku seria
+Puku cierra el pico. Por una vez, no dice nada.
 Flor te está mirando. Se le borra un poco la risa.
 flor (seria): ¿Qué?
 ariel (triste): Nada.
