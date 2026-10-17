@@ -119,7 +119,7 @@ mama (seria): Anda siéntate por la plaza nomás. Media hora. Y contesta el celu
 
 == plaza_lonche
 Saca el celular de la cartera con una agilidad que no le ves en la casa. Sus dedos van directo a la pantalla, y dos segundos después el tuyo vibra en el bolsillo.
-@yape +15 Rosa Villanueva
+@yape +15 Rosa V.
 mama (burla): Cómprate un lonche por ahí. Un pan con queso, un mate caliente para que se te asiente la barriga.
 Cierra la puerta del carro de un golpe seco. La ves cruzar la pista afirmando los pasos sobre la tierra, saludando con la cabeza a una señora que vende panes en una canasta.
 La plaza es un cuadrado perfecto con un montón de cosas adentro. Camina, mira, y cuando quieras irte, baja por la abertura de los portales.
@@ -674,7 +674,7 @@ Cuatro. En veinte minutos. Y ningún mensaje antes de la primera, porque tu mam�
 @mensaje mama | contesta
 @mensaje mama | 🙏🙏
 @chat mama leer
-@yape +40 Rosa Villanueva
+@yape +40 Rosa V.
 flor (curioso): ¿Todo bien?
 Estira el cuello con una falta de disimulo impresionante.
 ariel (neutral): Sí. Se va a demorar. Me mandó a comprar cosas. Cuerda, estacas, cinta y pintura. Para marcar un terreno.

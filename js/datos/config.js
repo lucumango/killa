@@ -157,7 +157,7 @@ Tupananchiskama.
 
   // ---------- Yape (la app de plata del celular) ----------
   yape: {
-    titular: 'Ariel Stella Villanueva',  // el nombre que sale en la tarjeta
+    titular: 'Ariel Stella V.',  // el nombre que sale en la tarjeta
     saldoInicial: 0,          // con cuánta plata empieza
     moneda: 'S/',
     sfx: 'yape.mp3',          // cuando entra plata (tu voz haciendo el sonidito clásico)
