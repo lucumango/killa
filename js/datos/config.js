@@ -54,8 +54,8 @@ C .......................... abrir / cerrar el celular
 Esc ........................ cerrar el celular / volver
 
 En el celular puedes ver las palabras en quechua que vas aprendiendo
-(toca una para escucharla) y chatear con la gente que conozcas.
-Si escribes en quechua y no se entiende... te pueden dejar en visto.
+(clic en una para escucharla) y chatear con la gente que vayas conociendo.
+Si no se te entiende nada... te pueden dejar en visto jeje
 
 El juego se guarda solo en los puntos de guardado.`,
 
