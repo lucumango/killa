@@ -149,7 +149,10 @@ Tupananchiskama.
   // Pistas que tienen intro: suenan enteras la primera vez y después repiten
   // solo desde ese segundo. (El marcador LOOP del wav de Puku cae en 5.486 s.)
   bucleMusica: { 'loro.m4a': 5.486 },
-  sfxMensaje: null,        // ej: 'mensaje.wav' (en assets/audio/sfx/) cuando llega un chat
+  // Vibración cuando te contestan y NO estás mirando ese chat: con el celular
+  // cerrado, en la lista de chats, o metido en otra conversación. Si ya tienes
+  // el chat abierto no suena, porque estás viendo llegar el mensaje.
+  sfxMensaje: 'vibrar.mp3',
   sfxPalabraNueva: 'wand.mp3', // al aprender una palabra. Si entran varias de golpe, suena UNA sola vez. null = sin sonido
   audioAlPasarMouse: false, // en la lista de palabras cada palabra tiene su botón "oír".
                            // true = además suena al pasar el mouse por encima (molesto, pero ahí está)

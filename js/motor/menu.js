@@ -4,9 +4,30 @@
 const Pantallas = {
   mostrar(nombre, sinOcultarCelular) {
     ['dedicatoria', 'menu', 'texto', 'escena', 'explorar'].forEach((p) => (U.$('#pantalla-' + p).hidden = p !== nombre));
-    // El cuadro está fuera de las pantallas (para que se vea también sobre el mapa),
-    // así que hay que esconderlo a mano cuando salimos del juego.
-    if (nombre !== 'escena' && nombre !== 'explorar') U.$('#cuadro').hidden = true;
+    // Varias capas viven FUERA de las pantallas, para que se vean también sobre
+    // el mapa: el cuadro, los sprites de escena, los párpados, el que cruza...
+    // Como no son hijas de #pantalla-escena, no se esconden solas: hay que
+    // apagarlas a mano al salir del juego o se quedan encima del menú.
+    if (nombre !== 'escena' && nombre !== 'explorar') Pantallas.limpiarCapas();
+  },
+
+  // Deja la pantalla en limpio. Se llama al volver al menú (fin de la demo,
+  // @fin, o desde el chat libre) y no toca #tarjeta cuando se está entrando
+  // a la partida, porque la cortinilla la enseña justo antes de mostrar('escena').
+  limpiarCapas() {
+    ['#cuadro', '#cruce', '#tarjeta', '#pista-libre'].forEach((s) => { const e = U.$(s); if (e) e.hidden = true; });
+    // El botón de descargar datos y el recuadro del código se cuelgan de #juego
+    // al acabar la demo: si no se quitan, se quedan encima del menú y se duplican.
+    U.$$('#juego > .boton-datos, #juego > .codigo-final').forEach((x) => x.remove());
+    if (typeof Camara !== 'undefined') Camara.quitarActores();
+    if (typeof Dialogo !== 'undefined') {
+      Dialogo.limpiar();
+      // Los párpados se quedan a medio cerrar si la partida acabó con sueño.
+      const p = U.$('#parpados');
+      if (p) { p.hidden = true; p.querySelectorAll('.parpado').forEach((f) => (f.style.height = '0%')); }
+      Dialogo._ojos = 0;
+      if (typeof Audio_ !== 'undefined' && Audio_.musicaPorOjos) Audio_.musicaPorOjos(0);
+    }
   },
 };
 

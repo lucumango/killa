@@ -207,6 +207,9 @@ const Motor = {
     // al último punto de guardado de la historia.
     Guardado.guardar({ ...Motor.estado(), chatLibre: true });
     Pantallas.mostrar('escena');
+    // Fuera los sprites de la última escena: si el corte cae donde están Ariel y
+    // los hermanos junto a la jaula, se quedarían flotando encima del celular.
+    Camara.quitarActores();
     // Deja puesto el fondo de la última escena, para no dejar la pantalla pelada
     // cuando el jugador cierra el celular. Si ahí no había fondo (porque el corte
     // cayó en un cuadro o en un @fondo off), usa el dibujo de la dedicatoria.
@@ -217,7 +220,7 @@ const Motor = {
     pista.textContent = CONFIG.demoPista || 'C abre el celular · Enter para volver al menú';
     pista.hidden = false;
     // Para el estudio: botón para que el jugador baje su .json
-    U.$$('#juego > .boton-datos').forEach((x) => x.remove());
+    U.$$('#juego > .boton-datos, #juego > .codigo-final').forEach((x) => x.remove());
     Registro.ofrecerDescarga();
     Celular.modo = 'libre';
     // Salir con avanzar (Enter / Espacio), no con Esc: Esc ya se usa para cerrar el
