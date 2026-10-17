@@ -122,8 +122,8 @@ Tupananchiskama.
   sfxMenuPartida: 'menu_partida.mp3',  // al elegir Empezar o Continuar partida
   pausaAlEmpezar: 1500,    // antes de arrancar la partida, cuántos milisegundos se queda
                            // el fondo texturizado en pantalla. 0 = empieza de una
-  musicaAtenuada: 0.12,    // mientras escuchas una palabra en el celular, la música baja
-                           // a esta parte de su volumen (0.12 = 12 %). 1 = no baja nada
+  musicaAtenuada: 0.4,     // mientras escuchas una palabra en el celular, la música baja
+                           // a esta parte de su volumen (0.4 = 40 %). 1 = no baja nada
   // A qué velocidad suena cada efecto. 2 = al doble (más gracioso con las voces).
   velocidadSfx: { 'yape.mp3': 2, 'yapo.mp3': 2 },
   // Pistas que tienen intro: suenan enteras la primera vez y después repiten
