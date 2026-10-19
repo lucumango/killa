@@ -85,8 +85,12 @@ const Menu = {
   async accion(a) {
     if (a === 'nueva' || a === 'continuar') {
       await Menu.cortinilla();              // el papel texturizado, un momento, antes de jugar
-      if (a === 'nueva') { Registro.encender(); Motor.nuevaPartida(); }
-      else Motor.restaurar(Guardado.cargar());
+      // El registro se enciende también al continuar: si no, quien retoma una
+      // partida guardada no queda anotado en el estudio, y su chat del final
+      // tampoco (es justo donde más se escribe).
+      Registro.encender();
+      if (a === 'nueva') Motor.nuevaPartida();
+      else { Registro.anotar('continua'); Motor.restaurar(Guardado.cargar()); }
       // Si la partida se guardó en el chat del final, vuelves ahí, no a la historia.
       if (a === 'continuar' && Motor.vieneDeChatLibre) {
         await Dialogo.aplicarEscena(Motor.estadoEscena);
