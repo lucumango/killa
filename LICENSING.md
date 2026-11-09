@@ -9,25 +9,27 @@ The game engine, the chat server and the analysis scripts are MIT licensed. See
 [`LICENSE`](LICENSE). This covers `js/`, `servidor-ia/`, `escritorio/`,
 `pruebas/` and `paper/*.py`.
 
-## Audio recordings — terms not yet set
+## Language data — CC BY 4.0
 
-`assets/audio/palabras/` contains 79 single-word recordings in the voice of our
-language consultant, a native Chanka Quechua speaker.
+The following are released under the
+[Creative Commons Attribution 4.0 International licence](https://creativecommons.org/licenses/by/4.0/)
+(CC BY 4.0), with the consent of the language consultant whose voice and
+judgments they record:
 
-**Licensing terms for the recordings will be agreed with the language consultant
-before the final version.** Until then they are published here only as part of
-the playable game. They are not offered for redistribution, for inclusion in a
-speech corpus, or for training speech models.
+- `assets/audio/palabras/` — 79 single-word recordings in the voice of our
+  language consultant, a native Chanka Quechua speaker from Huancavelica.
+- `js/datos/palabras.js` — the glossary, 88 entries validated by the same
+  consultant.
+- `consultas/` — the written consultation documents with his answers.
 
-Recording for the game is not the same as consenting to an open licence, and a
-Creative Commons grant cannot be withdrawn once made. That decision is the
-consultant's to make, informed, and it has not been made yet.
+You may share and adapt this material, including commercially, as long as you
+give attribution. **Required attribution:**
 
-## Glossary — terms not yet set
+> Chanka Quechua glossary and recordings from *Killa*, validated and voiced by
+> Abner Vilca. CC BY 4.0.
 
-The word list in `js/datos/palabras.js` (88 entries) was validated by the same
-consultant over three rounds of written consultation, kept in `consultas/`. Its
-terms follow the recordings, for the same reason.
+Note that a Creative Commons grant is perpetual and irrevocable: once released
+this way, the material cannot be withdrawn from those who already have it.
 
 ## Script and narrative — (c) the authors
 
